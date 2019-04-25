@@ -6,6 +6,17 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
+import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
+import { DashboardPage } from '../pages/dashboard/dashboard';
+
+import { PollBuilderPage } from '../pages/poll-builder/poll-builder';
+import { PollInterfacePage } from '../pages/poll-interface/poll-interface';
+import { PollResultsPage } from '../pages/poll-results/poll-results';
+import { PollHistoryPage } from '../pages/poll-history/poll-history';
+
+
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -13,7 +24,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    LoginPage,
+    RegisterPage,
+    DashboardPage,
+    PollBuilderPage,
+    PollInterfacePage,
+    PollResultsPage,
+    PollHistoryPage
   ],
   imports: [
     BrowserModule,
@@ -23,7 +41,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    LoginPage,
+    RegisterPage,
+    DashboardPage,
+    PollBuilderPage,
+    PollInterfacePage,
+    PollResultsPage,
+    PollHistoryPage
   ],
   providers: [
     StatusBar,
