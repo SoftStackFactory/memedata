@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { PollBuilder3Page } from '../poll-builder3/poll-builder3';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
 
 /**
- * Generated class for the PollBuilder2Page page.
+ * Generated class for the PollBuilder3Page page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,20 +11,16 @@ import { PollBuilderServiceProvider } from '../../providers/poll-builder-service
 
 @IonicPage()
 @Component({
-  selector: 'page-poll-builder2',
-  templateUrl: 'poll-builder2.html',
+  selector: 'page-poll-builder3',
+  templateUrl: 'poll-builder3.html',
 })
-export class PollBuilder2Page {
+export class PollBuilder3Page {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public BuilderService: PollBuilderServiceProvider) {
   }
 
-  nextStage() {
-    this.navCtrl.push(PollBuilder3Page);
-  }
-
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PollBuilder2Page');
+    console.log('ionViewDidLoad PollBuilder3Page');
   }
 
 }

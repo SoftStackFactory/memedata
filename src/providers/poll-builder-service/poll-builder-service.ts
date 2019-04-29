@@ -1,6 +1,13 @@
 //import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+class Meme {
+  image: any;
+  topText: any;
+  bottomText: any;
+  description: any;
+}
+
 /*
   Generated class for the PollBuilderServiceProvider provider.
 
@@ -14,6 +21,11 @@ export class PollBuilderServiceProvider {
     console.log('Hello PollBuilderServiceProvider Provider');
   }
 
-  myPhoto: any
+  memes: Meme[] = [];
+
+  myPhotoPreview: any;
+  topText: any;
+  bottomText: any;
+  description: any;
 
 }

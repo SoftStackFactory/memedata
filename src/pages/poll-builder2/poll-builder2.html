@@ -11,24 +11,24 @@
 </ion-header>
 
 <ion-content padding>
-  <p><img src="{{this.BuilderService.myPhoto}}"></p>
+  <p><img src="{{this.BuilderService.myPhotoPreview}}"></p>
 
   <ion-list>
 
       <ion-item>
-        <ion-input type="text" placeholder="Top Text"></ion-input>
+        <ion-input [(ngModel)]="this.BuilderService.topText" type="text" placeholder="Top Text"></ion-input>
       </ion-item>
     
       <ion-item>
-        <ion-input type="text" placeholder="Bottom Text"></ion-input>
+        <ion-input [(ngModel)]="this.BuilderService.bottomText" type="text" placeholder="Bottom Text"></ion-input>
       </ion-item>
 
       <ion-item>
-          <ion-input type="text" placeholder="Description"></ion-input>
+          <ion-input [(ngModel)]="this.BuilderService.description" type="text" placeholder="Description"></ion-input>
         </ion-item>
     
     </ion-list>
 
-<button ion-button full>Next</button>
+<button (click)="nextStage()" ion-button full>Next</button>
 
 </ion-content>
