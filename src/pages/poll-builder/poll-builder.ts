@@ -30,7 +30,9 @@ export class PollBuilderPage {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
+      mediaType: this.camera.MediaType.PICTURE,
+      correctOrientation: true,
+      allowEdit: true
     }
     
     this.camera.getPicture(options).then((imageData) => {
@@ -50,7 +52,9 @@ export class PollBuilderPage {
       encodingType: this.camera.EncodingType.JPEG,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
       mediaType: this.camera.MediaType.PICTURE,
-      saveToPhotoAlbum: false
+      saveToPhotoAlbum: false,
+      correctOrientation: true,
+      allowEdit: true
     }
     
     this.camera.getPicture(options).then((imageData) => {

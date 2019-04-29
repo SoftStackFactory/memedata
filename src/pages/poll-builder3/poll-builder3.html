@@ -6,18 +6,25 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>poll-builder3</ion-title>
+    <ion-title>MemePoll</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="card-background-page">
+<ion-content padding class="card-background-page">
 
-  <ion-card>
-    <img src="{{this.BuilderService.myPhotoPreview}}">
-    <div class="card-title">{{this.BuilderService.topText}}</div>
-    <div class="card-subtitle">{{this.BuilderService.bottomText}}</div>
-  </ion-card>
-  <p>{{this.BuilderService.description}}</p>
+  <ion-scroll scrollX="true" style="white-space:nowrap; height: 100%;">
+     
+    <ion-card>
+      <img src="{{this.BuilderService.myPhotoPreview}}">
+      <div class="card-title">{{this.BuilderService.topText}}</div>
+      <div class="card-subtitle">{{this.BuilderService.bottomText}}</div>
+    </ion-card>
+
+    <p>{{this.BuilderService.description}}</p>
+
+  </ion-scroll>
+
+  
 
 </ion-content>
 
