@@ -11,6 +11,7 @@ import { RegisterPage } from '../pages/register/register';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 
 import { PollBuilderPage } from '../pages/poll-builder/poll-builder';
+import { PollBuilder2Page } from '../pages/poll-builder2/poll-builder2';
 import { PollInterfacePage } from '../pages/poll-interface/poll-interface';
 import { PollResultsPage } from '../pages/poll-results/poll-results';
 import { PollHistoryPage } from '../pages/poll-history/poll-history';
@@ -19,6 +20,8 @@ import { PollHistoryPage } from '../pages/poll-history/poll-history';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Camera } from '@ionic-native/camera';
+import { PollBuilderServiceProvider } from '../providers/poll-builder-service/poll-builder-service';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     RegisterPage,
     DashboardPage,
     PollBuilderPage,
+    PollBuilder2Page,
     PollInterfacePage,
     PollResultsPage,
     PollHistoryPage
@@ -46,14 +50,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     RegisterPage,
     DashboardPage,
     PollBuilderPage,
+    PollBuilder2Page,
     PollInterfacePage,
     PollResultsPage,
     PollHistoryPage
   ],
   providers: [
+    Camera,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PollBuilderServiceProvider
   ]
 })
 export class AppModule {}
