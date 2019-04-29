@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { PollBuilderPage } from '../poll-builder/poll-builder';
+import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
 
 @Component({
   selector: 'page-home',
@@ -8,13 +9,12 @@ import { PollBuilderPage } from '../poll-builder/poll-builder';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public BuilderService: PollBuilderServiceProvider) {
 
   }
 
-  goPollBuilder()
-{
-  this.navCtrl.push(PollBuilderPage);
+  goPollBuilder() {
+    this.navCtrl.push(PollBuilderPage);
 }
 
 }

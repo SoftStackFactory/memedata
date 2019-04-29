@@ -12,19 +12,33 @@
 
 <ion-content padding class="card-background-page">
 
-  <ion-scroll scrollX="true" style="white-space:nowrap; height: 100%;">
+  <ion-scroll scrollX="true" style="white-space:nowrap; height: 75vh;">
      
     <ion-card>
       <img src="{{this.BuilderService.myPhotoPreview}}">
       <div class="card-title">{{this.BuilderService.topText}}</div>
       <div class="card-subtitle">{{this.BuilderService.bottomText}}</div>
     </ion-card>
+    
+    <ion-card>
+        <img src="{{this.BuilderService.myPhotoPreview}}">
+        <div class="card-title">{{this.BuilderService.topText}}</div>
+        <div class="card-subtitle">{{this.BuilderService.bottomText}}</div>
+      </ion-card>
 
-    <p>{{this.BuilderService.description}}</p>
+      <ion-card>
+          <img src="{{this.BuilderService.myPhotoPreview}}">
+          <div class="card-title">{{this.BuilderService.topText}}</div>
+          <div class="card-subtitle">{{this.BuilderService.bottomText}}</div>
+        </ion-card>
+  
+    <!--<p>{{this.BuilderService.description}}</p>-->
 
   </ion-scroll>
 
-  
+  <button (click)="goPollBuilder()" ion-button full><ion-icon name="add"></ion-icon>Add Meme</button>
+  <button (click)="lastStage()" ion-button full>Next</button>
+ 
 
 </ion-content>
 
