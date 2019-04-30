@@ -21,6 +21,7 @@ export class PollBuilder2Page {
   }
 
   nextStage() {
+    this.BuilderService.memes.push();
     this.navCtrl.push(PollBuilder3Page);
   }
 

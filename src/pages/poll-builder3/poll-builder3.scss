@@ -2,24 +2,21 @@ page-poll-builder3 {
 
 }
 
-ion-card {
-  display: inline-block;
-}
-
 .card-background-page {
 
     ion-card {
       position: relative;
       text-align: center;
+      display: inline-block;
     }
   
-    .card-title {
+    .card-title, .card-subtitle {
       position: absolute;
-      top: 0%;
       width: 100%;
       font-family: impact;
-      font-size: 2.5em;
+      font-size: 1.5em;
       text-transform: uppercase;
+      transform: scale(1,2.2);
       color: white;
       letter-spacing: 1px;
       text-shadow:2px 2px 0 #000,
@@ -31,29 +28,15 @@ ion-card {
       0px -2px 0 #000,
       -2px 0px 0 #000,
       2px 2px 5px #000;
-      font-weight: bold;
+      font-weight: 900;
     }
   
-    .card-subtitle {
-      font-size: 2.0em;
-      position: absolute;
-      top: 87%;
-      width: 100%;
-      font-family: impact;
-      font-size: 2.5em;
-      text-transform: uppercase;
-      color: white;
-      letter-spacing: 1px;
-      text-shadow:2px 2px 0 #000,
-      -2px -2px 0 #000,
-      2px -2px 0 #000,
-      -2px 2px 0 #000,
-      0px 2px 0 #000,
-      2px 0px 0 #000,
-      0px -2px 0 #000,
-      -2px 0px 0 #000,
-      2px 2px 5px #000;
-      font-weight: bold;
-    }
-  
+  .card-title{
+    top:5%;
   }
+
+  .card-subtitle{
+    top: 85%;
+  }
+
+}
