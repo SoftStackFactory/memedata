@@ -1,0 +1,46 @@
+{
+  "name": "appUser",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "required": true
+    },
+    "username": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "password": {
+      "type": "string",
+      "required": true
+    },
+    "gender": {
+      "type": "boolean",
+      "required": true
+    },
+    "dob": {
+      "type": "date",
+      "required": true
+    },
+    "zip": {
+      "type": "number",
+      "required": true
+    },
+    "takenpolls": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

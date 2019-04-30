@@ -12,4 +12,40 @@
 
 <ion-content padding>
 
+    <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
+        <ion-row>
+          <ion-col>
+            <ion-list inset>
+              <ion-item>
+                <ion-input placeholder="Email" name="useremail" id="loginField"
+                           type="text" required [(ngModel)]="useremail" #email></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input placeholder="Password" name="password" id="passwordField"
+                           type="password" required [(ngModel)]="password"></ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+            <button ion-button class="submit-btn" full type="submit"
+                    [disabled]="!loginForm.form.valid">Login
+            </button>
+          </ion-col>
+        </ion-row>
+      </form>
+<p>
+  Need to register? Click <a (click)="toRegister()">here</a>
+</p>
+
+<div id='oauthWrapper'>
+    <div id='oauthTitle'>Sign in with</div>
+    <ion-icon id='google' name="logo-google"></ion-icon>
+    <ion-icon id='facebook' name="logo-facebook"></ion-icon>
+    <ion-icon id='twitter' name="logo-twitter"></ion-icon>
+    <ion-icon id='github' name="logo-github"></ion-icon>
+</div>
+
 </ion-content>

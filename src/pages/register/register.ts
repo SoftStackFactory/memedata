@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { DashboardPage } from '../../pages/dashboard/dashboard';
 
 /**
  * Generated class for the RegisterPage page.
@@ -20,6 +21,12 @@ export class RegisterPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
+  }
+
+  register(form) {
+    this.authService.register(form.value).subscribe((res) => {
+      this.router.navigateByUrl('home');
+    });
   }
 
 }
