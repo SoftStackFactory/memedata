@@ -9,6 +9,7 @@ import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { DashboardPage } from '../pages/dashboard/dashboard';
+import { DashboardTabsPage } from '../pages/dashboard-tabs/dashboard-tabs';
 
 import { PollBuilderPage } from '../pages/poll-builder/poll-builder';
 import { PollInterfacePage } from '../pages/poll-interface/poll-interface';
@@ -28,6 +29,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     LoginPage,
     RegisterPage,
     DashboardPage,
+    DashboardTabsPage,
     PollBuilderPage,
     PollInterfacePage,
     PollResultsPage,
@@ -45,6 +47,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     LoginPage,
     RegisterPage,
     DashboardPage,
+    DashboardTabsPage,
     PollBuilderPage,
     PollInterfacePage,
     PollResultsPage,
