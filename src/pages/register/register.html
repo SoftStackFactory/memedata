@@ -7,7 +7,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>register</ion-title>
-  </ion-navbar>
+  </ion-navbar> 
 </ion-header>
 <ion-content padding>
     <form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="off">
@@ -16,30 +16,30 @@
             <ion-list inset>
               <ion-item>
                 <ion-input placeholder="Username" name="username" id="nameField"
-                  type="text" required [(ngModel)]="user.username" #name></ion-input>
+                  type="text" required [(ngModel)]="this.userService.user.username" #name></ion-input>
                 </ion-item>
               <ion-item>
                 <ion-input placeholder="Email" name="useremail" id="emailField"
-                  type="text" required [(ngModel)]="user.useremail" #email></ion-input>
+                  type="text" required [(ngModel)]="this.userService.user.useremail" #email></ion-input>
               </ion-item>
               <ion-item>
                 <ion-input placeholder="Password" name="password" id="passwordField"
-                  type="password" required [(ngModel)]="user.password"></ion-input>
+                  type="password" required [(ngModel)]="this.userService.user.password"></ion-input>
               </ion-item>
               <ion-item>
               <ion-label>Date of birth</ion-label>
-                <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="user.dob" [ngModelOptions]="{standalone: true}" ></ion-datetime>
+                <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="this.userService.user.dob" [ngModelOptions]="{standalone: true}" ></ion-datetime>
               </ion-item>
               <ion-item>
                   <ion-label>Gender</ion-label>
-                  <ion-select placeholder="Select One" [(ngModel)]="user.gender" [ngModelOptions]="{standalone: true}">
+                  <ion-select placeholder="Select One" [(ngModel)]="this.userService.user.gender" [ngModelOptions]="{standalone: true}">
                     <ion-option value="f">Female</ion-option>
                     <ion-option value="m">Male</ion-option>
                   </ion-select>
                 </ion-item>
                 <ion-item>
                 <ion-input placeholder="Zipcode" name="zipcode" id="zipField"
-                  type="text" required [(ngModel)]="user.zipcode" #zip></ion-input>
+                  type="text" required [(ngModel)]="this.userService.user.zipcode" #zip></ion-input>
                 </ion-item>
             </ion-list>
           </ion-col>
@@ -53,5 +53,6 @@
           </ion-col>
         </ion-row>
       </form>
-      <p>{{user.username}}{{user.useremail}}{{user.gender}}{{user.password}}{{user.dob}}{{user.zipcode}}</p>
+      <p>{{this.userService.user.username}}{{this.userService.user.useremail}}{{this.userService.user.gender}}{{this.userService.user.password}}
+        {{this.userService.user.dob}}{{this.userService.user.zipcode}}</p>
 </ion-content>
