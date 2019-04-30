@@ -19,14 +19,19 @@ export class RegisterPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  user: any = {
+    username: "",
+    useremail:"",
+    password:"",
+    dob:"",
+    zipcode:"",
+    gender:"",
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
 
-  register(form) {
-    this.authService.register(form.value).subscribe((res) => {
-      this.router.navigateByUrl('home');
-    });
-  }
+
 
 }
