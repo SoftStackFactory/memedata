@@ -53,6 +53,12 @@
           </ion-col>
         </ion-row>
       </form>
+      <ion-row>
+        <ion-col>
+          <button ion-button class="submit-btn" full type="submit" (click)="toDash()">Go to meme now!!
+          </button>
+        </ion-col>
+      </ion-row>
       <p>{{this.userService.user.username}}{{this.userService.user.useremail}}{{this.userService.user.gender}}{{this.userService.user.password}}
         {{this.userService.user.dob}}{{this.userService.user.zipcode}}</p>
 </ion-content>
