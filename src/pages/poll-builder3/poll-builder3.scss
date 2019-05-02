@@ -4,31 +4,26 @@ page-poll-builder3 {
 
 .card-background-page {
 
-  .preview-card{
+  .preview-card, .scroll-card{
     position: relative;
     text-align: center;
     display: inline-block;
-      .card-subtitle{
-        font-size: 2.5rem;
-      };
-      .card-title{
-        font-size: 2.5rem;
-      };
   }
+
+    .preview-card {
+      font-size: 2.5rem;
+    }
 
     .scroll-card {
       height: 40%;
       width: 40%;
-      position: relative;
-      text-align: center;
-      display: inline-block;
+      font-size: 1rem;
     }
   
     .card-title, .card-subtitle {
       position: absolute;
       width: 100%;
       font-family: impact;
-      font-size: 1.2rem;
       text-transform: uppercase;
       transform: scale(1,2.2);
       color: white;

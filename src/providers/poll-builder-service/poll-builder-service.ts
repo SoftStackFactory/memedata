@@ -1,6 +1,5 @@
 //import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PollBuilder2Page } from '../../pages/poll-builder2/poll-builder2';
 
 class Meme {
   image: any;
