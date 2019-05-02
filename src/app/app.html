@@ -1,19 +1,53 @@
-<ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle='left' icon-only>
+      <ion-icon name="person"></ion-icon>
+    </button>
+    <ion-searchbar></ion-searchbar>
+  </ion-navbar>
+</ion-header>
 
-  <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
+<ion-menu [content]='content' style='z-index:99'>
+    <!-- <ion-header> -->
+      <ion-toolbar>
+        <ion-title>My MemePoll</ion-title>
+      </ion-toolbar>
+    <!-- </ion-header> -->
+    <ion-list id='userSidebar'>
+      <ion-title>Account Info</ion-title>
+      <ion-title>Poll/Reward History</ion-title>
+      <ion-title>Logout</ion-title>
     </ion-list>
-  </ion-content>
+  </ion-menu>
 
-</ion-menu>
+
+      <!-- <ion-menu [content]="content">
+           
+            <ion-header>
+              <ion-toolbar >
+                <ion-title>My MemePoll</ion-title>
+              </ion-toolbar>
+            </ion-header>
+            
+            <ion-list id='userSidebar'>
+              <p>lakjshdlahsd</p>
+              <p>lakjshdlahsd</p>
+              <p>lakjshdlahsd</p>
+            </ion-list>
+          
+        </ion-menu>
+      </ion-content>
+  
+
+</ion-header> -->
+
+
+
+  
+
+
+
+  
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

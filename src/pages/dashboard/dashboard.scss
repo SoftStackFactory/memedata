@@ -2,6 +2,10 @@ page-dashboard {
     
 }
 
+#categoryToolbar {
+    padding-top: 15px;
+}
+
 .category {
     display: inline-block;
     width: 100px;
@@ -22,7 +26,7 @@ page-dashboard {
 ion-img {
     margin-right: 15px;
     float: left;
-    height: 180px;
+    height: 125px;
     width: 125px;
     background-color: red;
 }
