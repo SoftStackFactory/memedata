@@ -1,0 +1,35 @@
+{
+  "name": "meme",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "required": true
+    },
+    "pollID": {
+      "type": "string",
+      "required": true
+    },
+    "topText": {
+      "type": "string"
+    },
+    "bottomText": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

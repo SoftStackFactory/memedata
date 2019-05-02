@@ -1,0 +1,10 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mongo": {
+    "url": "mongodb+srv://ssfadmin:ssfadmin@cluster0-866fb.mongodb.net/memedata?retryWrites=true",
+    "connector": "mongodb"
+  }
+}
