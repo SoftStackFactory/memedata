@@ -1,0 +1,10 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mongo": {
+    "url": "mongodb://admin:password1@ds145456.mlab.com:45456/memedata",
+    "connector": "mongodb"
+  }
+}

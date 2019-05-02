@@ -2,15 +2,5 @@
   "db": {
     "name": "db",
     "connector": "memory"
-  },
-  "mongo": {
-    "host": "",
-    "port": 0,
-    "url": "mongodb://admin:password1@ds145456.mlab.com:45456/memedata",
-    "database": "memedata",
-    "password": "password1",
-    "name": "mongo",
-    "user": "admin",
-    "connector": "mongodb"
   }
 }
