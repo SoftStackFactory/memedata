@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { PollBuilderPage } from '../poll-builder/poll-builder';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
 
 /**
@@ -18,6 +19,15 @@ import { PollBuilderServiceProvider } from '../../providers/poll-builder-service
 export class PollBuilder3Page {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public BuilderService: PollBuilderServiceProvider) {
+  }
+
+  previewMeme(meme){
+    console.log("clicked", meme.topText);
+    this.BuilderService.displayMeme = meme; 
+  }
+
+  addNextMeme() {
+    this.navCtrl.push(PollBuilderPage);
   }
 
   ionViewDidLoad() {

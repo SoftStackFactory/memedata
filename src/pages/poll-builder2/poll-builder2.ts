@@ -21,7 +21,13 @@ export class PollBuilder2Page {
   }
 
   nextStage() {
-    this.BuilderService.memes.push();
+    this.BuilderService.memes.push({
+      image: this.BuilderService.meme.image,
+      topText: this.BuilderService.meme.topText,
+      bottomText: this.BuilderService.meme.bottomText,
+      description: this.BuilderService.meme.description
+    });
+    console.log("meme array", this.BuilderService.memes)
     this.navCtrl.push(PollBuilder3Page);
   }
 

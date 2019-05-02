@@ -24,9 +24,13 @@ export class PollBuilderServiceProvider {
 
   memes: Meme[] = [];
 
-  myPhotoPreview: any;
-  topText: any;
-  bottomText: any;
-  description: any;
+  displayMeme: Meme[] = [];
+
+  meme: any = {
+  image: "",
+  topText: "",
+  bottomText: "",
+  description: "",
+  };
 
 }

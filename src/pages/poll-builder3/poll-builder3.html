@@ -11,44 +11,31 @@
 </ion-header>
 
 <ion-content padding class="card-background-page">
-
-  <ion-card class="preview-card">
-    <img src="{{this.BuilderService.myPhotoPreview}}">
-    <div class="card-title">{{this.BuilderService.topText}}</div>
-    <div class="card-subtitle">{{this.BuilderService.bottomText}}</div>
+    <ion-card class="preview-card" *ngIf="this.BuilderService.displayMeme.image">
+      <img src="{{this.BuilderService.displayMeme.image}}">
+      <div class="card-title">{{this.BuilderService.displayMeme.topText}}</div>
+      <div class="card-subtitle">{{this.BuilderService.displayMeme.bottomText}}</div>
   </ion-card>
+
+  <!--<ion-card class="preview-card" *ngIf="this.BuilderService.displayMeme.image">
+    <img src="{{this.BuilderService.memes[0].image}}">
+    <div class="card-title">{{this.BuilderService.memes[0].topText}}</div>
+    <div class="card-subtitle">{{this.BuilderService.memes[0].bottomText}}</div>
+  </ion-card>-->
     
   <ion-scroll scrollX="true" style="white-space:nowrap; height: 25vh;">
      
-    <ion-card class="scroll-card">
-      <img src="{{this.BuilderService.myPhotoPreview}}">
-      <div class="card-title">{{this.BuilderService.topText}}</div>
-      <div class="card-subtitle">{{this.BuilderService.bottomText}}</div>
+    <ion-card class="scroll-card" *ngFor="let meme of BuilderService.memes" (click)="previewMeme(meme)">
+      <img src="{{meme.image}}">
+      <div class="card-title">{{meme.topText}}</div>
+      <div class="card-subtitle">{{meme.bottomText}}</div>
     </ion-card>
     
-      <ion-card class="scroll-card">
-        <img src="{{this.BuilderService.myPhotoPreview}}">
-        <div class="card-title">{{this.BuilderService.topText}}</div>
-        <div class="card-subtitle">{{this.BuilderService.bottomText}}</div>
-      </ion-card>
-
-      <ion-card class="scroll-card">
-          <img src="{{this.BuilderService.myPhotoPreview}}">
-          <div class="card-title">{{this.BuilderService.topText}}</div>
-          <div class="card-subtitle">{{this.BuilderService.bottomText}}</div>
-      </ion-card>-->
-
-      <ion-card class="scroll-card">
-          <img src="{{this.BuilderService.myPhotoPreview}}">
-          <div class="card-title">{{this.BuilderService.topText}}</div>
-          <div class="card-subtitle">{{this.BuilderService.bottomText}}</div>
-      </ion-card>-->
-  
     <!--<p>{{this.BuilderService.description}}</p>-->
 
   </ion-scroll>
 
-  <button (click)="onGoPollBuilder()" ion-button full><ion-icon name="add"></ion-icon>Add Meme</button>
+  <button (click)="addNextMeme()" ion-button full><ion-icon name="add"></ion-icon>Add Meme</button>
   <button (click)="lastStage()" ion-button full>Next</button>
  
 
