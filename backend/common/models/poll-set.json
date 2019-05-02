@@ -1,0 +1,50 @@
+{
+  "name": "pollSet",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "required": true
+    },
+    "pollTitle": {
+      "type": "string",
+      "required": true
+    },
+    "pollDescription": {
+      "type": "string"
+    },
+    "coverImage": {
+      "type": "string",
+      "required": true
+    },
+    "pollCategory": {
+      "type": "string",
+      "required": true
+    },
+    "pollKeywords": {
+      "type": [
+        "string"
+      ]
+    },
+    "userId": {
+      "type": "string"
+    },
+    "completed": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "meme": {
+      "type": "hasMany",
+      "model": "meme",
+      "foreignKey": "userId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
