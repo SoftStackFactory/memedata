@@ -12,25 +12,37 @@
 
 <ion-content padding class="card-background-page">
 
-  <ion-scroll scrollX="true" style="white-space:nowrap; height: 75vh;">
+  <ion-card class="preview-card">
+    <img src="{{this.BuilderService.myPhotoPreview}}">
+    <div class="card-title">{{this.BuilderService.topText}}</div>
+    <div class="card-subtitle">{{this.BuilderService.bottomText}}</div>
+  </ion-card>
+    
+  <ion-scroll scrollX="true" style="white-space:nowrap; height: 25vh;">
      
-    <ion-card>
+    <ion-card class="scroll-card">
       <img src="{{this.BuilderService.myPhotoPreview}}">
       <div class="card-title">{{this.BuilderService.topText}}</div>
       <div class="card-subtitle">{{this.BuilderService.bottomText}}</div>
     </ion-card>
     
-    <ion-card>
+      <ion-card class="scroll-card">
         <img src="{{this.BuilderService.myPhotoPreview}}">
         <div class="card-title">{{this.BuilderService.topText}}</div>
         <div class="card-subtitle">{{this.BuilderService.bottomText}}</div>
       </ion-card>
 
-      <ion-card>
+      <ion-card class="scroll-card">
           <img src="{{this.BuilderService.myPhotoPreview}}">
           <div class="card-title">{{this.BuilderService.topText}}</div>
           <div class="card-subtitle">{{this.BuilderService.bottomText}}</div>
-        </ion-card>
+      </ion-card>-->
+
+      <ion-card class="scroll-card">
+          <img src="{{this.BuilderService.myPhotoPreview}}">
+          <div class="card-title">{{this.BuilderService.topText}}</div>
+          <div class="card-subtitle">{{this.BuilderService.bottomText}}</div>
+      </ion-card>-->
   
     <!--<p>{{this.BuilderService.description}}</p>-->
 

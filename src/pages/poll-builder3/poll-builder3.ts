@@ -9,6 +9,7 @@ import { PollBuilderServiceProvider } from '../../providers/poll-builder-service
  * Ionic pages and navigation.
  */
 
+
 @IonicPage()
 @Component({
   selector: 'page-poll-builder3',

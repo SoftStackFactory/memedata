@@ -4,7 +4,21 @@ page-poll-builder3 {
 
 .card-background-page {
 
-    ion-card {
+  .preview-card{
+    position: relative;
+    text-align: center;
+    display: inline-block;
+      .card-subtitle{
+        font-size: 2.5rem;
+      };
+      .card-title{
+        font-size: 2.5rem;
+      };
+  }
+
+    .scroll-card {
+      height: 40%;
+      width: 40%;
       position: relative;
       text-align: center;
       display: inline-block;
@@ -14,7 +28,7 @@ page-poll-builder3 {
       position: absolute;
       width: 100%;
       font-family: impact;
-      font-size: 1.5em;
+      font-size: 1.2rem;
       text-transform: uppercase;
       transform: scale(1,2.2);
       color: white;

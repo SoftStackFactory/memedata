@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -41,6 +42,7 @@ import { PollBuilderServiceProvider } from '../providers/poll-builder-service/po
   ],
   imports: [
     BrowserModule,
+    SlickCarouselModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
