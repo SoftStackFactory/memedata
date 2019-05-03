@@ -12,7 +12,6 @@
 
 <ion-content class='has-header'>
 
-  <ion-toolbar id='categoryToolbar'>
     <ion-scroll class='top-ion-scroll' scrollX='true'>    
       <ion-item class="category">
         <button ion-button icon-only large>
@@ -63,81 +62,70 @@
         <p>Technology</p>
       </ion-item>
     </ion-scroll>
-  </ion-toolbar>
 
-    <ion-item text-wrap class='pollPreview'>
-      <ion-img></ion-img>
-      <h2>Title</h2>
-      <p >Godard swag pug occupy. Wayfarers vape locavore semiotics. Direct trade shaman poutine lyft tacos. 
-        Messenger bag bicycle rights iPhone paleo
-    </ion-item>
-    <ion-item text-wrap class='pollPreview'>
-      <ion-img></ion-img>
-      <h2>Title</h2>
-      <p >Godard swag pug occupy. Wayfarers vape locavore semiotics. Direct trade shaman poutine lyft tacos. 
-        Messenger bag bicycle rights iPhone paleo
-    </ion-item>
-    <ion-item text-wrap class='pollPreview'>
-      <ion-img></ion-img>
-      <h2>Title</h2>
-      <p >Godard swag pug occupy. Wayfarers vape locavore semiotics. Direct trade shaman poutine lyft tacos. 
-        Messenger bag bicycle rights iPhone paleo
-    </ion-item>
-    <ion-item text-wrap class='pollPreview'>
-      <ion-img></ion-img>
-      <h2>Title</h2>
-      <p >Godard swag pug occupy. Wayfarers vape locavore semiotics. Direct trade shaman poutine lyft tacos. 
-        Messenger bag bicycle rights iPhone paleo
-    </ion-item>
-    <ion-item text-wrap class='pollPreview'>
-      <ion-img></ion-img>
-      <h2>Title</h2>
-      <p >Godard swag pug occupy. Wayfarers vape locavore semiotics. Direct trade shaman poutine lyft tacos. 
-        Messenger bag bicycle rights iPhone paleo
-    </ion-item>
-    <ion-item text-wrap class='pollPreview'>
-      <ion-img></ion-img>
-      <h2>Title</h2>
-      <p >Godard swag pug occupy. Wayfarers vape locavore semiotics. Direct trade shaman poutine lyft tacos. 
-        Messenger bag bicycle rights iPhone paleo
-    </ion-item>
-    <ion-item text-wrap class='pollPreview'>
-      <ion-img></ion-img>
-      <h2>Title</h2>
-      <p >Godard swag pug occupy. Wayfarers vape locavore semiotics. Direct trade shaman poutine lyft tacos. 
-        Messenger bag bicycle rights iPhone paleo
-    </ion-item>
-    <ion-item text-wrap class='pollPreview'>
-      <ion-img></ion-img>
-      <h2>Title</h2>
-      <p >Godard swag pug occupy. Wayfarers vape locavore semiotics. Direct trade shaman poutine lyft tacos. 
-        Messenger bag bicycle rights iPhone paleo
-    </ion-item>
-    <ion-item text-wrap class='pollPreview'>
-      <ion-img></ion-img>
-      <h2>Title</h2>
-      <p >Godard swag pug occupy. Wayfarers vape locavore semiotics. Direct trade shaman poutine lyft tacos. 
-        Messenger bag bicycle rights iPhone paleo
-    </ion-item>
-    <ion-item text-wrap class='pollPreview'>
-      <ion-img></ion-img>
-      <h2>Title</h2>
-      <p >Godard swag pug occupy. Wayfarers vape locavore semiotics. Direct trade shaman poutine lyft tacos. 
-        Messenger bag bicycle rights iPhone paleo
-    </ion-item>
-
+    <div class='pollList'>
+      <ion-item text-wrap class='pollPreview'>
+        <ion-img class='pollImg'></ion-img>
+        <h2>Title</h2>
+        <p >Godard swag pug occupy. Wayfarers vape locavore semiotics. Direct trade shaman poutine lyft tacos. 
+          Messenger bag bicycle rights iPhone paleo
+      </ion-item>
+      <ion-item text-wrap class='pollPreview'>
+        <ion-img class='pollImg'></ion-img>
+        <h2>Title</h2>
+        <p >Godard swag pug occupy. Wayfarers vape locavore semiotics. Direct trade shaman poutine lyft tacos. 
+          Messenger bag bicycle rights iPhone paleo
+      </ion-item>
+      <ion-item text-wrap class='pollPreview'>
+        <ion-img class='pollImg'></ion-img>
+        <h2>Title</h2>
+        <p >Godard swag pug occupy. Wayfarers vape locavore semiotics. Direct trade shaman poutine lyft tacos. 
+          Messenger bag bicycle rights iPhone paleo
+      </ion-item>
+      <ion-item text-wrap class='pollPreview'>
+        <ion-img class='pollImg'></ion-img>
+        <h2>Title</h2>
+        <p >Godard swag pug occupy. Wayfarers vape locavore semiotics. Direct trade shaman poutine lyft tacos. 
+          Messenger bag bicycle rights iPhone paleo
+      </ion-item>
+      <ion-item text-wrap class='pollPreview'>
+        <ion-img class='pollImg'></ion-img>
+        <h2>Title</h2>
+        <p >Godard swag pug occupy. Wayfarers vape locavore semiotics. Direct trade shaman poutine lyft tacos. 
+          Messenger bag bicycle rights iPhone paleo
+      </ion-item>
+      <ion-item text-wrap class='pollPreview'>
+        <ion-img class='pollImg'></ion-img>
+        <h2>Title</h2>
+        <p >Godard swag pug occupy. Wayfarers vape locavore semiotics. Direct trade shaman poutine lyft tacos. 
+          Messenger bag bicycle rights iPhone paleo
+      </ion-item>
+      <ion-item text-wrap class='pollPreview'>
+        <ion-img class='pollImg'></ion-img>
+        <h2>Title</h2>
+        <p >Godard swag pug occupy. Wayfarers vape locavore semiotics. Direct trade shaman poutine lyft tacos. 
+          Messenger bag bicycle rights iPhone paleo
+      </ion-item>
+      <ion-item text-wrap class='pollPreview'>
+        <ion-img class='pollImg'></ion-img>
+        <h2>Title</h2>
+        <p >Godard swag pug occupy. Wayfarers vape locavore semiotics. Direct trade shaman poutine lyft tacos. 
+          Messenger bag bicycle rights iPhone paleo
+      </ion-item>
+      
+    </div>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
     <ion-segment >
-      <ion-segment-button>
+      <ion-segment-button value='Home' (click)='goToHome()'>
         Home
       </ion-segment-button>
-      <ion-segment-button>
+      <ion-segment-button value='Create' (click)='goToCreate()'>
         Create
       </ion-segment-button>
-      <ion-segment-button>
+      <ion-segment-button value='MyPolls'(click)='goToMyPolls()'>
         My Polls
       </ion-segment-button>
     </ion-segment>
@@ -145,7 +133,6 @@
 </ion-footer>
 
 
-<!-- can't get tabs to display -->
-<!-- <page-dashboard-tabs></page-dashboard-tabs>-->
+
  
 

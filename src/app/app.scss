@@ -32,9 +32,11 @@
 }
 
 .has-header {
-    padding-top: 50px;
+    margin-top: 50px;
 }
 
 .has-footer {
-    padding-bottom: 50px;
+    .scroll-content {
+        margin-bottom: 50px;
+    }
 }

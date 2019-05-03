@@ -2,14 +2,12 @@ page-dashboard {
     
 }
 
-#categoryToolbar {
-    padding-top: 15px;
-}
 
 .category {
     display: inline-block;
     width: 100px;
     text-align: center;
+    // margin: 0px 15px;
     p {
         font-size:10px;
     }
@@ -23,7 +21,7 @@ page-dashboard {
     }
 }
 
-ion-img {
+.pollImg {
     margin-right: 15px;
     float: left;
     height: 125px;
@@ -35,15 +33,9 @@ ion-img {
     white-space: nowrap;
     height: 115px;
     // background-color: grey;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin: 15px 15px 0px 15px;
 }
 
-.main-ion-scroll {
-    white-space: nowrap;
-    height: 100%;
-}
-
-#categories {
-    
+.pollList {
+    margin-bottom: 50px;
 }

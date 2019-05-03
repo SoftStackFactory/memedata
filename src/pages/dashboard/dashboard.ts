@@ -24,4 +24,14 @@ export class DashboardPage {
     console.log('ionViewDidLoad DashboardPage');
   }
 
+  goToHome() {
+    this.navCtrl.setRoot(DashboardPage);
+  }
+  goToCreate() {
+    this.navCtrl.setRoot(DashboardPage);
+  }
+  goToMyPolls() {
+    this.navCtrl.setRoot(DashboardPage);
+  }
+
 }
