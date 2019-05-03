@@ -16,6 +16,8 @@ import { PollInterfacePage } from '../pages/poll-interface/poll-interface';
 import { PollResultsPage } from '../pages/poll-results/poll-results';
 import { PollHistoryPage } from '../pages/poll-history/poll-history';
 
+import { UserSidebarComponent } from '../components/user-sidebar/user-sidebar';
+
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -33,7 +35,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     PollBuilderPage,
     PollInterfacePage,
     PollResultsPage,
-    PollHistoryPage
+    PollHistoryPage,
+    UserSidebarComponent
   ],
   imports: [
     BrowserModule,
