@@ -45,4 +45,15 @@ export class MyApp {
     this.nav.setRoot(page.component);
   }
   
+  goToAccountInfo() {
+    this.nav.setRoot(DashboardPage);
+  }
+  
+  goToRewardsHistory() {
+    this.nav.setRoot(DashboardPage);
+  }
+  goToLogout() {
+    this.nav.setRoot(DashboardPage);
+  }
+
 }
