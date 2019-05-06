@@ -10,8 +10,16 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <p><img src="{{this.BuilderService.meme.image}}"></p>
+
+<ion-content padding class="card-background-page">
+
+  <ion-card class="preview-card" *ngIf="this.BuilderService.meme.image" >
+    <img src="{{this.BuilderService.meme.image}}">
+    <div class="card-title">{{this.BuilderService.meme.topText}}</div>
+    <div class="card-subtitle">{{this.BuilderService.meme.bottomText}}</div>
+  </ion-card>
+
+  <div class="counter">Step 1 of 3</div>
 
   <ion-list>
 

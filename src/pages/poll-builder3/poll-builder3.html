@@ -11,18 +11,25 @@
 </ion-header>
 
 <ion-content padding class="card-background-page">
-    <ion-card class="preview-card" *ngIf="this.BuilderService.displayMeme.image">
+
+  <ion-card class="preview-card" *ngIf="this.BuilderService.displayMeme.image; else addedMeme" >
       <img src="{{this.BuilderService.displayMeme.image}}">
       <div class="card-title">{{this.BuilderService.displayMeme.topText}}</div>
       <div class="card-subtitle">{{this.BuilderService.displayMeme.bottomText}}</div>
   </ion-card>
 
-  <!--<ion-card class="preview-card" *ngIf="this.BuilderService.displayMeme.image">
-    <img src="{{this.BuilderService.memes[0].image}}">
-    <div class="card-title">{{this.BuilderService.memes[0].topText}}</div>
-    <div class="card-subtitle">{{this.BuilderService.memes[0].bottomText}}</div>
-  </ion-card>-->
-    
+  <ng-template #addedMeme>
+    <div *ngFor="let meme of BuilderService.memes | slice:-1">
+      <ion-card class="preview-card">
+        <img src="{{meme.image}}">
+          <div class="card-title">{{meme.topText}}</div>
+          <div class="card-subtitle">{{meme.bottomText}}</div>
+      </ion-card>
+    </div>
+  </ng-template>
+
+  <div class="counter">Step 2 of 3</div>
+  
   <ion-scroll scrollX="true" style="white-space:nowrap; height: 25vh;">
      
     <ion-card class="scroll-card" *ngFor="let meme of BuilderService.memes" (click)="previewMeme(meme)">

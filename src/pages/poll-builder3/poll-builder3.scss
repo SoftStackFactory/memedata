@@ -2,6 +2,10 @@ page-poll-builder3 {
 
 }
 
+.counter {
+  text-align: center;
+}
+
 .card-background-page {
 
   .preview-card, .scroll-card{
@@ -17,7 +21,10 @@ page-poll-builder3 {
     .scroll-card {
       height: 40%;
       width: 40%;
-      font-size: 1rem;
+      font-size: .8rem;
+      .card-title, .card-subtitle{
+        transform: scale(1,1.9);
+      }
     }
   
     .card-title, .card-subtitle {
