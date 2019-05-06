@@ -14,6 +14,7 @@ import { DashboardPage } from '../pages/dashboard/dashboard';
 import { PollBuilderPage } from '../pages/poll-builder/poll-builder';
 import { PollBuilder2Page } from '../pages/poll-builder2/poll-builder2';
 import { PollBuilder3Page } from '../pages/poll-builder3/poll-builder3';
+import { PollBuilder4Page } from '../pages/poll-builder4/poll-builder4';
 import { PollInterfacePage } from '../pages/poll-interface/poll-interface';
 import { PollResultsPage } from '../pages/poll-results/poll-results';
 import { PollHistoryPage } from '../pages/poll-history/poll-history';
@@ -36,6 +37,7 @@ import { PollBuilderServiceProvider } from '../providers/poll-builder-service/po
     PollBuilderPage,
     PollBuilder2Page,
     PollBuilder3Page,
+    PollBuilder4Page,
     PollInterfacePage,
     PollResultsPage,
     PollHistoryPage
@@ -56,6 +58,7 @@ import { PollBuilderServiceProvider } from '../providers/poll-builder-service/po
     PollBuilderPage,
     PollBuilder2Page,
     PollBuilder3Page,
+    PollBuilder4Page,
     PollInterfacePage,
     PollResultsPage,
     PollHistoryPage

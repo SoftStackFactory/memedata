@@ -26,10 +26,16 @@ export class PollBuilderServiceProvider {
   displayMeme: Meme[] = [];
 
   meme: any = {
-  image: "",
-  topText: "",
-  bottomText: "",
-  description: "",
+    image: "",
+    topText: "",
+    bottomText: "",
+    description: "",
   };
+
+  poll: any = {
+    title: "",
+    description: "",
+    category: "",
+  }
 
 }
