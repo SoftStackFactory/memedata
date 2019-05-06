@@ -6,41 +6,51 @@
     "validateUpsert": true
   },
   "properties": {
-    "id": {
-      "type": "number",
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
       "required": true
     },
     "username": {
       "type": "string",
       "required": true
     },
-    "email": {
-      "type": "string",
-      "required": true
-    },
-    "password": {
+    "dob": {
       "type": "string",
       "required": true
     },
     "gender": {
-      "type": "boolean",
-      "required": true
-    },
-    "dob": {
-      "type": "date",
+      "type": "string",
       "required": true
     },
     "zip": {
       "type": "number",
       "required": true
     },
-    "takenpolls": {
-      "type": "number",
-      "required": true
+    "takenPolls": {
+      "type": [
+        "string"
+      ]
     }
   },
   "validations": [],
-  "relations": {},
-  "acls": [],
+  "relations": {
+    "poll": {
+      "type": "hasMany",
+      "model": "pollSet",
+      "foreignKey": "userId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
   "methods": {}
 }

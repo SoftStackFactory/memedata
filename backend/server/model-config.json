@@ -38,5 +38,13 @@
   "appUser": {
     "dataSource": "mongo",
     "public": true
+  },
+  "pollSet": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "meme": {
+    "dataSource": "mongo",
+    "public": true
   }
 }
