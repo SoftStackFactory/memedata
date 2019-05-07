@@ -28,12 +28,14 @@ export class LoginPage {
     this.navCtrl.setRoot(RegisterPage)
   }
 
-  onClick(){
+  onLogin(){
     this.userService.login(this.user)
       .subscribe(
-        (response) => {
+        (response:any) => {
           this.data = response
           console.log(this.data)
+          window.sessionStorage.setItem('token', response.token);
+          window.sessionStorage.setItem('userId', response.userId);
           this.navCtrl.setRoot(DashboardPage);
         })
   }

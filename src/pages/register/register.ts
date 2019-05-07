@@ -21,12 +21,16 @@ export class RegisterPage {
     gender:'',
     zip:''
   }
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, public userService:UserProvider) {
   }
-  onClick(){
+  
+  onRegister(){
     this.userService.register(this.user)
       .subscribe(
-        (response) => {
+        (response : any) => {
+          window.sessionStorage.setItem('token', response.token);
+          window.sessionStorage.setItem('userId', response.userId);
           this.data = response
           console.log(this.data)
           this.navCtrl.setRoot(DashboardPage);
