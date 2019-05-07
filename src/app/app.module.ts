@@ -16,7 +16,6 @@ import { PollResultsPage } from '../pages/poll-results/poll-results';
 import { PollHistoryPage } from '../pages/poll-history/poll-history';
 
 
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 

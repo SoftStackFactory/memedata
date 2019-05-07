@@ -1,6 +1,10 @@
 
 <ion-header>
   <ion-navbar>
+      <!-- <div class = "item item-avatar">
+          <img src = "my-image.png">
+          <h2>Card Name</h2>
+       </div> -->
     <ion-title>PICTURE POLL</ion-title>
   </ion-navbar>
 </ion-header>
@@ -8,7 +12,11 @@
 <ion-content padding>
 
   <div class="my-overlay" (click)="hideOverlay()" padding [hidden]="overlayHidden">
-    <!-- <button full (click)="hideOverlay()">Click me</button> -->
+      <p class="overlayText">Hello Welcome New User!</p>
+</div>
+
+<div class="my-overlay" (click)="hideOverlay()" padding [hidden]="overlayInfo">
+    <p class="overlayText">This is the information section!</p>
 </div>
 
   <h4 id="pollNumber">{{questionNumber}}/{{totalQuestions}}</h4>
@@ -21,18 +29,18 @@
    <div class = "picture">
       <img src= {{imgUrl}} alt="Meme">
    </div>
-
+<!-- 
    <ion-slides>
      <ion-slide>
        <ion-card>
          <p>Hello how are you?</p>
        </ion-card>
      </ion-slide>
-   </ion-slides>
+   </ion-slides> -->
 
   <div class="buttons">
     <button ion-button large round color="secondary" (click)="button()" float-right>Yes</button>
-    <button ion-button large round (click)="infoButton" float-center>Info</button>
+    <button ion-button large round (click)="overlayHiddenInfo()" float-center>Info</button>
     <button ion-button large round color="danger" (click)="button()" float-left>No</button>
   </div>
 

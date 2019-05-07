@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Slides } from '@ionic-angular';
-import { ViewChild } from '@angular/core'
+// import { Slides } from '@ionic-angular';
+// import { ViewChild } from '@angular/core';
 
 
 /**
@@ -27,8 +27,10 @@ export class PollInterfacePage {
   check:number
 
   overlayHidden: boolean = false;
+  overlayInfo: boolean = true;
   
   meme:any
+  
   
   
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -43,7 +45,15 @@ export class PollInterfacePage {
 
   public hideOverlay() {
     this.overlayHidden = true;
+    this.overlayInfo = true;
 }
+
+overlayHiddenInfo (){
+  this.overlayInfo = false;
+  
+}
+
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad PollInterfacePage');
     let random = Math.floor(Math.random() * 500) + 1
