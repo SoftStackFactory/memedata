@@ -4,18 +4,16 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class UserProvider {
-  user: any = {
-    username: "",
-    useremail:"",
-    password:"",
-    dob:"",
-    zipcode:"",
-    gender:"",
+
+
+  constructor(public _http: HttpClient) {
+    console.log('Hello UserProvider Provider');
   }
 
+  baseUrl: string = 'http://localhost:3000/api/appUsers';
 
-  constructor(public http: HttpClient) {
-    console.log('Hello UserProvider Provider');
+  register(userData) {
+    return this._http.post(this.baseUrl, userData );
   }
 
 
