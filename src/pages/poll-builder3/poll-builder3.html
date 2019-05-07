@@ -16,6 +16,7 @@
       <img src="{{this.BuilderService.displayMeme.image}}">
       <div class="card-title">{{this.BuilderService.displayMeme.topText}}</div>
       <div class="card-subtitle">{{this.BuilderService.displayMeme.bottomText}}</div>
+      <ion-icon class="trash-icon" name="trash" (click)="deleteMeme(this.BuilderService.displayMeme)"></ion-icon>
   </ion-card>
 
   <ng-template #addedMeme>
@@ -24,6 +25,7 @@
         <img src="{{meme.image}}">
           <div class="card-title">{{meme.topText}}</div>
           <div class="card-subtitle">{{meme.bottomText}}</div>
+          <ion-icon class="trash-icon" name="trash" (click)="deleteMeme(meme)"></ion-icon>
       </ion-card>
     </div>
   </ng-template>
