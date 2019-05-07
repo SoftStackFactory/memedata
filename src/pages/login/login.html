@@ -7,17 +7,17 @@
 
 <ion-content padding>
 
-    <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
+    <form #loginForm="ngForm" (ngSubmit)="onClick()" autocomplete="off">
         <ion-row>
           <ion-col>
             <ion-list inset>
               <ion-item>
-                <ion-input placeholder="Email" name="useremail" id="loginField"
-                           type="text" required [(ngModel)]="this.userService.user.useremail" #email></ion-input>
+                <ion-input placeholder="Email" name="email" id="loginField"
+                           type="text" required [(ngModel)]="this.user.email"></ion-input>
               </ion-item>
               <ion-item>
                 <ion-input placeholder="Password" name="password" id="passwordField"
-                           type="password" required [(ngModel)]="this.userService.user.password"></ion-input>
+                           type="password" required [(ngModel)]="this.user.password"></ion-input>
               </ion-item>
             </ion-list>
           </ion-col>
@@ -42,5 +42,5 @@
     <ion-icon id='twitter' name="logo-twitter"></ion-icon>
     <ion-icon id='github' name="logo-github"></ion-icon>
 </div>
-<p>{{this.userService.user.password}}{{this.userService.user.useremail}}</p>
+<p>{{this.user.password}}{{this.user.email}}</p>
 </ion-content>

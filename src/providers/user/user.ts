@@ -16,5 +16,9 @@ export class UserProvider {
     return this._http.post(this.baseUrl, userData );
   }
 
+  login(userData) {
+    return this._http.post(this.baseUrl + "/login", userData );
+  }
+
 
 }

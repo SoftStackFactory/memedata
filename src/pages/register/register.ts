@@ -29,7 +29,7 @@ export class RegisterPage {
         (response) => {
           this.data = response
           console.log(this.data)
-          this.navCtrl.setRoot(RegisterPage);
+          this.navCtrl.setRoot(DashboardPage);
         })
         
   }
@@ -37,10 +37,6 @@ export class RegisterPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
-
-  // register() {
-  //   this.navCtrl.setRoot(DashboardPage)
-  // }
 
   toDash() {
     this.navCtrl.setRoot(DashboardPage)

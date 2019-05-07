@@ -11,6 +11,11 @@ import { RegisterPage } from '../../pages/register/register';
 })
 
 export class LoginPage {
+  data;
+  user = {
+    email:'',
+    password:''
+  }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userService:UserProvider) {
   }
@@ -23,8 +28,14 @@ export class LoginPage {
     this.navCtrl.setRoot(RegisterPage)
   }
 
-  login() {
-    this.navCtrl.setRoot(DashboardPage)
+  onClick(){
+    this.userService.login(this.user)
+      .subscribe(
+        (response) => {
+          this.data = response
+          console.log(this.data)
+          this.navCtrl.setRoot(DashboardPage);
+        })
   }
 
   noLogin() {
