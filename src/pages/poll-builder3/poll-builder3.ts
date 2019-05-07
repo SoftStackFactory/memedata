@@ -45,6 +45,7 @@ export class PollBuilder3Page {
           handler: () => {
             let result = this.BuilderService.memes.splice(this.BuilderService.memes.findIndex(find => find.image === meme.image), 1);
             console.log("deleted", result[0].topText);
+            this.BuilderService.displayMeme.image = "";
           }
         }
       ]

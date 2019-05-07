@@ -2,9 +2,9 @@
 import { Injectable } from '@angular/core';
 
 class Meme {
-  image: any;
   topText: any;
   bottomText: any;
+  image: any;
   description: any;
 }
 
@@ -23,16 +23,21 @@ export class PollBuilderServiceProvider {
 
   memes: Meme[] = [];
 
-  displayMeme: Meme[] = [];
-
-  meme: any = {
-    image: "",
+  displayMeme: any = {
     topText: "",
     bottomText: "",
+    image: "",
     description: "",
   };
 
-  poll: any = {
+  meme: any = {
+    topText: "",
+    bottomText: "",
+    image: "",
+    description: "",
+  };
+
+  pollSet: any = {
     title: "",
     description: "",
     category: "",
