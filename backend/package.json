@@ -9,9 +9,9 @@
     "lint": "eslint .",
     "start": "node .",
     "posttest": "npm run lint",
-    "local": "SET NODE_ENV=local node .",
-    "dev": "SET NODE_ENV=development node .",
-    "production": "SET NODE_ENV=production node ."
+    "local": "cross-env NODE_ENV=local node .",
+    "dev": "cross-env NODE_ENV=development node .",
+    "production": "cross-env NODE_ENV=production node ."
   },
   "dependencies": {
     "compression": "^1.0.3",
