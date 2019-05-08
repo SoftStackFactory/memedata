@@ -14,6 +14,14 @@ export class HomePage {
   }
 
   goPollBuilder() {
+    this.BuilderService.createPollSet()
+    .subscribe(
+      (response: any) => {
+        console.log("New PollSet", response);
+        this.BuilderService.pollSets = response
+        this.BuilderService.pollId = response.id
+      }
+    )
     this.navCtrl.push(PollBuilderPage);
 }
 

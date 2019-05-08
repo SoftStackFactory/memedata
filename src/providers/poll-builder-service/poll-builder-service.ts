@@ -1,5 +1,6 @@
-//import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { tokenKey } from '@angular/core/src/view';
 
 class Meme {
   topText: any;
@@ -17,10 +18,19 @@ class Meme {
 @Injectable()
 export class PollBuilderServiceProvider {
 
-  constructor() {
+  constructor(public http: HttpClient) {
     console.log('Hello PollBuilderServiceProvider Provider');
   }
 
+  apiBaseUrl: string = "http://localhost:3000/api/"
+
+  token: string = window.sessionStorage.getItem('token');
+  userId: string = window.sessionStorage.getItem('userId');
+
+  pollId: string = ""
+  pollMemes: any = {}
+  pollSets: any = {}
+  
   memes: Meme[] = [];
 
   displayMeme: any = {
@@ -43,4 +53,11 @@ export class PollBuilderServiceProvider {
     category: "",
   }
 
+  createPollSet(){
+    return this.http.post(this.apiBaseUrl + "pollSets?access_token=" + this.token, this.userId)
+  }
+
+  saveMeme(){
+    return this.http.post(this.apiBaseUrl + "memes?access_token=" + this.token, this.pollId) 
+  }
 }
