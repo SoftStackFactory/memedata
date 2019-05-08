@@ -15,6 +15,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PollHistoryPage {
 
+  items = [
+    'Pokemon Poll',
+    'Yugioh Poll',
+    'Digimon Poll',
+    'Are You A Robot Poll?',
+    'Futurama Poll',
+    'Star Wars Poll'
+  ]
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -22,4 +31,7 @@ export class PollHistoryPage {
     console.log('ionViewDidLoad PollHistoryPage');
   }
 
+  itemSelected(item: string) {
+    console.log("Selected Item", item)
+  }
 }

@@ -10,11 +10,49 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-list>
-    <ion-item>List Item 1</ion-item>
-    <ion-item> Create taken/created list </ion-item>
-    <ion-item>Create Taken/Created List view links</ion-item>
-  </ion-list>
+    <!-- Create taken/created list 
+    Create Taken/Created List view links
+    Split the screen in half? One side has taken the other has created? It's a start -->
 
+  <!-- Buttons that Slide to delete !
+    <ion-list>
+    <ion-item-sliding>
+     <ion-item>Taken Poll #1 </ion-item>
+     <ion-item-options side="right">
+       <button color="danger" ion-button>
+         <ion-icon name="trash"></ion-icon>
+       </button>
+     </ion-item-options>
+    </ion-item-sliding>
+    </ion-list>
+
+
+    <ion-list>
+        <ion-item-sliding>
+         <ion-item>Created Poll #1 </ion-item>
+         <ion-item-options side="right">
+           <button color="danger" ion-button>
+             <ion-icon name="trash"></ion-icon>
+           </button>
+         </ion-item-options>
+        </ion-item-sliding>
+        </ion-list> -->
+
+
+<ion-content padding>
+<ion-list>
+  <ion-item-divider color="light">Taken Polls</ion-item-divider>
+  <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+    {{ item }}
+  </button>  
+</ion-list>
+
+<ion-list>
+    <ion-item-divider color="light">Created Polls</ion-item-divider>
+    <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+      {{ item }}
+    </button>  
+  </ion-list>
 </ion-content>
+
+
