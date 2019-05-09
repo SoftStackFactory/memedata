@@ -1,26 +1,89 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>poll-results</ion-title>
+    <ion-title>Poll Results</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let p of array">
-    <ion-row>
-      <ion-col col-3>
-        <img id="resultThumb" src="https://picsum.photos/id/3{{p}}0/80/120" float-left>
-      </ion-col>
-      <ion-col col-7>
-              <p id="description">Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine...</p>
-      </ion-col>
-      <ion-col col-2>
-          <ion-row class="items">
-              {{p}}4%
-            </ion-row>
-            <ion-row class="items">
-                <ion-icon id="resultMarker" name="checkmark-circle"></ion-icon>
-            </ion-row>
-      </ion-col>
-    </ion-row>
-  </ion-card>
+  <div *ngFor="let x of array ; let i = index">
+    <ion-slides slidesPerView='1' effect="flip" loop="true" (swipe)="swipeEvent($event)">
+        <ion-slide (click)="slideTo(2)">
+            <ion-card>
+              <ion-row>
+                <ion-col col-3>
+                  <img id="resultThumb" src="https://picsum.photos/id/1{{x}}{{i}}/80/120" float-left>
+                </ion-col>
+                <ion-col col-7>
+                  <p id="description">Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine...</p>
+                </ion-col>
+                <ion-col col-2>
+                  <ion-row class="items">
+                      {{x*22}}%
+                    </ion-row>
+                    <ion-row class="items" id="checkItem">
+                      <ion-icon id="resultMarker" name="checkmark-circle"></ion-icon>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+            </ion-card>
+        </ion-slide>
+        <ion-slide (click)="slideTo(1)">
+            <ion-card class="resultsCard">
+                <ion-row>
+                  <ion-col id="moreResults" col-12>
+                    <ion-row>
+                      <div id="progressWrapper1">
+                          <div class="barText">
+                            {{bar1}}%
+                          </div> 
+                        <div class="bar1" [ngStyle]="barPercent1">
+                        </div>
+                      </div>
+                    </ion-row>
+                    <ion-row>
+                        <div id="progressWrapper2">
+                            <div class="barText">
+                                {{bar2}}%
+                              </div> 
+                            <div class="bar2" [ngStyle]="barPercent2">                  
+                            </div>
+                          </div>
+                    </ion-row>
+                  </ion-col>
+                </ion-row>
+              </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+      <div id="share">
+          <button ion-button>Share!</button>
+      </div>
 </ion-content>
+
+
+
+<ion-footer>
+    <ion-toolbar position="bottom">
+        <ion-slides slidesPerView='1.3' effect="slide" spaceBetween="-5" loop="true" (swipe)="swipeEvent($event)">
+            <ion-slide *ngFor="let p of suggestions">
+                <ion-card>
+                    <ion-row>
+                      <ion-col col-4>
+                        <img id="suggestionThumb" src="https://picsum.photos/id/3{{p}}0/80/120" float-left>
+                      </ion-col>
+                      <ion-col col-8>
+                          <ion-row id="suggestionTitle">
+                              Title
+                            </ion-row>
+                            <ion-row id="suggestionDescription">
+                                Description
+                            </ion-row>
+                      </ion-col>
+                    </ion-row>
+                  </ion-card>
+            </ion-slide>
+          </ion-slides>
+    </ion-toolbar>
+  </ion-footer>
+
+  
