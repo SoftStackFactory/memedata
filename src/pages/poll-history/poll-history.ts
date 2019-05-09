@@ -24,6 +24,13 @@ export class PollHistoryPage {
     'Star Wars Poll'
   ]
 
+  created = [
+    'Bob The Builders Favorite Tools Poll',
+    'Doras Bagpack Poll',
+    'NBA Champions Poll',
+    'Metgala Who Wore It Best Poll?'
+  ]
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

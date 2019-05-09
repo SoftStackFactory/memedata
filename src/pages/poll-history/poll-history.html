@@ -49,8 +49,8 @@
 
 <ion-list>
     <ion-item-divider color="light">Created Polls</ion-item-divider>
-    <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
-      {{ item }}
+    <button ion-item *ngFor="let create of created" (click)="itemSelected(create)">
+      {{ create }}
     </button>  
   </ion-list>
 </ion-content>
