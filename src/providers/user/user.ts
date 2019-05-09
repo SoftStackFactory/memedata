@@ -20,8 +20,8 @@ export class UserProvider {
     return this._http.post(this.baseUrl + "/login", userData );
   }
 
-  logout(userData) {
-    return this._http.post(this.baseUrl + "/logout", userData );
+  logout(token) {
+    return this._http.post(this.baseUrl + "/logout?access_token=" + token, {});
   }
 
 }

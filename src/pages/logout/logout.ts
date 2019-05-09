@@ -4,12 +4,6 @@ import { UserProvider } from '../../providers/user/user';
 import { DashboardPage } from '../../pages/dashboard/dashboard';
 
 
-/**
- * Generated class for the LogoutPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -30,14 +24,15 @@ export class LogoutPage {
     console.log('ionViewDidLoad LogoutPage');
   }
 
-  // onLogout(){
-  //   this.userService.login(this.user)
-  //     .subscribe(
-  //       (response:any) => {
-  //         window.sessionStorage.clear();
-  //         window.sessionStorage.clear();
-  //         this.navCtrl.setRoot(DashboardPage);
-  //       })
-  // }
+  onLogout(){
+    this.userService.logout(window.sessionStorage.token)
+    .subscribe(
+      (response:any) =>{ 
+      console.log("logoooooout")
+      });
+      window.sessionStorage.clear();
+      this.navCtrl.setRoot(DashboardPage);
+        }
+  }
 
-}
+
