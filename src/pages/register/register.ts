@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { UserProvider } from '../../providers/user/user';
+import { DashboardPage } from '../../pages/dashboard/dashboard';
 
-/**
- * Generated class for the RegisterPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -14,12 +10,41 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'register.html',
 })
 export class RegisterPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  data;
+  user = {
+    firstName: '',
+    lastName: '',
+    username: '',
+    email:'',
+    password:'',
+    dob:'',
+    gender:'',
+    zip:''
+  }
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userService:UserProvider) {
+  }
+  
+  onRegister(){
+    this.userService.register(this.user)
+      .subscribe(
+        (response : any) => {
+          window.sessionStorage.setItem('token', response.token);
+          window.sessionStorage.setItem('userId', response.userId);
+          this.data = response
+          console.log(this.data)
+          this.navCtrl.setRoot(DashboardPage);
+        })
+        
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
+
+  toDash() {
+    this.navCtrl.setRoot(DashboardPage)
+  }
+
 
 }
