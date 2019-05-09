@@ -48,13 +48,8 @@ import { PollBuilderServiceProvider } from '../providers/poll-builder-service/po
   ],
   imports: [
     BrowserModule,
-<<<<<<< HEAD
-    IonicModule.forRoot(MyApp),
-    HttpClientModule,
-=======
     HttpClientModule,
     IonicModule.forRoot(MyApp)
->>>>>>> develop
   ],
   bootstrap: [IonicApp],
   entryComponents: [
