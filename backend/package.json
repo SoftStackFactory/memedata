@@ -9,9 +9,9 @@
     "lint": "eslint .",
     "start": "node .",
     "posttest": "npm run lint",
-    "local": "SET NODE_ENV=local node .",
-    "dev": "SET NODE_ENV=development node .",
-    "production": "SET NODE_ENV=production node ."
+    "local": "cross-env NODE_ENV=local node .",
+    "dev": "cross-env NODE_ENV=development node .",
+    "production": "cross-env NODE_ENV=production node ."
   },
   "dependencies": {
     "compression": "^1.0.3",
@@ -22,7 +22,8 @@
     "loopback-component-explorer": "^6.2.0",
     "loopback-connector-mongodb": "^4.0.0",
     "serve-favicon": "^2.0.1",
-    "strong-error-handler": "^3.0.0"
+    "strong-error-handler": "^3.0.0",
+    "cross-env": "^5.2.0"
   },
   "devDependencies": {
     "eslint": "^3.17.1",

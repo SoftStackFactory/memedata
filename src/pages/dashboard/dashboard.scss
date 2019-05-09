@@ -2,6 +2,13 @@ page-dashboard {
     
 }
 
+.item-md.item-block .item-inner {
+    border-bottom: none;
+}
+
+.item-ios.item-block .item-inner {
+    border-bottom: none;
+}
 
 .category {
     display: inline-block;
@@ -15,6 +22,7 @@ page-dashboard {
 
 .pollPreview {
     width:100vw;
+    height: 125px;
     // display: inline-block;
     p {
         display: wrap;
@@ -24,9 +32,10 @@ page-dashboard {
 .pollImg {
     margin-right: 15px;
     float: left;
-    height: 125px;
+    vertical-align:middle;
+    // height: 125px;
     width: 125px;
-    background-color: red;
+    // background: none;
 }
 
 .top-ion-scroll {
