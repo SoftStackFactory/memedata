@@ -12,7 +12,7 @@ import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { DashboardPage } from '../pages/dashboard/dashboard';
-
+import { LogoutPage } from '../pages/logout/logout';
 import { PollBuilderPage } from '../pages/poll-builder/poll-builder';
 import { PollInterfacePage } from '../pages/poll-interface/poll-interface';
 import { PollResultsPage } from '../pages/poll-results/poll-results';
@@ -30,6 +30,7 @@ import { UserProvider } from '../providers/user/user';
     HomePage,
     ListPage,
     LoginPage,
+    LogoutPage,
     RegisterPage,
     DashboardPage,
     PollBuilderPage,
@@ -49,6 +50,7 @@ import { UserProvider } from '../providers/user/user';
     HomePage,
     ListPage,
     LoginPage,
+    LogoutPage,
     RegisterPage,
     DashboardPage,
     PollBuilderPage,
