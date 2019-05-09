@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tokenKey } from '@angular/core/src/view';
 
 class Meme {
   topText: any;
