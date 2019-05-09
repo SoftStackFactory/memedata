@@ -1,0 +1,45 @@
+page-poll-builder4 {
+
+}
+
+.counter {
+  text-align: center;
+}
+
+.card-background-page {
+
+    .preview-card {
+        position: relative;
+        text-align: center;
+        display: inline-block;
+        font-size: 2.5rem;
+      }
+    
+    .card-title, .card-subtitle {
+        position: absolute;
+        width: 100%;
+        font-family: impact;
+        text-transform: uppercase;
+        transform: scale(1,2.2);
+        color: white;
+        letter-spacing: 1px;
+        text-shadow:2px 2px 0 #000,
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        0px 2px 0 #000,
+        2px 0px 0 #000,
+        0px -2px 0 #000,
+        -2px 0px 0 #000,
+        2px 2px 5px #000;
+        font-weight: 900;
+      }
+    
+    .card-title{
+      top:5%;
+    }
+  
+    .card-subtitle{
+      top: 85%;
+    }
+}
