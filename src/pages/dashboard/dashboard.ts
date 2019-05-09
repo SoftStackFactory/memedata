@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DashboardTabsPage } from '../dashboard-tabs/dashboard-tabs';
 import { HttpClient } from '@angular/common/http';
+import { DashboardServiceProvider } from '../../providers/dashboard-service/dashboard-service';
 
 /**
  * Generated class for the DashboardPage page.
