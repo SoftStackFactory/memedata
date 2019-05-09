@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+// import { DashboardPage } from '../dashboard/dashboard';
+import { PollResultsPage } from '../poll-results/poll-results'
 // import { Slides } from '@ionic-angular';
 // import { ViewChild } from '@angular/core';
 
@@ -30,10 +32,19 @@ export class PollInterfacePage {
   overlayInfo: boolean = true;
   
   meme:any
+
+  public swipe: number = 0;
+
+  answers = {
+    yes: "",
+    no: "",
+  }
   
-  
+  slides:any 
   
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    this.slides = [1,2,3,4,5,6,7,8]
 
   this.meme = {
         "image": "",
@@ -81,6 +92,7 @@ overlayHiddenInfo (){
       if(x >= 99.5) {
         console.log("Poll Done")
         this.pollComplete = true
+        this.navCtrl.setRoot(PollResultsPage)
       }
     }
   }
@@ -90,9 +102,10 @@ overlayHiddenInfo (){
       let random = Math.floor(Math.random() * 500) + 1
       this.imgUrl = "https://picsum.photos/id/" + random + "/360/640"
       console.log(this.imgUrl)
-
+    
       this.progress = this.progress + this.percent
       this.progressBar(this.progress)
+
     }
 
   }
@@ -101,11 +114,19 @@ overlayHiddenInfo (){
     console.log(img.clientHeight)
   }
 
-  swipeEvent(event){
-    alert('swipe');
+//   swipeEvent(event){
+//     alert('swipe');
+// }
+swipeEvent(e) {
+  this.button()
+    if (e.direction == 2) {
+       console.log("left")
+    } 
+    else if (e.direction == 4){
+      console.log("right")
+    }
+  }
 }
-
-
   // this.progress = this.progress + this.percent
   // this.progressBar(this.progress)
-}
+
