@@ -4,7 +4,11 @@
     "connector": "memory"
   },
   "mongo": {
+<<<<<<< HEAD
+    "url": "mongodb+srv://admin:admin@cluster0-hx5bi.mongodb.net/meme?retryWrites=true",
+=======
     "url": "mongodb+srv://michael:<Wakethefuckup1>@cluster1-0ykpp.mongodb.net/test?retryWrites=true",
+>>>>>>> develop
     "connector": "mongodb"
   }
 }
