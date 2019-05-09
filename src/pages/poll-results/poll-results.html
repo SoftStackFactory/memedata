@@ -6,8 +6,8 @@
 
 <ion-content>
   <div *ngFor="let x of array ; let i = index">
-    <ion-slides slidesPerView='1' effect="flip" loop="true" (swipe)="swipeEvent($event)">
-        <ion-slide (click)="slideTo(2)">
+    <ion-slides slidesPerView='1' effect="flip" loop="true">
+        <ion-slide>
             <ion-card>
               <ion-row>
                 <ion-col col-3>
@@ -27,7 +27,7 @@
               </ion-row>
             </ion-card>
         </ion-slide>
-        <ion-slide (click)="slideTo(1)">
+        <ion-slide>
             <ion-card class="resultsCard">
                 <ion-row>
                   <ion-col id="moreResults" col-12>

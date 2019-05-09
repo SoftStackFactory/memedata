@@ -32,19 +32,4 @@ export class PollResultsPage {
 
   }
 
-  swipeEvent(e) {
-    if (e.direction == "2") {
-      this.left++
-      console.log("Swipped Left " + this.left + " times.")
-    } else if ( e.direction == "4") {
-      this.right++
-      console.log("Swipped Right " + this.right + " times.")
-    }
-  }
-
-  slideTo(x) {
-    this.slides.slideTo(x)
-  }
-
-
 }
