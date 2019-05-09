@@ -4,7 +4,7 @@
     "connector": "memory"
   },
   "mongo": {
-    "url": "mongodb://admin:password1@ds145456.mlab.com:45456/memedata",
+    "url": "mongodb+srv://admin:admin@cluster0-hx5bi.mongodb.net/meme?retryWrites=true",
     "connector": "mongodb"
   }
 }

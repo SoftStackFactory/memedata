@@ -1,0 +1,52 @@
+<!--
+  Generated template for the PollBuilder3Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>MemePoll</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="card-background-page">
+
+  <ion-card class="preview-card" *ngIf="this.BuilderService.displayMeme.image; else addedMeme" >
+      <img src="{{this.BuilderService.displayMeme.image}}">
+      <div class="card-title">{{this.BuilderService.displayMeme.topText}}</div>
+      <div class="card-subtitle">{{this.BuilderService.displayMeme.bottomText}}</div>
+      <ion-icon class="trash-icon" name="trash" (click)="deleteMeme(this.BuilderService.displayMeme)"></ion-icon>
+  </ion-card>
+
+  <ng-template #addedMeme>
+    <div *ngFor="let meme of BuilderService.memes | slice:-1">
+      <ion-card class="preview-card">
+        <img src="{{meme.image}}">
+          <div class="card-title">{{meme.topText}}</div>
+          <div class="card-subtitle">{{meme.bottomText}}</div>
+          <ion-icon class="trash-icon" name="trash" (click)="deleteMeme(meme)"></ion-icon>
+      </ion-card>
+    </div>
+  </ng-template>
+
+  <div class="counter">Step 2 of 3</div>
+  
+  <ion-scroll scrollX="true" style="white-space:nowrap; height: 25vh;">
+     
+    <ion-card class="scroll-card" *ngFor="let meme of BuilderService.memes" (click)="previewMeme(meme)">
+      <img src="{{meme.image}}">
+      <div class="card-title">{{meme.topText}}</div>
+      <div class="card-subtitle">{{meme.bottomText}}</div>
+    </ion-card>
+    
+    <!--<p>{{this.BuilderService.description}}</p>-->
+
+  </ion-scroll>
+
+  <button (click)="addNextMeme()" ion-button full><ion-icon name="add"></ion-icon>Add Meme</button>
+  <button (click)="lastStage()" ion-button full>Next</button>
+ 
+
+</ion-content>
+
