@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { PollBuilderPage } from '../poll-builder/poll-builder';
 
 /**
  * Generated class for the DashboardPage page.
@@ -20,6 +21,10 @@ export class DashboardPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DashboardPage');
+  }
+
+  goPollBuilder() {
+    this.navCtrl.push(PollBuilderPage);
   }
 
 }
