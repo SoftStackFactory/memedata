@@ -14,8 +14,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'poll-history.html',
 })
 export class PollHistoryPage {
+  poll: string = "poll-history";
 
-  items = [
+  taken = [
     'Pokemon Poll',
     'Yugioh Poll',
     'Digimon Poll',

@@ -39,20 +39,35 @@
         </ion-list> -->
 
 
+
+
 <ion-content padding>
-<ion-list>
-  <ion-item-divider color="light">Taken Polls</ion-item-divider>
+    <ion-toolbar no-border-top>
+        <ion-segment [(ngModel)]="poll">
+          <ion-segment-button value="taken">
+            Taken
+          </ion-segment-button>
+          <ion-segment-button value="created">
+            Created
+          </ion-segment-button>
+        </ion-segment>
+      </ion-toolbar>
+    <!-- </ion-header> -->
+
+</ion-content>
+  <!-- HERE IS THE ORIGINAL LISTS CODE USE IT TO BASE YOUR TEMPLATE FOR SEGMENTS-->
+  <!-- <ion-list>
+   <ion-item-divider color="light">Taken Polls</ion-item-divider>
   <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
     {{ item }}
   </button>  
-</ion-list>
+  </ion-list> 
 
 <ion-list>
     <ion-item-divider color="light">Created Polls</ion-item-divider>
     <button ion-item *ngFor="let create of created" (click)="itemSelected(create)">
       {{ create }}
     </button>  
-  </ion-list>
-</ion-content>
+  </ion-list> -->
 
 
