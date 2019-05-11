@@ -16,6 +16,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class PollHistoryPage {
   poll: string = "poll-history";
 
+  pollCategory: string;
+  pollTitle: string;
+  memeImage: "../assets/imgs/sample.jpg";
+
+
   taken = [
     'Pokemon Poll',
     'Yugioh Poll',
