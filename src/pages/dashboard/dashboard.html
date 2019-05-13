@@ -16,14 +16,20 @@
     </ion-item>
   </ion-scroll>
 
-  <div class='pollList'>
-    <ion-item text-wrap class='pollPreview' *ngFor='let poll of polls'>
-      <img class='pollImg' src='{{poll.coverImage}}'>
-      <!-- <img class='pollImg' src='../../assets/imgs/testImage.jpg'> -->
-      <h2>{{poll.pollTitle}}</h2>
-      <p>{{poll.pollDescription}}
-    </ion-item>
-  </div>
+  
+    <div class='pollList'>
+      <ion-item text-wrap class='pollPreview' *ngFor='let poll of displayedPolls'>
+        <img class='pollImg' src='{{poll.coverImage}}'>
+        <!-- <img class='pollImg' src='../../assets/imgs/testImage.jpg'> -->
+        <h2>{{poll.pollTitle}}</h2>
+        <p>{{poll.pollDescription}}
+      </ion-item>
+      <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </div>
+
+  
 </ion-content>
 
 <ion-footer>
