@@ -18,9 +18,10 @@
 
   <div class='pollList'>
     <ion-item text-wrap class='pollPreview' *ngFor='let poll of polls'>
-      <img class='pollImg' src='{{poll.imgHref}}'>
-      <h2>{{poll.title}}</h2>
-      <p>{{poll.description}}
+      <img class='pollImg' src='{{poll.coverImage}}'>
+      <!-- <img class='pollImg' src='../../assets/imgs/testImage.jpg'> -->
+      <h2>{{poll.pollTitle}}</h2>
+      <p>{{poll.pollDescription}}
     </ion-item>
   </div>
 </ion-content>
