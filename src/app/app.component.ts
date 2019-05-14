@@ -20,7 +20,7 @@ import { PollResultsPage } from '../pages/poll-results/poll-results';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = PollInterfacePage;
+  rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -29,12 +29,10 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
       { title: 'Login', component: LoginPage },
       { title: 'Logout', component: LogoutPage },
       { title: 'Register', component: RegisterPage },
       { title: 'Dashboard', component: DashboardPage },
-      { title: 'List', component: ListPage },
       { title: 'Results', component: PollResultsPage}
     ];
 
