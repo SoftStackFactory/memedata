@@ -49,4 +49,16 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+  
+  goToAccountInfo() {
+    this.nav.setRoot(DashboardPage);
+  }
+  
+  goToRewardsHistory() {
+    this.nav.setRoot(DashboardPage);
+  }
+  goToLogout() {
+    this.nav.setRoot(DashboardPage);
+  }
+
 }

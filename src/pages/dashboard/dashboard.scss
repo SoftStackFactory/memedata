@@ -1,3 +1,50 @@
 page-dashboard {
+    
+}
 
+.item-md.item-block .item-inner {
+    border-bottom: none;
+}
+
+.item-ios.item-block .item-inner {
+    border-bottom: none;
+}
+
+.category {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    // margin: 0px 15px;
+    p {
+        font-size:10px;
+    }
+}
+
+.pollPreview {
+    width:100vw;
+    height: 125px;
+    // display: inline-block;
+    p {
+        display: wrap;
+    }
+}
+
+.pollImg {
+    margin-right: 15px;
+    float: left;
+    vertical-align:middle;
+    // height: 125px;
+    width: 125px;
+    // background: none;
+}
+
+.top-ion-scroll {
+    white-space: nowrap;
+    height: 115px;
+    // background-color: grey;
+    margin: 15px 15px 0px 15px;
+}
+
+.pollList {
+    margin-bottom: 50px;
 }
