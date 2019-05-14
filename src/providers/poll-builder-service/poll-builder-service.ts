@@ -1,4 +1,5 @@
-import { HttpClient } from '@angular/common/http';
+//import { HttpClient } from '@angular/common/http';
+import { HTTP } from '@ionic-native/http';
 import { Injectable } from '@angular/core';
 
 class Meme {
@@ -17,7 +18,7 @@ class Meme {
 @Injectable()
 export class PollBuilderServiceProvider {
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HTTP) {
     console.log('Hello PollBuilderServiceProvider Provider');
   }
 
@@ -53,10 +54,10 @@ export class PollBuilderServiceProvider {
   }
 
   createPollSet(){
-    return this.http.post(this.apiBaseUrl + "pollSets?access_token=" + this.token, this.userId)
+    return this.http.post(this.apiBaseUrl + "pollSets?access_token=" + this.token, this.userId, {})
   }
 
   saveMeme(){
-    return this.http.post(this.apiBaseUrl + "memes?access_token=" + this.token, this.pollId) 
+    return this.http.post(this.apiBaseUrl + "memes?access_token=" + this.token, this.pollId, {}) 
   }
 }

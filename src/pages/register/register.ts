@@ -27,15 +27,25 @@ export class RegisterPage {
   
   onRegister(){
     this.userService.register(this.user)
-      .subscribe(
-        (response : any) => {
-          window.sessionStorage.setItem('token', response.token);
-          window.sessionStorage.setItem('userId', response.userId);
+      .then(
+        response => {
+          window.sessionStorage.setItem('token', response.data.token);
+          window.sessionStorage.setItem('userId', response.data.userId);
+          console.log(response.status)
+          console.log(response.data) // data received by server
+          console.log(response.headers)
+          if(response.data == 200) {}
           this.data = response
           console.log(this.data)
           this.navCtrl.setRoot(DashboardPage);
         })
-        
+        .catch(error => {
+
+          console.log(error.status);
+          console.log(error.error); // error message as string
+          console.log(error.headers);
+      
+        })
   }
 
   ionViewDidLoad() {

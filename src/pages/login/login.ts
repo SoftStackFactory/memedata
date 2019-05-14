@@ -30,12 +30,12 @@ export class LoginPage {
 
   onLogin(){
     this.userService.login(this.user)
-      .subscribe(
+      .then(
         (response:any) => {
           this.data = response
           console.log(this.data)
-          window.sessionStorage.setItem('token', response.token);
-          window.sessionStorage.setItem('userId', response.userId);
+          //window.sessionStorage.setItem('token', response.token);
+          //window.sessionStorage.setItem('userId', response.userId);
           this.navCtrl.setRoot(DashboardPage);
         })
   }

@@ -25,15 +25,6 @@ export class DashboardPage {
   }
 
   goPollBuilder() {
-    this.BuilderService.createPollSet()
-    .subscribe(
-      (response: any) => {
-        console.log("New PollSet", response);
-        this.BuilderService.pollSets = response
-        this.BuilderService.pollId = response.id
-        this.BuilderService.pollSets.userId = this.BuilderService.userId
-      }
-    )
     this.navCtrl.push(PollBuilderPage);
 }
 

@@ -26,7 +26,7 @@ export class LogoutPage {
 
   onLogout(){
     this.userService.logout(window.sessionStorage.token)
-    .subscribe(
+    .then(
       (response:any) =>{ 
       console.log("logoooooout")
       });
