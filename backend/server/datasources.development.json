@@ -4,7 +4,7 @@
     "connector": "memory"
   },
   "mongo": {
-    "url": "mongodb+srv://admin:admin@ionicfinal-ctzoq.mongodb.net/test?retryWrites=true",
+    "url": "mongodb+srv://ssfadmin:ssfadmin@cluster0-866fb.mongodb.net/memedata?retryWrites=true",
     "connector": "mongodb"
   }
 }
