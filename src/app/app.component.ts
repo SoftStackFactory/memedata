@@ -33,7 +33,8 @@ export class MyApp {
       { title: 'Logout', component: LogoutPage },
       { title: 'Register', component: RegisterPage },
       { title: 'Dashboard', component: DashboardPage },
-      { title: 'Results', component: PollResultsPage}
+      { title: 'Results', component: PollResultsPage},
+      { title: 'PollInterface', component: PollInterfacePage}
     ];
 
   }
