@@ -41,6 +41,60 @@ export class DashboardPage {
     
   }
 
+  // On Load
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad DashboardPage');
+    // this.generatePolls();
+    this.pullAllPolls();
+  }
+
+
+
+  // Generating and Sorting Polls
+
+  pullAllPolls(){
+    this.http.get(`${this.pollsApi}`).subscribe((response) => {
+      console.log(response);
+      this.polls = [];
+      this.polls = response;
+      for (let i=0; i <10; i++) {
+        this.displayedPolls.push(response[this.displayedPolls.length]);
+      }
+      console.log(this.displayedPolls);
+      });
+  }
+
+  filterPollsByCategory(category) {
+    this.selectedCategory = category;
+    this.http.get(`${this.catFilterA}`+this.selectedCategory+`${this.catFilterB}`).subscribe((response) => {
+    this.polls = [];
+    this.displayedPolls = [];
+    this.polls = response;
+    console.log(this.polls);
+    for (let i=0; i <10; i++) {
+      this.displayedPolls.push(response[this.displayedPolls.length]);
+    }
+    console.log(this.displayedPolls);
+    });
+  }
+
+
+  // Navigation Functions
+
+  goToHome() {
+    this.navCtrl.setRoot(DashboardPage);
+  }
+  goToCreate() {
+    this.navCtrl.setRoot(DashboardPage);
+  }
+  goToMyPolls() {
+    this.navCtrl.setRoot(DashboardPage);
+  }
+  
+
+  //Infinite Scroll Logic
+
   doInfinite(infiniteScroll) {
     console.log('Begin async operation');
 
@@ -59,68 +113,13 @@ export class DashboardPage {
     }, 500);
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DashboardPage');
-    // this.generatePolls();
-    this.pullAllPolls();
-  }
+  // Tesing Functions
 
   testing() {
     this.http.get(`${this.pollsApi}+${this.categoryFilter}`).subscribe((response) => {
     console.log(response);
     this.polls.push(response);
     });
-  }
-
-  pullAllPolls(){
-    this.http.get(`${this.pollsApi}`).subscribe((response) => {
-      console.log(response);
-      this.polls = [];
-      this.polls = response;
-      for (let i=0; i <10; i++) {
-        this.displayedPolls.push(response[this.displayedPolls.length]);
-      }
-      console.log(this.displayedPolls);
-      });
-  }
-  // pullAllPolls() {
-  //   this.dash$.pullAllPolls();
-  //   this.polls = this.dash$.polls;
-  //   console.log(this.polls);
-  // }
-
-  filterPollsByCategory(category) {
-    // console.log(category);
-    // console.log(this.selectedCategory);
-    this.selectedCategory = category;
-    this.http.get(`${this.catFilterA}`+this.selectedCategory+`${this.catFilterB}`).subscribe((response) => {
-    this.polls = [];
-    this.displayedPolls = [];
-    this.polls = response;
-    console.log(this.polls);
-    for (let i=0; i <10; i++) {
-      this.displayedPolls.push(response[this.displayedPolls.length]);
-    }
-    console.log(this.displayedPolls);
-    });
-  }
-
-
-  // filterPollsByCategory(category) {
-  //   this.selectedCategory = category;
-  //   this.dash$.filterPollsByCategory(category);
-  // }
-
-
-
-  goToHome() {
-    this.navCtrl.setRoot(DashboardPage);
-  }
-  goToCreate() {
-    this.navCtrl.setRoot(DashboardPage);
-  }
-  goToMyPolls() {
-    this.navCtrl.setRoot(DashboardPage);
   }
 
   generatePolls()  {
@@ -134,8 +133,6 @@ export class DashboardPage {
       }
       console.log(this.polls);
     }
-  }
+}
 
-  // loadPolls() {
 
-  // }
