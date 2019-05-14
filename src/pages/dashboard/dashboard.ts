@@ -4,6 +4,7 @@ import { DashboardTabsPage } from '../dashboard-tabs/dashboard-tabs';
 import { HttpClient } from '@angular/common/http';
 import { DashboardServiceProvider } from '../../providers/dashboard-service/dashboard-service';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
+import { PollBuilderPage } from '../poll-builder/poll-builder';
 
 /**
  * Generated class for the DashboardPage page.
@@ -86,7 +87,7 @@ export class DashboardPage {
     this.navCtrl.setRoot(DashboardPage);
   }
   goToCreate() {
-    this.navCtrl.setRoot(DashboardPage);
+    this.navCtrl.push(PollBuilderPage);
   }
   goToMyPolls() {
     this.navCtrl.setRoot(DashboardPage);
