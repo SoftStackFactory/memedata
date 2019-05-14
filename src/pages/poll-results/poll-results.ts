@@ -65,33 +65,6 @@ export class PollResultsPage {
     }
   ]
 
-  // answers:any = [
-  //   {
-  //     id: '00001',
-  //     yes: 50,
-  //     no: 50,
-  //     alternate: ''
-  //   },
-  //   {
-  //     id: '00002',
-  //     yes: 25,
-  //     no: 75,
-  //     alternate: ''
-  //   },
-  //   {
-  //     id: '00003',
-  //     yes: 33,
-  //     no: 77,
-  //     alternate: ''
-  //   },
-  //   {
-  //     id: '00004',
-  //     yes: 77,
-  //     no: 33,
-  //     alternate: ''
-  //   }
-  // ]
-
   answers:any = [
     {
       id: '00001',
@@ -204,37 +177,16 @@ export class PollResultsPage {
   ]
 
   ionViewDidLoad() {
-    // this.calPercent("00001")
 
   }
 
-
-
-  calPercent(x) {
-    let right = []
-    let left = []
-
-    for (let i=0; i<this.answers.length; i++) {
-      if (x == this.answers[i].id) {
-        if ("right" == this.answers[i].choice) {
-          right.push(this.answers[i].choice)
-        } else if ("left" == this.answers[i].choice) {
-          left.push(this.answers[i].choice)
-        }
-      }
-    }
-
-  console.log(right.length)
-  console.log(left.length)
-  }
-
-  calculateMemePercent(x) {
+  calculateMemePercent(memeId) {
 
     let right = []
     let left = []
 
     for (let i=0; i<this.answers.length; i++) {
-      if (x == this.answers[i].id) {
+      if (memeId == this.answers[i].id) {
         if ("right" == this.answers[i].choice) {
           right.push(this.answers[i].choice)
         } else if ("left" == this.answers[i].choice) {
@@ -254,19 +206,6 @@ export class PollResultsPage {
 
     return this.barPercent1
   }
-
-  // calculateMemePercent(x) {  
-  //   let totalTaken = this.answers[x].yes + this.answers[x].no
-  //   let yesPercent = (100 * this.answers[x].yes) / totalTaken;
-  //   let noPercent = (100 * this.answers[x].no) / totalTaken;
-
-  //   this.bar1 = Math.round(yesPercent)
-  //   this.bar2 = 100 - this.bar1
-  //   this.barPercent1 = {'width': Math.round(yesPercent) + "%"}
-  //   this.barPercent2 = {'width': Math.round(noPercent) + "%"}
-
-  //   return this.barPercent1
-  // }
 
 
 }
