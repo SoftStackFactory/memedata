@@ -33,18 +33,27 @@ page-dashboard {
     margin-right: 15px;
     float: left;
     vertical-align:middle;
-    // height: 125px;
+    height: 125px;
     width: 125px;
     // background: none;
 }
 
+.category-wrapper {
+    position: sticky;
+    top: 0px;
+    z-index: 999;
+}
+
 .top-ion-scroll {
+    // position: fixed;
     white-space: nowrap;
     height: 115px;
     // background-color: grey;
-    margin: 15px 15px 0px 15px;
+    // margin: 0px 15px 0px 15px;
+    // padding-top: 15px;
 }
 
 .pollList {
-    margin-bottom: 50px;
+    // top:165px;
+    // margin-bottom: 50px;
 }
