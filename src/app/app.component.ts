@@ -5,11 +5,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+
+import { PollInterfacePage } from '../pages/poll-interface/poll-interface';
 import { LoginPage } from '../pages/login/login';
 import { LogoutPage } from '../pages/logout/logout';
 import { RegisterPage } from '../pages/register/register';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { PollResultsPage } from '../pages/poll-results/poll-results';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -17,7 +20,7 @@ import { PollResultsPage } from '../pages/poll-results/poll-results';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = PollInterfacePage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -26,12 +29,12 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      // { title: 'Home', component: HomePage },
       { title: 'Login', component: LoginPage },
       { title: 'Logout', component: LogoutPage },
       { title: 'Register', component: RegisterPage },
       { title: 'Dashboard', component: DashboardPage },
-      { title: 'Results', component: PollResultsPage}
+      { title: 'Results', component: PollResultsPage},
+      { title: 'PollInterface', component: PollInterfacePage}
     ];
 
   }
@@ -50,4 +53,16 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+  
+  goToAccountInfo() {
+    this.nav.setRoot(DashboardPage);
+  }
+  
+  goToRewardsHistory() {
+    this.nav.setRoot(DashboardPage);
+  }
+  goToLogout() {
+    this.nav.setRoot(DashboardPage);
+  }
+
 }
