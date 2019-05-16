@@ -35,11 +35,16 @@ export class PollInterfacePage {
 
   public swipe: number = 0;
 
-  answers = {
-    yes: "",
-    no: "",
-  }
+  answers:any = [
   
+  ]
+  
+  userResponse:any = {
+    id:"",
+    response:""
+    }
+  
+
   slides:any 
   
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -92,7 +97,10 @@ overlayHiddenInfo (){
       if(x >= 99.5) {
         console.log("Poll Done")
         this.pollComplete = true
-        this.navCtrl.setRoot(PollResultsPage)
+        this.navCtrl.setRoot(PollResultsPage) 
+        // for(let i=0; i < this.answers.length; i++) {
+        //   console.log(this.answers[i].response)
+        // }
       }
     }
   }
@@ -120,10 +128,18 @@ overlayHiddenInfo (){
 swipeEvent(e) {
   this.button()
     if (e.direction == 2) {
-       console.log("left")
+       this.userResponse = {
+        id:"00001",
+        response:"left"
+      }
+      this.answers.push(this.userResponse)
     } 
     else if (e.direction == 4){
-      console.log("right")
+      this.userResponse = {
+        id:"00001",
+        response:"right"
+      }
+      this.answers.push(this.userResponse)
     }
   }
 }
