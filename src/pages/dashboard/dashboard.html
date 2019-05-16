@@ -8,27 +8,30 @@
 
 
 <ion-content class='has-header'>
-  <ion-scroll class='top-ion-scroll' scrollX='true'>    
-    <ion-item class="category" *ngFor='let category of categories'>
-      <button ion-button icon-only large (click)='filterPollsByCategory(category)'>
-          <ion-icon name='star'></ion-icon>
-      </button><br>
-      <p>{{category}}</p>
-    </ion-item>
-  </ion-scroll>
-
   
-    <div class='pollList'>
-      <ion-item text-wrap class='pollPreview' *ngFor='let poll of displayedPolls'>
-        <img class='pollImg' src='{{poll.coverImage}}'>
-        <!-- <img class='pollImg' src='../../assets/imgs/testImage.jpg'> -->
-        <h2>{{poll.pollTitle}}</h2>
-        <p>{{poll.pollDescription}}
+  <div class='category-wrapper'>
+    <ion-scroll class='top-ion-scroll' scrollX='true'>    
+      <ion-item class="category" *ngFor='let category of dash$.categories'>
+        <button ion-button icon-only large (click)='filterPollsByCategory(category)'>
+            <ion-icon name='star'></ion-icon>
+        </button><br>
+        <p>{{category}}</p>
       </ion-item>
-      <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
-        <ion-infinite-scroll-content></ion-infinite-scroll-content>
-      </ion-infinite-scroll>
-    </div>
+    </ion-scroll>
+  </div>
+      
+  
+  <div class='pollList'>
+    <ion-item text-wrap class='pollPreview' *ngFor='let poll of dash$.displayedPolls'>
+      <img class='pollImg' src='{{poll.coverImage}}'>
+      <!-- <img class='pollImg' src='../../assets/imgs/testImage.jpg'> -->
+      <h2>{{poll.pollTitle}}</h2>
+      <p>{{poll.pollDescription}}
+    </ion-item>
+    <ion-infinite-scroll (ionInfinite)="dash$.doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
 
   
 </ion-content>
