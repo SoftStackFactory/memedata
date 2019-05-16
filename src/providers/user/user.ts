@@ -19,11 +19,11 @@ export class UserProvider {
   }
 
   login(userData) {
-    return this.http.post(this.baseUrl + "/login", userData, {});
+    return this.http.post(this.baseUrl + "/login", userData);
   }
 
   logout(token) {
-    return this.http.post(this.baseUrl + "/logout?access_token=" + token, {}, {});
+    return this.http.post(this.baseUrl + "/logout?access_token=" + token, {});
   }
 
 }
