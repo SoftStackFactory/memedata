@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DashboardServiceProvider } from '../dashboard-service/dashboard-service';
+import { Events } from 'ionic-angular';
 
 /*
   Generated class for the SearchbarServiceProvider provider.
@@ -17,7 +18,7 @@ export class SearchbarServiceProvider {
 
   pollsApi:string = 'http://localhost:3000/api/pollSets?access_token=b9mlT8uvLmKJj38eoquDnslnogB07V0mYpd4FDhAhRfT9twx9uf5REChqXEkMK2I';
 
-  constructor(public http: HttpClient, public dash$: DashboardServiceProvider) {
+  constructor(public http: HttpClient, public dash$: DashboardServiceProvider, public events: Events) {
     console.log('Hello SearchbarServiceProvider Provider');
   }
 
@@ -28,8 +29,14 @@ export class SearchbarServiceProvider {
       console.log(this.polls);
       this.polls = this.polls.filter(poll => poll.pollCategory === this.searchTerm);
       console.log(this.polls);
+      this.searchTerm = '';
       if(this.polls.length > 0){
-        this.dash$.displayedPolls = this.polls;        
+        this.events.publish('search success');
+        this.dash$.polls = this.polls;
+        this.dash$.displayedPolls = [];
+        for (let i=0; i <10; i++) {
+          this.dash$.displayedPolls.push(this.polls[this.dash$.displayedPolls.length]);
+        }        
       } else {
         console.log('No Search Results');
       }
