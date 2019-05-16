@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
 //import { HTTP } from "@ionic-native/http";
 
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
@@ -30,6 +31,7 @@ import { IonicStorageModule } from '@ionic/storage';
 //providers
 import { UserProvider } from '../providers/user/user';
 import { PollBuilderServiceProvider } from '../providers/poll-builder-service/poll-builder-service';
+import { DashboardServiceProvider } from '../providers/dashboard-service/dashboard-service';
 
 @NgModule({
   declarations: [
@@ -77,6 +79,7 @@ import { PollBuilderServiceProvider } from '../providers/poll-builder-service/po
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DashboardServiceProvider,
     UserProvider,
     PollBuilderServiceProvider
   ]

@@ -10,7 +10,7 @@
       "type": "number",
       "required": true
     },
-    "pollID": {
+    "pollId": {
       "type": "string",
       "required": true
     },
@@ -29,7 +29,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "answers": {
+      "type": "hasMany",
+      "model": "answer",
+      "foreignKey": "userId"
+    }
+  },
   "acls": [],
   "methods": {}
 }
