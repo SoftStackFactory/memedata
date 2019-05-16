@@ -15,13 +15,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PollHistoryPage {
   poll: string = "poll-history";
+  polls: any[]=[];
 
   pollCategory: string;
   pollTitle: string;
   memeImage: "../assets/imgs/sample.jpg";
+  segments = "featured";
 
 
-  taken = [
+  takenPolls = [
     'Pokemon Poll',
     'Yugioh Poll',
     'Digimon Poll',
@@ -30,7 +32,7 @@ export class PollHistoryPage {
     'Star Wars Poll'
   ]
 
-  created = [
+  createdPolls = [
     'Bob The Builders Favorite Tools Poll',
     'Doras Bagpack Poll',
     'NBA Champions Poll',

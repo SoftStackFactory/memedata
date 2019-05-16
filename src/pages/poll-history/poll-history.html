@@ -10,8 +10,21 @@
     <ion-title>poll-history</ion-title>
   </ion-navbar>
 
-<!-- The Buttons-->
-    <ion-toolbar no-border-top>
+  <ion-header>
+    <ion-toolbar>
+      <ion-segment [(ngModel)]="poll">
+        <ion-segment-button value="taken">
+          Taken
+        </ion-segment-button>
+        <ion-segment-button value="created">
+          Created
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+  </ion-header>
+
+<!-- The Buttons -->
+    <!-- <ion-toolbar no-border-top>
         <ion-segment [(ngModel)]="poll">
           <ion-segment-button value="taken">
             Taken
@@ -21,7 +34,7 @@
           </ion-segment-button>
         </ion-segment>
       </ion-toolbar>
-    </ion-header>
+    </ion-header> -->
 
 <!-- Taken List -->
       <ion-content>
