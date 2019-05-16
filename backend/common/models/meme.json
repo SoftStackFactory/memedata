@@ -10,7 +10,7 @@
       "type": "number",
       "required": true
     },
-    "pollID": {
+    "pollId": {
       "type": "string",
       "required": true
     },
