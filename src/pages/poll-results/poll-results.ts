@@ -14,17 +14,12 @@ export class PollResultsPage {
     
   }
 
-  array:any = [1,2,3,4]
   suggestions:any = [1,2,3,4,5,6,7,8,9,10]
-
-  left: any = 0
-  right: any = 0
 
   bar1:number
   barPercent1:any
   barPercent2:any
   bar2:number
-  responseColor:any
 
   meme = [
       {
@@ -67,92 +62,73 @@ export class PollResultsPage {
 
   answers:any = [
     {
-      id: '00001',
-      choice: "right"
+      'memeId': '00001',
+      'userId': 'user1',
+      'choice': "right"
+    },    {
+      'memeId': '00001',
+      'userId': 'user1',
+      'choice': "left"
+    },    {
+      'memeId': '00001',
+      'userId': 'user1',
+      'choice': "right"
+    },    {
+      'memeId': '00001',
+      'userId': 'user1',
+      'choice': "right"
     },
     {
-      id: '00001',
-      choice: "left"
+      'memeId': '00002',
+      'userId': 'user1',
+      'choice': "right"
+    },    {
+      'memeId': '00002',
+      'userId': 'user1',
+      'choice': "right"
+    },    {
+      'memeId': '00002',
+      'userId': 'user1',
+      'choice': "left"
+    },    {
+      'memeId': '00002',
+      'userId': 'user1',
+      'choice': "left"
     },
     {
-      id: '00002',
-      choice: "right"
+      'memeId': '00002',
+      'userId': 'user1',
+      'choice': "right"
     },
     {
-      id: '00002',
-      choice: "left"
+      'memeId': '00002',
+      'userId': 'user1',
+      'choice': "right"
     },
     {
-      id: '00001',
-      choice: "right"
+      'memeId': '00003',
+      'userId': 'user1',
+      'choice': "right"
     },
     {
-      id: '00001',
-      choice: "right"
+      'memeId': '00003',
+      'userId': 'user1',
+      'choice': "left"
     },
     {
-      id: '00003',
-      choice: "left"
+      'memeId': '00004',
+      'userId': 'user1',
+      'choice': "right"
     },
     {
-      id: '00001',
-      choice: "left"
+      'memeId': '00004',
+      'userId': 'user1',
+      'choice': "right"
     },
     {
-      id: '00003',
-      choice: "right"
-    },
-    {
-      id: '00003',
-      choice: "left"
-    },
-    {
-      id: '00001',
-      choice: "left"
-    },
-    {
-      id: '00002',
-      choice: "right"
-    },
-    {
-      id: '00004',
-      choice: "left"
-    },
-    {
-      id: '00004',
-      choice: "right"
-    },
-    {
-      id: '00001',
-      choice: "right"
-    },
-    {
-      id: '00001',
-      choice: "right"
-    },
-    {
-      id: '00001',
-      choice: "right"
-    },
-    {
-      id: '00001',
-      choice: "right"
-    },
-    {
-      id: '00001',
-      choice: "right"
-    },
-    {
-      id: '00001',
-      choice: "right"
-    },
-    {
-      id: '00002',
-      choice: "right"
-    },
-    {
-      id: '00002',
-      choice: "right"
+      'memeId': '00004',
+      'userId': 'user1',
+      'choice': "right"
     },
     
   ]
@@ -181,12 +157,11 @@ export class PollResultsPage {
   }
 
   calculateMemePercent(memeId) {
-
     let right = []
     let left = []
 
-    for (let i=0; i<this.answers.length; i++) {
-      if (memeId == this.answers[i].id) {
+    for (let i=0; i < this.answers.length; i++) {
+      if (memeId == this.answers[i].memeId) {
         if ("right" == this.answers[i].choice) {
           right.push(this.answers[i].choice)
         } else if ("left" == this.answers[i].choice) {
@@ -206,7 +181,6 @@ export class PollResultsPage {
 
     return this.barPercent1
   }
-
 
 }
 
