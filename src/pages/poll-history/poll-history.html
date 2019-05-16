@@ -10,7 +10,7 @@
     <ion-title>poll-history</ion-title>
   </ion-navbar>
 
-  <ion-header>
+  <!-- <ion-header>
     <ion-toolbar>
       <ion-segment [(ngModel)]="poll">
         <ion-segment-button value="taken">
@@ -21,10 +21,10 @@
         </ion-segment-button>
       </ion-segment>
     </ion-toolbar>
-  </ion-header>
+  </ion-header> -->
 
 <!-- The Buttons -->
-    <!-- <ion-toolbar no-border-top>
+    <ion-toolbar no-border-top>
         <ion-segment [(ngModel)]="poll">
           <ion-segment-button value="taken">
             Taken
@@ -34,63 +34,33 @@
           </ion-segment-button>
         </ion-segment>
       </ion-toolbar>
-    </ion-header> -->
+    </ion-header>
 
 <!-- Taken List -->
       <ion-content>
           <div [ngSwitch]="poll">
             <ion-list *ngSwitchCase="'taken'">
-              <ion-item>
+            <ion-list *ngFor="let examples of example">
+            <ion-item>
                 <ion-thumbnail item-start>
-                  <img src= "assets/imgs/sample.jpg">
+                  <img src= "{{examples.memeImage}}">
                 </ion-thumbnail>
-                <h2>Ruby</h2>
+                <h2>{{examples.title}}</h2>
+                <p>{{examples.description}}</p>
               </ion-item>
-              <ion-item>
-                <ion-thumbnail item-start>
-                  <img src="assets/img/thumbnail-puppy-2.jpg">
-                </ion-thumbnail>
-                <h2>Oscar</h2>
-              </ion-item>
-              <ion-item>
-                <ion-thumbnail item-start>
-                  <img src="assets/img/thumbnail-puppy-4.jpg">
-                </ion-thumbnail>
-                <h2>Zoey</h2>
-              </ion-item>
-              <ion-item>
-                <ion-thumbnail item-start>
-                  <img src="assets/img/thumbnail-puppy-3.jpg">
-                </ion-thumbnail>
-                <h2>Otto</h2>
-              </ion-item>
-        </ion-list>
+            </ion-list>
+            </ion-list>
 
   <!-- Created Poll List -->
-  <ion-list *ngSwitchCase="'created'">
+      <ion-list *ngSwitchCase="'created'">
       <ion-item>
-        <ion-thumbnail item-start>
-          <img src="assets/img/sample.jpg">
-        </ion-thumbnail>
-        <h2>Luna</h2>
-      </ion-item>
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="assets/img/thumbnail-kitten-3.jpg">
-        </ion-thumbnail>
-        <h2>Milo</h2>
-      </ion-item>
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="assets/img/thumbnail-kitten-4.jpg">
-        </ion-thumbnail>
-        <h2>Bandit</h2>
-      </ion-item>
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="assets/img/thumbnail-kitten-2.jpg">
-        </ion-thumbnail>
-        <h2>Nala</h2>
+          <ion-list *ngFor="let examples of example">
+              <ion-item>
+                  <ion-thumbnail item-start>
+                    <img src= "{{examples.memeImage}}">
+                  </ion-thumbnail>
+                  <h2>{{examples.title}}</h2>
+                  <p>{{examples.description}}</p>
       </ion-item>
 </ion-list>
     

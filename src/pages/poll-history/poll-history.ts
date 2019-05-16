@@ -22,6 +22,30 @@ export class PollHistoryPage {
   memeImage: "../assets/imgs/sample.jpg";
   segments = "featured";
 
+  example = [
+    {
+    memeImage: "..//assets/imgs/sample.jpg",
+    title: "some awesomeness",
+    description: "really cool stuff",
+    },
+    {
+      memeImage: "..//assets/imgs/sample.jpg",
+      title: "some awesomeness",
+      description: "really cool stuff",
+      },
+      {
+        memeImage: "..//assets/imgs/sample.jpg",
+        title: "some awesomeness",
+        description: "really cool stuff",
+        },
+        {
+          memeImage: "..//assets/imgs/sample.jpg",
+          title: "some awesomeness",
+          description: "really cool stuff",
+          }
+
+  ]
+
 
   takenPolls = [
     'Pokemon Poll',
@@ -41,6 +65,8 @@ export class PollHistoryPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
+
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PollHistoryPage');
