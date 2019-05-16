@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { DashboardPage } from '../../pages/dashboard/dashboard';
 import { RegisterPage } from '../../pages/register/register';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -17,7 +18,7 @@ export class LoginPage {
     password:''
   }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userService:UserProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userService:UserProvider, public storage: Storage) {
   }
 
   ionViewDidLoad() {
@@ -30,12 +31,14 @@ export class LoginPage {
 
   onLogin(){
     this.userService.login(this.user)
-      .then(
-        (response:any) => {
+      .subscribe(
+        response => {
           this.data = response
           console.log(this.data)
-          //window.sessionStorage.setItem('token', response.token);
-          //window.sessionStorage.setItem('userId', response.userId);
+          this.storage.set("token", this.data.token);
+          this.storage.set("userId", this.data.userId);
+          //window.sessionStorage.setItem('token', response.data.token);
+          //window.sessionStorage.setItem('userId', response.data.userId);
           this.navCtrl.setRoot(DashboardPage);
         })
   }

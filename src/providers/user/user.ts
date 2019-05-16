@@ -1,5 +1,4 @@
-//import { HttpClient } from '@angular/common/http';
-import { HTTP } from '@ionic-native/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 
@@ -7,16 +6,16 @@ import { Injectable } from '@angular/core';
 export class UserProvider {
 
 
-  constructor(public http: HTTP) {
+  constructor(public http: HttpClient) {
     console.log('Hello UserProvider Provider');
   }
 
   //baseUrl: string = 'http://localhost:3000/api/appUsers';
-  baseUrl: string = 'http://192.168.1.52:3000/api/appUsers';
+  baseUrl: string = 'http://192.168.1.34:3000/api/appUsers';
 
 
   register(userData) {
-    return this.http.post(this.baseUrl, userData, {} );
+    return this.http.post(this.baseUrl, userData );
   }
 
   login(userData) {

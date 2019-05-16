@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-//import { HttpClientModule } from '@angular/common/http';
-import { HTTP } from "@ionic-native/http";
+import { HttpClientModule } from '@angular/common/http';
+//import { HTTP } from "@ionic-native/http";
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -25,6 +25,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 //ionic
 import { Camera } from '@ionic-native/camera';
+import { IonicStorageModule } from '@ionic/storage';
 
 //providers
 import { UserProvider } from '../providers/user/user';
@@ -49,7 +50,9 @@ import { PollBuilderServiceProvider } from '../providers/poll-builder-service/po
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -69,7 +72,7 @@ import { PollBuilderServiceProvider } from '../providers/poll-builder-service/po
     PollHistoryPage
   ],
   providers: [
-    HTTP,
+    //HTTP,
     Camera,
     StatusBar,
     SplashScreen,

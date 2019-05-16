@@ -1,6 +1,6 @@
-//import { HttpClient } from '@angular/common/http';
-import { HTTP } from '@ionic-native/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
 
 class Meme {
   topText: any;
@@ -18,14 +18,20 @@ class Meme {
 @Injectable()
 export class PollBuilderServiceProvider {
 
-  constructor(public http: HTTP) {
+  constructor(public http: HttpClient, public storage: Storage) {
     console.log('Hello PollBuilderServiceProvider Provider');
   }
 
-  apiBaseUrl: string = "http://localhost:3000/api/"
+  //apiBaseUrl: string = "http://localhost:3000/api/"
+  apiBaseUrl: string = "http://192.168.1.34:3000/api/"
 
-  token: string = window.sessionStorage.getItem('token');
-  userId: string = window.sessionStorage.getItem('userId');
+  token: any //= this.storage.get('token').then((val) => {
+    //this.token = val});
+    //window.sessionStorage.getItem('token');
+  userId: any //= this.storage.get('userId').then((val) => {
+    //this.userId = val
+    //this.pollSet.userId = this.userId});
+    //window.sessionStorage.getItem('userId');
 
   pollId: string = ""
   pollMemes: any = {}
@@ -41,23 +47,31 @@ export class PollBuilderServiceProvider {
   };
 
   meme: any = {
+    pollID: "69",
     topText: "",
     bottomText: "",
     image: "",
     description: "",
+    userId: "",
   };
 
   pollSet: any = {
-    title: "",
-    description: "",
-    category: "",
+    pollTitle: "",
+    pollDescription: "",
+    coverImage: "",
+    pollCategory: "",
+    pollKeywords: ["keyword"],
+    userId: "",
+    completed: 0,
   }
 
   createPollSet(){
-    return this.http.post(this.apiBaseUrl + "pollSets?access_token=" + this.token, this.userId, {})
+    console.log(this.pollSet)
+    return this.http.post(this.apiBaseUrl + "pollSets?access_token=" + this.token, this.pollSet)
   }
 
   saveMeme(){
-    return this.http.post(this.apiBaseUrl + "memes?access_token=" + this.token, this.pollId, {}) 
+    console.log(this.meme)
+    return this.http.post(this.apiBaseUrl + "memes?access_token=" + this.token, this.meme) 
   }
 }

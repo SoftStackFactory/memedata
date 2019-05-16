@@ -24,10 +24,13 @@ export class PollBuilder2Page {
     this.BuilderService.memes.push({
       topText: this.BuilderService.meme.topText,
       bottomText: this.BuilderService.meme.bottomText,
-      image: this.BuilderService.meme.image,
+      image: "myimage", //this.BuilderService.meme.image,
       description: this.BuilderService.meme.description
     });
     console.log("meme array", this.BuilderService.memes)
+    this.BuilderService.meme.image = "myimage"
+    console.log(this.BuilderService.meme.image)
+    this.BuilderService.pollSet.coverImage = "myimage"//this.BuilderService.memes[0].image
     this.navCtrl.push(PollBuilder3Page);
   }
 

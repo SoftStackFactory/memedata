@@ -23,16 +23,16 @@
   <ion-list>
 
     <ion-item>
-      <ion-input [(ngModel)]="this.BuilderService.pollSet.title" type="text" placeholder="Poll Title"></ion-input>
+      <ion-input [(ngModel)]="this.BuilderService.pollSet.pollTitle" type="text" placeholder="Poll Title"></ion-input>
     </ion-item>
       
     <ion-item>
-      <ion-input [(ngModel)]="this.BuilderService.pollSet.description" type="text" placeholder="Poll Description"></ion-input>
+      <ion-input [(ngModel)]="this.BuilderService.pollSet.pollDescription" type="text" placeholder="Poll Description"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Categories</ion-label>
-        <ion-select [(ngModel)]="this.BuilderService.pollSet.category">
+        <ion-select [(ngModel)]="this.BuilderService.pollSet.pollCategory">
           <ion-option value="funny" selected>Funny</ion-option>
           <ion-option value="music" selected>Music</ion-option>
           <ion-option value="sports" selected>Sports</ion-option>
