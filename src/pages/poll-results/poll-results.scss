@@ -61,11 +61,8 @@ page-poll-results {
 
     #progressWrapper1 {
         height: 30px;
-        // position: fixed;
         width: 100%;
-        // top: 99.47%;
         background-color: rgba(56, 128, 255, 0.2);
-        // border: black solid 1px;
         margin: 15px 0px 15px 0px;
     }
 
@@ -77,11 +74,8 @@ page-poll-results {
 
     #progressWrapper2 {
         height: 30px;
-        // position: fixed;
         width: 100%;
-        // top: 99.47%;
         background-color: rgba(255, 56, 56, 0.2);
-        // border: black solid 1px;
         margin: 15px 0px 15px 0px;
     }
 
@@ -92,7 +86,7 @@ page-poll-results {
     }
 
     #moreResults {
-        padding: 5%;
+        padding: 0% 4%;
     }
 
     .barText {
