@@ -20,7 +20,7 @@ import { PollResultsPage } from '../pages/poll-results/poll-results';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = PollInterfacePage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -53,4 +53,16 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+  
+  goToAccountInfo() {
+    this.nav.setRoot(DashboardPage);
+  }
+  
+  goToRewardsHistory() {
+    this.nav.setRoot(DashboardPage);
+  }
+  goToLogout() {
+    this.nav.setRoot(DashboardPage);
+  }
+
 }
