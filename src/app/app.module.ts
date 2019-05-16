@@ -30,6 +30,8 @@ import { Camera } from '@ionic-native/camera';
 import { UserProvider } from '../providers/user/user';
 import { PollBuilderServiceProvider } from '../providers/poll-builder-service/poll-builder-service';
 import { DashboardServiceProvider } from '../providers/dashboard-service/dashboard-service';
+import { ResultsServiceProvider } from '../providers/results-service/results-service';
+
 
 @NgModule({
   declarations: [
@@ -77,7 +79,8 @@ import { DashboardServiceProvider } from '../providers/dashboard-service/dashboa
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DashboardServiceProvider,
     UserProvider,
-    PollBuilderServiceProvider
+    PollBuilderServiceProvider,
+    ResultsServiceProvider
   ]
 })
 export class AppModule {}
