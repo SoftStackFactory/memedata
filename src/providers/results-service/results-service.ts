@@ -1,17 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-/*
-  Generated class for the ResultsServiceProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class ResultsServiceProvider {
 
   constructor(public http: HttpClient) {
     console.log('Hello ResultsServiceProvider Provider');
+  }
+
+  answers:any = []
+
+  getMemeAnswers(){
+    this.http.get("https://memepoll.herokuapp.com/api/answers").subscribe((response) => {
+      this.answers = response
+    
+      console.log(response)
+      });
   }
 
 }

@@ -20,7 +20,7 @@ import { PollResultsPage } from '../pages/poll-results/poll-results';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = PollResultsPage;
 
   pages: Array<{title: string, component: any}>;
 
