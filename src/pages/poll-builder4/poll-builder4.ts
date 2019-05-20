@@ -32,13 +32,16 @@ export class PollBuilder4Page {
         this.BuilderService.pollSets = response
         this.BuilderService.pollId = response.id
         this.BuilderService.pollSets.userId = this.BuilderService.userId
-      })
-   this.BuilderService.saveMeme()
-    .subscribe(
-      (response: any) => {
-        console.log("Saved Meme", response)
-        this.BuilderService.pollMemes = response
-        this.BuilderService.pollMemes.pollId = this.BuilderService.pollId
+        for(let i = 0; i <= this.BuilderService.memes.length; i ++) {
+          this.BuilderService.memes[i].pollId = this.BuilderService.pollId
+          console.log("meme(s)",this.BuilderService.memes[i])
+          this.BuilderService.saveMeme(this.BuilderService.memes[i])
+          .subscribe(
+            (response: any) => {
+              console.log("Saved Meme", response)
+              this.BuilderService.pollMemes.push(response)
+            })
+        }
       })
     this.navCtrl.push(PollHistoryPage);
   }

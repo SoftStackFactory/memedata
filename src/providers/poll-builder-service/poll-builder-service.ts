@@ -3,10 +3,12 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
 class Meme {
+  pollId: any;
   topText: any;
   bottomText: any;
   image: any;
   description: any;
+  userId: any;
 }
 
 /*
@@ -23,7 +25,7 @@ export class PollBuilderServiceProvider {
   }
 
   //apiBaseUrl: string = "http://localhost:3000/api/"
-  apiBaseUrl: string = "http://192.168.1.34:3000/api/"
+  apiBaseUrl: string = "http://192.168.1.179:3000/api/"
 
   token: any //= this.storage.get('token').then((val) => {
     //this.token = val});
@@ -34,7 +36,7 @@ export class PollBuilderServiceProvider {
     //window.sessionStorage.getItem('userId');
 
   pollId: string = ""
-  pollMemes: any = {}
+  pollMemes: any
   pollSets: any = {}
   
   memes: Meme[] = [];
@@ -47,7 +49,7 @@ export class PollBuilderServiceProvider {
   };
 
   meme: any = {
-    pollID: "69",
+    pollId: "",
     topText: "",
     bottomText: "",
     image: "",
@@ -70,8 +72,8 @@ export class PollBuilderServiceProvider {
     return this.http.post(this.apiBaseUrl + "pollSets?access_token=" + this.token, this.pollSet)
   }
 
-  saveMeme(){
-    console.log(this.meme)
-    return this.http.post(this.apiBaseUrl + "memes?access_token=" + this.token, this.meme) 
+  saveMeme(meme){
+    //console.log(meme)
+    return this.http.post(this.apiBaseUrl + "memes?access_token=" + this.token, meme) 
   }
 }

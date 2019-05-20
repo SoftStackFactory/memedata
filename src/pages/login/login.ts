@@ -5,7 +5,6 @@ import { DashboardPage } from '../../pages/dashboard/dashboard';
 import { RegisterPage } from '../../pages/register/register';
 import { Storage } from '@ionic/storage';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
-import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({

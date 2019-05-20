@@ -22,10 +22,12 @@ export class PollBuilder2Page {
 
   nextStage() {
     this.BuilderService.memes.push({
+      pollId: "none",
       topText: this.BuilderService.meme.topText,
       bottomText: this.BuilderService.meme.bottomText,
       image: "myimage", //this.BuilderService.meme.image,
-      description: this.BuilderService.meme.description
+      description: this.BuilderService.meme.description,
+      userId: this.BuilderService.userId,
     });
     console.log("meme array", this.BuilderService.memes)
     this.BuilderService.meme.image = "myimage"
