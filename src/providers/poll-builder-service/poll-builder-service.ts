@@ -25,7 +25,9 @@ export class PollBuilderServiceProvider {
   }
 
   //apiBaseUrl: string = "http://localhost:3000/api/"
-  apiBaseUrl: string = "http://192.168.1.51:3000/api/"
+  //apiBaseUrl: string = "http://192.168.1.51:3000/api/"
+  apiBaseUrlMeme: string = 'https://memepoll.herokuapp.com/api/memes'
+  apiBaseUrlPollSet: string = 'https://memepoll.herokuapp.com/api/pollSets'
 
   token: any //= this.storage.get('token').then((val) => {
     //this.token = val});
@@ -69,11 +71,11 @@ export class PollBuilderServiceProvider {
 
   createPollSet(){
     console.log(this.pollSet)
-    return this.http.post(this.apiBaseUrl + "pollSets?access_token=" + this.token, this.pollSet)
+    return this.http.post(this.apiBaseUrlPollSet + "?access_token=" + this.token, this.pollSet)
   }
 
   saveMeme(meme){
     //console.log(meme)
-    return this.http.post(this.apiBaseUrl + "memes?access_token=" + this.token, meme) 
+    return this.http.post(this.apiBaseUrlMeme + "?access_token=" + this.token, meme) 
   }
 }

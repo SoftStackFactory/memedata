@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { PollHistoryPage } from '../poll-history/poll-history';
+//import { PollHistoryPage } from '../poll-history/poll-history';
+import { DashboardPage } from '../dashboard/dashboard';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
 import { AlertController } from 'ionic-angular';
 
@@ -40,22 +41,17 @@ export class PollBuilder4Page {
     } else {
     this.BuilderService.createPollSet()
     .subscribe(
-      (response: any) => {
-        
+      (response: any) => {       
         this.BuilderService.pollSets = response
         this.BuilderService.pollId = response.id
         this.BuilderService.pollSets.userId = this.BuilderService.userId
 
-        console.log("pollId", this.BuilderService.pollId)
+        console.log("New PollSet", response)
 
         for (let i = 0; i <= this.BuilderService.memes.length - 1; i ++) {
-          console.log("New PollSet", response);
-
           this.BuilderService.memes[i].pollId = this.BuilderService.pollId
 
-          console.log("i", this.BuilderService.memes[i].pollId)
-
-          console.log("new meme",this.BuilderService.memes[i])
+          console.log("New Meme",this.BuilderService.memes[i])
 
           this.BuilderService.saveMeme(this.BuilderService.memes[i])
           .subscribe(
@@ -63,11 +59,29 @@ export class PollBuilder4Page {
 
               console.log("Saved Meme", response)
 
+              this.BuilderService.pollSet.pollTitle = ""
+              this.BuilderService.pollSet.pollDescription = ""
+              this.BuilderService.pollSet.pollCategory = ""
+              this.BuilderService.memes = []
+              this.BuilderService.displayMeme = {
+                topText: "",
+                bottomText: "",
+                image: "",
+                description: "",
+              };
+              this.BuilderService.meme = {
+                pollId: "",
+                topText: "",
+                bottomText: "",
+                image: "",
+                description: "",
+                userId: "",
+              };
               this.BuilderService.pollMemes.push(response)
             })
         }
       })
-    this.navCtrl.push(PollHistoryPage);
+    this.navCtrl.setRoot(DashboardPage);
     }
   }
 
