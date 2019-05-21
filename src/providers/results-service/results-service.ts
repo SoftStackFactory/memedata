@@ -13,8 +13,6 @@ export class ResultsServiceProvider {
   getMemeAnswers(){
     this.http.get("https://memepoll.herokuapp.com/api/answers").subscribe((response) => {
       this.answers = response
-    
-      console.log(response)
       });
   }
 

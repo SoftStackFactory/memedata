@@ -60,6 +60,24 @@ export class PollResultsPage {
       "image": "string",
       "description": "meme4",
       "userId": "string"
+    },
+    {
+      "id":"0005",
+      "pollID": "string",
+      "topText": "string",
+      "bottomText": "string",
+      "image": "string",
+      "description": "meme5",
+      "userId": "string"
+    } ,
+    {
+      "id":"0006",
+      "pollID": "string",
+      "topText": "string",
+      "bottomText": "string",
+      "image": "string",
+      "description": "meme6",
+      "userId": "string"
     }
   ]
 
@@ -151,6 +169,14 @@ export class PollResultsPage {
     },
     {
       id: "0004",
+      choice: "right"
+    },
+    {
+      id: "0005",
+      choice: "right"
+    },
+    {
+      id: "0006",
       choice: "right"
     }
   ]

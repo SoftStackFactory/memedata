@@ -40,7 +40,9 @@ page-poll-results {
     }
 
     .scroll-content {
-        margin-bottom: 145px;
+        margin-bottom: 145px !important;
+        height: auto !important;
+        overflow: scroll !important;
     }
 
     #share {
