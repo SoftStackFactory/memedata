@@ -41,16 +41,16 @@ export class PollBuilder4Page {
     this.BuilderService.createPollSet()
     .subscribe(
       (response: any) => {
-
-        console.log("New PollSet", response);
-
+        
         this.BuilderService.pollSets = response
         this.BuilderService.pollId = response.id
         this.BuilderService.pollSets.userId = this.BuilderService.userId
 
         console.log("pollId", this.BuilderService.pollId)
 
-        for (let i = 0; i <= this.BuilderService.memes.length; i ++) {
+        for (let i = 0; i <= this.BuilderService.memes.length - 1; i ++) {
+          console.log("New PollSet", response);
+
           this.BuilderService.memes[i].pollId = this.BuilderService.pollId
 
           console.log("i", this.BuilderService.memes[i].pollId)
