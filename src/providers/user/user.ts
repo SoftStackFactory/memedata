@@ -6,22 +6,22 @@ import { Injectable } from '@angular/core';
 export class UserProvider {
 
 
-  constructor(public _http: HttpClient) {
+  constructor(public http: HttpClient) {
     console.log('Hello UserProvider Provider');
   }
 
-  baseUrl: string = 'http://localhost:3000/api/appUsers';
+  baseUrl: string = 'https://memepoll.herokuapp.com/api/appUsers';
 
   register(userData) {
-    return this._http.post(this.baseUrl, userData );
+    return this.http.post(this.baseUrl, userData );
   }
 
   login(userData) {
-    return this._http.post(this.baseUrl + "/login", userData );
+    return this.http.post(this.baseUrl + "/login", userData);
   }
 
   logout(token) {
-    return this._http.post(this.baseUrl + "/logout?access_token=" + token, {});
+    return this.http.post(this.baseUrl + "/logout?access_token=" + token, {});
   }
 
 }

@@ -46,5 +46,9 @@
   "meme": {
     "dataSource": "mongo",
     "public": true
+  },
+  "answer": {
+    "dataSource": "mongo",
+    "public": true
   }
 }
