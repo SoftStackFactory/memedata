@@ -1,3 +1,4 @@
+
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content, Events } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
