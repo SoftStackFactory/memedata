@@ -10,9 +10,7 @@ export class UserProvider {
     console.log('Hello UserProvider Provider');
   }
 
-  //baseUrl: string = 'http://localhost:3000/api/appUsers';
-  baseUrl: string = 'http://192.168.1.51:3000/api/appUsers';
-
+  baseUrl: string = 'https://memepoll.herokuapp.com/api/appUsers';
 
   register(userData) {
     return this.http.post(this.baseUrl, userData );

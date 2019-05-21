@@ -13,18 +13,20 @@ import { RegisterPage } from '../pages/register/register';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { PollResultsPage } from '../pages/poll-results/poll-results';
 
+import { SearchbarServiceProvider } from '../providers/searchbar-service/searchbar-service';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
+  
 
   rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public search$: SearchbarServiceProvider) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
