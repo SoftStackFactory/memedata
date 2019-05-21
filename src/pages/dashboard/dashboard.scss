@@ -21,11 +21,18 @@ page-dashboard {
 }
 
 .pollPreview {
-    width:100vw;
-    height: 125px;
-    // display: inline-block;
+    width: 100vw;
+    max-height: 150px;
+    display: inline-block;
+
+    h2 {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
     p {
-        display: wrap;
+        max-height: 100px;
     }
 }
 
