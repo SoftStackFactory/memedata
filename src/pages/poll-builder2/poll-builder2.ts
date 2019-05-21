@@ -42,6 +42,7 @@ export class PollBuilder2Page {
       description: this.BuilderService.meme.description,
       userId: this.BuilderService.userId,
     });
+    this.BuilderService.pollSet.coverImage = this.BuilderService.memes[0].image
     console.log("meme array", this.BuilderService.memes)
     this.BuilderService.meme.image //= "myimage"
     console.log(this.BuilderService.meme.image)
