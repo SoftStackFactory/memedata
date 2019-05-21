@@ -3,6 +3,9 @@
     <button ion-button menuToggle='left' icon-only>
       <ion-icon name="person"></ion-icon>
     </button>
+    <button  ion-button icon-only end>
+      search
+    </button>
     <ion-searchbar
       [(ngModel)]="search$.searchTerm"
       (keyup.enter)="search$.setFilteredItems()"
