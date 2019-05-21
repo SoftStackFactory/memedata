@@ -11,7 +11,7 @@ export class UserProvider {
   }
 
   //baseUrl: string = 'http://localhost:3000/api/appUsers';
-  baseUrl: string = 'http://192.168.1.179:3000/api/appUsers';
+  baseUrl: string = 'http://192.168.1.51:3000/api/appUsers';
 
 
   register(userData) {

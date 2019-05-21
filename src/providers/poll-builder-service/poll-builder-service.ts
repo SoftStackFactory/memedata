@@ -25,7 +25,7 @@ export class PollBuilderServiceProvider {
   }
 
   //apiBaseUrl: string = "http://localhost:3000/api/"
-  apiBaseUrl: string = "http://192.168.1.179:3000/api/"
+  apiBaseUrl: string = "http://192.168.1.51:3000/api/"
 
   token: any //= this.storage.get('token').then((val) => {
     //this.token = val});
@@ -36,8 +36,8 @@ export class PollBuilderServiceProvider {
     //window.sessionStorage.getItem('userId');
 
   pollId: string = ""
-  pollMemes: any
-  pollSets: any = {}
+  pollMemes: any = []
+  pollSets: any = []
   
   memes: Meme[] = [];
 
