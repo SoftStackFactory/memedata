@@ -50,7 +50,7 @@ export class PollBuilder4Page {
 
         console.log("pollId", this.BuilderService.pollId)
 
-        for(let i = 0; i <= this.BuilderService.memes.length; i ++) {
+        for (let i = 0; i <= this.BuilderService.memes.length; i ++) {
           this.BuilderService.memes[i].pollId = this.BuilderService.pollId
 
           console.log("i", this.BuilderService.memes[i].pollId)

@@ -38,14 +38,14 @@ export class PollBuilder2Page {
       pollId: "none",
       topText: this.BuilderService.meme.topText,
       bottomText: this.BuilderService.meme.bottomText,
-      image: "myimage", //this.BuilderService.meme.image,
+      image: this.BuilderService.meme.image, //"my image"
       description: this.BuilderService.meme.description,
       userId: this.BuilderService.userId,
     });
     console.log("meme array", this.BuilderService.memes)
-    this.BuilderService.meme.image = "myimage"
+    this.BuilderService.meme.image //= "myimage"
     console.log(this.BuilderService.meme.image)
-    this.BuilderService.pollSet.coverImage = "myimage"//this.BuilderService.memes[0].image
+    this.BuilderService.pollSet.coverImage = this.BuilderService.memes[0].image // "my image"
     this.navCtrl.push(PollBuilder3Page);
     }
   }
