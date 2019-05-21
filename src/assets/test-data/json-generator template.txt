@@ -1,0 +1,157 @@
+['sports', 'politics', 'education', 'technology', 'travel', 'lifestyle', 'fashion', 'comedy'];
+
+[
+'{{repeat(65)}}',
+  {
+    "pollTitle": "{{firstName()}} {{country()}}",
+    "pollDescription": "{{lorem([3])}}",
+    "coverImage": "{{random(['https://i.cbc.ca/1.5135288.1557849846!/fileImage/httpImage/image.jpg_gen/derivatives/square_780/cfl-labour-talks-180524-1180.jpg'],['https://www.gannett-cdn.com/presto/2019/05/11/PZAN/fac733e3-fc7c-4815-97f0-b9c7afb62e03-038_zan_mvl_track.JPG?width=388&height=388&crop=2454,2434,x548,y0'],['https://rfathead-res.cloudinary.com/image/upload/q_auto/c_pad,h_600/g_north,c_crop,h_600,w_600/c_pad,h_600,w_600/multi_room/room/1900-00177-002_nba_stephen_curry_2018-2019_002_2_pdp.jpg?yoOpt=0'],['https://scontent.cdninstagram.com/vp/2f49aaebad4394218522d8ac3916cbf7/5D69B381/t51.2885-15/e35/57457102_2464733573579454_3671866832744267548_n.jpg?_nc_ht=scontent.cdninstagram.com'],['https://s3.amazonaws.com/dksports-cdn/uploads/2019/05/IMG_3631-500x500.jpg'],['https://www.kingshousesportsground.co.uk/wp-content/uploads/2013/12/Sports600x600.jpg'],['https://www.mcall.com/resizer/42pwBNj0SagV0xCe8kiJYDAnBs4=/415x415/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/KX6LRXMNK5DBRHOBNSBKZVJU6M.jpg'],['https://scontent.cdninstagram.com/vp/a2abb51a36509d1050141b28700d1d6e/5D5685E2/t51.2885-15/sh0.08/e35/s640x640/59462474_147463146303292_2671773323141307040_n.jpg?_nc_ht=scontent.cdninstagram.com'])}}",
+    "pollCategory": "sports",
+    "pollKeywords": [
+      "competition", "athletics", "association football", "rugby union", "game", "tennis", "racing", "council of europe", "spectator sport", "olympic games", "team", "chess", "television", "go", "sportaccord", "professional sport", "entertainment", "coach", "tournament", "champion", "playoffs", "athleticism", "dexterity", "draughts", "tradition", "goal", "basketball", "running", "leisure", "cycling"
+    ],
+    "userId": "0008",
+    "completed": "{{integer([0], [1000])}}"
+  }
+]
+
+[
+'{{repeat(65)}}',
+  {
+    "pollTitle": "{{firstName()}} {{country()}}",
+    "pollDescription": "{{lorem([3])}}",
+    "coverImage": "{{random(['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-Bmp17HHvvMn8626z4D_YphAvJPSFWIj8-2_z_UWlzMkMeIES'],
+    ['https://magellanstrategies.com/wp-content/uploads/2016/10/smarter-politics-podcast.png'],
+    ['https://static1.squarespace.com/static/59de7748b1ffb626f68fe7ea/t/5aae84cf6d2a7312c15a6b39/1556376462661/'],
+    ['http://fmcusa.org/davidkendall/files/2016/02/VoteColorsplash.jpg'],
+    ['https://www.dictionary.com/e/wp-content/uploads/2018/04/political-spectrum.jpg'],
+    ['https://www.jdp.com/wp-content/uploads/2019/02/blog-politics-work.png'])}}",
+    "pollCategory": "politics",
+    "pollKeywords": [
+      "government", "diplomatic", "law", "political science", "aristotle", "politics", "diplomatical", "governance", "republic", "public administration", "politician", "smooth", "suave", "state", "local government", "political system", "expedient", "sagacious", "police", "election", "political", "monarchy", "parliament", "dukes", "sovereign state", "polity", "regime", "democratic", "ethics", "communism"
+    ],
+    "userId": "0007",
+    "completed": "{{integer([0], [1000])}}"
+  }
+]
+
+[
+'{{repeat(65)}}',
+  {
+    "pollTitle": "{{firstName()}} {{country()}}",
+    "pollDescription": "{{lorem([3])}}",
+    "coverImage": "{{random(['https://bloustein.rutgers.edu/wp-content/uploads/2016/05/education-conf.jpg'],
+    ['https://donate.worldvision.org/wp-content/uploads/2017/08/Education-Education_for_Children_FY19Q2-416x416.jpg'],
+    ['https://www.savethechildren.org/content/dam/global/images/countries/somalia/somaliland-girls-educatin-m202516-sq.jpg/_jcr_content/renditions/cq5dam.thumbnail.768.768.jpg'],
+    ['https://cdn.nashvillepost.com/files/base/scomm/nvp/image/2019/02/640w/Screen_Shot_2019_02_25_at_5.23.34_PM.5c74792b5a193.jpg'],
+    ['https://www.gannett-cdn.com/-mm-/fc0937862a217af33f2702dadc63da97a8732b1a/c=67-0-468-401/local/-/media/2018/05/15/PAGroup/YorkDailyRecord/636619956356015249-education-photo.jpg?width=405&height=405&fit=crop'],
+    ['https://i0.wp.com/ace.iafor.org/wp-content/uploads/sites/10/2018/02/Turbulence-in-Education-Zachary-M-Walker-IAFOR.jpg?resize=600%2C600&ssl=1'])}}",
+    "pollCategory": "education",
+    "pollKeywords": [
+      "teaching", "pedagogy", "instruction", "school", "curriculum", "learning", "college", "university", "educational activity", "didactics", "vocational education", "kindergarten", "department of education", "secondary education", "training", "secondary school", "knowledge", "education department", "scholarship", "literacy", "special education", "schooling", "tuition", "teacher", "student", "undergraduate", "academic", "homeschooling", "higher education", "adult"
+    ],
+    "userId": "0006",
+    "completed": "{{integer([0], [1000])}}"
+  }
+]
+
+[
+'{{repeat(65)}}',
+  {
+    "pollTitle": "{{firstName()}} {{country()}}",
+    "pollDescription": "{{lorem([3])}}",
+    "coverImage": "{{random(['https://images.jacobinmag.com/2014/11/17001512/technology-innovation-1.png'],
+    ['http://senseabledb.mit.edu/system/projects/images/000/000/001/thumb/024_losojos.jpg'],
+    ['https://www.list.lu/fileadmin/files/news/2019/1904_TechWatch_04_Header_Incrustation_EN_600x600px.jpg'],
+    ['https://www.ravenshallschool.org.uk/userfiles/ckeditor/School/Curriculum/Design_Technology/Design_Technology_6.jpg'],
+    ['https://www.xjtlu.edu.cn/en/assets/image-cache/images/programmes/mother-board-digital-media-technology.c7c0fced.jpg'],
+    ['https://i.guim.co.uk/img/media/c4f31f22d1d4e9eb053a0aa6e6614437940920b8/732_0_2309_2309/master/2309.jpg?width=700&quality=85&auto=format&fit=max&s=82185685b479da04ef44cb641f8bde62'])}}",
+    "pollCategory": "technology",
+    "pollKeywords": [
+      "engineering", "science", "biotechnology", "high technology", "internet", "nanotechnology", "robotics", "communication", "computing", "computer", "computer science", "industry", "automation", "wheel", "technological", "aeronautical engineering", "chemical engineering", "equipment", "manufacturing", "application", "bionics", "energy", "technical", "ergonomics", "applied science", "engineering science", "scientific", "telephone", "field of study", "development"
+    ],
+    "userId": "0005",
+    "completed": "{{integer([0], [1000])}}"
+  }
+]
+
+[
+'{{repeat(65)}}',
+  {
+    "pollTitle": "{{firstName()}} {{country()}}",
+    "pollDescription": "{{lorem([3])}}",
+    "coverImage": "{{random(['https://pbs.twimg.com/profile_images/830129868373266432/a0_asx8X.jpg'],
+    ['https://pixel.nymag.com/imgs/travel/weekends/2018/06/cruise/Pearl-farm.w320.h320.2x.jpg'],
+    ['https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/2019/04/05/travel-photography-mountain_s.jpg?itok=E2GlIJ3k'],
+    ['https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/2019/05/03/flathead_vth_s.jpg?itok=Dy7NYeSS'],
+    ['https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/2019/04/15/everglades-national-park_s.jpg?itok=B8i2D4iP'],
+    ['https://static1.squarespace.com/static/5633d9f5e4b082d7c5b362c2/t/59f79d7a1095266e671ffc40/1509399936153/best_destinations_first_time_solo_travel_17.jpeg'])}}",
+    "pollCategory": "travel",
+    "pollKeywords": [
+      "move", "journey", "walk", "float", "trip", "cruise", "ride", "fall", "creep", "motion", "movement", "swim", "step", "drift", "come", "wander", "jaunt", "traveling", "automobile", "fly", "go", "travelling", "locomote", "locomotion", "change of location", "tourist", "tourism", "commuting", "move around", "wayfaring"
+    ],
+    "userId": "0004",
+    "completed": "{{integer([0], [1000])}}"
+  }
+]
+
+[
+'{{repeat(65)}}',
+  {
+    "pollTitle": "{{firstName()}} {{country()}}",
+    "pollDescription": "{{lorem([3])}}",
+    "coverImage": "{{random(['https://image.freepik.com/free-vector/healthy-lifestyle-vector_23-2147499189.jpg?2'],
+    ['https://pbs.twimg.com/profile_images/908436073574916096/O1HhJRTv_400x400.jpg'],
+    ['https://pbs.twimg.com/profile_images/741188771404730368/XhG0fyE0_400x400.jpg'],
+    ['https://lh3.googleusercontent.com/FUtIkY7TkLUFUcX67W3lvWefZr1yurvWwkWfpvGtDiK1VXrGCmQ27fJt3ROqZv5q3Q'],
+    ['https://i.scdn.co/image/a6378f80954b6b8fdce7bd1e979eb0cc11eed7de'],
+    ['https://d3odklarv0k03b.cloudfront.net/productphotos/83_0742.jpg?width=400&height=400'])}}",
+    "pollCategory": "lifestyle",
+    "pollKeywords": [
+      "life style", "fashion", "style", "culture", "life", "life-style", "modus vivendi", "habits", "parenting", "leisure", "cheap", "tastes", "marketplace", "clientele", "diet", "personality", "attitudes", "entertainment", "society", "person", "manner", "mode", "way", "group", "lifestyles", "casual", "unhealthy", "conscious", "everyday", "sedentary"
+    ],
+    "userId": "0003",
+    "completed": "{{integer([0], [1000])}}"
+  }
+]
+
+[
+'{{repeat(65)}}',
+  {
+    "pollTitle": "{{firstName()}} {{country()}}",
+    "pollDescription": "{{lorem([3])}}",
+    "coverImage": "{{random(['https://d2zlsagv0ouax1.cloudfront.net/assets/v3/home_page/browse_collection_images/women/Louis-Vuitton-Alma-Bag-baf1ed04725c2df29e8594ca92f74782.jpg'],
+    ['https://d2fzf9bbqh0om5.cloudfront.net/images/9943/original/trends.jpg?1548058469'],
+    ['https://media.glamour.com/photos/5c4df01538ab582cc119611e/1:1/w_352/rainy-day-street-style.jpg'],
+    ['https://cdn.shopify.com/s/files/1/2343/4045/products/womens-fashion-sequin-backless-high-split-designer-dresses-long-womens-fashion-designer-dresses-international-womens-clothing_large.jpg?v=1530329942'],
+    ['https://main-designyoutrust.netdna-ssl.com/wp-content/uploads/2019/04/weird-mens-fashion17.jpg?iv=67'],
+    ['https://media.wmagazine.com/photos/5cdd6fb3c61fc069607a9f53/1:1/w_767/GettyImages-1143965947.jpg'])}}",
+    "pollCategory": "fashion",
+    "pollKeywords": [
+      "style", "clothing", "vogue", "haute couture", "tailor", "manner", "designer", "cut", "lifestyle", "trend", "retro", "fit", "way", "mode", "forge", "make", "pattern", "footwear", "form", "society", "language", "brand", "dance", "designers", "couture", "creative", "menswear", "styles", "art", "lingerie"
+    ],
+    "userId": "0002",
+    "completed": "{{integer([0], [1000])}}"
+  }
+]
+
+[
+'{{repeat(65)}}',
+  {
+    "pollTitle": "{{firstName()}} {{country()}}",
+    "pollDescription": "{{lorem([3])}}",
+    "coverImage": "{{random(['https://info.filmfestivalcircuit.com/hs-fs/hubfs/Austin-Comedy-Short-Film-Festival-2019S-Logo-Black-Transparent.png?width=400&name=Austin-Comedy-Short-Film-Festival-2019S-Logo-Black-Transparent.png'],
+    ['https://cdn.evbuc.com/eventlogos/86195443/soulcomedylogo.jpg'],
+    ['https://pbs.twimg.com/profile_images/743667868227665920/ltXWMGE4.jpg'],
+    ['https://images.stubsites.com/webassets.ticketmob.com/LS/images/venues/C038A36C-CE7B-1DD1-F4167A77B779CE18.jpg'],
+    ['https://static1.squarespace.com/static/5ad36877697a98c2b9d3c820/t/5af36a4c70a6ad674b05090a/1555534245726/'],
+    ['https://www.lucyslaughlounge.com/img/events/comedy-open-mic-e09b0b81-main-image.jpg'])}}",
+    "pollCategory": "comedy",
+    "pollKeywords": [
+      "satire", "slapstick", "comedian", "sitcom", "drama", "melodrama", "television", "laughter", "farce", "film", "humour", "parody", "drollery", "clowning", "funniness", "movie", "tragedy", "aristotle", "screenplay", "greek language", "black comedy", "fun", "burlesque", "comic", "funny", "hilarious", "aristophanes", "situation comedy", "tragicomedy", "show"
+    ],
+    "userId": "0001",
+    "completed": "{{integer([0], [1000])}}"
+  }
+]
+
