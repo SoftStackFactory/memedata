@@ -12,7 +12,7 @@
 
 <ion-content padding class="card-background-page">
 
-  <ion-card class="preview-card" *ngIf="this.BuilderService.displayMeme.image; else addedMeme" >
+  <ion-card class="preview-card" *ngIf="this.BuilderService.displayMeme.image; else addedMeme">
       <img src="{{this.BuilderService.displayMeme.image}}">
       <div class="card-title">{{this.BuilderService.displayMeme.topText}}</div>
       <div class="card-subtitle">{{this.BuilderService.displayMeme.bottomText}}</div>
@@ -39,7 +39,6 @@
       <div class="card-title">{{meme.topText}}</div>
       <div class="card-subtitle">{{meme.bottomText}}</div>
     </ion-card>
-    
     <!--<p>{{this.BuilderService.description}}</p>-->
 
   </ion-scroll>
