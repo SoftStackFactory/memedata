@@ -34,7 +34,7 @@ export class PollBuilder4Page {
         this.BuilderService.pollSets.userId = this.BuilderService.userId
         for(let i = 0; i <= this.BuilderService.memes.length; i ++) {
           this.BuilderService.memes[i].pollId = this.BuilderService.pollId
-          console.log("meme(s)",this.BuilderService.memes[i])
+          console.log("new meme",this.BuilderService.memes[i])
           this.BuilderService.saveMeme(this.BuilderService.memes[i])
           .subscribe(
             (response: any) => {
