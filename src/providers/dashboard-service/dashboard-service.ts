@@ -16,6 +16,7 @@ export class DashboardServiceProvider {
   polls:any = [];
   displayedPolls:any = [];
   // API endpoints for pulling poll data.
+  accessToken:string = '?access_token='+'b9mlT8uvLmKJj38eoquDnslnogB07V0mYpd4FDhAhRfT9twx9uf5REChqXEkMK2I'
   categoryFilter:string = '&filter=%7B%22where%22%3A%7B%22pollCategory%22%3A%22'+`${this.selectedCategory}`+'%22%7D%7D';
   catFilterB:string = '%22%7D%7D';
   // // These endpoints are used to serve to a phone withthe devapp. Uncomment these, and comment out the above versions.

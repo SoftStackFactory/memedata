@@ -21,13 +21,12 @@
   </div>
       
   
-  <div class='pollList'>
-    <div >
+  <div class='pollList has-footer'>
+    <div>
       <ion-item text-wrap class='pollPreview' *ngFor='let poll of dash$.displayedPolls'>
         <img class='pollImg' src='{{poll.coverImage}}'>
-        <!-- <img class='pollImg' src='../../assets/imgs/testImage.jpg'> -->
         <h2>{{poll.pollTitle}}</h2>
-        <p>{{poll.pollDescription}}</p>
+        <p class='pollDescription'>{{poll.pollDescription}}</p>
       </ion-item>
       <ion-infinite-scroll (ionInfinite)="dash$.doInfinite($event)">
         <ion-infinite-scroll-content></ion-infinite-scroll-content>

@@ -23,6 +23,7 @@ export class SearchbarServiceProvider {
   }
 
   setFilteredItems(){
+    this.searchTerm = this.searchTerm.toLocaleLowerCase();
     this.http.get(this.pollsApi).subscribe((response) => {
       this.polls = [];
       this.polls = response;

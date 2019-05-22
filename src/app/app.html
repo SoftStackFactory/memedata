@@ -3,20 +3,21 @@
     <button ion-button menuToggle='left' icon-only>
       <ion-icon name="person"></ion-icon>
     </button>
-    <button  ion-button icon-only end>
-      search
-    </button>
+    <ion-buttons ion-button ion-header end>
+      <button ion-button (click)="search$.setFilteredItems()">go</button>
+    </ion-buttons>
     <ion-searchbar
       [(ngModel)]="search$.searchTerm"
       (keyup.enter)="search$.setFilteredItems()"
       placeholder='Find Polls'
       type='text'
+      id='searchBar'
     ></ion-searchbar>
   </ion-navbar>
 </ion-header>
 
 
-<ion-menu [content]='content' swipeEnabled='false'>
+<ion-menu [content]='content' swipeEnabled='false' type='overlay'>
   <ion-toolbar>
     <ion-title>My MemePoll</ion-title>
   </ion-toolbar>
