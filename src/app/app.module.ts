@@ -32,6 +32,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { UserProvider } from '../providers/user/user';
 import { PollBuilderServiceProvider } from '../providers/poll-builder-service/poll-builder-service';
 import { DashboardServiceProvider } from '../providers/dashboard-service/dashboard-service';
+import { ResultsServiceProvider } from '../providers/results-service/results-service';
 import { SearchbarServiceProvider } from '../providers/searchbar-service/searchbar-service';
 
 @NgModule({
@@ -83,6 +84,7 @@ import { SearchbarServiceProvider } from '../providers/searchbar-service/searchb
     DashboardServiceProvider,
     UserProvider,
     PollBuilderServiceProvider,
+    ResultsServiceProvider,
     SearchbarServiceProvider
   ]
 })

@@ -6,12 +6,12 @@
 
 <ion-content>
     <div *ngFor="let x of meme; let i = index">
-    <ion-slides slidesPerView='1' effect="flip" loop="true">
+    <ion-slides slidesPerView='1' effect="flip">
         <ion-slide>
             <ion-card>
               <ion-row>
                 <ion-col col-3>
-                  <img id="resultThumb" src="https://picsum.photos/id/12{{i}}/80/120" float-left>
+                  <img id="resultThumb" src="https://picsum.photos/id/12{{i}}/80/80" float-left>
                 </ion-col>
                 <ion-col col-7>
                   <p id="description">{{ x.description }}</p>
@@ -46,6 +46,7 @@
                             {{bar1}}%
                             </div> 
                             <div class="bar1" [ngStyle]="calculateMemePercent(x.id)">
+                            <!-- <div class="bar1" [ngStyle]="barPercent1"> -->
                             </div>
                         </div>
                     </ion-row>
