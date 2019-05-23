@@ -60,6 +60,7 @@ export class DashboardServiceProvider {
     });
   }
 
+
   // Logic for the infinite scroll 
 
   doInfinite(infiniteScroll) {

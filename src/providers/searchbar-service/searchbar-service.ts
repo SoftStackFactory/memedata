@@ -16,7 +16,7 @@ export class SearchbarServiceProvider {
   polls:any = [];
   newPolls:any = [];
 
-  pollsApi:string = 'http://localhost:3000/api/pollSets?access_token=b9mlT8uvLmKJj38eoquDnslnogB07V0mYpd4FDhAhRfT9twx9uf5REChqXEkMK2I';
+  pollsApi:string = 'https://memepoll.herokuapp.com/api/pollSets?access_token=b9mlT8uvLmKJj38eoquDnslnogB07V0mYpd4FDhAhRfT9twx9uf5REChqXEkMK2I';
 
   constructor(public http: HttpClient, public dash$: DashboardServiceProvider, public events: Events) {
     console.log('Hello SearchbarServiceProvider Provider');

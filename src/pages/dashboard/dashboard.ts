@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { DashboardServiceProvider } from '../../providers/dashboard-service/dashboard-service';
 import { PollBuilderPage } from '../poll-builder/poll-builder';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
+import { PollInterfacePage } from '../poll-interface/poll-interface';
 
 
 /**
@@ -57,6 +58,9 @@ export class DashboardPage {
   }
   goToMyPolls() {
     this.navCtrl.setRoot(DashboardPage);
+  }
+  goToPoll() {
+    this.navCtrl.push(PollInterfacePage);
   }
   
 }
