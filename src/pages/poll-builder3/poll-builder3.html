@@ -12,7 +12,7 @@
 
 <ion-content padding class="card-background-page">
 
-  <ion-card class="preview-card" *ngIf="this.BuilderService.displayMeme.image; else addedMeme" >
+  <ion-card class="preview-card" *ngIf="this.BuilderService.displayMeme.image; else addedMeme">
       <img src="{{this.BuilderService.displayMeme.image}}">
       <div class="card-title">{{this.BuilderService.displayMeme.topText}}</div>
       <div class="card-subtitle">{{this.BuilderService.displayMeme.bottomText}}</div>
@@ -32,14 +32,13 @@
 
   <div class="counter">Step 2 of 3</div>
   
-  <ion-scroll scrollX="true" style="white-space:nowrap; height: 25vh;">
+  <ion-scroll scrollX="true" style="white-space:nowrap; height: 40vh;">
      
     <ion-card class="scroll-card" *ngFor="let meme of BuilderService.memes" (click)="previewMeme(meme)">
       <img src="{{meme.image}}">
       <div class="card-title">{{meme.topText}}</div>
       <div class="card-subtitle">{{meme.bottomText}}</div>
     </ion-card>
-    
     <!--<p>{{this.BuilderService.description}}</p>-->
 
   </ion-scroll>

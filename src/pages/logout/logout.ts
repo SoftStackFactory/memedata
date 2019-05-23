@@ -31,12 +31,12 @@ export class LogoutPage {
     .subscribe(
       (response:any) =>{ 
       this.storage.clear()
+      window.sessionStorage.clear();
+      console.log("logoooooout user token ", this.BuilderService.token)
       this.BuilderService.token = ""
       this.BuilderService.userId = ""
       this.BuilderService.pollSet.userId = ""
       this.BuilderService.meme.userId = ""
-      console.log("logoooooout", this.BuilderService.token)
-      //window.sessionStorage.clear();
       this.navCtrl.setRoot(DashboardPage);
       });
 

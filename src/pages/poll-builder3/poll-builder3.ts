@@ -23,6 +23,8 @@ export class PollBuilder3Page {
   constructor(public navCtrl: NavController, public navParams: NavParams, public BuilderService: PollBuilderServiceProvider, public alertCtrl: AlertController) {
   }
 
+  toggleClass: boolean = true
+
   previewMeme(meme){
     console.log("clicked", meme.topText);
     this.BuilderService.displayMeme = meme; 

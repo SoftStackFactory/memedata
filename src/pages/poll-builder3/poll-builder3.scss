@@ -33,6 +33,15 @@ page-poll-builder3 {
       font-size: .8rem;
       .card-title, .card-subtitle{
         transform: scale(1,1.9);
+        text-shadow:1px 1px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        0px 1px 0 #000,
+        1px 0px 0 #000,
+        0px -1px 0 #000,
+        -1px 0px 0 #000,
+        1px 1px 5px #000;
       }
     }
   
@@ -63,5 +72,10 @@ page-poll-builder3 {
   .card-subtitle{
     top: 85%;
   }
+
+  .scroll-content {
+    height: auto !important;
+    overflow: scroll !important;
+    }
 
 }
