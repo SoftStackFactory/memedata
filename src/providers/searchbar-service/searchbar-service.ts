@@ -14,7 +14,8 @@ export class SearchbarServiceProvider {
 
   searchTerm:string;
   polls:any = [];
-  newPolls:any = [];
+  keyMatch:any = [];
+  matched:any = [];
 
   pollsApi:string = 'https://memepoll.herokuapp.com/api/pollSets?access_token=b9mlT8uvLmKJj38eoquDnslnogB07V0mYpd4FDhAhRfT9twx9uf5REChqXEkMK2I';
 
@@ -23,13 +24,25 @@ export class SearchbarServiceProvider {
   }
 
   setFilteredItems(){
-    this.searchTerm = this.searchTerm.toLocaleLowerCase();
+    this.searchTerm = this.searchTerm.toLowerCase();
     this.http.get(this.pollsApi).subscribe((response) => {
       this.polls = [];
+      this.keyMatch = [];
+      this.matched = [];
       this.polls = response;
+      this.keyMatch = response;
       console.log(this.polls);
       this.polls = this.polls.filter(poll => poll.pollCategory === this.searchTerm);
-      console.log(this.polls);
+      for(let i = 0; i < this.keyMatch.length; i++){
+      let keywords = this.keyMatch[i].pollKeywords;
+        for(let j = 0; j<keywords.length; j++){
+          if(keywords[j] === this.searchTerm){
+            this.matched.push(this.keyMatch[i]);
+          }
+        }
+      }
+      console.log('polls', this.polls);
+      console.log('matched', this.matched);
       this.searchTerm = '';
       if(this.polls.length > 0){
         this.events.publish('search success');
@@ -38,6 +51,13 @@ export class SearchbarServiceProvider {
         for (let i=0; i <10; i++) {
           this.dash$.displayedPolls.push(this.polls[this.dash$.displayedPolls.length]);
         }        
+      } else if(this.matched.length > 0){
+        this.events.publish('search success');
+        this.dash$.polls = this.matched;
+        this.dash$.displayedPolls = [];
+        for (let i=0; i <10; i++) {
+          this.dash$.displayedPolls.push(this.matched[this.dash$.displayedPolls.length]);
+        } 
       } else {
         console.log('No Search Results');
       }
