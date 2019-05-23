@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DashboardServiceProvider } from '../dashboard-service/dashboard-service';
-import { Events } from 'ionic-angular';
+import { Events, ToastController } from 'ionic-angular';
 
 /*
   Generated class for the SearchbarServiceProvider provider.
@@ -19,8 +19,17 @@ export class SearchbarServiceProvider {
 
   pollsApi:string = 'https://memepoll.herokuapp.com/api/pollSets?access_token=b9mlT8uvLmKJj38eoquDnslnogB07V0mYpd4FDhAhRfT9twx9uf5REChqXEkMK2I';
 
-  constructor(public http: HttpClient, public dash$: DashboardServiceProvider, public events: Events) {
+  constructor(public http: HttpClient, public dash$: DashboardServiceProvider, public events: Events, public toastCtrl: ToastController) {
     console.log('Hello SearchbarServiceProvider Provider');
+  }
+
+  presentToast() {
+    const toast = this.toastCtrl.create({
+      message: 'No Search Results',
+      duration: 3000,
+      position: 'top'
+    });
+    toast.present();
   }
 
   setFilteredItems(){
@@ -59,6 +68,7 @@ export class SearchbarServiceProvider {
           this.dash$.displayedPolls.push(this.matched[this.dash$.displayedPolls.length]);
         } 
       } else {
+        this.presentToast();
         console.log('No Search Results');
       }
     })
