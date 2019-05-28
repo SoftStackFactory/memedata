@@ -44,75 +44,50 @@ export class PollInterfacePage {
 
   this.meme = this.pollInterfaceProvider.memes
   this.memeCount = this.meme.length
-  console.log(this.memeCount)
   }
 
   public hideOverlay() {
     this.overlayHidden = true;
     this.overlayInfo = true;
-}
+  }
 
-overlayHiddenInfo (){
-  this.overlayInfo = false;
-  
-}
-
+  overlayHiddenInfo (){
+    this.overlayInfo = false;
+  }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PollInterfacePage');
-    // let random = Math.floor(Math.random() * 500) + 1
-    // this.imgUrl = "https://picsum.photos/id/" + random + "/360/640"
-       // this.pollSetup(30, 0)
-
-
+       this.pollSetup(this.memeCount, 0)
   }
 
   pollSetup(totalQuestions, text) {
-    // this.top = this.mockMemeText[text].top
-    // this.bottom = this.mockMemeText[text].bottom
     this.totalQuestions = totalQuestions 
     this.percent = 100 / totalQuestions
-    // this.check = this.percent * this.totalQuestions
-    console.log(this.check)
   }
 
   progressBar(x) {
-    if(x <= 100){
-      document.getElementById("bar").style.width = "" + x + "%"
-      if(this.questionNumber != this.totalQuestions) {
-        this.questionNumber = this.questionNumber + 1
-      }
-      if(x >= 99.5) {
+    document.getElementById("bar").style.width = "" + x + "%"
+
+    if(this.questionNumber === this.totalQuestions) {
         console.log("Poll Done")
         this.pollComplete = true
         this.navCtrl.setRoot(PollResultsPage) 
-        // for(let i=0; i < this.answers.length; i++) {
-        //   console.log(this.answers[i].response)
-        // }
-      }
+    } else {
+        this.questionNumber = this.questionNumber + 1
     }
   }
 
   button() {
     if (!this.pollComplete) {
-      let random = Math.floor(Math.random() * 500) + 1
-      this.imgUrl = "https://picsum.photos/id/" + random + "/360/640"
-      console.log(this.imgUrl)
-    
       this.progress = this.progress + this.percent
       this.progressBar(this.progress)
-
     }
-
   }
+
   imgCheck() {
     let img = document.querySelector('#img > img')
     console.log(img.clientHeight)
   }
 
-//   swipeEvent(event){
-//     alert('swipe');
-// }
 swipeEvent(e) {
   this.button()
     if (e.direction == 2) {
@@ -131,6 +106,5 @@ swipeEvent(e) {
     }
   }
 }
-  // this.progress = this.progress + this.percent
-  // this.progressBar(this.progress)
+
 

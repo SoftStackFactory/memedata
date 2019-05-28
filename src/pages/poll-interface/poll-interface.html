@@ -9,7 +9,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding (swipe)="swipeEvent($event)">
+<ion-content (swipe)="swipeEvent($event)">
 
   <div class="my-overlay" (click)="hideOverlay()" padding [hidden]="overlayHidden">
       <p class="overlayText">Hello Welcome New User!</p>
