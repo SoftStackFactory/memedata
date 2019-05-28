@@ -4,7 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { DashboardServiceProvider } from '../../providers/dashboard-service/dashboard-service';
 import { PollBuilderPage } from '../poll-builder/poll-builder';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
-import { PollInterfaceProvider } from '../../providers/poll-interface/poll-interface';
+import { PollInterfaceProvider } from '../../providers/poll-interface-provider/poll-interface-provider';
+import { PollInterfacePage } from '../poll-interface/poll-interface';
 
 @IonicPage()
 @Component({
@@ -61,6 +62,7 @@ export class DashboardPage {
   startPoll(id) {
     console.log(id)
     this.pollInterfaceProvider.getMemes(id)
+    this.navCtrl.setRoot(PollInterfacePage)
   }
   
 }
