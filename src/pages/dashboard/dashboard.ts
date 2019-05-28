@@ -27,6 +27,10 @@ export class DashboardPage {
     events.subscribe('search success', ()=> {
       this.content.scrollToTop();    
     })
+
+    events.subscribe('getMemes', ()=> {
+      this.navCtrl.setRoot(PollInterfacePage)   
+    })
   }
 
   // On Page load
@@ -62,7 +66,6 @@ export class DashboardPage {
   startPoll(id) {
     console.log(id)
     this.pollInterfaceProvider.getMemes(id)
-    this.navCtrl.setRoot(PollInterfacePage)
   }
   
 }

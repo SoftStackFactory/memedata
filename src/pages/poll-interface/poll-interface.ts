@@ -2,16 +2,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 // import { DashboardPage } from '../dashboard/dashboard';
 import { PollResultsPage } from '../poll-results/poll-results'
+import { PollInterfaceProvider } from '../../providers/poll-interface-provider/poll-interface-provider';
 // import { Slides } from '@ionic-angular';
 // import { ViewChild } from '@angular/core';
 
-
-/**
- * Generated class for the PollInterfacePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -32,31 +26,25 @@ export class PollInterfacePage {
   overlayInfo: boolean = true;
   
   meme:any
+  memeCount:any
 
   public swipe: number = 0;
 
-  answers:any = [
-  
-  ]
+  answers:any = []
   
   userResponse:any = {
     id:"",
     response:""
     }
   
-
-  slides:any 
   
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              public pollInterfaceProvider: PollInterfaceProvider) {
 
-    this.slides = [1,2,3,4,5,6,7,8]
-
-  this.meme = {
-        "image": "",
-        "topText": "Top Text",
-        "bottomText": "Bottom Text",
-        "description": ""
-      }
+  this.meme = this.pollInterfaceProvider.memes
+  this.memeCount = this.meme.length
+  console.log(this.memeCount)
   }
 
   public hideOverlay() {
@@ -72,8 +60,8 @@ overlayHiddenInfo (){
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PollInterfacePage');
-    let random = Math.floor(Math.random() * 500) + 1
-    this.imgUrl = "https://picsum.photos/id/" + random + "/360/640"
+    // let random = Math.floor(Math.random() * 500) + 1
+    // this.imgUrl = "https://picsum.photos/id/" + random + "/360/640"
        // this.pollSetup(30, 0)
 
 

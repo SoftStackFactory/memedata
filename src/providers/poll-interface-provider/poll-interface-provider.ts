@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Events } from 'ionic-angular';
 
 @Injectable()
 export class PollInterfaceProvider {
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient,
+              public events: Events) {
     console.log('Hello PollInterfaceProvider Provider');
   }
 
@@ -15,6 +17,7 @@ export class PollInterfaceProvider {
     .subscribe((response) => {
       this.memes = response
       console.log(this.memes)
+      this.events.publish('getMemes');
       });
   }
 
