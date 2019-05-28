@@ -3,8 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 // import { DashboardPage } from '../dashboard/dashboard';
 import { PollResultsPage } from '../poll-results/poll-results'
 import { PollInterfaceProvider } from '../../providers/poll-interface-provider/poll-interface-provider';
-// import { Slides } from '@ionic-angular';
-// import { ViewChild } from '@angular/core';
+import { Slides } from 'ionic-angular';
+import { ViewChild } from '@angular/core';
 
 
 @IonicPage()
@@ -13,6 +13,8 @@ import { PollInterfaceProvider } from '../../providers/poll-interface-provider/p
   templateUrl: 'poll-interface.html',
 })
 export class PollInterfacePage {
+
+  @ViewChild(Slides) slides: Slides;
 
   imgUrl:any
   progress:any = 0
@@ -57,6 +59,7 @@ export class PollInterfacePage {
 
   ionViewDidLoad() {
        this.pollSetup(this.memeCount, 0)
+       this.slides.lockSwipeToPrev(true)
   }
 
   pollSetup(totalQuestions, text) {
@@ -80,6 +83,7 @@ export class PollInterfacePage {
     if (!this.pollComplete) {
       this.progress = this.progress + this.percent
       this.progressBar(this.progress)
+      this.slides.slideNext()
     }
   }
 

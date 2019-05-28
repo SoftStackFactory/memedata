@@ -24,7 +24,7 @@
 
 <div id="MemeContainer">
   <h4 id="pollNumber">{{questionNumber}}/{{totalQuestions}}</h4>
-    <ion-slides class="picture">
+    <ion-slides parallax="true" class="picture">
         <ion-slide *ngFor="let x of pollInterfaceProvider.memes; let i = index">
             <div>
                 <!-- <div id="textWrapper"> -->
