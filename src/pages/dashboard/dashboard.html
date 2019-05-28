@@ -1,11 +1,3 @@
-
-<!--
-  Generated template for the DashboardPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-
 <ion-content class='has-header'>
   
   <div class='category-wrapper'>
@@ -22,7 +14,7 @@
   
   <div class='pollList'>
     <div >
-      <ion-item text-wrap class='pollPreview' *ngFor='let poll of dash$.displayedPolls'>
+      <ion-item text-wrap class='pollPreview' *ngFor='let poll of dash$.displayedPolls' (click)="startPoll(poll.id)">
         <img class='pollImg' src='{{poll.coverImage}}'>
         <!-- <img class='pollImg' src='../../assets/imgs/testImage.jpg'> -->
         <h2>{{poll.pollTitle}}</h2>
