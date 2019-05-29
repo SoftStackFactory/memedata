@@ -26,7 +26,9 @@ export class PollBuilder2Page {
   }
 
   nextStage() {
-    if (this.BuilderService.meme.topText == "" || this.BuilderService.meme.bottomText == "" || this.BuilderService.meme.description == "") {
+    if (this.BuilderService.meme.topText == "" || 
+      this.BuilderService.meme.bottomText == "" || 
+      this.BuilderService.meme.description == "") {
       const alert = this.alertCtrl.create({
         title: 'Required Field(s)',
         subTitle: 'All Fields Must Be Completed!',
@@ -42,6 +44,10 @@ export class PollBuilder2Page {
       description: this.BuilderService.meme.description,
       userId: this.BuilderService.userId,
     });
+    this.BuilderService.keywords =
+      this.BuilderService.meme.topText + " " +
+      this.BuilderService.meme.bottomText + " " +
+      this.BuilderService.meme.description
 
     console.log("Meme Array", this.BuilderService.memes)
     //console.log(this.BuilderService.meme.image)

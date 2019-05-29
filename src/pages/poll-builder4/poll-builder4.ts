@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-//import { PollHistoryPage } from '../poll-history/poll-history';
-import { DashboardPage } from '../dashboard/dashboard';
+import { PollHistoryPage } from '../poll-history/poll-history';
+//import { DashboardPage } from '../dashboard/dashboard';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
 import { AlertController } from 'ionic-angular';
 
@@ -31,58 +31,72 @@ export class PollBuilder4Page {
   }
 
   publishPoll() {
-    if (this.BuilderService.pollSet.pollTitle == "" || this.BuilderService.pollSet.pollDescription == "" || this.BuilderService.pollSet.pollCategory == "") {
-      const alert = this.alertCtrl.create({
-        title: 'Required Field(s)',
-        subTitle: 'All Fields Must Be Completed!',
-        buttons: ['OK']
-      });
-      alert.present();
-    } else {
-    this.BuilderService.createPollSet()
-    .subscribe(
-      (response: any) => {       
-        this.BuilderService.pollSets = response
-        this.BuilderService.pollId = response.id
-        this.BuilderService.pollSets.userId = this.BuilderService.userId
+    if (this.BuilderService.pollSet.pollTitle == "" || 
+        this.BuilderService.pollSet.pollDescription == "" || 
+        this.BuilderService.pollSet.pollCategory == ""
+        ) {
+          const alert = this.alertCtrl.create({
+            title: 'Required Field(s)',
+            subTitle: 'All Fields Must Be Completed!',
+            buttons: ['OK']
+            });
+        alert.present();
+      } else {
+          this.BuilderService.keywords = this.BuilderService.keywords + " " +
+          this.BuilderService.pollSet.pollTitle + " " +
+          this.BuilderService.pollSet.pollDescription + " " +
+          this.BuilderService.pollSet.pollCategory
+          this.BuilderService.keywords = this.BuilderService.stringToArray(this.BuilderService.keywords)
+          this.BuilderService.filterKeywords(this.BuilderService.keywords)
+  
+          console.log("filtered keywords", this.BuilderService.keywords)
 
-        console.log("New PollSet", response)
+          this.BuilderService.pollSet.pollKeywords = this.BuilderService.keywords
+          this.BuilderService.createPollSet()
+            .subscribe(
+              (response: any) => {       
+                this.BuilderService.pollSets = response
+                this.BuilderService.pollId = response.id
+                this.BuilderService.pollSets.userId = this.BuilderService.userId
 
-        for (let i = 0; i <= this.BuilderService.memes.length - 1; i ++) {
-          this.BuilderService.memes[i].pollId = this.BuilderService.pollId
+                console.log("New PollSet", response)
 
-          console.log("New Meme",this.BuilderService.memes[i])
+                for (let i = 0; i <= this.BuilderService.memes.length - 1; i ++) {
+                  this.BuilderService.memes[i].pollId = this.BuilderService.pollId
 
-          this.BuilderService.saveMeme(this.BuilderService.memes[i])
-          .subscribe(
-            (response: any) => {
+                    console.log("New Meme",this.BuilderService.memes[i])
 
-              console.log("Saved Meme", response)
+                  this.BuilderService.saveMeme(this.BuilderService.memes[i])
+                    .subscribe(
+                      (response: any) => {
 
-              this.BuilderService.pollSet.pollTitle = ""
-              this.BuilderService.pollSet.pollDescription = ""
-              this.BuilderService.pollSet.pollCategory = ""
-              this.BuilderService.memes = []
-              this.BuilderService.displayMeme = {
-                topText: "",
-                bottomText: "",
-                image: "",
-                description: "",
-              };
-              this.BuilderService.meme = {
-                pollId: "",
-                topText: "",
-                bottomText: "",
-                image: "",
-                description: "",
-                userId: "",
-              };
-              this.BuilderService.pollMemes.push(response)
-            })
-        }
-      })
-    this.navCtrl.setRoot(DashboardPage);
-    }
-  }
+                        console.log("Saved Meme to DB", response)
+
+                        this.BuilderService.pollSet.pollTitle = ""
+                        this.BuilderService.pollSet.pollDescription = ""
+                        this.BuilderService.pollSet.pollCategory = ""
+                        this.BuilderService.pollSet.pollKeywords = ["keywords"]
+                        this.BuilderService.memes = []
+                        this.BuilderService.displayMeme = {
+                          topText: "",
+                          bottomText: "",
+                          image: "",
+                          description: "",
+                        };
+                        this.BuilderService.meme = {
+                          pollId: "",
+                          topText: "",
+                          bottomText: "",
+                          image: "",
+                          description: "",
+                          userId: "",
+                        };
+                        //this.BuilderService.pollMemes.push(response)
+                        })
+                  }         
+                })
+                this.navCtrl.setRoot(PollHistoryPage);
+          }   
+      }
 
 }

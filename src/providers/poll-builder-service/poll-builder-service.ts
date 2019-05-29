@@ -38,8 +38,10 @@ export class PollBuilderServiceProvider {
     //window.sessionStorage.getItem('userId');
 
   pollId: string = ""
-  pollMemes: any = []
+  pollMemes: any
   pollSets: any = []
+
+  keywords: any = []
   
   memes: Meme[] = [];
 
@@ -69,13 +71,26 @@ export class PollBuilderServiceProvider {
     completed: 0,
   }
 
+  filterWords: any = ["the", "The", "a", "A", "an", "An", "and", "And"]
+
+  getMyMemes() {
+    return this.http.get(this.apiBaseUrlMeme + "?filter=%7B%22where%22%3A%20%7B%22userId%22%3A%20%22" + this.userId + "%22%7D%7D")
+  }
+
+  stringToArray(str) {
+    return str.trim().split(" ")
+  }
+
+  filterKeywords(arr){
+    let result = arr.filter(word => !this.filterWords.includes(word))
+    this.keywords = result
+  }
+
   createPollSet(){
-    console.log(this.pollSet)
     return this.http.post(this.apiBaseUrlPollSet + "?access_token=" + this.token, this.pollSet)
   }
 
   saveMeme(meme){
-    //console.log(meme)
     return this.http.post(this.apiBaseUrlMeme + "?access_token=" + this.token, meme) 
   }
 }
