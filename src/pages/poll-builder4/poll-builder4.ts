@@ -91,7 +91,6 @@ export class PollBuilder4Page {
                           description: "",
                           userId: "",
                         };
-                        //this.BuilderService.pollMemes.push(response)
                         })
                   }         
                 })

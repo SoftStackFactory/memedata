@@ -24,25 +24,16 @@ export class PollBuilderServiceProvider {
     console.log('Hello PollBuilderServiceProvider Provider');
   }
 
-  //apiBaseUrl: string = "http://localhost:3000/api/"
-  //apiBaseUrl: string = "http://192.168.1.51:3000/api/"
   apiBaseUrlMeme: string = 'https://memepoll.herokuapp.com/api/memes'
   apiBaseUrlPollSet: string = 'https://memepoll.herokuapp.com/api/pollSets'
 
-  token: any //= this.storage.get('token').then((val) => {
-    //this.token = val});
-    //window.sessionStorage.getItem('token');
-  userId: any //= this.storage.get('userId').then((val) => {
-    //this.userId = val
-    //this.pollSet.userId = this.userId});
-    //window.sessionStorage.getItem('userId');
+  token: any
+  userId: any
 
   pollId: string = ""
   pollMemes: any
   pollSets: any = []
-
   keywords: any = []
-  
   memes: Meme[] = [];
 
   displayMeme: any = {
