@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-// import { DashboardPage } from '../dashboard/dashboard';
+import { DashboardPage } from '../dashboard/dashboard';
 import { PollResultsPage } from '../poll-results/poll-results'
 // import { Slides } from '@ionic-angular';
 // import { ViewChild } from '@angular/core';
