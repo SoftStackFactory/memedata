@@ -26,7 +26,9 @@ export class PollBuilder2Page {
   }
 
   nextStage() {
-    if (this.BuilderService.meme.topText == "" || this.BuilderService.meme.bottomText == "" || this.BuilderService.meme.description == "") {
+    if (this.BuilderService.meme.topText == "" || 
+      this.BuilderService.meme.bottomText == "" || 
+      this.BuilderService.meme.description == "") {
       const alert = this.alertCtrl.create({
         title: 'Required Field(s)',
         subTitle: 'All Fields Must Be Completed!',
@@ -38,14 +40,21 @@ export class PollBuilder2Page {
       pollId: "none",
       topText: this.BuilderService.meme.topText,
       bottomText: this.BuilderService.meme.bottomText,
-      image: this.BuilderService.meme.image, //"my image"
+      image: this.BuilderService.meme.image,
       description: this.BuilderService.meme.description,
       userId: this.BuilderService.userId,
     });
-    console.log("meme array", this.BuilderService.memes)
-    this.BuilderService.meme.image //= "myimage"
-    console.log(this.BuilderService.meme.image)
-    this.BuilderService.pollSet.coverImage = this.BuilderService.memes[0].image // "my image"
+    this.BuilderService.keywords =
+      this.BuilderService.meme.topText + " " +
+      this.BuilderService.meme.bottomText + " " +
+      this.BuilderService.meme.description
+
+    console.log("Meme Array", this.BuilderService.memes)
+    //console.log(this.BuilderService.meme.image)
+    this.BuilderService.meme.topText = ""
+    this.BuilderService.meme.bottomText = ""
+    this.BuilderService.meme.description = ""
+    this.BuilderService.pollSet.coverImage = this.BuilderService.memes[0].image
     this.navCtrl.push(PollBuilder3Page);
     }
   }
