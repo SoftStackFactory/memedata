@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-// import { DashboardPage } from '../dashboard/dashboard';
+import { DashboardPage } from '../dashboard/dashboard';
 import { PollResultsPage } from '../poll-results/poll-results'
 import { DashboardServiceProvider } from '../../providers/dashboard-service/dashboard-service';
 // import { Slides } from '@ionic-angular';
@@ -43,8 +43,10 @@ export class PollInterfacePage {
   ]
   
   userResponse:any = {
-    id:"",
-    response:""
+    memeId:"",
+    userId:"",
+    choice:"",
+    id:""
     }
   
 
@@ -52,7 +54,7 @@ export class PollInterfacePage {
   
   constructor(public navCtrl: NavController, public navParams: NavParams, public dash$: DashboardServiceProvider) {
 
-    this.slides = [1,2,3,4,5,6,7,8]
+    this.slides = [1,2,3,4,5,6,7,8,9,10]
 
   this.meme = {
         "image": "",
@@ -101,9 +103,9 @@ overlayHiddenInfo (){
         console.log("Poll Done")
         this.pollComplete = true
         this.navCtrl.setRoot(PollResultsPage) 
-        // for(let i=0; i < this.answers.length; i++) {
-        //   console.log(this.answers[i].response)
-        // }
+        for(let i=0; i < this.answers.length; i++) {
+          console.log(this.answers[i].response)
+        }
       }
     }
   }
@@ -112,8 +114,6 @@ overlayHiddenInfo (){
     if (!this.pollComplete) {
       let random = Math.floor(Math.random() * 500) + 1
       this.imgUrl = "https://picsum.photos/id/" + random + "/360/640"
-      console.log(this.imgUrl)
-    
       this.progress = this.progress + this.percent
       this.progressBar(this.progress)
 
@@ -132,17 +132,22 @@ swipeEvent(e) {
   this.button()
     if (e.direction == 2) {
        this.userResponse = {
-        id:"00001",
-        response:"left"
+        memeId:"0001",
+        userId:"",
+        choice:"left",
+        id:""
       }
       this.answers.push(this.userResponse)
     } 
     else if (e.direction == 4){
       this.userResponse = {
-        id:"00001",
-        response:"right"
+        memeId:"0001",
+        userId:"",
+        choice:"right",
+        id:""
       }
       this.answers.push(this.userResponse)
+  
     }
   }
 }
