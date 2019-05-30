@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 import { ResultsServiceProvider } from '../../providers/results-service/results-service';
+import { DashboardPage } from '../dashboard/dashboard';
 
 @IonicPage()
 @Component({
@@ -81,78 +82,6 @@ export class PollResultsPage {
     }
   ]
 
-  // answers:any = [
-  //   {
-  //     'memeId': '00001',
-  //     'userId': 'user1',
-  //     'choice': "right"
-  //   },    {
-  //     'memeId': '00001',
-  //     'userId': 'user1',
-  //     'choice': "left"
-  //   },    {
-  //     'memeId': '00001',
-  //     'userId': 'user1',
-  //     'choice': "right"
-  //   },    {
-  //     'memeId': '00001',
-  //     'userId': 'user1',
-  //     'choice': "right"
-  //   },
-  //   {
-  //     'memeId': '00002',
-  //     'userId': 'user1',
-  //     'choice': "right"
-  //   },    {
-  //     'memeId': '00002',
-  //     'userId': 'user1',
-  //     'choice': "right"
-  //   },    {
-  //     'memeId': '00002',
-  //     'userId': 'user1',
-  //     'choice': "left"
-  //   },    {
-  //     'memeId': '00002',
-  //     'userId': 'user1',
-  //     'choice': "left"
-  //   },
-  //   {
-  //     'memeId': '00002',
-  //     'userId': 'user1',
-  //     'choice': "right"
-  //   },
-  //   {
-  //     'memeId': '00002',
-  //     'userId': 'user1',
-  //     'choice': "right"
-  //   },
-  //   {
-  //     'memeId': '00003',
-  //     'userId': 'user1',
-  //     'choice': "right"
-  //   },
-  //   {
-  //     'memeId': '00003',
-  //     'userId': 'user1',
-  //     'choice': "left"
-  //   },
-  //   {
-  //     'memeId': '00004',
-  //     'userId': 'user1',
-  //     'choice': "right"
-  //   },
-  //   {
-  //     'memeId': '00004',
-  //     'userId': 'user1',
-  //     'choice': "right"
-  //   },
-  //   {
-  //     'memeId': '00004',
-  //     'userId': 'user1',
-  //     'choice': "right"
-  //   },
-    
-  // ]
 
   userResponse:any = [
     {
@@ -210,6 +139,10 @@ export class PollResultsPage {
     this.barPercent2 = {'width': Math.round(noPercent) + "%"}
 
     return this.barPercent1
+  }
+
+  toDashboard() {
+    this.navCtrl.setRoot(DashboardPage)
   }
 
 }
