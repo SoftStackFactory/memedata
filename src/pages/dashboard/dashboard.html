@@ -5,6 +5,7 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
+<searchbar></searchbar>
 
 
 <ion-content class='has-header'>
@@ -23,7 +24,7 @@
   
   <div class='pollList has-footer'>
     <div>
-      <ion-item text-wrap class='pollPreview' *ngFor='let poll of dash$.displayedPolls' (click)='goToPoll()'>
+      <ion-item text-wrap class='pollPreview' *ngFor='let poll of dash$.displayedPolls' (click)='goToPoll(poll)'>
         <img class='pollImg' src='{{poll.coverImage}}'>
         <h2>{{poll.pollTitle}}</h2>
         <p class='pollDescription'>{{poll.pollDescription}}</p>

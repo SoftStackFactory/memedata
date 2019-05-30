@@ -15,6 +15,8 @@ import { PollResultsPage } from '../pages/poll-results/poll-results';
 
 import { SearchbarServiceProvider } from '../providers/searchbar-service/searchbar-service';
 
+
+
 @Component({
   templateUrl: 'app.html'
 })

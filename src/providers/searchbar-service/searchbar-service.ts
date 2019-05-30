@@ -73,16 +73,5 @@ export class SearchbarServiceProvider {
       }
     })
   }
-    
-//   var sample = [1, 2, 3] // yeah same array
-// // es5
-// var result = sample.filter(function(elem){
-//     return elem !== 2;
-// })
-// console.log(result)
-// // es6
-// var result = sample.filter(elem => elem !== 2)
-// /* output */
-// [1, 3]
 
 }

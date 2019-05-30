@@ -5,6 +5,7 @@ import { DashboardServiceProvider } from '../../providers/dashboard-service/dash
 import { PollBuilderPage } from '../poll-builder/poll-builder';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
 import { PollInterfacePage } from '../poll-interface/poll-interface';
+import { SearchbarComponent } from '../../components/searchbar/searchbar';
 
 
 /**
@@ -41,6 +42,7 @@ export class DashboardPage {
 
   pullAllPolls() {
     this.dash$.pullAllPolls();
+    this.dash$.pullAllMemes();
   }
 
   filterPollsByCategory(category){
@@ -59,7 +61,12 @@ export class DashboardPage {
   goToMyPolls() {
     this.navCtrl.setRoot(DashboardPage);
   }
-  goToPoll() {
+  goToPoll(poll) {
+    console.log(poll.id);
+    console.log('dash$ memes', this.dash$.memes);
+    this.dash$.selectedPoll = poll;
+    this.dash$.memes = this.dash$.memes.filter(meme => meme.pollId === poll.id);
+    console.log('dash$ memes', this.dash$.memes);
     this.navCtrl.push(PollInterfacePage);
   }
   

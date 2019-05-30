@@ -21,6 +21,8 @@ import { PollInterfacePage } from '../pages/poll-interface/poll-interface';
 import { PollResultsPage } from '../pages/poll-results/poll-results';
 import { PollHistoryPage } from '../pages/poll-history/poll-history';
 
+import { SearchbarComponent } from '../components/searchbar/searchbar';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -50,7 +52,8 @@ import { SearchbarServiceProvider } from '../providers/searchbar-service/searchb
     PollBuilder4Page,
     PollInterfacePage,
     PollResultsPage,
-    PollHistoryPage
+    PollHistoryPage,
+    SearchbarComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +76,8 @@ import { SearchbarServiceProvider } from '../providers/searchbar-service/searchb
     PollBuilder4Page,
     PollInterfacePage,
     PollResultsPage,
-    PollHistoryPage
+    PollHistoryPage,
+    SearchbarComponent
   ],
   providers: [
     //HTTP,
