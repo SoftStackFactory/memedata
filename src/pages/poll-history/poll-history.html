@@ -40,28 +40,34 @@
       <ion-content>
           <div [ngSwitch]="poll">
             <ion-list *ngSwitchCase="'taken'">
-            <ion-list *ngFor="let examples of example">
+            <ion-list *ngFor="let poll of dash$.displayedPolls">
             <ion-item>
                 <ion-thumbnail item-start>
-                  <img src= "{{examples.memeImage}}">
+                  <img src= "{{poll.coverImage}}">
                 </ion-thumbnail>
-                <h2>{{examples.title}}</h2>
-                <p>{{examples.description}}</p>
+                <h2>{{poll.pollTitle}}</h2>
+                <p>{{poll.pollDescription}}</p>
               </ion-item>
+              <ion-infinite-scroll (ionInfinite)="dash$.doInfinite($event)">
+                <ion-infinite-scroll-content></ion-infinite-scroll-content>
+              </ion-infinite-scroll>
             </ion-list>
             </ion-list>
 
   <!-- Created Poll List -->
       <ion-list *ngSwitchCase="'created'">
       <ion-item>
-          <ion-list *ngFor="let examples of example">
+          <ion-list *ngFor="let poll of dash$.displayedPolls">
               <ion-item>
                   <ion-thumbnail item-start>
-                    <img src= "{{examples.memeImage}}">
+                    <img src= "{{poll.coverImage}}">
                   </ion-thumbnail>
-                  <h2>{{examples.title}}</h2>
-                  <p>{{examples.description}}</p>
+                  <h2>{{poll.pollTitle}}</h2>
+                  <p>{{poll.pollDescription}}</p>
       </ion-item>
+      <ion-infinite-scroll (ionInfinite)="dash$.doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
 </ion-list>
     
   <!-- HERE IS THE ORIGINAL LISTS CODE USE IT TO BASE YOUR TEMPLATE FOR SEGMENTS-->
