@@ -1,3 +1,70 @@
 page-dashboard {
-
+    
 }
+
+.item-md.item-block .item-inner {
+    border-bottom: none;
+}
+
+.item-ios.item-block .item-inner {
+    border-bottom: none;
+}
+
+.category {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    // margin: 0px 15px;
+    p {
+        font-size:10px;
+    }
+}
+
+.pollPreview {
+    width: 100vw;
+    max-height: 150px;
+    display: inline-block;
+
+    h2 {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    p {
+        max-height: 100px;
+    }
+}
+
+.pollImg {
+    margin-right: 15px;
+    float: left;
+    vertical-align:middle;
+    height: 125px;
+    width: 125px;
+    // background: none;
+}
+
+.category-wrapper {
+    position: sticky;
+    top: 0px;
+    z-index: 999;
+}
+
+.top-ion-scroll {
+    // position: fixed;
+    white-space: nowrap;
+    height: 115px;
+    // background-color: grey;
+    // margin: 0px 15px 0px 15px;
+    // padding-top: 15px;
+}
+
+.pollList {
+    // top:165px;
+    // margin-bottom: 50px;
+}
+.scroll-content {
+    height: auto !important;
+    overflow: scroll !important;
+    }

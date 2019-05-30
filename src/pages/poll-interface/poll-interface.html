@@ -1,15 +1,58 @@
-<!--
-  Generated template for the PollInterfacePage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
-    <ion-title>pollInterface</ion-title>
+      <!-- <div class = "item item-avatar">
+          <img src = "my-image.png">
+          <h2>Card Name</h2>
+       </div> -->
+    <ion-title>PICTURE POLL</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding (swipe)="swipeEvent($event)">
+
+  <div class="my-overlay" (click)="hideOverlay()" padding [hidden]="overlayHidden">
+      <p class="overlayText">Hello Welcome New User!</p>
+</div>
+
+<div class="my-overlay" (click)="hideOverlay()" padding [hidden]="overlayInfo">
+    <p class="overlayText">This is the information section!
+      Welcome to the MemePoll. Please swipe right for one option and left for another. You will see your results
+      and have them compared to your friends when your done. You can then share your data in your social media.
+    </p>
+   
+</div>
+
+  <h4 id="pollNumber">{{questionNumber}}/{{totalQuestions}}</h4>
+
+     <div id="textWrapper">
+        <div id="topText">{{meme.topText}}</div>
+        <div id="bottomText">{{meme.bottomText}}</div>
+      </div>
+
+   <!-- <div class = "picture">
+      <img src= {{imgUrl}} alt="Meme">
+   </div> -->
+
+  <ion-slides  class = "picture" >
+     <ion-slide *ngFor="let x of slides; let i = index">
+          <div>
+              <!-- <img src="https://picsum.photos/id/1{{x}}{{i}}/360/640" alt="Meme"> -->
+              <img src={{imgUrl}} alt="Meme">
+           </div>
+     </ion-slide>
+  </ion-slides>
+
+  <div class="buttons">
+    <button ion-button large round color="secondary" (click)="button()" float-right>Yes</button>
+    <button ion-button large round (click)="overlayHiddenInfo()" float-center>Info</button>
+    <button ion-button large round color="danger" (click)="button()"  float-left>No</button>
+  </div>
+
+
+      <div id="progressWrapper">
+        <div id="bar">
+        </div>
+      </div>
 
 </ion-content>

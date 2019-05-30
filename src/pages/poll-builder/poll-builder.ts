@@ -27,12 +27,12 @@ export class PollBuilderPage {
 
   takePicture() {
     let options: CameraOptions = {
-      quality: 100,
+      quality: 25,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
-      correctOrientation: true,
-      allowEdit: true
+      correctOrientation: true//,
+      //allowEdit: true
     }
     
     this.camera.getPicture(options).then((imageData) => {
@@ -47,20 +47,20 @@ export class PollBuilderPage {
 
   getImage() {
     let options: CameraOptions = {
-      quality: 100,
+      quality: 25,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
       mediaType: this.camera.MediaType.PICTURE,
       saveToPhotoAlbum: false,
-      correctOrientation: true,
-      allowEdit: true
+      correctOrientation: true//,
+      //allowEdit: true
     }
     
     this.camera.getPicture(options).then((imageData) => {
     // imageData is either a base64 encoded string or a file URI
     // If it's base64 (DATA_URL):
-    this.BuilderService.meme.image = 'data:image/jpeg;base64,' + imageData;
+    this.BuilderService.meme.image = 'data:image/jpeg;base64,'; + imageData;
     }, (err) => {
     // Handle error
     });

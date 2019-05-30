@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-
 import { HttpClientModule } from '@angular/common/http';
+
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -25,11 +25,18 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 //ionic
 import { Camera } from '@ionic-native/camera';
+import { IonicStorageModule } from '@ionic/storage';
 
 //providers
 import { UserProvider } from '../providers/user/user';
 import { PollBuilderServiceProvider } from '../providers/poll-builder-service/poll-builder-service';
+<<<<<<< HEAD
 import { PollhistoryProvider } from '../providers/pollhistory/pollhistory';
+=======
+import { DashboardServiceProvider } from '../providers/dashboard-service/dashboard-service';
+import { ResultsServiceProvider } from '../providers/results-service/results-service';
+import { SearchbarServiceProvider } from '../providers/searchbar-service/searchbar-service';
+>>>>>>> develop
 
 @NgModule({
   declarations: [
@@ -50,8 +57,9 @@ import { PollhistoryProvider } from '../providers/pollhistory/pollhistory';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -75,9 +83,15 @@ import { PollhistoryProvider } from '../providers/pollhistory/pollhistory';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DashboardServiceProvider,
     UserProvider,
     PollBuilderServiceProvider,
+<<<<<<< HEAD
     PollhistoryProvider
+=======
+    ResultsServiceProvider,
+    SearchbarServiceProvider
+>>>>>>> develop
   ]
 })
 export class AppModule {}
