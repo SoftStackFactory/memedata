@@ -69,10 +69,6 @@ export class DashboardPage {
     console.log('dash$ memes', this.dash$.memes);
     this.navCtrl.push(PollInterfacePage);
   }
-  
-  goToPoll() {
-    this.navCtrl.push(PollInterfacePage)
-  }
 
 }
 
