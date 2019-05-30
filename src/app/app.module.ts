@@ -29,6 +29,7 @@ import { Camera } from '@ionic-native/camera';
 //providers
 import { UserProvider } from '../providers/user/user';
 import { PollBuilderServiceProvider } from '../providers/poll-builder-service/poll-builder-service';
+import { PollhistoryProvider } from '../providers/pollhistory/pollhistory';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { PollBuilderServiceProvider } from '../providers/poll-builder-service/po
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
-    PollBuilderServiceProvider
+    PollBuilderServiceProvider,
+    PollhistoryProvider
   ]
 })
 export class AppModule {}
