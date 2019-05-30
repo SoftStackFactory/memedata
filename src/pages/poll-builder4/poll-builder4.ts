@@ -4,6 +4,7 @@ import { PollHistoryPage } from '../poll-history/poll-history';
 //import { DashboardPage } from '../dashboard/dashboard';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
 import { AlertController } from 'ionic-angular';
+import { DashboardPage } from '../dashboard/dashboard';
 
 /**
  * Generated class for the PollBuilder4Page page.
@@ -94,7 +95,7 @@ export class PollBuilder4Page {
                         })
                   }         
                 })
-                this.navCtrl.setRoot(PollHistoryPage);
+                this.navCtrl.setRoot(DashboardPage);
           }   
       }
 
