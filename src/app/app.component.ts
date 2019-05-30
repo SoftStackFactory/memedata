@@ -15,6 +15,8 @@ import { PollResultsPage } from '../pages/poll-results/poll-results';
 
 import { SearchbarServiceProvider } from '../providers/searchbar-service/searchbar-service';
 
+
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -45,6 +47,7 @@ export class MyApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+      console.log("your platform(s) is/are", this.platform.platforms())
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });

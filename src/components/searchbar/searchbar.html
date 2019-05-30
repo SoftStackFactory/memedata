@@ -1,0 +1,43 @@
+<!-- Generated template for the SearchbarComponent component -->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle='left' icon-only>
+      <ion-icon name="person"></ion-icon>
+    </button>
+    <ion-buttons ion-button ion-header end>
+      <button ion-button (click)="search$.setFilteredItems()">go</button>
+    </ion-buttons>
+    <ion-searchbar
+      [(ngModel)]="search$.searchTerm"
+      (keyup.enter)="search$.setFilteredItems()"
+      placeholder='Find Polls'
+      type='text'
+      id='searchBar'
+    ></ion-searchbar>
+  </ion-navbar>
+</ion-header>
+
+<ion-menu [content]='content' swipeEnabled='false' type='overlay'>
+  <ion-toolbar>
+    <ion-title>My MemePoll</ion-title>
+  </ion-toolbar>
+  <ion-list id='userSidebar'>
+    <ion-item>
+      <ion-label (click)='goToAccountInfo()' menuClose>
+        Account Info
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label (click)='goToRewardsHistory()' menuClose>
+        Poll Rewards/History
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label (click)='goToLogout()' menuClose>
+        Logout
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-menu>
+
+<ion-nav #content swipeBackEnabled="false"></ion-nav>

@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
-//import { HTTP } from "@ionic-native/http";
 
 
 import { MyApp } from './app.component';
@@ -21,6 +20,8 @@ import { PollInterfacePage } from '../pages/poll-interface/poll-interface';
 import { PollResultsPage } from '../pages/poll-results/poll-results';
 import { PollHistoryPage } from '../pages/poll-history/poll-history';
 
+import { SearchbarComponent } from '../components/searchbar/searchbar';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -32,6 +33,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { UserProvider } from '../providers/user/user';
 import { PollBuilderServiceProvider } from '../providers/poll-builder-service/poll-builder-service';
 import { DashboardServiceProvider } from '../providers/dashboard-service/dashboard-service';
+import { ResultsServiceProvider } from '../providers/results-service/results-service';
 import { SearchbarServiceProvider } from '../providers/searchbar-service/searchbar-service';
 
 @NgModule({
@@ -49,7 +51,8 @@ import { SearchbarServiceProvider } from '../providers/searchbar-service/searchb
     PollBuilder4Page,
     PollInterfacePage,
     PollResultsPage,
-    PollHistoryPage
+    PollHistoryPage,
+    SearchbarComponent
   ],
   imports: [
     BrowserModule,
@@ -72,10 +75,10 @@ import { SearchbarServiceProvider } from '../providers/searchbar-service/searchb
     PollBuilder4Page,
     PollInterfacePage,
     PollResultsPage,
-    PollHistoryPage
+    PollHistoryPage,
+    SearchbarComponent
   ],
   providers: [
-    //HTTP,
     Camera,
     StatusBar,
     SplashScreen,
@@ -83,6 +86,7 @@ import { SearchbarServiceProvider } from '../providers/searchbar-service/searchb
     DashboardServiceProvider,
     UserProvider,
     PollBuilderServiceProvider,
+    ResultsServiceProvider,
     SearchbarServiceProvider
   ]
 })

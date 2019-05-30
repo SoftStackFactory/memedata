@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DashboardPage } from '../dashboard/dashboard';
 import { PollResultsPage } from '../poll-results/poll-results'
+import { DashboardServiceProvider } from '../../providers/dashboard-service/dashboard-service';
 // import { Slides } from '@ionic-angular';
 // import { ViewChild } from '@angular/core';
 
@@ -32,6 +33,8 @@ export class PollInterfacePage {
   overlayInfo: boolean = true;
   
   meme:any
+  selectedPoll:any = this.dash$.selectedPoll;
+  memes:any = this.dash$.memes;
 
   public swipe: number = 0;
 
@@ -49,7 +52,7 @@ export class PollInterfacePage {
 
   slides:any 
   
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public dash$: DashboardServiceProvider) {
 
     this.slides = [1,2,3,4,5,6,7,8,9,10]
 
@@ -73,7 +76,7 @@ overlayHiddenInfo (){
 
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PollInterfacePage');
+    console.log('ionViewDidLoad PollInterfacePage', this.selectedPoll);
     let random = Math.floor(Math.random() * 500) + 1
     this.imgUrl = "https://picsum.photos/id/" + random + "/360/640"
        // this.pollSetup(30, 0)

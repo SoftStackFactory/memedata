@@ -1,4 +1,7 @@
 page-dashboard {
+    .scroll-content{
+        overflow-y: scroll;
+    }
     
 }
 
@@ -10,14 +13,22 @@ page-dashboard {
     border-bottom: none;
 }
 
+.category-wrapper {
+    margin-left: 0px;
+    margin-right: 15px;
+}
+
 .category {
     display: inline-block;
     width: 100px;
     text-align: center;
-    // margin: 0px 15px;
     p {
         font-size:10px;
     }
+}
+
+.pollDescription {
+    
 }
 
 .pollPreview {
@@ -33,6 +44,8 @@ page-dashboard {
     
     p {
         max-height: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 
@@ -61,6 +74,9 @@ page-dashboard {
 }
 
 .pollList {
-    // top:165px;
-    // margin-bottom: 50px;
+    padding-bottom: 64px;
 }
+.scroll-content {
+    height: auto !important;
+    overflow: scroll !important;
+    }

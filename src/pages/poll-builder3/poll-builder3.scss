@@ -1,5 +1,8 @@
 page-poll-builder3 {
-
+  .scroll-content{
+    overflow-y: scroll;
+    height: auto;
+}
 }
 
 .counter {
@@ -33,13 +36,22 @@ page-poll-builder3 {
       font-size: .8rem;
       .card-title, .card-subtitle{
         transform: scale(1,1.9);
+        text-shadow:1px 1px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        0px 1px 0 #000,
+        1px 0px 0 #000,
+        0px -1px 0 #000,
+        -1px 0px 0 #000,
+        1px 1px 5px #000;
       }
     }
   
     .card-title, .card-subtitle {
       position: absolute;
       width: 100%;
-      font-family: impact;
+      font-family: impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif;
       text-transform: uppercase;
       transform: scale(1,2.2);
       color: white;
@@ -63,5 +75,10 @@ page-poll-builder3 {
   .card-subtitle{
     top: 85%;
   }
+
+  .scroll-content {
+    height: auto !important;
+    overflow: scroll !important;
+    }
 
 }

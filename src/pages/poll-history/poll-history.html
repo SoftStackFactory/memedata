@@ -11,5 +11,13 @@
 </ion-header>
 
 <ion-content padding>
+  <button ion-button full (click)="getAllMyMemes()">Get my meme's images</button>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4 *ngFor="let meme of BuilderService.pollMemes">
+          <img src="{{meme.image}}">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

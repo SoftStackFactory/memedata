@@ -24,21 +24,16 @@ export class PollBuilderServiceProvider {
     console.log('Hello PollBuilderServiceProvider Provider');
   }
 
-  //apiBaseUrl: string = "http://localhost:3000/api/"
-  apiBaseUrl: string = "http://192.168.1.51:3000/api/"
+  apiBaseUrlMeme: string = 'https://memepoll.herokuapp.com/api/memes'
+  apiBaseUrlPollSet: string = 'https://memepoll.herokuapp.com/api/pollSets'
 
-  token: any //= this.storage.get('token').then((val) => {
-    //this.token = val});
-    //window.sessionStorage.getItem('token');
-  userId: any //= this.storage.get('userId').then((val) => {
-    //this.userId = val
-    //this.pollSet.userId = this.userId});
-    //window.sessionStorage.getItem('userId');
+  token: any
+  userId: any
 
   pollId: string = ""
-  pollMemes: any = []
+  pollMemes: any
   pollSets: any = []
-  
+  keywords: any = []
   memes: Meme[] = [];
 
   displayMeme: any = {
@@ -67,13 +62,26 @@ export class PollBuilderServiceProvider {
     completed: 0,
   }
 
+  filterWords: any = ["the", "The", "a", "A", "an", "An", "and", "And"]
+
+  getMyMemes() {
+    return this.http.get(this.apiBaseUrlMeme + "?filter=%7B%22where%22%3A%20%7B%22userId%22%3A%20%22" + this.userId + "%22%7D%7D")
+  }
+
+  stringToArray(str) {
+    return str.trim().split(" ")
+  }
+
+  filterKeywords(arr){
+    let result = arr.filter(word => !this.filterWords.includes(word))
+    this.keywords = result
+  }
+
   createPollSet(){
-    console.log(this.pollSet)
-    return this.http.post(this.apiBaseUrl + "pollSets?access_token=" + this.token, this.pollSet)
+    return this.http.post(this.apiBaseUrlPollSet + "?access_token=" + this.token, this.pollSet)
   }
 
   saveMeme(meme){
-    //console.log(meme)
-    return this.http.post(this.apiBaseUrl + "memes?access_token=" + this.token, meme) 
+    return this.http.post(this.apiBaseUrlMeme + "?access_token=" + this.token, meme) 
   }
 }
