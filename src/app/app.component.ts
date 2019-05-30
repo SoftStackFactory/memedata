@@ -3,16 +3,13 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-<<<<<<< HEAD
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { PollHistoryPage } from '../pages/poll-history/poll-history';
-=======
 //import { HomePage } from '../pages/home/home';
 //import { ListPage } from '../pages/list/list';
 
 import { PollInterfacePage } from '../pages/poll-interface/poll-interface';
->>>>>>> develop
 import { LoginPage } from '../pages/login/login';
 import { LogoutPage } from '../pages/logout/logout';
 import { RegisterPage } from '../pages/register/register';
@@ -28,11 +25,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   
 
-<<<<<<< HEAD
   rootPage: any = PollHistoryPage;
-=======
-  rootPage: any = LoginPage;
->>>>>>> develop
 
   pages: Array<{title: string, component: any}>;
 

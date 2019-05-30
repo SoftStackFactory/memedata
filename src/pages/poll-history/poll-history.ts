@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { PollhistoryProvider } from '../../providers/pollhistory/pollhistory';
 /**
  * Generated class for the PollHistoryPage page.
  *
