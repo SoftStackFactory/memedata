@@ -20,61 +20,72 @@ class Meme {
 @Injectable()
 export class PollhistoryProvider {
 
+
+  categories = ['sports', 'politics', 'education', 'technology', 'travel', 'lifestyle', 'fashion', 'comedy'];
+  selectedCategory:string;
+  polls:any = [];
+  displayedPolls:any = [];
+  // API endpoints for pulling poll data.
+  // These endpoints are used to serve to a phone withthe devapp. Uncomment these, and comment out the above versions.
+  // Change the below ip address to the ip address you are connecting from.
+  pollsApi:string = 'https://memepoll.herokuapp.com/api/pollSets?access_token=b9mlT8uvLmKJj38eoquDnslnogB07V0mYpd4FDhAhRfT9twx9uf5REChqXEkMK2I';
+  categoryFilter:string = '&filter=%7B%22where%22%3A%7B%22pollCategory%22%3A%22'+`${this.selectedCategory}`+'%22%7D%7D';
+  catFilterA:string = 'https://memepoll.herokuapp.com/api/pollSets?access_token=b9mlT8uvLmKJj38eoquDnslnogB07V0mYpd4FDhAhRfT9twx9uf5REChqXEkMK2I&filter=%7B%22where%22%3A%7B%22pollCategory%22%3A%22';
+  catFilterB:string = '%22%7D%7D';
+
   constructor(public http: HttpClient, public storage: Storage) {
     console.log('Hello PollhistoryProvider Provider');
   }
+// Pulling Poll Data
 
-  apiBaseUrlMeme: string = 'https://memepoll.herokuapp.com/api/memes'
-  apiBaseUrlPollSet: string = 'https://memepoll.herokuapp.com/api/pollSets'
+pullAllPolls(){
+  this.http.get(`${this.pollsApi}`).subscribe((response) => {
+    // log the http request response
+    console.log(response);
+    this.polls = [];
+    this.polls = response;
+    for (let i=0; i <10; i++) {
+      this.displayedPolls.push(response[this.displayedPolls.length]);
+    }
+    // Log the polls currently being displayed in the template
+    console.log(this.displayedPolls);
+    });
+}
 
-
-  token: any //= this.storage.get('token').then((val) => {
-    //this.token = val});
-    //window.sessionStorage.getItem('token');
-  userId: any //= this.storage.get('userId').then((val) => {
-    //this.userId = val
-    //this.pollSet.userId = this.userId});
-    //window.sessionStorage.getItem('userId');
-
-    pollId: string = ""
-  pollMemes: any = []
-  pollSets: any = []
-  
-  memes: Meme[] = [];
-
-  displayMeme: any = {
-    topText: "",
-    bottomText: "",
-    image: "",
-    description: "",
-  };
-
-  meme: any = {
-    pollId: "",
-    topText: "",
-    bottomText: "",
-    image: "",
-    description: "",
-    userId: "",
-  };
-
-  pollSet: any = {
-    pollTitle: "",
-    pollDescription: "",
-    coverImage: "",
-    pollCategory: "",
-    pollKeywords: ["keyword"],
-    userId: "",
-    completed: 0,
+filterPollsByCategory(category) {
+  this.selectedCategory = category;
+  this.http.get(`${this.catFilterA}`+this.selectedCategory+`${this.catFilterB}`).subscribe((response) => {
+  this.polls = [];
+  this.displayedPolls = [];
+  this.polls = response;
+  // Log the polls object, which is also the http request response
+  console.log(this.polls);
+  for (let i=0; i <10; i++) {
+    this.displayedPolls.push(response[this.displayedPolls.length]);
   }
-  createPollSet(){
-    console.log(this.pollSet)
-    return this.http.post(this.apiBaseUrlPollSet + "?access_token=" + this.token, this.pollSet)
-  }
+  // Log the polls currently being displayed in the template
+  console.log(this.displayedPolls);
+  });
+}
 
-  saveMeme(meme){
-    //console.log(meme)
-    return this.http.post(this.apiBaseUrlMeme + "?access_token=" + this.token, meme) 
-  }
+// Logic for the infinite scroll 
+
+doInfinite(infiniteScroll) {
+  console.log('Begin async operation');
+  setTimeout(() => {      
+    for (let i = 0; i < 10; i++) {
+      if(this.polls.length>this.displayedPolls.length){
+      this.displayedPolls.push( this.polls[this.displayedPolls.length] );
+      } else {
+        infiniteScroll.loadingText = "No more polls...";
+            // infiniteScroll.enable(false);
+            // potential ionic bug related to re-enabling infinite-scroll 
+            // once enable has been set to false
+      }
+    }
+    console.log(event, 'Async operation has ended');
+    infiniteScroll.complete();
+  }, 500);
+}
 
 }
