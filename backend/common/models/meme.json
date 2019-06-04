@@ -3,11 +3,16 @@
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
-    "validateUpsert": true
+    "validateUpsert": true,
+    "strictObjectIDCoercion": true
   },
   "properties": {
     "id": {
       "type": "number",
+      "required": true
+    },
+    "pollId": {
+      "type": "string",
       "required": true
     },
     "topText": {
