@@ -10,10 +10,6 @@
       "type": "number",
       "required": true
     },
-    "pollId": {
-      "type": "string",
-      "required": true
-    },
     "topText": {
       "type": "string"
     },
@@ -33,7 +29,7 @@
     "answers": {
       "type": "hasMany",
       "model": "answer",
-      "foreignKey": "userId"
+      "foreignKey": "memeId"
     }
   },
   "acls": [],
