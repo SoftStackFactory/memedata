@@ -33,7 +33,7 @@
     "answers": {
       "type": "hasMany",
       "model": "answer",
-      "foreignKey": "pollId"
+      "foreignKey": "userId"
     }
   },
   "acls": [],
