@@ -34,7 +34,7 @@ export class SearchbarServiceProvider {
         console.log(response)
         this.dash$.polls = response
   
-        if(response.length == 0) {
+        if(this.dash$.polls.length == 0) {
           this.presentToast();
           console.log('No Search Results');
         }

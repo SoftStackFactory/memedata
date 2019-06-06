@@ -2,17 +2,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DashboardPage } from '../dashboard/dashboard';
 import { PollResultsPage } from '../poll-results/poll-results'
-import { DashboardServiceProvider } from '../../providers/dashboard-service/dashboard-service';
-// import { Slides } from '@ionic-angular';
-// import { ViewChild } from '@angular/core';
+import { PollInterfaceProvider } from '../../providers/poll-interface-provider/poll-interface-provider';
+import { Slides } from 'ionic-angular';
+import { ViewChild } from '@angular/core';
 
-
-/**
- * Generated class for the PollInterfacePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -20,6 +13,8 @@ import { DashboardServiceProvider } from '../../providers/dashboard-service/dash
   templateUrl: 'poll-interface.html',
 })
 export class PollInterfacePage {
+
+  @ViewChild(Slides) slides: Slides;
 
   imgUrl:any
   progress:any = 0
@@ -33,14 +28,11 @@ export class PollInterfacePage {
   overlayInfo: boolean = true;
   
   meme:any
-  selectedPoll:any = this.dash$.selectedPoll;
-  memes:any = this.dash$.memes;
+  memeCount:any
 
   public swipe: number = 0;
 
-  answers:any = [
-  
-  ]
+  answers:any = []
   
   userResponse:any = {
     memeId:"",
@@ -49,85 +41,59 @@ export class PollInterfacePage {
     id:""
     }
   
-
-  slides:any 
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, public dash$: DashboardServiceProvider) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              public pollInterfaceProvider: PollInterfaceProvider) {
 
-    this.slides = [1,2,3,4,5,6,7,8,9,10]
-
-  this.meme = {
-        "image": "",
-        "topText": "Top Text",
-        "bottomText": "Bottom Text",
-        "description": ""
-      }
+  this.meme = this.pollInterfaceProvider.memes
+  this.memeCount = this.meme.length
   }
 
   public hideOverlay() {
     this.overlayHidden = true;
     this.overlayInfo = true;
-}
+  }
 
-overlayHiddenInfo (){
-  this.overlayInfo = false;
-  
-}
-
+  overlayHiddenInfo (){
+    this.overlayInfo = false;
+  }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PollInterfacePage', this.selectedPoll);
-    let random = Math.floor(Math.random() * 500) + 1
-    this.imgUrl = "https://picsum.photos/id/" + random + "/360/640"
-       // this.pollSetup(30, 0)
-
-
+       this.pollSetup(this.memeCount, 0)
+       this.slides.lockSwipeToPrev(true)
   }
 
   pollSetup(totalQuestions, text) {
-    // this.top = this.mockMemeText[text].top
-    // this.bottom = this.mockMemeText[text].bottom
     this.totalQuestions = totalQuestions 
     this.percent = 100 / totalQuestions
-    // this.check = this.percent * this.totalQuestions
-    console.log(this.check)
   }
 
   progressBar(x) {
-    if(x <= 100){
-      document.getElementById("bar").style.width = "" + x + "%"
-      if(this.questionNumber != this.totalQuestions) {
-        this.questionNumber = this.questionNumber + 1
-      }
-      if(x >= 99.5) {
+    document.getElementById("bar").style.width = "" + x + "%"
+
+    if(this.questionNumber === this.totalQuestions) {
         console.log("Poll Done")
         this.pollComplete = true
         this.navCtrl.setRoot(PollResultsPage) 
-        for(let i=0; i < this.answers.length; i++) {
-          console.log(this.answers[i].response)
-        }
-      }
+    } else {
+        this.questionNumber = this.questionNumber + 1
     }
   }
 
   button() {
     if (!this.pollComplete) {
-      let random = Math.floor(Math.random() * 500) + 1
-      this.imgUrl = "https://picsum.photos/id/" + random + "/360/640"
       this.progress = this.progress + this.percent
       this.progressBar(this.progress)
-
+      this.slides.slideNext()
     }
-
   }
+
   imgCheck() {
     let img = document.querySelector('#img > img')
     console.log(img.clientHeight)
   }
 
-//   swipeEvent(event){
-//     alert('swipe');
-// }
 swipeEvent(e) {
   this.button()
     if (e.direction == 2) {
@@ -151,6 +117,5 @@ swipeEvent(e) {
     }
   }
 }
-  // this.progress = this.progress + this.percent
-  // this.progressBar(this.progress)
+
 
