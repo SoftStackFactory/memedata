@@ -1,3 +1,5 @@
+<searchbar></searchbar>
+
 <ion-content class='has-header'>
   
   <div class='category-wrapper'>
@@ -11,7 +13,6 @@
     </ion-scroll>
   </div>
       
-  
   <div class='pollList'>
     <div >
       <ion-item text-wrap class='pollPreview' *ngFor='let poll of dash$.displayedPolls' (click)="startPoll(poll.id)">

@@ -30,7 +30,7 @@ export class DashboardPage {
     })
 
     events.subscribe('getMemes', ()=> {
-      this.navCtrl.setRoot(PollInterfacePage)   
+      this.navCtrl.push(PollInterfacePage)   
     })
   }
 

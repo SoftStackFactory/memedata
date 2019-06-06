@@ -10,10 +10,11 @@ export class PollInterfaceProvider {
     console.log('Hello PollInterfaceProvider Provider');
   }
 
+  api:string = "https://memepoll.herokuapp.com/api/memes"
   memes:any = []
 
   getMemes(id){
-    this.http.get("https://memepoll.herokuapp.com/api/memes?filter=%7B%22where%22%3A%7B%22pollId%22%3A%22" + id + "%20%22%7D%7D")
+    this.http.get(this.api + "?filter=%7B%20%22where%22%20%3A%20%7B%20%22pollId%22%20%3A%20%22Id_" + id + "%22%20%7D%20%7D")
     .subscribe((response) => {
       this.memes = response
       console.log(this.memes)
