@@ -9,6 +9,7 @@ import { LogoutPage } from '../../pages/logout/logout';
 import { RegisterPage } from '../../pages/register/register';
 import { DashboardPage } from '../../pages/dashboard/dashboard';
 import { PollResultsPage } from '../../pages/poll-results/poll-results';
+import { PollHistoryPage } from '../../pages/poll-history/poll-history';
 
 /**
  * Generated class for the SearchbarComponent component.
@@ -34,7 +35,7 @@ export class SearchbarComponent {
     public search$: SearchbarServiceProvider, 
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public user: UserProvider
+    public user: UserProvider,
     ) {
     console.log('Hello SearchbarComponent Component');
     this.text = 'Hello World';
@@ -56,17 +57,21 @@ export class SearchbarComponent {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
+  goToLogin() {
+    this.navCtrl.setRoot(LoginPage);
+  }
   
   goToAccountInfo() {
-    this.nav.setRoot(DashboardPage);
+    this.navCtrl.setRoot(DashboardPage);
   }
   
   goToRewardsHistory() {
-    this.nav.setRoot(DashboardPage);
+    this.navCtrl.setRoot(PollHistoryPage);
   }
   goToLogout() {
     this.user.onLogout()
-    this.nav.setRoot(RegisterPage);
+    this.navCtrl.setRoot(this.pages[0].component);
   }
 
 }

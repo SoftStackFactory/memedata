@@ -63,10 +63,10 @@ export class PollBuilder4Page {
                 this.BuilderService.pollId = response.id
                 this.BuilderService.pollSets.userId = this.BuilderService.userId
 
-                console.log("New PollSet", response)
+                console.log("New User PollSet", response)
 
                 for (let i = 0; i <= this.BuilderService.memes.length - 1; i ++) {
-                  this.BuilderService.memes[i].pollId = "id_" + this.BuilderService.pollId
+                  this.BuilderService.memes[i].pollId = this.BuilderService.pollId
 
                     console.log("New Meme",this.BuilderService.memes[i])
 
@@ -74,7 +74,15 @@ export class PollBuilder4Page {
                     .subscribe(
                       (response: any) => {
 
-                        console.log("Saved Meme to DB", response)
+                        console.log("Saved Meme to User DB", response)
+                      })
+
+                      this.BuilderService.savePollMeme(this.BuilderService.memes[i])
+                        .subscribe(
+                          (response: any) => {
+
+                            console.log("Saved Meme to Pollset DB", response)
+                          })
 
                         this.BuilderService.pollSet.pollTitle = ""
                         this.BuilderService.pollSet.pollDescription = ""
@@ -95,7 +103,6 @@ export class PollBuilder4Page {
                           description: "",
                           userId: "",
                         };
-                        })
                   }         
                 })
                 this.navCtrl.setRoot(DashboardPage);

@@ -16,6 +16,8 @@ export class UserProvider {
     console.log('Hello UserProvider Provider');
   }
 
+  loggedIn: boolean = false
+
   baseUrl: string = 'https://memepoll.herokuapp.com/api/appUsers';
 
   register(userData) {
