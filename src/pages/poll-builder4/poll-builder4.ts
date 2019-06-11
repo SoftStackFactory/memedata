@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PollHistoryPage } from '../poll-history/poll-history';
-//import { DashboardPage } from '../dashboard/dashboard';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
 import { AlertController } from 'ionic-angular';
+import { DashboardPage } from '../dashboard/dashboard';
 
 /**
  * Generated class for the PollBuilder4Page page.
@@ -46,6 +46,10 @@ export class PollBuilder4Page {
           this.BuilderService.pollSet.pollTitle + " " +
           this.BuilderService.pollSet.pollDescription + " " +
           this.BuilderService.pollSet.pollCategory
+          this.BuilderService.keywords = this.BuilderService.keywords.toLowerCase()
+
+          console.log("to lower case, pre array", this.BuilderService.keywords)
+
           this.BuilderService.keywords = this.BuilderService.stringToArray(this.BuilderService.keywords)
           this.BuilderService.filterKeywords(this.BuilderService.keywords)
   
@@ -62,7 +66,7 @@ export class PollBuilder4Page {
                 console.log("New PollSet", response)
 
                 for (let i = 0; i <= this.BuilderService.memes.length - 1; i ++) {
-                  this.BuilderService.memes[i].pollId = this.BuilderService.pollId
+                  this.BuilderService.memes[i].pollId = "id_" + this.BuilderService.pollId
 
                     console.log("New Meme",this.BuilderService.memes[i])
 
@@ -94,7 +98,7 @@ export class PollBuilder4Page {
                         })
                   }         
                 })
-                this.navCtrl.setRoot(PollHistoryPage);
+                this.navCtrl.setRoot(DashboardPage);
           }   
       }
 

@@ -35,7 +35,7 @@ export class LoginPage {
   }
 
   forgot() {
-    this.navCtrl.setRoot(RegisterPage)
+    this.navCtrl.push(RegisterPage)
   }
 
   onLogin(){

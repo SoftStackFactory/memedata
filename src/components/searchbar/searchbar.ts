@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, Nav } from 'ionic-angular';
 import { SearchbarServiceProvider } from '../../providers/searchbar-service/searchbar-service';
+import { UserProvider } from '../../providers/user/user';
 
 import { PollInterfacePage } from '../../pages/poll-interface/poll-interface';
 import { LoginPage } from '../../pages/login/login';
@@ -29,7 +30,12 @@ export class SearchbarComponent {
 
   text: string;
 
-  constructor(public search$: SearchbarServiceProvider, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public search$: SearchbarServiceProvider, 
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public user: UserProvider
+    ) {
     console.log('Hello SearchbarComponent Component');
     this.text = 'Hello World';
   
@@ -59,7 +65,8 @@ export class SearchbarComponent {
     this.nav.setRoot(DashboardPage);
   }
   goToLogout() {
-    this.nav.setRoot(DashboardPage);
+    this.user.onLogout()
+    this.nav.setRoot(RegisterPage);
   }
 
 }

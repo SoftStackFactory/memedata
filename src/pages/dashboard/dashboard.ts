@@ -24,19 +24,28 @@ export class DashboardPage {
   
   @ViewChild(Content) content: Content;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public dash$: DashboardServiceProvider, public events: Events, public BuilderService: PollBuilderServiceProvider) {
-    console.log('Hello DashboardPage');
-    events.subscribe('search success', ()=> {
-      this.content.scrollToTop();    
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public http: HttpClient, 
+    public dash$: DashboardServiceProvider, 
+    public events: Events, 
+    public BuilderService: PollBuilderServiceProvider) {
+      console.log('Hello DashboardPage');
+      events.subscribe('search success', ()=> {
+        this.content.scrollToTop();    
     })
   }
 
   // On Page load
 
   ionViewDidLoad() {
+    this.tab = "Home"
     console.log('ionViewDidLoad DashboardPage');
     this.pullAllPolls();
   }
+
+  tab = "Home"
 
   // Pulling Poll Data
 
@@ -56,10 +65,10 @@ export class DashboardPage {
     this.navCtrl.setRoot(DashboardPage);
   }
   goToCreate() {
-    this.navCtrl.push(PollBuilderPage);
+    this.navCtrl.setRoot(PollBuilderPage);
   }
   goToMyPolls() {
-    this.navCtrl.push(PollHistoryPage);
+    this.navCtrl.setRoot(PollHistoryPage);
   }
   goToPoll(poll) {
     console.log(poll.id);

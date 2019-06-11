@@ -26,6 +26,7 @@ export class PollBuilderServiceProvider {
 
   apiBaseUrlMeme: string = 'https://memepoll.herokuapp.com/api/memes'
   apiBaseUrlPollSet: string = 'https://memepoll.herokuapp.com/api/pollSets'
+  apiBaseUrlAppUser: string = 'https://memepoll.herokuapp.com/api/'
 
   token: any
   userId: any
@@ -35,7 +36,7 @@ export class PollBuilderServiceProvider {
   pollSets: any = []
   keywords: any = []
   memes: Meme[] = [];
-
+ 
   displayMeme: any = {
     topText: "",
     bottomText: "",
@@ -62,7 +63,7 @@ export class PollBuilderServiceProvider {
     completed: 0,
   }
 
-  filterWords: any = ["the", "The", "a", "A", "an", "An", "and", "And"]
+  filterWords: any = ["the", "a", "an", "and"]
 
   getMyMemes() {
     return this.http.get(this.apiBaseUrlMeme + "?filter=%7B%22where%22%3A%20%7B%22userId%22%3A%20%22" + this.userId + "%22%7D%7D")

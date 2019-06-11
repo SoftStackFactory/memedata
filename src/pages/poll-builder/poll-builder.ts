@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Navbar } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { PollBuilder2Page } from '../poll-builder2/poll-builder2';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
+import { DashboardPage } from '../dashboard/dashboard';
 
 /**
  * Generated class for the PollBuilderPage page.
@@ -23,6 +24,10 @@ export class PollBuilderPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PollBuilderPage');
+  }
+
+  goBack() {
+    this.navCtrl.setRoot(DashboardPage)
   }
 
   takePicture() {
@@ -60,7 +65,7 @@ export class PollBuilderPage {
     this.camera.getPicture(options).then((imageData) => {
     // imageData is either a base64 encoded string or a file URI
     // If it's base64 (DATA_URL):
-    this.BuilderService.meme.image = 'data:image/jpeg;base64,'; + imageData;
+    this.BuilderService.meme.image = 'data:image/jpeg;base64,' + imageData;
     }, (err) => {
     // Handle error
     });
