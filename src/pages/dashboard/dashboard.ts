@@ -7,6 +7,7 @@ import { PollBuilderServiceProvider } from '../../providers/poll-builder-service
 import { PollInterfaceProvider } from '../../providers/poll-interface-provider/poll-interface-provider';
 import { PollInterfacePage } from '../poll-interface/poll-interface';
 import { PollHistoryPage } from '../poll-history/poll-history';
+import { SpinnerServiceProvider } from '../../providers/spinner-service/spinner-service';
 
 @IonicPage()
 @Component({
@@ -23,7 +24,8 @@ export class DashboardPage {
               public dash$: DashboardServiceProvider, 
               public events: Events, 
               public BuilderService: PollBuilderServiceProvider,
-              public pollInterfaceProvider: PollInterfaceProvider) {
+              public pollInterfaceProvider: PollInterfaceProvider,
+              public spinnerService: SpinnerServiceProvider) {
 
     events.subscribe('search success', ()=> {
       this.content.scrollToTop();    
@@ -38,6 +40,7 @@ export class DashboardPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DashboardPage');
+    this.dash$.polls = []
     this.pullAllPolls();
   }
 

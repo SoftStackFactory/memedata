@@ -36,6 +36,7 @@ import { DashboardServiceProvider } from '../providers/dashboard-service/dashboa
 import { ResultsServiceProvider } from '../providers/results-service/results-service';
 import { SearchbarServiceProvider } from '../providers/searchbar-service/searchbar-service';
 import { PollInterfaceProvider } from '../providers/poll-interface-provider/poll-interface-provider';
+import { SpinnerServiceProvider } from '../providers/spinner-service/spinner-service';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { PollInterfaceProvider } from '../providers/poll-interface-provider/poll
     PollBuilderServiceProvider,
     ResultsServiceProvider,
     SearchbarServiceProvider,
-    PollInterfaceProvider
+    PollInterfaceProvider,
+    SpinnerServiceProvider
   ]
 })
 export class AppModule {}
