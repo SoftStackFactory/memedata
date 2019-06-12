@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PollHistoryPage } from '../poll-history/poll-history';
-//import { DashboardPage } from '../dashboard/dashboard';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
 import { AlertController } from 'ionic-angular';
 import { DashboardPage } from '../dashboard/dashboard';
@@ -47,6 +46,10 @@ export class PollBuilder4Page {
           this.BuilderService.pollSet.pollTitle + " " +
           this.BuilderService.pollSet.pollDescription + " " +
           this.BuilderService.pollSet.pollCategory
+          this.BuilderService.keywords = this.BuilderService.keywords.toLowerCase()
+
+          console.log("to lower case, pre array", this.BuilderService.keywords)
+
           this.BuilderService.keywords = this.BuilderService.stringToArray(this.BuilderService.keywords)
           this.BuilderService.filterKeywords(this.BuilderService.keywords)
   
@@ -60,7 +63,7 @@ export class PollBuilder4Page {
                 this.BuilderService.pollId = response.id
                 this.BuilderService.pollSets.userId = this.BuilderService.userId
 
-                console.log("New PollSet", response)
+                console.log("New User PollSet", response)
 
                 for (let i = 0; i <= this.BuilderService.memes.length - 1; i ++) {
                   this.BuilderService.memes[i].pollId = this.BuilderService.pollId
@@ -71,7 +74,15 @@ export class PollBuilder4Page {
                     .subscribe(
                       (response: any) => {
 
-                        console.log("Saved Meme to DB", response)
+                        console.log("Saved Meme to User DB", response)
+                      })
+
+                      this.BuilderService.savePollMeme(this.BuilderService.memes[i])
+                        .subscribe(
+                          (response: any) => {
+
+                            console.log("Saved Meme to Pollset DB", response)
+                          })
 
                         this.BuilderService.pollSet.pollTitle = ""
                         this.BuilderService.pollSet.pollDescription = ""
@@ -92,7 +103,6 @@ export class PollBuilder4Page {
                           description: "",
                           userId: "",
                         };
-                        })
                   }         
                 })
                 this.navCtrl.setRoot(DashboardPage);

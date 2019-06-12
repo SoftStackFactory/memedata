@@ -14,7 +14,7 @@ import { PollBuilderServiceProvider } from '../../providers/poll-builder-service
 })
 
 export class LoginPage {
-  data;
+  data: any;
   user = {
     email:'',
     password:''
@@ -23,7 +23,7 @@ export class LoginPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
-    public userService:UserProvider, 
+    public userService: UserProvider, 
     public storage: Storage, 
     public BuilderService: PollBuilderServiceProvider,
     public platform: Platform
@@ -35,7 +35,7 @@ export class LoginPage {
   }
 
   forgot() {
-    this.navCtrl.setRoot(RegisterPage)
+    this.navCtrl.push(RegisterPage)
   }
 
   onLogin(){
@@ -54,6 +54,7 @@ export class LoginPage {
             this.BuilderService.token = val})
             this.storage.get('userId').then((val) => {
               console.log('got your userId', val);
+            this.userService.loggedIn = true
             this.BuilderService.userId = val
             this.BuilderService.pollSet.userId = val
             this.BuilderService.meme.userId = val})
@@ -64,6 +65,7 @@ export class LoginPage {
               let userId = this.data.userId
               console.log("your token is", token)
               console.log("your userId is", userId)
+              this.userService.loggedIn = true
               this.BuilderService.token = token
               this.BuilderService.userId = userId
               this.BuilderService.pollSet.userId = userId

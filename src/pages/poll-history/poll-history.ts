@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PollBuilderServiceProvider } from "../../providers/poll-builder-service/poll-builder-service"
+import { DashboardPage } from "../dashboard/dashboard"
 
 /**
  * Generated class for the PollHistoryPage page.
@@ -20,6 +21,10 @@ export class PollHistoryPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public BuilderService: PollBuilderServiceProvider) {
+  }
+
+  goBack() {
+    this.navCtrl.setRoot(DashboardPage)
   }
 
   getAllMyMemes(){

@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, Nav } from 'ionic-angular';
 import { SearchbarServiceProvider } from '../../providers/searchbar-service/searchbar-service';
+import { UserProvider } from '../../providers/user/user';
 
 import { PollInterfacePage } from '../../pages/poll-interface/poll-interface';
 import { LoginPage } from '../../pages/login/login';
@@ -8,6 +9,7 @@ import { LogoutPage } from '../../pages/logout/logout';
 import { RegisterPage } from '../../pages/register/register';
 import { DashboardPage } from '../../pages/dashboard/dashboard';
 import { PollResultsPage } from '../../pages/poll-results/poll-results';
+import { PollHistoryPage } from '../../pages/poll-history/poll-history';
 
 /**
  * Generated class for the SearchbarComponent component.
@@ -29,7 +31,12 @@ export class SearchbarComponent {
 
   text: string;
 
-  constructor(public search$: SearchbarServiceProvider, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public search$: SearchbarServiceProvider, 
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public user: UserProvider,
+    ) {
     console.log('Hello SearchbarComponent Component');
     this.text = 'Hello World';
   
@@ -50,16 +57,21 @@ export class SearchbarComponent {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
+  goToLogin() {
+    this.navCtrl.setRoot(LoginPage);
+  }
   
   goToAccountInfo() {
-    this.nav.setRoot(DashboardPage);
+    this.navCtrl.setRoot(DashboardPage);
   }
   
   goToRewardsHistory() {
-    this.nav.setRoot(DashboardPage);
+    this.navCtrl.setRoot(PollHistoryPage);
   }
   goToLogout() {
-    this.nav.setRoot(DashboardPage);
+    this.user.onLogout()
+    this.navCtrl.setRoot(this.pages[0].component);
   }
 
 }

@@ -51,6 +51,7 @@ export class RegisterPage {
             this.BuilderService.token = val})
             this.storage.get('userId').then((val) => {
               console.log('got your userId', val);
+            this.userService.loggedIn = true
             this.BuilderService.userId = val
             this.BuilderService.pollSet.userId = val
             this.BuilderService.meme.userId = val})
@@ -61,6 +62,7 @@ export class RegisterPage {
             let userId = this.data.userId
             console.log("your token is", token)
             console.log("your userId is", userId)
+            this.userService.loggedIn = true
             this.BuilderService.token = token
             this.BuilderService.userId = userId
             this.BuilderService.pollSet.userId = userId

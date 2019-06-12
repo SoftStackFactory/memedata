@@ -37,9 +37,12 @@ export class DashboardPage {
   // On Page load
 
   ionViewDidLoad() {
+    this.tab = "Home"
     console.log('ionViewDidLoad DashboardPage');
     this.pullAllPolls();
   }
+
+  tab = "Home"
 
   // Pulling Poll Data
 
@@ -59,10 +62,10 @@ export class DashboardPage {
     this.navCtrl.setRoot(DashboardPage);
   }
   goToCreate() {
-    this.navCtrl.push(PollBuilderPage);
+    this.navCtrl.setRoot(PollBuilderPage);
   }
   goToMyPolls() {
-    this.navCtrl.push(PollHistoryPage);
+    this.navCtrl.setRoot(PollHistoryPage);
   }
 
   startPoll(id) {
