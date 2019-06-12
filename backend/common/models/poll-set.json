@@ -42,7 +42,7 @@
     "meme": {
       "type": "hasMany",
       "model": "meme",
-      "foreignKey": "userId"
+      "foreignKey": "pollId"
     }
   },
   "acls": [],

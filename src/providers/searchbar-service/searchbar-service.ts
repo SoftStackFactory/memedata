@@ -3,24 +3,15 @@ import { Injectable } from '@angular/core';
 import { DashboardServiceProvider } from '../dashboard-service/dashboard-service';
 import { Events, ToastController } from 'ionic-angular';
 
-/*
-  Generated class for the SearchbarServiceProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class SearchbarServiceProvider {
 
   searchTerm:string;
-  polls:any = [];
-  keyMatch:any = [];
-  matched:any = [];
 
-  pollsApi:string = 'https://memepoll.herokuapp.com/api/pollSets?access_token=b9mlT8uvLmKJj38eoquDnslnogB07V0mYpd4FDhAhRfT9twx9uf5REChqXEkMK2I';
-
-  constructor(public http: HttpClient, public dash$: DashboardServiceProvider, public events: Events, public toastCtrl: ToastController) {
-    console.log('Hello SearchbarServiceProvider Provider');
+  constructor(public http: HttpClient, 
+              public dash$: DashboardServiceProvider, 
+              public events: Events, 
+              public toastCtrl: ToastController) {
   }
 
   presentToast() {
@@ -34,43 +25,25 @@ export class SearchbarServiceProvider {
 
   setFilteredItems(){
     this.searchTerm = this.searchTerm.toLowerCase();
-    this.http.get(this.pollsApi).subscribe((response) => {
-      this.polls = [];
-      this.keyMatch = [];
-      this.matched = [];
-      this.polls = response;
-      this.keyMatch = response;
-      console.log(this.polls);
-      this.polls = this.polls.filter(poll => poll.pollCategory === this.searchTerm);
-      for(let i = 0; i < this.keyMatch.length; i++){
-      let keywords = this.keyMatch[i].pollKeywords;
-        for(let j = 0; j<keywords.length; j++){
-          if(keywords[j] === this.searchTerm){
-            this.matched.push(this.keyMatch[i]);
-          }
+    let getKeywordsAPI = "https://memepoll.herokuapp.com/api/pollSets?filter=%7B%22where%22%3A%7B%22pollKeywords%22%3A%22" + this.searchTerm + "%22%7D%7D"
+    let getKeywordsLimit = "https://memepoll.herokuapp.com/api/pollSets?filter=%7B%22where%22%3A%7B%22pollKeywords%22%3A%22" + this.searchTerm + "%22%7D%2C%22limit%22%3A10%7D"
+    this.events.publish('search success');
+
+    this.http.get(getKeywordsAPI)
+      .subscribe((response) => {
+        console.log(response)
+        this.dash$.polls = response
+  
+        if(this.dash$.polls.length == 0) {
+          this.presentToast();
+          console.log('No Search Results');
         }
-      }
-      console.log('polls', this.polls);
-      console.log('matched', this.matched);
-      this.searchTerm = '';
-      if(this.polls.length > 0){
-        this.events.publish('search success');
-        this.dash$.polls = this.polls;
-        this.dash$.displayedPolls = [];
-        for (let i=0; i <10; i++) {
-          this.dash$.displayedPolls.push(this.polls[this.dash$.displayedPolls.length]);
-        }        
-      } else if(this.matched.length > 0){
-        this.events.publish('search success');
-        this.dash$.polls = this.matched;
-        this.dash$.displayedPolls = [];
-        for (let i=0; i <10; i++) {
-          this.dash$.displayedPolls.push(this.matched[this.dash$.displayedPolls.length]);
-        } 
-      } else {
-        this.presentToast();
-        console.log('No Search Results');
-      }
+    })
+
+      this.http.get(getKeywordsLimit)
+      .subscribe((response) => {
+        console.log(response)
+        this.dash$.displayedPolls = response
     })
   }
 

@@ -7,7 +7,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding (swipe)="swipeEvent($event)">
+<ion-content (swipe)="swipeEvent($event)">
 
   <div class="my-overlay" (click)="hideOverlay()" padding [hidden]="overlayHidden">
       <p class="overlayText">Hello Welcome New User!</p>
@@ -18,28 +18,26 @@
       Welcome to the MemePoll. Please swipe right for one option and left for another. You will see your results
       and have them compared to your friends when your done. You can then share your data in your social media.
     </p>
-   
 </div>
 
+<div id="MemeContainer">
   <h4 id="pollNumber">{{questionNumber}}/{{totalQuestions}}</h4>
-
-     <div id="textWrapper">
-        <div id="topText">{{meme.topText}}</div>
-        <div id="bottomText">{{meme.bottomText}}</div>
-      </div>
-
-   <!-- <div class = "picture">
-      <img src= {{imgUrl}} alt="Meme">
-   </div> -->
-
-  <ion-slides  class = "picture" >
-     <ion-slide *ngFor="let x of slides; let i = index">
-          <div>
-              <!-- <img src="https://picsum.photos/id/1{{x}}{{i}}/360/640" alt="Meme"> -->
-              <img src={{imgUrl}} alt="Meme">
-           </div>
-     </ion-slide>
-  </ion-slides>
+    <ion-slides parallax="true" class="picture">
+        <ion-slide *ngFor="let x of pollInterfaceProvider.memes; let i = index">
+            <div>
+                <!-- <div id="textWrapper"> -->
+                    <div id="topText">
+                      {{x.topText}}
+                    </div>
+                    <div id="bottomText">
+                      {{x.bottomText}}
+                    </div>
+                </div>
+                <img src={{x.image}} alt="Meme">
+            <!-- </div> -->
+        </ion-slide>
+    </ion-slides>
+</div>
 
   <div class="buttons">
     <button ion-button large round color="secondary" (click)="button()" float-right>Yes</button>

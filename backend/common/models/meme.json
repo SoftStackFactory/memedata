@@ -3,7 +3,8 @@
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
-    "validateUpsert": true
+    "validateUpsert": true,
+    "strictObjectIDCoercion": true
   },
   "properties": {
     "id": {
@@ -33,7 +34,7 @@
     "answers": {
       "type": "hasMany",
       "model": "answer",
-      "foreignKey": "userId"
+      "foreignKey": "memeId"
     }
   },
   "acls": [],
