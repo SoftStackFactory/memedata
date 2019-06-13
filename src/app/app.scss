@@ -35,4 +35,16 @@
     margin-top: 52px;
 }
 
+#spinner {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 40%;
+    z-index: 1000;
+    stroke: #488aff;
+    fill: #488aff;
 
+    display: block;
+    margin-right: auto;
+    width: 100%;
+    }

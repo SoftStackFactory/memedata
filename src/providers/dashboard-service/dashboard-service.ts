@@ -1,12 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-/*
-  Generated class for the DashboardServiceProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
+import { Events } from 'ionic-angular';
+import { SpinnerServiceProvider } from '../spinner-service/spinner-service';
 
 @Injectable()
 export class DashboardServiceProvider {
@@ -30,15 +25,19 @@ export class DashboardServiceProvider {
   catFilterA:string = 'https://memepoll.herokuapp.com/api/pollSets?filter=%7B%22where%22%3A%7B%22pollCategory%22%3A%22';
   catFilterB:string = '%22%7D%7D&access_token=b9mlT8uvLmKJj38eoquDnslnogB07V0mYpd4FDhAhRfT9twx9uf5REChqXEkMK2I';
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient,
+              public events: Events,
+              public spinnerService: SpinnerServiceProvider) {
     console.log('Hello DashboardServiceProvider Provider');
   }
 
   // Pulling Poll Data
 
   pullAllPolls(){
+    this.spinnerService.spinner = true;
     this.http.get(`${this.pollsApi}`).subscribe((response) => {
       // log the http request response
+      this.spinnerService.spinner = false;
       console.log(response);
       this.polls = [];
       this.polls = response;
@@ -63,17 +62,19 @@ export class DashboardServiceProvider {
   }
 
   filterPollsByCategory(category) {
+    this.spinnerService.spinner = true;
     this.selectedCategory = category;
-    this.http.get(`https://memepoll.herokuapp.com/api/pollSets?filter=%7B%22where%22%3A%7B%22pollCategory%22%3A%22${this.selectedCategory}%22%7D%7D&access_token=b9mlT8uvLmKJj38eoquDnslnogB07V0mYpd4FDhAhRfT9twx9uf5REChqXEkMK2I`).subscribe((response) => {
-    console.log('cat filter response', response);
-    this.polls = [];
-    this.displayedPolls = [];
-    this.polls = response;
-    // Log the polls object, which is also the http request response
-    console.log(this.polls);
-    for (let i=0; i <10; i++) {
-      this.displayedPolls.push(response[this.displayedPolls.length]);
-    }
+    this.http.get(`https://memepoll.herokuapp.com/api/pollSets?filter=%7B%22where%22%3A%7B%22pollCategory%22%3A%22${this.selectedCategory}%22%7D%7D&access_token=b9mlT8uvLmKJj38eoquDnslnogB07V0mYpd4FDhAhRfT9twx9uf5REChqXEkMK2I`)
+      .subscribe((response) => {
+        this.spinnerService.spinner = false;
+        this.polls = [];
+        this.displayedPolls = [];
+        this.polls = response;
+        // Log the polls object, which is also the http request response
+        console.log(this.polls);
+        for (let i=0; i <10; i++) {
+          this.displayedPolls.push(response[this.displayedPolls.length]);
+        }
     // Log the polls currently being displayed in the template
     console.log(this.displayedPolls);
     });

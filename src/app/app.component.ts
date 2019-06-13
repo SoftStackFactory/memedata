@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -14,6 +14,7 @@ import { DashboardPage } from '../pages/dashboard/dashboard';
 import { PollResultsPage } from '../pages/poll-results/poll-results';
 
 import { SearchbarServiceProvider } from '../providers/searchbar-service/searchbar-service';
+import { SpinnerServiceProvider } from '../providers/spinner-service/spinner-service';
 
 
 
@@ -28,7 +29,14 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public search$: SearchbarServiceProvider) {
+  spinner:any 
+
+  constructor(public platform: Platform, 
+              public statusBar: StatusBar, 
+              public splashScreen: SplashScreen, 
+              public search$: SearchbarServiceProvider,
+              public events: Events,
+              public spinnerService: SpinnerServiceProvider) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
