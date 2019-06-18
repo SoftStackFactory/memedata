@@ -28,26 +28,26 @@ export class SearchbarServiceProvider {
   setFilteredItems(){
     this.spinnerService.spinner = true
     this.searchTerm = this.searchTerm.toLowerCase();
-    let getKeywordsAPI = "https://ssf-memedata.herokuapp.com/api/pollSets?filter=%7B%22where%22%3A%7B%22pollKeywords%22%3A%22" + this.searchTerm + "%22%7D%7D"
-    let getKeywordsLimit = "https://ssf-memedata.herokuapp.com/api/pollSets?filter=%7B%22where%22%3A%7B%22pollKeywords%22%3A%22" + this.searchTerm + "%22%7D%2C%22limit%22%3A10%7D"
+    let getKeywordsAPI = "https://ssf-memedata.herokuapp.com/api/pollSets?filter=%7B%22where%22%3A%7B%22pollKeywords%22%3A%22" + this.searchTerm + "%22%7D%2C%22limit%22%3A100%7D"
     this.events.publish('search success');
 
-    this.http.get(getKeywordsLimit)
+    this.http.get(getKeywordsAPI)
     .subscribe((response) => {
       console.log(response)
-      this.spinnerService.spinner = false
-      this.dash$.displayedPolls = response
-    })
+      this.dash$.polls = [];
+      this.dash$.displayedPolls = [];
 
-    this.http.get(getKeywordsAPI)
-      .subscribe((response) => {
-        console.log(response)
-        this.dash$.polls = response
-  
-        if(this.dash$.polls.length == 0) {
-          this.presentToast();
-          console.log('No Search Results');
-        }
+      this.dash$.polls = response
+      this.spinnerService.spinner = false
+
+      for (let i=0; i < 10; i++) {
+        this.dash$.displayedPolls.push(response[i]);
+      }
+
+      if(this.dash$.polls.length == 0) {
+        this.presentToast();
+        console.log('No Search Results');
+      }
     })
   }
 
