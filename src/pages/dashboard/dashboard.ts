@@ -41,8 +41,13 @@ export class DashboardPage {
   ionViewDidLoad() {
     this.tab = "Home"
     console.log('ionViewDidLoad DashboardPage');
-    this.dash$.polls = []
+    this.dash$.polls = [];
+    this.dash$.displayedPolls = [];
     this.pullAllPolls();
+  }
+
+  ionViewDidLeave() {
+    this.spinnerService.spinner = false
   }
 
   tab = "Home"
@@ -51,7 +56,7 @@ export class DashboardPage {
 
   pullAllPolls() {
     this.dash$.pullAllPolls();
-    this.dash$.pullAllMemes();
+    // this.dash$.pullAllMemes();
   }
 
   filterPollsByCategory(category){
