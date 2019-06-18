@@ -18,7 +18,7 @@ export class UserProvider {
 
   loggedIn: boolean = false
 
-  baseUrl: string = 'https://memepoll.herokuapp.com/api/appUsers';
+  baseUrl: string = 'https://ssf-memedata.herokuapp.com/api/appUsers';
 
   register(userData) {
     return this.http.post(this.baseUrl, userData );

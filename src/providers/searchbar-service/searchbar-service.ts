@@ -28,8 +28,8 @@ export class SearchbarServiceProvider {
   setFilteredItems(){
     this.spinnerService.spinner = true
     this.searchTerm = this.searchTerm.toLowerCase();
-    let getKeywordsAPI = "https://memepoll.herokuapp.com/api/pollSets?filter=%7B%22where%22%3A%7B%22pollKeywords%22%3A%22" + this.searchTerm + "%22%7D%7D"
-    let getKeywordsLimit = "https://memepoll.herokuapp.com/api/pollSets?filter=%7B%22where%22%3A%7B%22pollKeywords%22%3A%22" + this.searchTerm + "%22%7D%2C%22limit%22%3A10%7D"
+    let getKeywordsAPI = "https://ssf-memedata.herokuapp.com/api/pollSets?filter=%7B%22where%22%3A%7B%22pollKeywords%22%3A%22" + this.searchTerm + "%22%7D%7D"
+    let getKeywordsLimit = "https://ssf-memedata.herokuapp.com/api/pollSets?filter=%7B%22where%22%3A%7B%22pollKeywords%22%3A%22" + this.searchTerm + "%22%7D%2C%22limit%22%3A10%7D"
     this.events.publish('search success');
 
     this.http.get(getKeywordsLimit)

@@ -24,9 +24,9 @@ export class PollBuilderServiceProvider {
     console.log('Hello PollBuilderServiceProvider Provider');
   }
 
-  apiBaseUrlMeme: string = 'https://memepoll.herokuapp.com/api/memes'
-  apiBaseUrlPollSet: string = 'https://memepoll.herokuapp.com/api/pollSets'
-  apiBaseUrlAppUser: string = 'https://memepoll.herokuapp.com/api/'
+  apiBaseUrlMeme: string = 'https://ssf-memedata.herokuapp.com/api/memes'
+  apiBaseUrlPollSet: string = 'https://ssf-memedata.herokuapp.com/api/pollSets'
+  apiBaseUrlAppUser: string = 'https://ssf-memedata.herokuapp.com/api/'
 
   token: any
   userId: any

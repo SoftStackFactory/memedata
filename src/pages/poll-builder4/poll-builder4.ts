@@ -68,7 +68,7 @@ export class PollBuilder4Page {
                 for (let i = 0; i <= this.BuilderService.memes.length - 1; i ++) {
                   this.BuilderService.memes[i].pollId = this.BuilderService.pollId
 
-                    console.log("New Meme",this.BuilderService.memes[i])
+                    console.log("New Meme " + i,this.BuilderService.memes[i])
 
                   this.BuilderService.saveMeme(this.BuilderService.memes[i])
                     .subscribe(
@@ -83,28 +83,27 @@ export class PollBuilder4Page {
 
                             console.log("Saved Meme to Pollset DB", response)
                           })
-
-                        this.BuilderService.pollSet.pollTitle = ""
-                        this.BuilderService.pollSet.pollDescription = ""
-                        this.BuilderService.pollSet.pollCategory = ""
-                        this.BuilderService.pollSet.pollKeywords = ["keywords"]
-                        this.BuilderService.memes = []
-                        this.BuilderService.displayMeme = {
-                          topText: "",
-                          bottomText: "",
-                          image: "",
-                          description: "",
-                        };
-                        this.BuilderService.meme = {
-                          pollId: "",
-                          topText: "",
-                          bottomText: "",
-                          image: "",
-                          description: "",
-                          userId: "",
-                        };
                   }         
                 })
+                this.BuilderService.pollSet.pollTitle = ""
+                this.BuilderService.pollSet.pollDescription = ""
+                this.BuilderService.pollSet.pollCategory = ""
+                this.BuilderService.pollSet.pollKeywords = ["keywords"]
+                this.BuilderService.memes = []
+                this.BuilderService.displayMeme = {
+                  topText: "",
+                  bottomText: "",
+                  image: "",
+                  description: "",
+                };
+                this.BuilderService.meme = {
+                  pollId: "",
+                  topText: "",
+                  bottomText: "",
+                  image: "",
+                  description: "",
+                  userId: "",
+                };
                 this.navCtrl.setRoot(DashboardPage);
           }   
       }

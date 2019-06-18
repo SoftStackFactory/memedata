@@ -13,7 +13,7 @@
     </ion-scroll>
   </div>
       
-  <div class='pollList'>
+  <div *ngIf='dash$.displayedPolls.length >= 1' class='pollList'>
     <div >
       <ion-item text-wrap class='pollPreview' *ngFor='let poll of dash$.displayedPolls' (click)="startPoll(poll.id)">
         <img class='pollImg' src='{{poll.coverImage}}'>
