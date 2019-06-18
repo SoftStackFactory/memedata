@@ -63,7 +63,7 @@ export class PollBuilder4Page {
                 this.BuilderService.pollId = response.id
                 this.BuilderService.pollSets.userId = this.BuilderService.userId
 
-                console.log("New User PollSet", response)
+                console.log("New User PollSet", response, "PolliD =", response.id)
 
                 for (let i = 0; i <= this.BuilderService.memes.length - 1; i ++) {
                   this.BuilderService.memes[i].pollId = this.BuilderService.pollId
@@ -74,38 +74,29 @@ export class PollBuilder4Page {
                     .subscribe(
                       (response: any) => {
 
-                        console.log("Saved Meme to User DB", response)
+                        console.log("Saved Meme to Meme DB" + i, response)
                       })
 
                       this.BuilderService.savePollMeme(this.BuilderService.memes[i])
                         .subscribe(
                           (response: any) => {
 
-                            console.log("Saved Meme to Pollset DB", response)
+                            console.log("Saved Meme to Pollset DB" + i, response)
                           })
                   }         
                 })
-                this.BuilderService.pollSet.pollTitle = ""
-                this.BuilderService.pollSet.pollDescription = ""
-                this.BuilderService.pollSet.pollCategory = ""
-                this.BuilderService.pollSet.pollKeywords = ["keywords"]
-                this.BuilderService.memes = []
-                this.BuilderService.displayMeme = {
-                  topText: "",
-                  bottomText: "",
-                  image: "",
-                  description: "",
-                };
-                this.BuilderService.meme = {
-                  pollId: "",
-                  topText: "",
-                  bottomText: "",
-                  image: "",
-                  description: "",
-                  userId: "",
-                };
-                this.navCtrl.setRoot(DashboardPage);
-          }   
+          }
+          this.BuilderService.pollSet.pollTitle = ""
+          this.BuilderService.pollSet.pollDescription = ""
+          this.BuilderService.pollSet.pollCategory = ""
+          this.BuilderService.pollSet.pollKeywords = ["keywords"]
+          this.BuilderService.displayMeme = {
+            topText: "",
+            bottomText: "",
+            image: "",
+            description: "",
+          };
+          this.navCtrl.setRoot(DashboardPage);
       }
 
 }

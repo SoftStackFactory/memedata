@@ -39,11 +39,7 @@ export class DashboardServiceProvider {
   filterPollsByCategory(category) {
     this.spinnerService.spinner = true;
     this.selectedCategory = category;
-<<<<<<< HEAD
-    this.http.get(`https://ssf-memedata.herokuapp.com/api/pollSets?filter=%7B%22where%22%3A%7B%22pollCategory%22%3A%22${this.selectedCategory}%22%7D%7D&access_token=b9mlT8uvLmKJj38eoquDnslnogB07V0mYpd4FDhAhRfT9twx9uf5REChqXEkMK2I`)
-=======
     this.http.get(`https://ssf-memedata.herokuapp.com/api/pollSets?filter=%7B%22where%22%3A%7B%22pollCategory%22%3A%22${this.selectedCategory}%22%7D%7D`)
->>>>>>> 1ac47dba800ebefbbcfd99b1aa6ee932bf35a5c8
       .subscribe((response) => {
         this.spinnerService.spinner = false;
         this.polls = [];
