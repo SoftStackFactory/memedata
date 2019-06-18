@@ -13,17 +13,17 @@
     </ion-scroll>
   </div>
       
-  <div *ngIf='dash$.displayedPolls.length >= 1;else showSearchResults' class='pollList'>
-    <div >
+  <div class='pollList'>
       <ion-item text-wrap class='pollPreview' *ngFor='let poll of dash$.displayedPolls' (click)="startPoll(poll.id)">
-        <img class='pollImg' src='{{poll.coverImage}}'>
-        <h2>{{poll.pollTitle}}</h2>
-        <p class='pollDescription'>{{poll.pollDescription}}</p>
+        <div *ngIf='poll'>
+          <img class='pollImg' src='{{poll.coverImage}}'>
+          <h2>{{poll.pollTitle}}</h2>
+          <p class='pollDescription'>{{poll.pollDescription}}</p>
+        </div>
       </ion-item>
       <ion-infinite-scroll (ionInfinite)="dash$.doInfinite($event)">
         <ion-infinite-scroll-content></ion-infinite-scroll-content>
       </ion-infinite-scroll>
-    </div>
   </div>
 
   <ng-template #showSearchResults><h1>No Memes to show</h1></ng-template>
