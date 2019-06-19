@@ -28,6 +28,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 //ionic
 import { Camera } from '@ionic-native/camera';
 import { IonicStorageModule } from '@ionic/storage';
+import { Facebook } from '@ionic-native/facebook';
 
 //providers
 import { UserProvider } from '../providers/user/user';
@@ -81,6 +82,7 @@ import { SpinnerServiceProvider } from '../providers/spinner-service/spinner-ser
     SearchbarComponent
   ],
   providers: [
+    Facebook,
     Camera,
     StatusBar,
     SplashScreen,
@@ -91,7 +93,7 @@ import { SpinnerServiceProvider } from '../providers/spinner-service/spinner-ser
     ResultsServiceProvider,
     SearchbarServiceProvider,
     PollInterfaceProvider,
-    SpinnerServiceProvider
+    SpinnerServiceProvider,
   ]
 })
 export class AppModule {}

@@ -37,8 +37,9 @@
 
 <div id='oauthWrapper'>
     <div id='oauthTitle'>Sign in with</div>
+    <button ion-button class="btn" (click)="fbLogin()">Login with facebook</button>
     <ion-icon id='google' name="logo-google"></ion-icon>
-    <ion-icon id='facebook' name="logo-facebook"></ion-icon>
+    <ion-icon id='facebook' (click)="fbLogin()" name="logo-facebook"></ion-icon>
     <ion-icon id='twitter' name="logo-twitter"></ion-icon>
     <ion-icon id='github' name="logo-github"></ion-icon>
 </div>

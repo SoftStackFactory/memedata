@@ -34,7 +34,6 @@ export class SearchbarServiceProvider {
     this.http.get(getKeywordsAPI)
     .subscribe((response) => {
       console.log(response)
-      //this.dash$.polls = [];
 
       this.dash$.displayedPolls = []
 
