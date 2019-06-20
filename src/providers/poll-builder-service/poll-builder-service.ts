@@ -87,6 +87,6 @@ export class PollBuilderServiceProvider {
   }
 
   savePollMeme(meme){
-    return this.http.post(this.apiBaseUrlPollSet + "/" + this.pollId + "/meme", meme)
+    return this.http.post(this.apiBaseUrlPollSet + "/" + this.userId + "/meme", meme)
   }
 }

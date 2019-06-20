@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { PollBuilderServiceProvider } from '../poll-builder-service/poll-builder-service';
+import { FacebookOathProvider } from '../facebook-oath/facebook-oath';
 
-
+declare var FB: any
 
 @Injectable()
 export class UserProvider {
@@ -12,13 +13,26 @@ export class UserProvider {
   constructor(
     public http: HttpClient,
     public BuilderService: PollBuilderServiceProvider,
-    public storage: Storage) {
+    public storage: Storage,
+    public fbOath: FacebookOathProvider) {
+    this.fbOath.facebookSDKLoad()
     console.log('Hello UserProvider Provider');
   }
 
   loggedIn: boolean = false
 
   baseUrl: string = 'https://ssf-memedata.herokuapp.com/api/appUsers';
+
+  clearUserDetails() {
+    this.loggedIn = false
+    this.fbOath.fbLoggedIn = false
+    this.storage.clear()
+    window.sessionStorage.clear();
+    this.BuilderService.token = ""
+    this.BuilderService.userId = ""
+    this.BuilderService.pollSet.userId = ""
+    this.BuilderService.meme.userId = ""
+  }
 
   register(userData) {
     return this.http.post(this.baseUrl, userData );
@@ -29,18 +43,23 @@ export class UserProvider {
   }
 
   onLogout(){
+    console.log("logged into facebook =", this.fbOath.fbLoggedIn)
+    if(this.fbOath.fbLoggedIn = true) {
+      FB.api(
+        "/me?logout",
+        "POST",
+        function(response) {
+        console.log("user logged out of Facebook =", response.success)
+      });
+      this.clearUserDetails()
+    }else {
     this.logout(this.BuilderService.token)
     .subscribe(
       (response:any) =>{ 
-      this.storage.clear()
-      window.sessionStorage.clear();
-      console.log("logoooooout user token ", this.BuilderService.token)
-      this.BuilderService.token = ""
-      this.BuilderService.userId = ""
-      this.BuilderService.pollSet.userId = ""
-      this.BuilderService.meme.userId = ""
+        console.log("user logged out with token ", this.BuilderService.token)
+        this.clearUserDetails()
       });
-
+    }
     }
 
   logout(token) {

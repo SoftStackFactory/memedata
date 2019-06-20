@@ -27,6 +27,7 @@
     "@ionic-native/splash-screen": "~4.20.0",
     "@ionic-native/status-bar": "~4.20.0",
     "@ionic/storage": "^2.2.0",
+    "angular5-social-login": "^1.0.9",
     "cordova": "^9.0.0",
     "cordova-android": "8.0.0",
     "cordova-browser": "6.0.0",

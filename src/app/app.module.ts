@@ -38,6 +38,7 @@ import { ResultsServiceProvider } from '../providers/results-service/results-ser
 import { SearchbarServiceProvider } from '../providers/searchbar-service/searchbar-service';
 import { PollInterfaceProvider } from '../providers/poll-interface-provider/poll-interface-provider';
 import { SpinnerServiceProvider } from '../providers/spinner-service/spinner-service';
+import { FacebookOathProvider } from '../providers/facebook-oath/facebook-oath';
 
 @NgModule({
   declarations: [
@@ -94,6 +95,7 @@ import { SpinnerServiceProvider } from '../providers/spinner-service/spinner-ser
     SearchbarServiceProvider,
     PollInterfaceProvider,
     SpinnerServiceProvider,
+    FacebookOathProvider,
   ]
 })
 export class AppModule {}

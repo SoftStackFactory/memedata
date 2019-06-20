@@ -15,6 +15,7 @@ import { PollResultsPage } from '../pages/poll-results/poll-results';
 
 import { SearchbarServiceProvider } from '../providers/searchbar-service/searchbar-service';
 import { SpinnerServiceProvider } from '../providers/spinner-service/spinner-service';
+import { FacebookOathProvider } from '../providers/facebook-oath/facebook-oath';
 
 
 
@@ -36,7 +37,8 @@ export class MyApp {
               public splashScreen: SplashScreen, 
               public search$: SearchbarServiceProvider,
               public events: Events,
-              public spinnerService: SpinnerServiceProvider) {
+              public spinnerService: SpinnerServiceProvider,
+              public fbOath: FacebookOathProvider) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
