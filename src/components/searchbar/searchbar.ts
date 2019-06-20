@@ -23,7 +23,6 @@ import { PollHistoryPage } from '../../pages/poll-history/poll-history';
 })
 export class SearchbarComponent {
   @ViewChild(Nav) nav: Nav;
-  
 
   rootPage: any = LoginPage;
 
@@ -71,7 +70,7 @@ export class SearchbarComponent {
   }
   goToLogout() {
     this.user.onLogout()
-    this.navCtrl.setRoot(this.pages[0].component);
+    //this.navCtrl.setRoot(this.pages[0].component);
   }
 
 }
