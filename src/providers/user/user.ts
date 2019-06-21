@@ -4,7 +4,6 @@ import { Storage } from '@ionic/storage';
 import { SearchbarServiceProvider } from '../searchbar-service/searchbar-service'
 import { PollBuilderServiceProvider } from '../poll-builder-service/poll-builder-service';
 import { FacebookOathProvider } from '../facebook-oath/facebook-oath';
-import { DashboardPage } from '../../pages/dashboard/dashboard'
 
 declare var FB: any
 
@@ -35,9 +34,14 @@ export class UserProvider {
   baseUrl: string = 'https://ssf-memedata.herokuapp.com/api/appUsers';
 
   mobileStorageSet(){
-    this.storage.set("token", this.data.accessToken);
-    this.storage.set("userId", this.data.userId);
+    if(this.data.accessToken){
+      this.storage.set("token", this.data.accessToken);
       console.log("your token is", this.data.accessToken)
+    }else{
+      this.storage.set("token", this.data.token)
+      console.log("your token is", this.data.token)
+    }
+    this.storage.set("userId", this.data.userId);
       console.log("your userId is", this.data.userId)
     this.storage.get('token').then((val) => { //getting from ionic storage for android/iphone/mobile platform
       console.log('got your token', val);

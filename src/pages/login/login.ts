@@ -99,6 +99,11 @@ export class LoginPage {
           } else {
             this.userService.coreStorageSet()
           }
+          this.userService.user = {
+            email:'',
+            password:''
+          }
+        
           this.navCtrl.setRoot(DashboardPage);
       })
   }
