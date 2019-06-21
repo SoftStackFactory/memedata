@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { AlertController } from 'ionic-angular';
 import { SearchbarServiceProvider } from '../searchbar-service/searchbar-service'
 import { PollBuilderServiceProvider } from '../poll-builder-service/poll-builder-service';
 import { FacebookOathProvider } from '../facebook-oath/facebook-oath';
@@ -19,14 +18,58 @@ export class UserProvider {
     public search$: SearchbarServiceProvider,
     public storage: Storage,
     public fbOath: FacebookOathProvider,
-    public alertCtrl: AlertController) {
+    ) {
     this.fbOath.facebookSDKLoad()
     console.log('Hello UserProvider Provider');
+  }
+
+  data: any;
+
+  user = {
+    email:'',
+    password:''
   }
 
   loggedIn: boolean = false
 
   baseUrl: string = 'https://ssf-memedata.herokuapp.com/api/appUsers';
+
+  mobileStorageSet(){
+    this.storage.set("token", this.data.accessToken);
+    this.storage.set("userId", this.data.userId);
+      console.log("your token is", this.data.accessToken)
+      console.log("your userId is", this.data.userId)
+    this.storage.get('token').then((val) => { //getting from ionic storage for android/iphone/mobile platform
+      console.log('got your token', val);
+    this.BuilderService.token = val})
+    this.storage.get('userId').then((val) => {
+      console.log('got your userId', val);
+    this.loggedIn = true
+    this.BuilderService.userId = val
+    this.BuilderService.pollSet.userId = val
+    this.BuilderService.meme.userId = val})
+  }
+
+  coreStorageSet(){// setting session storage for all other devices such as desktop, windows, mobileweb, browsers, non Cordova
+    if (this.data.accessToken) {
+      window.sessionStorage.setItem('access token', this.data.accessToken)//setting storage for Facebook login response
+      var token = this.data.accessToken//setting token for Facebook login
+      var userId = this.data.userID
+      window.sessionStorage.setItem('userId', this.data.userID)
+    }else{
+      window.sessionStorage.setItem('token', this.data.token);//setting storage for login to backend DB
+      token = this.data.token//setting token for login to backend DB
+      userId = this.data.userId
+      window.sessionStorage.setItem('userId', this.data.userId)
+    };
+    console.log("your token is", token)
+    console.log("your userId is", userId)
+    this.loggedIn = true
+    this.BuilderService.token = token
+    this.BuilderService.userId = userId
+    this.BuilderService.pollSet.userId = userId
+    this.BuilderService.meme.userId = userId
+  }
 
   clearUserDetails() {
     this.loggedIn = false
@@ -46,49 +89,6 @@ export class UserProvider {
   login(userData) {
     return this.http.post(this.baseUrl + "/login", userData);
   }
-
-  onLogout(){
-    const alert = this.alertCtrl.create({
-      title: 'Logged Out!',
-      subTitle: 'You are now logged out of MemePoll!',
-      buttons: ['OK']
-    });
-    const confirm = this.alertCtrl.create({
-      title: 'Logout?',
-      message: 'Are you sure you want to Log out of MemePoll?',
-      buttons: [
-        {
-          text: 'No',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Yes',
-          handler: () => {
-            console.log("logged into facebook ==", this.fbOath.fbLoggedIn)
-            if(this.fbOath.fbLoggedIn == true) {
-              FB.api(
-                "/me?logout",
-                "POST",
-                function(response) {
-                console.log("user logged out of Facebook ==", response.success)
-              });
-            }else {
-            this.logout(this.BuilderService.token)
-            .subscribe(
-              (response:any) =>{ 
-                console.log("user logged out with token ", this.BuilderService.token)
-              });
-            }
-            this.clearUserDetails()
-            alert.present();
-          }
-        }
-      ]
-    });
-    confirm.present();
-    }
 
   logout(token) {
     return this.http.post(this.baseUrl + "/logout?access_token=" + token, {});

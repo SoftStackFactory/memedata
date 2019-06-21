@@ -13,11 +13,11 @@
             <ion-list inset>
               <ion-item>
                 <ion-input placeholder="Email" name="email" id="loginField"
-                           type="text" required [(ngModel)]="this.user.email"></ion-input>
+                           type="text" required [(ngModel)]="this.userService.user.email"></ion-input>
               </ion-item>
               <ion-item>
                 <ion-input placeholder="Password" name="password" id="passwordField"
-                           type="password" required [(ngModel)]="this.user.password"></ion-input>
+                           type="password" required [(ngModel)]="this.userService.user.password"></ion-input>
               </ion-item>
             </ion-list>
           </ion-col>

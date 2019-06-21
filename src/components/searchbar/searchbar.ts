@@ -1,7 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, Nav } from 'ionic-angular';
 import { SearchbarServiceProvider } from '../../providers/searchbar-service/searchbar-service';
+import { FacebookOathProvider } from '../../providers/facebook-oath/facebook-oath';
+import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
 import { UserProvider } from '../../providers/user/user';
+import { AlertController } from 'ionic-angular';
 
 import { PollInterfacePage } from '../../pages/poll-interface/poll-interface';
 import { LoginPage } from '../../pages/login/login';
@@ -10,6 +13,8 @@ import { RegisterPage } from '../../pages/register/register';
 import { DashboardPage } from '../../pages/dashboard/dashboard';
 import { PollResultsPage } from '../../pages/poll-results/poll-results';
 import { PollHistoryPage } from '../../pages/poll-history/poll-history';
+
+declare var FB: any;
 
 /**
  * Generated class for the SearchbarComponent component.
@@ -34,9 +39,13 @@ export class SearchbarComponent {
     public search$: SearchbarServiceProvider, 
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public user: UserProvider,
+    public userService: UserProvider,
+    public fbOath: FacebookOathProvider,
+    public alertCtrl: AlertController,
+    public BuilderService: PollBuilderServiceProvider
     ) {
-    console.log('Hello SearchbarComponent Component');
+    this.fbOath.facebookSDKLoad()
+    console.log('Hello SearchbarComponent');
     this.text = 'Hello World';
   
   // used for an example of ngFor and navigation
@@ -68,9 +77,55 @@ export class SearchbarComponent {
   goToRewardsHistory() {
     this.navCtrl.setRoot(PollHistoryPage);
   }
+
+  toLogin() {
+    this.navCtrl.setRoot(this.pages[0].component);
+  }
+
   goToLogout() {
-    this.user.onLogout()
-    //this.navCtrl.setRoot(this.pages[0].component);
+    const alert = this.alertCtrl.create({
+      title: 'Logged Out!',
+      subTitle: 'You are now logged out of MemePoll!',
+      buttons: ['OK']
+    });
+    const confirm = this.alertCtrl.create({
+      title: 'Logout?',
+      message: 'Are you sure you want to Log out of MemePoll?',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            console.log("logged into facebook ==", this.fbOath.fbLoggedIn)
+            if(this.fbOath.fbLoggedIn == true) {
+              FB.api(
+                "/me?logout",
+                "POST",
+                function(response) {
+                console.log("logged in to Facebook ==", !response.success)
+                this.toLogin()
+              });
+            }else {
+            this.userService.logout(this.BuilderService.token)
+            .subscribe(
+              (response:any) =>{ 
+                console.log("user logged out with token ", this.BuilderService.token)
+                this.toLogin()
+              });
+            }
+            this.userService.clearUserDetails()
+            alert.present();
+          }
+        }
+      ]
+    });
+    confirm.present();
+    //this.userService.onLogout()
   }
 
 }
