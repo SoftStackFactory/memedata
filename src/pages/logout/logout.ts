@@ -6,7 +6,6 @@ import { Storage } from '@ionic/storage';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
 import { FacebookOathProvider } from '../../providers/facebook-oath/facebook-oath';
 
-declare var FB: any
 
 @IonicPage()
 @Component({
@@ -31,24 +30,23 @@ export class LogoutPage {
   }
 
   ionViewDidLoad() {
-    this.fbOath.facebookSDKLoad()
     console.log('ionViewDidLoad LogoutPage');
   }
 
-  onLogout(){
-    this.userService.logout(this.BuilderService.token)
-    .subscribe(
-      (response:any) =>{ 
-        console.log("logoooooout user token ", this.BuilderService.token)
-      });
-      this.storage.clear()
-      window.sessionStorage.clear();
-      this.BuilderService.token = ""
-      this.BuilderService.userId = ""
-      this.BuilderService.pollSet.userId = ""
-      this.BuilderService.meme.userId = ""
-      this.navCtrl.setRoot(DashboardPage);
-    }
+//  onLogout(){
+//   this.userService.logout(this.BuilderService.token)
+//    .subscribe(
+//      (response:any) =>{ 
+//        console.log("logoooooout user token ", this.BuilderService.token)
+//      });
+//      this.storage.clear()
+//      window.sessionStorage.clear();
+//      this.BuilderService.token = ""
+//     this.BuilderService.userId = ""
+//      this.BuilderService.pollSet.userId = ""
+//      // this.BuilderService.meme.userId = ""
+//      this.navCtrl.setRoot(DashboardPage);
+//    }
   }
 
 

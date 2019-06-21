@@ -5,8 +5,6 @@ import { SearchbarServiceProvider } from '../searchbar-service/searchbar-service
 import { PollBuilderServiceProvider } from '../poll-builder-service/poll-builder-service';
 import { FacebookOathProvider } from '../facebook-oath/facebook-oath';
 
-declare var FB: any
-
 @Injectable()
 export class UserProvider {
 
@@ -18,7 +16,6 @@ export class UserProvider {
     public storage: Storage,
     public fbOath: FacebookOathProvider,
     ) {
-    this.fbOath.facebookSDKLoad()
     console.log('Hello UserProvider Provider');
   }
 
@@ -36,13 +33,15 @@ export class UserProvider {
   mobileStorageSet(){
     if(this.data.accessToken){
       this.storage.set("token", this.data.accessToken);
+      this.storage.set("userId", this.data.userID)
       console.log("your token is", this.data.accessToken)
+      console.log("your userId is", this.data.userID)
     }else{
       this.storage.set("token", this.data.token)
+      this.storage.set("userId", this.data.userId);
       console.log("your token is", this.data.token)
-    }
-    this.storage.set("userId", this.data.userId);
       console.log("your userId is", this.data.userId)
+    }
     this.storage.get('token').then((val) => { //getting from ionic storage for android/iphone/mobile platform
       console.log('got your token', val);
     this.BuilderService.token = val})
@@ -57,17 +56,16 @@ export class UserProvider {
   coreStorageSet(){// setting session storage for all other devices such as desktop, windows, mobileweb, browsers, non Cordova
     if (this.data.accessToken) {
       window.sessionStorage.setItem('access token', this.data.accessToken)//setting storage for Facebook login response
+      window.sessionStorage.setItem('userId', this.data.userID)
       var token = this.data.accessToken//setting token for Facebook login
       var userId = this.data.userID
-      window.sessionStorage.setItem('userId', this.data.userID)
     }else{
       window.sessionStorage.setItem('token', this.data.token);//setting storage for login to backend DB
+      window.sessionStorage.setItem('userId', this.data.userId)
       token = this.data.token//setting token for login to backend DB
       userId = this.data.userId
-      window.sessionStorage.setItem('userId', this.data.userId)
     };
-    console.log("your token is", token)
-    console.log("your userId is", userId)
+    console.log("your token is", token, "your userId is", userId)
     this.loggedIn = true
     this.BuilderService.token = token
     this.BuilderService.userId = userId

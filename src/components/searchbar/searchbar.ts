@@ -5,6 +5,8 @@ import { FacebookOathProvider } from '../../providers/facebook-oath/facebook-oat
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
 import { UserProvider } from '../../providers/user/user';
 import { AlertController } from 'ionic-angular';
+import { Platform } from 'ionic-angular';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 
 import { PollInterfacePage } from '../../pages/poll-interface/poll-interface';
 import { LoginPage } from '../../pages/login/login';
@@ -40,11 +42,12 @@ export class SearchbarComponent {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public userService: UserProvider,
+    public platform: Platform,
+    public fb: Facebook,
     public fbOath: FacebookOathProvider,
     public alertCtrl: AlertController,
     public BuilderService: PollBuilderServiceProvider
     ) {
-    this.fbOath.facebookSDKLoad()
     console.log('Hello SearchbarComponent');
     this.text = 'Hello World';
   
@@ -101,12 +104,19 @@ export class SearchbarComponent {
           handler: () => {
             console.log("logged into facebook ==", this.fbOath.fbLoggedIn)
             if(this.fbOath.fbLoggedIn == true) {
+              if(this.platform.is("cordova")) {
+                this.fb.logout()
+                .then((res: FacebookLoginResponse) => 
+                console.log('Logged in to Facebook ==', !res))
+                .catch(e => console.log('Error logging into Facebook', e));
+              } else {
               FB.api(
                 "/me?logout",
                 "POST",
                 function(response) {
                 console.log("logged in to Facebook ==", !response.success)
-              });
+                });
+              }
               this.goToLogin()
             }else {
             this.userService.logout(this.BuilderService.token)
