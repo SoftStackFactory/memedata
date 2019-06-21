@@ -3,8 +3,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DashboardPage } from '../dashboard/dashboard';
 import { PollResultsPage } from '../poll-results/poll-results'
 import { PollInterfaceProvider } from '../../providers/poll-interface-provider/poll-interface-provider';
-import { Slides } from 'ionic-angular';
+import { Slides, Events } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
+import { ResultsServiceProvider } from '../../providers/results-service/results-service';
 
 
 @IonicPage()
@@ -33,21 +34,29 @@ export class PollInterfacePage {
   public swipe: number = 0;
 
   answers:any = []
-  
+  index = 0
   userResponse:any = {
     memeId:"",
     userId:"",
-    choice:"",
-    id:""
+    pollId:"",
+    choice:""
     }
   
   
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              public pollInterfaceProvider: PollInterfaceProvider) {
+              public pollInterfaceProvider: PollInterfaceProvider,
+              public resultsProvider: ResultsServiceProvider,
+              public events: Events) {
 
   this.meme = this.pollInterfaceProvider.memes
   this.memeCount = this.meme.length
+
+  events.subscribe('answerSaved', ()=> {
+    if(this.questionNumber === this.totalQuestions) {
+        this.resultsProvider.getMemeAnswers()
+    }
+  })
   }
 
   public hideOverlay() {
@@ -73,7 +82,7 @@ export class PollInterfacePage {
     document.getElementById("bar").style.width = "" + x + "%"
 
     if(this.questionNumber === this.totalQuestions) {
-        console.log("Poll Done")
+        console.log(this.resultsProvider.userAnswers)
         this.pollComplete = true
         this.navCtrl.setRoot(PollResultsPage) 
     } else {
@@ -81,11 +90,21 @@ export class PollInterfacePage {
     }
   }
 
-  button() {
+  button(direction) {
     if (!this.pollComplete) {
+      this.userResponse = {
+        memeId: this.pollInterfaceProvider.memes[this.index].id,
+        userId: this.pollInterfaceProvider.memes[this.index].userId,
+        pollId: this.pollInterfaceProvider.memes[this.index].pollId,
+        choice: direction
+      }
+
+      this.pollInterfaceProvider.saveMemeAnswers(this.pollInterfaceProvider.memes[this.index].id, this.userResponse)
+      this.resultsProvider.userAnswers.push(this.userResponse)
       this.progress = this.progress + this.percent
       this.progressBar(this.progress)
       this.slides.slideNext()
+      this.index += 1
     }
   }
 
@@ -94,28 +113,28 @@ export class PollInterfacePage {
     console.log(img.clientHeight)
   }
 
-swipeEvent(e) {
-  this.button()
-    if (e.direction == 2) {
-       this.userResponse = {
-        memeId:"0001",
-        userId:"",
-        choice:"left",
-        id:""
-      }
-      this.answers.push(this.userResponse)
-    } 
-    else if (e.direction == 4){
-      this.userResponse = {
-        memeId:"0001",
-        userId:"",
-        choice:"right",
-        id:""
-      }
-      this.answers.push(this.userResponse)
+// swipeEvent(e) {
+//   this.button()
+//     if (e.direction == 2) {
+//        this.userResponse = {
+//         memeId:"0001",
+//         userId:"",
+//         choice:"left",
+//         id:""
+//       }
+//       this.answers.push(this.userResponse)
+//     } 
+//     else if (e.direction == 4){
+//       this.userResponse = {
+//         memeId:"0001",
+//         userId:"",
+//         choice:"right",
+//         id:""
+//       }
+//       this.answers.push(this.userResponse)
   
-    }
-  }
+//     }
+//   }
 }
 
 

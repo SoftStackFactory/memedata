@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 import { ResultsServiceProvider } from '../../providers/results-service/results-service';
 import { DashboardPage } from '../dashboard/dashboard';
+import { PollInterfaceProvider } from '../../providers/poll-interface-provider/poll-interface-provider';
+import { DashboardServiceProvider } from '../../providers/dashboard-service/dashboard-service';
 
 @IonicPage()
 @Component({
@@ -14,103 +16,21 @@ export class PollResultsPage {
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              public resultsProvider: ResultsServiceProvider) {
+              public resultsProvider: ResultsServiceProvider,
+              public pollInterfaceProvider: PollInterfaceProvider,
+              public dash$: DashboardServiceProvider) {
     
   }
 
-  suggestions:any = [1,2,3,4,5,6,7,8,9,10]
-
-  bar1:number = 0
+  bar1:any = 0
   barPercent1:any = 0
   barPercent2:any = 0
-  bar2:number = 0
+  bar2:any = 0
 
-  meme = [
-      {
-      "id":"0001",
-      "pollID": "string",
-      "topText": "string",
-      "bottomText": "string",
-      "image": "string",
-      "description": "Meme1",
-      "userId": "string"
-    },
-    {
-      "id":"0002",
-      "pollID": "string",
-      "topText": "string",
-      "bottomText": "string",
-      "image": "string",
-      "description": "meme2",
-      "userId": "string"
-    },
-    {
-      "id":"0003",
-      "pollID": "string",
-      "topText": "string",
-      "bottomText": "string",
-      "image": "string",
-      "description": "meme3",
-      "userId": "string"
-    },
-    {
-      "id":"0004",
-      "pollID": "string",
-      "topText": "string",
-      "bottomText": "string",
-      "image": "string",
-      "description": "meme4",
-      "userId": "string"
-    },
-    {
-      "id":"0005",
-      "pollID": "string",
-      "topText": "string",
-      "bottomText": "string",
-      "image": "string",
-      "description": "meme5",
-      "userId": "string"
-    } ,
-    {
-      "id":"0006",
-      "pollID": "string",
-      "topText": "string",
-      "bottomText": "string",
-      "image": "string",
-      "description": "meme6",
-      "userId": "string"
-    }
-  ]
+  meme = this.pollInterfaceProvider.memes
+  userResponse:any = this.resultsProvider.userAnswers
 
-
-  userResponse:any = [
-    {
-      id: "0001",
-      choice: "right"
-    },
-    {
-      id: "0002",
-      choice: "left"
-    },
-    {
-      id: "0003",
-      choice: "right"
-    },
-    {
-      id: "0004",
-      choice: "right"
-    },
-    {
-      id: "0005",
-      choice: "right"
-    },
-    {
-      id: "0006",
-      choice: "right"
-    }
-  ]
-
-  ionViewDidLoad() {
+  ionViewWillLoad() {
     this.resultsProvider.getMemeAnswers()
 
   }
@@ -143,6 +63,11 @@ export class PollResultsPage {
 
   toDashboard() {
     this.navCtrl.setRoot(DashboardPage)
+  }
+
+  startPoll(id) {
+    console.log(id)
+    this.pollInterfaceProvider.getMemes(id)
   }
 
 }
