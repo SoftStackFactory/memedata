@@ -41,7 +41,7 @@ export class RegisterPage {
         (response: any) => {
           console.log("response", response)
           this.data = response
-          if (this.platform.is("iphone" || "android" || "mobile" || "cordova")) { //checking platform, setting storage with ionic
+          if (this.platform.is("cordova")) { //checking platform, setting storage with ionic
             this.storage.set("token", this.data.token)
             this.storage.set("userId", this.data.userId)
             console.log("your token is", this.data.token)

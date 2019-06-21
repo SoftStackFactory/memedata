@@ -106,8 +106,9 @@ export class SearchbarComponent {
             if(this.fbOath.fbLoggedIn == true) {
               if(this.platform.is("cordova")) {
                 this.fb.logout()
-                .then((res: FacebookLoginResponse) => 
-                console.log('Logged in to Facebook ==', !res))
+                .then((res: FacebookLoginResponse) => {
+                  this.userService.clearUserDetails()
+                  console.log('Logged in to Facebook ==', !res)})
                 .catch(e => console.log('Error logging into Facebook', e));
               } else {
               FB.api(
@@ -115,6 +116,7 @@ export class SearchbarComponent {
                 "POST",
                 function(response) {
                 console.log("logged in to Facebook ==", !response.success)
+                this.userService.clearUserDetails()
                 });
               }
               this.goToLogin()
@@ -123,10 +125,11 @@ export class SearchbarComponent {
             .subscribe(
               (response:any) =>{ 
                 console.log("user logged out with token ", this.BuilderService.token)
+                this.userService.clearUserDetails()
                 this.goToLogin()
               });
             }
-            this.userService.clearUserDetails()
+            //this.userService.clearUserDetails()
             alert.present();
           }
         }

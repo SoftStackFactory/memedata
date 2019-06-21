@@ -65,7 +65,8 @@ export class UserProvider {
       token = this.data.token//setting token for login to backend DB
       userId = this.data.userId
     };
-    console.log("your token is", token, "your userId is", userId)
+    console.log("your token is", token)
+    console.log("your userId is", userId)
     this.loggedIn = true
     this.BuilderService.token = token
     this.BuilderService.userId = userId

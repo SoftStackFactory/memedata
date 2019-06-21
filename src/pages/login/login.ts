@@ -169,7 +169,7 @@ export class LoginPage {
         (response: any) => {
           this.userService.data = response
           console.log("response", this.userService.data)
-          if (this.platform.is("iphone" || "android" || "mobile" || "cordova")) {
+          if (this.platform.is("cordova")) {
             this.userService.mobileStorageSet()
           } else {
             this.userService.coreStorageSet()
