@@ -84,7 +84,7 @@ export class LoginPage {
             }else{
             console.log('User login failed');
             }
-        },{scope: 'email'});
+        },{scope: 'email, user_photos'});
     }
   }
 

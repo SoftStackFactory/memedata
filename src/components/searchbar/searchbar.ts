@@ -55,7 +55,8 @@ export class SearchbarComponent {
     { title: 'Register', component: RegisterPage },
     { title: 'Dashboard', component: DashboardPage },
     { title: 'Results', component: PollResultsPage},
-    { title: 'PollInterface', component: PollInterfacePage}
+    { title: 'PollInterface', component: PollInterfacePage},
+    { title: 'PollHistory', component: PollHistoryPage}
   ];
   
   }
@@ -67,25 +68,22 @@ export class SearchbarComponent {
   }
 
   goToLogin() {
-    this.navCtrl.setRoot(LoginPage);
+    this.navCtrl.setRoot(this.pages[0].component);
   }
   
   goToAccountInfo() {
-    this.navCtrl.setRoot(DashboardPage);
+    this.navCtrl.setRoot(this.pages[3].component);
   }
   
   goToRewardsHistory() {
-    this.navCtrl.setRoot(PollHistoryPage);
+    this.navCtrl.setRoot(this.pages[6].component);
   }
 
-  toLogin() {
-    this.navCtrl.setRoot(this.pages[0].component);
-  }
 
   goToLogout() {
     const alert = this.alertCtrl.create({
       title: 'Logged Out!',
-      subTitle: 'You are now logged out of MemePoll!',
+      message: 'You are now logged out of MemePoll!',
       buttons: ['OK']
     });
     const confirm = this.alertCtrl.create({
@@ -108,14 +106,14 @@ export class SearchbarComponent {
                 "POST",
                 function(response) {
                 console.log("logged in to Facebook ==", !response.success)
-                this.toLogin()
               });
+              this.goToLogin()
             }else {
             this.userService.logout(this.BuilderService.token)
             .subscribe(
               (response:any) =>{ 
                 console.log("user logged out with token ", this.BuilderService.token)
-                this.toLogin()
+                this.goToLogin()
               });
             }
             this.userService.clearUserDetails()
@@ -125,7 +123,6 @@ export class SearchbarComponent {
       ]
     });
     confirm.present();
-    //this.userService.onLogout()
   }
 
 }
