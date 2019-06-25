@@ -16,38 +16,38 @@
             <ion-list inset>
               <ion-item>
                     <ion-input placeholder="First Name" name="firstname" id="nameField"
-                      type="text" required [(ngModel)]="this.user.firstName" #name></ion-input>
+                      type="text" required [(ngModel)]="this.userService.userRegister.firstName" #name></ion-input>
                     </ion-item>
                 <ion-item>
                       <ion-input placeholder="Last Name" name="lastname" id="nameField"
-                        type="text" required [(ngModel)]="this.user.lastName" #name></ion-input>
+                        type="text" required [(ngModel)]="this.userService.userRegister.lastName" #name></ion-input>
                 </ion-item>
                 <ion-item>
                 <ion-input placeholder="Username" name="username" id="nameField"
-                  type="text" required [(ngModel)]="this.user.username" #name></ion-input>
+                  type="text" required [(ngModel)]="this.userService.userRegister.username" #name></ion-input>
                 </ion-item>
               <ion-item>
                 <ion-input placeholder="Email" name="useremail" id="emailField"
-                  type="text" required [(ngModel)]="this.user.email" #email></ion-input>
+                  type="text" required [(ngModel)]="this.userService.userRegister.email" #email></ion-input>
               </ion-item>
               <ion-item>
                 <ion-input placeholder="Password" name="password" id="passwordField"
-                  type="password" required [(ngModel)]="this.user.password"></ion-input>
+                  type="password" required [(ngModel)]="this.userService.userRegister.password"></ion-input>
               </ion-item>
               <ion-item>
               <ion-label>Date of birth</ion-label>
-                <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="this.user.dob" [ngModelOptions]="{standalone: true}" ></ion-datetime>
+                <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="this.userService.userRegister.dob" [ngModelOptions]="{standalone: true}" ></ion-datetime>
               </ion-item>
               <ion-item>
                   <ion-label>Gender</ion-label>
-                  <ion-select placeholder="Select One" [(ngModel)]="this.user.gender" [ngModelOptions]="{standalone: true}">
+                  <ion-select placeholder="Select One" [(ngModel)]="this.userService.userRegister.gender" [ngModelOptions]="{standalone: true}">
                     <ion-option value="f">Female</ion-option>
                     <ion-option value="m">Male</ion-option>
                   </ion-select>
                 </ion-item>
                 <ion-item>
                 <ion-input placeholder="Zipcode" name="zipcode" id="zipField"
-                  type="text" required [(ngModel)]="this.user.zip" #zip></ion-input>
+                  type="text" required [(ngModel)]="this.userService.userRegister.zip" #zip></ion-input>
                 </ion-item>
             </ion-list>
           </ion-col>

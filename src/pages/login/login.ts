@@ -163,7 +163,7 @@ export class LoginPage {
   }
 
   onLogin(){
-    this.userService.login(this.userService.user)
+    this.userService.login(this.userService.userLogin)
       .subscribe(
         (response: any) => {
           this.userService.data = response
@@ -173,7 +173,7 @@ export class LoginPage {
           } else {
             this.userService.coreStorageSet()
           }
-          this.userService.user = {
+          this.userService.userLogin = {
             email:'',
             password:''
           }

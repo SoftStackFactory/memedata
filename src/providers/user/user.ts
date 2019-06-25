@@ -21,7 +21,18 @@ export class UserProvider {
 
   data: any;
 
-  user = {
+  userRegister = {
+    firstName: '',
+    lastName: '',
+    username: '',
+    email:'',
+    password:'',
+    dob:'',
+    gender:'',
+    zip:''
+  }
+
+  userLogin = {
     email:'',
     password:''
   }
