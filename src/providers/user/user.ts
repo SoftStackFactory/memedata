@@ -29,13 +29,16 @@ export class UserProvider {
     password:'',
     dob:'',
     gender:'',
-    zip:''
+    zip:'',
+    id: 'none'
   }
 
   userLogin = {
     email:'',
     password:''
   }
+
+  userDetails: any;
 
   loggedIn: boolean = false
 
@@ -106,6 +109,10 @@ export class UserProvider {
 
   logout(token) {
     return this.http.post(this.baseUrl + "/logout?access_token=" + token, {});
+  }
+
+  getUserDetails() {
+    return this.http.get(this.baseUrl + "/" + this.BuilderService.userId + "?access_token=" + this.BuilderService.token)
   }
 
 }

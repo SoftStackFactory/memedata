@@ -1,0 +1,30 @@
+<!--
+  Generated template for the AccountInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+    <button ion-button icon-only (click)='goBack()'>
+        <ion-icon name="arrow-back"></ion-icon>
+    </button>
+  </ion-buttons>
+    <ion-title>Account-info</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <h2 id=username>Hello, {{this.userService.userDetails.username}}!</h2>
+  <div id=profileHeading>
+    <h3>Your MemePoll Profile</h3>
+  </div>
+  <p id=firstName>First Name: {{this.userService.userDetails.firstName}}</p>
+  <p id=lastName>Last Name: {{this.userService.userDetails.lastName}}</p>
+  <p id=email>Email: {{this.userService.userDetails.email}}</p>
+  <p id=dob>DOB: {{this.userService.userDetails.dob}}</p>
+  <p id=gender>Gender: {{this.userService.userDetails.gender}}</p>
+  <p id=zipcode>Zip Code: {{this.userService.userDetails.zip}}</p>
+</ion-content>

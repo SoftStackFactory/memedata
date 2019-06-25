@@ -19,6 +19,7 @@ import { PollBuilder4Page } from '../pages/poll-builder4/poll-builder4';
 import { PollInterfacePage } from '../pages/poll-interface/poll-interface';
 import { PollResultsPage } from '../pages/poll-results/poll-results';
 import { PollHistoryPage } from '../pages/poll-history/poll-history';
+import { AccountInfoPage } from '../pages/account-info/account-info';
 
 import { SearchbarComponent } from '../components/searchbar/searchbar';
 
@@ -56,6 +57,7 @@ import { FacebookOathProvider } from '../providers/facebook-oath/facebook-oath';
     PollInterfacePage,
     PollResultsPage,
     PollHistoryPage,
+    AccountInfoPage,
     SearchbarComponent
   ],
   imports: [
@@ -80,6 +82,7 @@ import { FacebookOathProvider } from '../providers/facebook-oath/facebook-oath';
     PollInterfacePage,
     PollResultsPage,
     PollHistoryPage,
+    AccountInfoPage,
     SearchbarComponent
   ],
   providers: [

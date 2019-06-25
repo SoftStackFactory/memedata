@@ -159,11 +159,16 @@ export class LoginPage {
           } else {
             this.userService.coreStorageSet()
           }
+          this.userService.getUserDetails()
+          .subscribe(
+            (response: any) => {
+            this.userService.userDetails = response
+            console.log("User Details", this.userService.userDetails)
+           })
           this.userService.userLogin = {
             email:'',
             password:''
           }
-        
           this.navCtrl.setRoot(DashboardPage);
       })
   }

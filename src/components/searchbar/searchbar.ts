@@ -15,6 +15,7 @@ import { RegisterPage } from '../../pages/register/register';
 import { DashboardPage } from '../../pages/dashboard/dashboard';
 import { PollResultsPage } from '../../pages/poll-results/poll-results';
 import { PollHistoryPage } from '../../pages/poll-history/poll-history';
+import { AccountInfoPage } from '../../pages/account-info/account-info';
 
 declare var FB: any;
 
@@ -59,7 +60,8 @@ export class SearchbarComponent {
     { title: 'Dashboard', component: DashboardPage },
     { title: 'Results', component: PollResultsPage},
     { title: 'PollInterface', component: PollInterfacePage},
-    { title: 'PollHistory', component: PollHistoryPage}
+    { title: 'PollHistory', component: PollHistoryPage},
+    { title: 'AccountInfo', component: AccountInfoPage}
   ];
   
   }
@@ -75,7 +77,7 @@ export class SearchbarComponent {
   }
   
   goToAccountInfo() {
-    this.navCtrl.setRoot(this.pages[3].component);
+    this.navCtrl.setRoot(this.pages[7].component);
   }
   
   goToRewardsHistory() {
