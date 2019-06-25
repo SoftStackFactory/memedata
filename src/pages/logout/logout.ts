@@ -7,7 +7,6 @@ import { PollBuilderServiceProvider } from '../../providers/poll-builder-service
 import { FacebookOathProvider } from '../../providers/facebook-oath/facebook-oath';
 
 
-@IonicPage()
 @Component({
   selector: 'page-logout',
   templateUrl: 'logout.html',
