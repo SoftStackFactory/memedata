@@ -12,8 +12,7 @@ export class PollInterfaceProvider {
               public spinnerService: SpinnerServiceProvider) {
   }
 
-  api:string = "https://memepoll.herokuapp.com/api/"
-  api2:string = 'https://ssf-memedata.herokuapp.com/api/'
+  api:string = 'https://ssf-memedata.herokuapp.com/api/'
   memes:any = []
 
   getMemes(id){
@@ -28,10 +27,11 @@ export class PollInterfaceProvider {
   }
 
   saveMemeAnswers(memeId, answers) {
-    this.http.post(this.api2 + 'memes/' + memeId + '/answers', answers)
+    this.http.post(this.api + 'memes/' + memeId + '/answers', answers)
     .subscribe((response) => {
       console.log(response)
       this.events.publish('answerSaved');
       });
   }
 }
+
