@@ -11,6 +11,7 @@ export class ResultsServiceProvider {
   answers:any = []
   api:string = 'https://ssf-memedata.herokuapp.com/api/'
 
+
   getMemeAnswers() {
     this.http.get(this.api + "answers")
     .subscribe((response) => {

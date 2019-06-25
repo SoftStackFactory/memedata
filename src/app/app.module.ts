@@ -28,6 +28,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 //ionic
 import { Camera } from '@ionic-native/camera';
 import { IonicStorageModule } from '@ionic/storage';
+import { Facebook } from '@ionic-native/facebook';
 
 //providers
 import { UserProvider } from '../providers/user/user';
@@ -37,6 +38,7 @@ import { ResultsServiceProvider } from '../providers/results-service/results-ser
 import { SearchbarServiceProvider } from '../providers/searchbar-service/searchbar-service';
 import { PollInterfaceProvider } from '../providers/poll-interface-provider/poll-interface-provider';
 import { SpinnerServiceProvider } from '../providers/spinner-service/spinner-service';
+import { FacebookOathProvider } from '../providers/facebook-oath/facebook-oath';
 
 @NgModule({
   declarations: [
@@ -81,6 +83,7 @@ import { SpinnerServiceProvider } from '../providers/spinner-service/spinner-ser
     SearchbarComponent
   ],
   providers: [
+    Facebook,
     Camera,
     StatusBar,
     SplashScreen,
@@ -91,7 +94,8 @@ import { SpinnerServiceProvider } from '../providers/spinner-service/spinner-ser
     ResultsServiceProvider,
     SearchbarServiceProvider,
     PollInterfaceProvider,
-    SpinnerServiceProvider
+    SpinnerServiceProvider,
+    FacebookOathProvider,
   ]
 })
 export class AppModule {}
