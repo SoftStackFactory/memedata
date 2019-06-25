@@ -36,7 +36,7 @@ export class PollBuilderPage {
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
-      correctOrientation: true//,
+      correctOrientation: true,
       //allowEdit: true
     }
     

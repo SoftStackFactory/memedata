@@ -90,6 +90,7 @@ export class PollBuilder4Page {
           this.BuilderService.pollSet.pollDescription = ""
           this.BuilderService.pollSet.pollCategory = ""
           this.BuilderService.pollSet.pollKeywords = ["keywords"]
+          this.BuilderService.memes = []
           this.BuilderService.displayMeme = {
             topText: "",
             bottomText: "",
