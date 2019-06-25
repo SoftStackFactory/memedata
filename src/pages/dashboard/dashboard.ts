@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Content, Events } from 'ionic-angular';
+import { NavController, NavParams, Content, Events } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { DashboardServiceProvider } from '../../providers/dashboard-service/dashboard-service';
 import { PollBuilderPage } from '../poll-builder/poll-builder';
@@ -9,7 +9,6 @@ import { PollInterfacePage } from '../poll-interface/poll-interface';
 import { PollHistoryPage } from '../poll-history/poll-history';
 import { SpinnerServiceProvider } from '../../providers/spinner-service/spinner-service';
 
-@IonicPage()
 @Component({
   selector: 'page-dashboard',
   templateUrl: 'dashboard.html',

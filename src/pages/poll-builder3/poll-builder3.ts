@@ -12,8 +12,6 @@ import { AlertController } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-
-@IonicPage()
 @Component({
   selector: 'page-poll-builder3',
   templateUrl: 'poll-builder3.html',

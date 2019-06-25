@@ -11,8 +11,6 @@ import { DashboardPage } from '../dashboard/dashboard';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
-@IonicPage()
 @Component({
   selector: 'page-poll-builder4',
   templateUrl: 'poll-builder4.html',

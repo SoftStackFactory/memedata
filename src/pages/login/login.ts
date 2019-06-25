@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { FacebookOathProvider } from '../../providers/facebook-oath/facebook-oath';
 import { UserProvider } from '../../providers/user/user';
 import { DashboardPage } from '../../pages/dashboard/dashboard';
@@ -12,7 +12,6 @@ import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 
 declare var FB: any;
 
-@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',

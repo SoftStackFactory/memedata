@@ -7,7 +7,6 @@ import { PollBuilderServiceProvider } from '../../providers/poll-builder-service
 import { Platform } from 'ionic-angular'
 
 
-@IonicPage()
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html',
