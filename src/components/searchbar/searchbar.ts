@@ -116,9 +116,9 @@ export class SearchbarComponent {
                 "POST",
                 function(response) {
                 console.log("logged in to Facebook ==", !response.success)
-                this.userService.clearUserDetails()
                 });
               }
+              this.userService.clearUserDetails()
               this.goToLogin()
             }else {
             this.userService.logout(this.BuilderService.token)
