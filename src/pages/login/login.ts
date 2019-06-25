@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FacebookOathProvider } from '../../providers/facebook-oath/facebook-oath';
 import { UserProvider } from '../../providers/user/user';
 import { DashboardPage } from '../../pages/dashboard/dashboard';
 import { RegisterPage } from '../../pages/register/register';
 import { Storage } from '@ionic/storage';
 import { Platform } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
+
+declare var FB: any;
 
 @IonicPage()
 @Component({
@@ -14,11 +19,6 @@ import { PollBuilderServiceProvider } from '../../providers/poll-builder-service
 })
 
 export class LoginPage {
-  data: any;
-  user = {
-    email:'',
-    password:''
-  }
 
   constructor(
     public navCtrl: NavController, 
@@ -26,53 +26,161 @@ export class LoginPage {
     public userService: UserProvider, 
     public storage: Storage, 
     public BuilderService: PollBuilderServiceProvider,
-    public platform: Platform
+    public platform: Platform,
+    public alertCtrl: AlertController,
+    public fb: Facebook,
+    public fbOath: FacebookOathProvider,
     ) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+      console.log('ionViewDidLoad LoginPage');
   }
 
   forgot() {
     this.navCtrl.push(RegisterPage)
   }
 
+  checkFbStatus() {
+    if(this.platform.is("cordova")) {
+      this.fb.getLoginStatus()
+      .then( (res: FacebookLoginResponse) => {
+        if(res.status === "connected") {
+          // Get user ID and Token
+          this.userService.data = res.authResponse
+          this.fbOath.fbLoggedIn = true
+          console.log("Facebook logged in ==", this.fbOath.fbLoggedIn, res.authResponse)
+          this.userService.mobileStorageSet()
+          // Get user infos from the API
+          this.fb.api("/me?fields=name,gender,email", []).then((user) => {
+              // Get the connected user details
+              var gender    = user.gender;
+              var name      = user.name;
+              var email     = user.email;
+              console.log("=== USER INFOS ===");
+              console.log("Gender : " + gender);
+              console.log("Name : " + name);
+              console.log("Email : " + email);
+              this.navCtrl.setRoot(DashboardPage)
+          });
+      } 
+      else {
+        if (res.status === "unknown") {
+          this.fbLogin()
+        } else {
+          console.log("An error occurred...");
+        }
+      }
+  })
+      .catch(e => 
+        console.log("Error Logging into Facebook", e))
+    } else {
+    FB.getLoginStatus((response) => {
+      if (response.status === 'connected') {
+        this.userService.data = response.authResponse
+        this.fbOath.fbLoggedIn = true
+        this.userService.coreStorageSet()
+        console.log("Logged in with Facebook", response.authResponse)
+        this.navCtrl.setRoot(DashboardPage)
+        // The user is logged in and has authenticated your
+        // app, and response.authResponse supplies
+        // the user's ID, a valid access token, a signed
+        // request, and the time the access token 
+        // and signed request each expire.
+      } else if (response.status === 'not_authorized') {
+        FB.login((response)=> {
+          console.log('submitLogin',response);
+          if (response.authResponse) {
+            this.userService.data = response.authResponse
+            this.fbOath.fbLoggedIn = true
+            this.userService.coreStorageSet()
+            console.log("Logged in with Facebook", response.authResponse)
+            this.navCtrl.setRoot(DashboardPage)
+          }else{
+          console.log('User login failed');
+          }
+      },{scope: 'email, user_photos'});
+        // The user hasn't authorized your application.  They
+        // must click the Login button, or you must call FB.login
+        // in response to a user gesture, to launch a login dialog.
+      } else {
+        if(response.status === "unknown") {
+          this.fbLogin()
+        }
+        // The user isn't logged in to Facebook. You can launch a
+        // login dialog with a user gesture, but the user may have
+        // to log in to Facebook before authorizing your application.
+      }
+     });
+    }
+  }
+
+  fbLogin(){
+    if(this.platform.is("cordova")){
+    // Login with permissions, Logging in if Cordova is available
+    this.fb.login(['public_profile', 'user_photos', 'email'])
+    .then( (res: FacebookLoginResponse) => {
+        if(res.status == "connected") {
+            // Get user ID and Token
+            this.userService.data = res.authResponse
+            this.fbOath.fbLoggedIn = true
+            console.log("Facebook logged in ==", this.fbOath.fbLoggedIn, res.authResponse)
+            this.userService.mobileStorageSet()
+            // Get user infos from the API
+            this.fb.api("/me?fields=name,gender,email", []).then((user) => {
+                // Get the connected user details
+                var gender    = user.gender;
+                var name      = user.name;
+                var email     = user.email;
+                console.log("=== USER INFOS ===");
+                console.log("Gender : " + gender);
+                console.log("Name : " + name);
+                console.log("Email : " + email);
+                this.navCtrl.setRoot(DashboardPage)
+            });
+        } 
+        else {
+            console.log("An error occurred...");
+        }
+    })
+    .catch((e) => {
+        console.log('Error logging into Facebook', e);
+    });
+    }else{
+      //Login via browser platform if cordova is not available
+      FB.login((response)=> {
+            console.log('submitLogin',response);
+            if (response.authResponse) {
+              this.userService.data = response.authResponse
+              this.fbOath.fbLoggedIn = true
+              this.userService.coreStorageSet()
+              console.log("Logged in with Facebook", response.authResponse)
+              this.navCtrl.setRoot(DashboardPage)
+            }else{
+            console.log('User login failed');
+            }
+        },{scope: 'email, user_photos'});
+    }
+  }
+
   onLogin(){
-    this.userService.login(this.user)
+    this.userService.login(this.userService.user)
       .subscribe(
         (response: any) => {
-          this.data = response
-          console.log("response", this.data)
-          if (this.platform.is("iphone" || "android" || "mobile" || "cordova")) { //checking platform, setting storage with ionic
-            this.storage.set("token", this.data.token);
-            this.storage.set("userId", this.data.userId);
-            console.log("your token is", this.data.token)
-            console.log("your userId is", this.data.userId)
-            this.storage.get('token').then((val) => { //getting from ionic storage for android/iphone/mobile platform
-              console.log('got your token', val);
-            this.BuilderService.token = val})
-            this.storage.get('userId').then((val) => {
-              console.log('got your userId', val);
-            this.userService.loggedIn = true
-            this.BuilderService.userId = val
-            this.BuilderService.pollSet.userId = val
-            this.BuilderService.meme.userId = val})
-          } else { // setting session storage for all other devices such as desktop, windows, mobileweb, browsers
-              window.sessionStorage.setItem('token', this.data.token);
-              window.sessionStorage.setItem('userId', this.data.userId);
-              let token = this.data.token
-              let userId = this.data.userId
-              console.log("your token is", token)
-              console.log("your userId is", userId)
-              this.userService.loggedIn = true
-              this.BuilderService.token = token
-              this.BuilderService.userId = userId
-              this.BuilderService.pollSet.userId = userId
-              this.BuilderService.meme.userId = userId
+          this.userService.data = response
+          console.log("response", this.userService.data)
+          if (this.platform.is("cordova")) {
+            this.userService.mobileStorageSet()
+          } else {
+            this.userService.coreStorageSet()
           }
+          this.userService.user = {
+            email:'',
+            password:''
+          }
+        
           this.navCtrl.setRoot(DashboardPage);
-        })
+      })
   }
 
   noLogin() {

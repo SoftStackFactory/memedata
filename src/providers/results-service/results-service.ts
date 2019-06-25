@@ -11,7 +11,7 @@ export class ResultsServiceProvider {
   answers:any = []
 
   getMemeAnswers(){
-    this.http.get("https://memepoll.herokuapp.com/api/answers").subscribe((response) => {
+    this.http.get("https://ssf-memedata.herokuapp.com/api/answers").subscribe((response) => {
       this.answers = response
       });
   }

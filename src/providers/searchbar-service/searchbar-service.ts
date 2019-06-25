@@ -34,8 +34,8 @@ export class SearchbarServiceProvider {
     this.http.get(getKeywordsAPI)
     .subscribe((response) => {
       console.log(response)
-      this.dash$.polls = [];
-      this.dash$.displayedPolls = [];
+
+      this.dash$.displayedPolls = []
 
       this.dash$.polls = response
       this.spinnerService.spinner = false

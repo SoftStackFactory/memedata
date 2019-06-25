@@ -3,8 +3,7 @@ import { Nav, Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
-// import { ListPage } from '../pages/list/list';
+//import { HomePage } from '../pages/home/home';
 
 import { PollInterfacePage } from '../pages/poll-interface/poll-interface';
 import { LoginPage } from '../pages/login/login';
@@ -15,6 +14,7 @@ import { PollResultsPage } from '../pages/poll-results/poll-results';
 
 import { SearchbarServiceProvider } from '../providers/searchbar-service/searchbar-service';
 import { SpinnerServiceProvider } from '../providers/spinner-service/spinner-service';
+import { FacebookOathProvider } from '../providers/facebook-oath/facebook-oath';
 
 
 
@@ -36,7 +36,8 @@ export class MyApp {
               public splashScreen: SplashScreen, 
               public search$: SearchbarServiceProvider,
               public events: Events,
-              public spinnerService: SpinnerServiceProvider) {
+              public spinnerService: SpinnerServiceProvider,
+              public fbOath: FacebookOathProvider) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
