@@ -87,21 +87,7 @@ export class LoginPage {
         // request, and the time the access token 
         // and signed request each expire.
       } else if (response.status === 'not_authorized') {
-        FB.login((response)=> {
-          console.log('submitLogin',response);
-          if (response.authResponse) {
-            this.userService.data = response.authResponse
-            this.fbOath.fbLoggedIn = true
-            this.userService.coreStorageSet()
-            console.log("Logged in with Facebook", response.authResponse)
-            this.navCtrl.setRoot(DashboardPage)
-          }else{
-          console.log('User login failed');
-          }
-      },{scope: 'email, user_photos'});
-        // The user hasn't authorized your application.  They
-        // must click the Login button, or you must call FB.login
-        // in response to a user gesture, to launch a login dialog.
+        this.fbLogin()
       } else {
         if(response.status === "unknown") {
           this.fbLogin()
