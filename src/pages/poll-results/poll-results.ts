@@ -1,9 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
+import { NavController, NavParams, Slides } from 'ionic-angular';
 import { ResultsServiceProvider } from '../../providers/results-service/results-service';
 import { DashboardPage } from '../dashboard/dashboard';
 
-@IonicPage()
 @Component({
   selector: 'page-poll-results',
   templateUrl: 'poll-results.html',

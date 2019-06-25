@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Navbar } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { PollBuilder2Page } from '../poll-builder2/poll-builder2';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';

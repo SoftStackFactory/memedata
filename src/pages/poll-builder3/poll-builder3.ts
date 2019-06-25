@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { PollBuilderPage } from '../poll-builder/poll-builder';
 import { PollBuilder4Page } from '../poll-builder4/poll-builder4';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
