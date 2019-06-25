@@ -12,7 +12,7 @@
             <ion-card>
               <ion-row>
                 <ion-col col-3>
-                  <img id="resultThumb" src="https://picsum.photos/id/12{{i}}/80/80" float-left>
+                  <img id="resultThumb" src={{x.image}} float-left>
                 </ion-col>
                 <ion-col col-7>
                   <p id="description">{{ x.description }}</p>
@@ -76,22 +76,24 @@
 <ion-footer>
     <ion-toolbar position="bottom">
         <ion-slides slidesPerView='1.3' effect="slide" spaceBetween="-5" loop="true">
-            <ion-slide *ngFor="let p of meme; let i = index">
-                <ion-card>
-                    <ion-row>
-                      <ion-col col-4>
-                        <img id="suggestionThumb" src="https://picsum.photos/id/4{{i}}0/80/120" float-left>
-                      </ion-col>
-                      <ion-col col-8>
-                          <ion-row id="suggestionTitle">
-                              Title
-                            </ion-row>
-                            <ion-row id="suggestionDescription">
-                                {{ p.description }}
-                            </ion-row>
-                      </ion-col>
-                    </ion-row>
-                  </ion-card>
+            <ion-slide *ngFor='let poll of dash$.displayedPolls' (click)="startPoll(poll.id)">
+                <div *ngIf='poll'>
+                    <ion-card>
+                        <ion-row>
+                          <ion-col col-4>
+                            <img id="suggestionThumb" src='{{poll.coverImage}}' float-left>
+                          </ion-col>
+                          <ion-col col-8>
+                              <ion-row id="suggestionTitle">
+                                {{poll.pollTitle}}
+                                </ion-row>
+                                <ion-row id="suggestionDescription">
+                                    {{ poll.description }}
+                                </ion-row>
+                          </ion-col>
+                        </ion-row>
+                      </ion-card>
+                  </div>
             </ion-slide>
           </ion-slides>
     </ion-toolbar>

@@ -5,14 +5,18 @@ import { Injectable } from '@angular/core';
 export class ResultsServiceProvider {
 
   constructor(public http: HttpClient) {
-    console.log('Hello ResultsServiceProvider Provider');
   }
 
+  userAnswers:any = []
   answers:any = []
+  api:string = 'https://ssf-memedata.herokuapp.com/api/'
 
-  getMemeAnswers(){
-    this.http.get("https://ssf-memedata.herokuapp.com/api/answers").subscribe((response) => {
+
+  getMemeAnswers() {
+    this.http.get(this.api + "answers")
+    .subscribe((response) => {
       this.answers = response
+      console.log(response)
       });
   }
 
