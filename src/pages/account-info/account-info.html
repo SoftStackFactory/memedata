@@ -17,14 +17,34 @@
 
 
 <ion-content padding>
-  <h2 id=username>Hello, {{this.userService.userDetails.username}}!</h2>
+
+  <div id="userDetails" *ngIf="this.userService.userDetails">
+    <h2 id=username>Hello, {{this.userService.userDetails.username}}!</h2>
+  </div>
+
+  <div id="userDetails" *ngIf="this.fbOath.userDetails">
+      <h2 id=username>Hello, {{this.fbOath.userDetails.name}}</h2>
+  </div>
+
   <div id=profileHeading>
     <h3>Your MemePoll Profile</h3>
   </div>
-  <p id=firstName>First Name: {{this.userService.userDetails.firstName}}</p>
-  <p id=lastName>Last Name: {{this.userService.userDetails.lastName}}</p>
-  <p id=email>Email: {{this.userService.userDetails.email}}</p>
-  <p id=dob>DOB: {{this.userService.userDetails.dob}}</p>
-  <p id=gender>Gender: {{this.userService.userDetails.gender}}</p>
-  <p id=zipcode>Zip Code: {{this.userService.userDetails.zip}}</p>
+
+  <div id="userDetails" *ngIf="this.userService.userDetails">
+    <p id=firstName *ngIf="this.userService.userDetails.firstName">First Name: {{this.userService.userDetails.firstName}}</p>
+    <p id=lastName *ngIf="this.userService.userDetails.lastName">Last Name: {{this.userService.userDetails.lastName}}</p>
+    <p id=email *ngIf="this.userService.userDetails.email">Email: {{this.userService.userDetails.email}}</p>
+    <p id=dob *ngIf="this.userService.userDetails.dob">DOB: {{this.userService.userDetails.dob}}</p>
+    <p id=gender *ngIf="this.userService.userDetails.gender">Gender: {{this.userService.userDetails.gender}}</p>
+    <p id=zipcode *ngIf="this.userService.userDetails.zip">Zip Code: {{this.userService.userDetails.zip}}</p>
+  </div>
+
+    <div id="userDetails" *ngIf="this.fbOath.userDetails">
+      <p id=firstName *ngIf="this.fbOath.userDetails.first_name">First Name: {{this.fbOath.userDetails.first_name}}</p>
+      <p id=lastName *ngIf="this.fbOath.userDetails.last_name">Last Name: {{this.fbOath.userDetails.last_name}}</p>
+      <p id=email *ngIf="this.fbOath.userDetails.email">Email: {{this.fbOath.userDetails.email}}</p>
+      <p id=gender *ngIf="this.fbOath.userDetails.gender">Gender: {{this.fbOath.userDetails.gender}}</p>
+    </div>
+
+  
 </ion-content>

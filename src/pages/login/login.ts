@@ -79,6 +79,7 @@ export class LoginPage {
         this.userService.data = response.authResponse
         this.fbOath.fbLoggedIn = true
         this.userService.coreStorageSet()
+        this.fbOath.getFBUserDetails()
         console.log("Logged in with Facebook", response.authResponse)
         this.navCtrl.setRoot(DashboardPage)
         // The user is logged in and has authenticated your
@@ -139,12 +140,14 @@ export class LoginPage {
               this.userService.data = response.authResponse
               this.fbOath.fbLoggedIn = true
               this.userService.coreStorageSet()
+              this.fbOath.getFBUserDetails()
               console.log("Logged in with Facebook", response.authResponse)
               this.navCtrl.setRoot(DashboardPage)
-            }else{
+            }
+            else{
             console.log('User login failed');
             }
-        },{scope: 'email, user_photos'});
+        },{scope: 'email, user_photos, user_birthday'});
     }
   }
 

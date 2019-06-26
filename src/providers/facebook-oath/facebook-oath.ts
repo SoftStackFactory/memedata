@@ -39,7 +39,20 @@ export class FacebookOathProvider {
        }(document, 'script', 'facebook-jssdk'));
   }
 
-fbLoggedIn: any = false
+fbLoggedIn: any = false;
+
+userDetails: any;
+
+getFBUserDetails() {
+  FB.api(
+    '/me',
+    'GET',
+    {"fields":"id,name,email,first_name,last_name,gender"},
+    (response: any) => {
+      this.userDetails = response
+      console.log("User Details", this.userDetails)
+    });
+}
 
 
 }

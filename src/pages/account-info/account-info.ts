@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { DashboardPage } from '../dashboard/dashboard';
 import { UserProvider } from '../../providers/user/user';
+import { FacebookOathProvider } from '../../providers/facebook-oath/facebook-oath';
 
 /**
  * Generated class for the AccountInfoPage page.
@@ -19,7 +20,8 @@ export class AccountInfoPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public userService: UserProvider
+    public userService: UserProvider,
+    public fbOath: FacebookOathProvider
     ) {
   }
 
