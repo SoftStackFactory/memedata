@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { SearchbarServiceProvider } from '../searchbar-service/searchbar-service'
 import { PollBuilderServiceProvider } from '../poll-builder-service/poll-builder-service';
 import { FacebookOathProvider } from '../facebook-oath/facebook-oath';
+import { Platform } from 'ionic-angular';
 
 @Injectable()
 export class UserProvider {
@@ -15,6 +16,7 @@ export class UserProvider {
     public search$: SearchbarServiceProvider,
     public storage: Storage,
     public fbOath: FacebookOathProvider,
+    public platform: Platform
     ) {
     console.log('Hello UserProvider Provider');
   }
@@ -50,12 +52,6 @@ export class UserProvider {
       this.storage.set("userId", this.data.userID)
       console.log("your token is", this.data.accessToken)
       console.log("your userId is", this.data.userID)
-      this.getUserDetails(this.data.userID, this.data.accessToken)
-      .subscribe(
-        (response: any) => {
-        this.userDetails = response
-        console.log("User Details", this.userDetails)
-       })
     }else{
       this.storage.set("token", this.data.token)
       this.storage.set("userId", this.data.userId);
@@ -91,6 +87,12 @@ export class UserProvider {
       window.sessionStorage.setItem('userId', this.data.userId)
       token = this.data.token//setting token for login to backend DB
       userId = this.data.userId
+      this.getUserDetails(userId,token)
+      .subscribe(
+        (response: any) => {
+        this.userDetails = response
+        console.log("User Details", this.userDetails)
+       })
     };
     console.log("your token is", token)
     console.log("your userId is", userId)
@@ -99,12 +101,6 @@ export class UserProvider {
     this.BuilderService.userId = userId
     this.BuilderService.pollSet.userId = userId
     this.BuilderService.meme.userId = userId
-    this.getUserDetails(userId,token)
-    .subscribe(
-      (response: any) => {
-      this.userDetails = response
-      console.log("User Details", this.userDetails)
-     })
   }
 
   clearUserDetails() {

@@ -23,6 +23,7 @@
   </div>
 
   <div id="userDetails" *ngIf="this.fbOath.userDetails">
+      <img id="profilePic" *ngIf="this.fbOath.userDetails.picture" src="{{this.fbOath.userDetails.picture.data.url}}">
       <h2 id=username>Hello, {{this.fbOath.userDetails.name}}</h2>
   </div>
 
@@ -46,5 +47,28 @@
       <p id=gender *ngIf="this.fbOath.userDetails.gender">Gender: {{this.fbOath.userDetails.gender}}</p>
     </div>
 
-  
+  <div *ngIf="this.fbOath.fbLoggedIn == true">
+
+      <p>**Below will only list friends who also use this app</p>
+
+      <div id="friends" *ngIf="this.fbOath.fbFriends">
+
+          <div *ngIf="this.fbOath.fbFriends.data.length > 0;else noFriends">
+            <p *ngFor="let friend of fbOath.fbFriends.data">
+              {{friend}}
+            </p>
+
+          </div>
+
+          <ng-template #noFriends><p>No friends use MemePoll yet!</p></ng-template>
+
+      
+        <div id="friends" *ngIf="this.fbOath.fbFriends.summary">
+          <p>Total friends: {{this.fbOath.fbFriends.summary.total_count}}</p>
+        </div>
+
+      </div>
+
+    </div>
+
 </ion-content>

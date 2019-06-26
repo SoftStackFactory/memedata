@@ -32,6 +32,11 @@ export class AccountInfoPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AccountInfoPage');
+    this.getFriends()
+  }
+
+  getFriends() {
+    this.fbOath.findMyFriends()
   }
 
 }

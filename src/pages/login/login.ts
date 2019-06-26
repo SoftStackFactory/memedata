@@ -51,10 +51,10 @@ export class LoginPage {
           console.log("Facebook logged in ==", this.fbOath.fbLoggedIn, res.authResponse)
           this.userService.mobileStorageSet()
           // Get user infos from the API
-          this.fb.api("/me?fields=name,gender,email,first_name,last_name", []).then((user) => {
+          this.fb.api("/me?fields=name,gender,email,first_name,last_name,picture", []).then((user) => {
               // Get the connected user details
-              console.log("=== USER INFOS ===");
-              console.log(user)
+              console.log("=== USER INFOS ===",user)
+              this.fbOath.userDetails = user
               this.navCtrl.setRoot(DashboardPage)
           });
       } 
@@ -99,7 +99,7 @@ export class LoginPage {
   fbLogin(){
     if(this.platform.is("cordova")){
     // Login with permissions, Logging in if Cordova is available
-    this.fb.login(['public_profile', 'user_photos', 'email'])
+    this.fb.login(['public_profile', 'user_photos', 'email', 'user_friends'])
     .then( (res: FacebookLoginResponse) => {
         if(res.status == "connected") {
             // Get user ID and Token
@@ -108,15 +108,10 @@ export class LoginPage {
             console.log("Facebook logged in ==", this.fbOath.fbLoggedIn, res.authResponse)
             this.userService.mobileStorageSet()
             // Get user infos from the API
-            this.fb.api("/me?fields=name,gender,email", []).then((user) => {
+            this.fb.api("/me?fields=name,gender,email,first_name,last_name,picture", []).then((user) => {
                 // Get the connected user details
-                var gender    = user.gender;
-                var name      = user.name;
-                var email     = user.email;
-                console.log("=== USER INFOS ===");
-                console.log("Gender : " + gender);
-                console.log("Name : " + name);
-                console.log("Email : " + email);
+                console.log("=== USER INFOS ===",user);
+                this.fbOath.userDetails = user
                 this.navCtrl.setRoot(DashboardPage)
             });
         } 
@@ -142,7 +137,7 @@ export class LoginPage {
             else{
             console.log('User login failed');
             }
-        },{scope: 'email, user_photos, user_birthday'});
+        },{scope: 'email, user_photos, user_birthday, user_friends'});
     }
   }
 
@@ -151,7 +146,7 @@ export class LoginPage {
       .subscribe(
         (response: any) => {
           this.userService.data = response
-          console.log("response", this.userService.data)
+          console.log("Login response", this.userService.data)
           if (this.platform.is("cordova")) {
             this.userService.mobileStorageSet()
           } else {
