@@ -51,15 +51,10 @@ export class LoginPage {
           console.log("Facebook logged in ==", this.fbOath.fbLoggedIn, res.authResponse)
           this.userService.mobileStorageSet()
           // Get user infos from the API
-          this.fb.api("/me?fields=name,gender,email", []).then((user) => {
+          this.fb.api("/me?fields=name,gender,email,first_name,last_name", []).then((user) => {
               // Get the connected user details
-              var gender    = user.gender;
-              var name      = user.name;
-              var email     = user.email;
               console.log("=== USER INFOS ===");
-              console.log("Gender : " + gender);
-              console.log("Name : " + name);
-              console.log("Email : " + email);
+              console.log(user)
               this.navCtrl.setRoot(DashboardPage)
           });
       } 
@@ -162,12 +157,6 @@ export class LoginPage {
           } else {
             this.userService.coreStorageSet()
           }
-          this.userService.getUserDetails()
-          .subscribe(
-            (response: any) => {
-            this.userService.userDetails = response
-            console.log("User Details", this.userService.userDetails)
-           })
           this.userService.userLogin = {
             email:'',
             password:''

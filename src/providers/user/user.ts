@@ -50,11 +50,23 @@ export class UserProvider {
       this.storage.set("userId", this.data.userID)
       console.log("your token is", this.data.accessToken)
       console.log("your userId is", this.data.userID)
+      this.getUserDetails(this.data.userID, this.data.accessToken)
+      .subscribe(
+        (response: any) => {
+        this.userDetails = response
+        console.log("User Details", this.userDetails)
+       })
     }else{
       this.storage.set("token", this.data.token)
       this.storage.set("userId", this.data.userId);
       console.log("your token is", this.data.token)
       console.log("your userId is", this.data.userId)
+      this.getUserDetails(this.data.userId, this.data.token)
+      .subscribe(
+        (response: any) => {
+        this.userDetails = response
+        console.log("User Details", this.userDetails)
+       })
     }
     this.storage.get('token').then((val) => { //getting from ionic storage for android/iphone/mobile platform
       console.log('got your token', val);
@@ -64,7 +76,8 @@ export class UserProvider {
     this.loggedIn = true
     this.BuilderService.userId = val
     this.BuilderService.pollSet.userId = val
-    this.BuilderService.meme.userId = val})
+    this.BuilderService.meme.userId = val
+  })
   }
 
   coreStorageSet(){// setting session storage for all other devices such as desktop, windows, mobileweb, browsers, non Cordova
@@ -86,6 +99,12 @@ export class UserProvider {
     this.BuilderService.userId = userId
     this.BuilderService.pollSet.userId = userId
     this.BuilderService.meme.userId = userId
+    this.getUserDetails(userId,token)
+    .subscribe(
+      (response: any) => {
+      this.userDetails = response
+      console.log("User Details", this.userDetails)
+     })
   }
 
   clearUserDetails() {
@@ -113,8 +132,9 @@ export class UserProvider {
     return this.http.post(this.baseUrl + "/logout?access_token=" + token, {});
   }
 
-  getUserDetails() {
-    return this.http.get(this.baseUrl + "/" + this.BuilderService.userId + "?access_token=" + this.BuilderService.token)
+  getUserDetails(userId, token) {
+
+    return this.http.get(this.baseUrl + "/" + userId + "?access_token=" + token)
   }
 
 }
