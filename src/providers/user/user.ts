@@ -129,7 +129,6 @@ export class UserProvider {
   }
 
   getUserDetails(userId, token) {
-
     return this.http.get(this.baseUrl + "/" + userId + "?access_token=" + token)
   }
 

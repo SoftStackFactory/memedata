@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { DashboardPage } from '../dashboard/dashboard';
 import { PollBuilder3Page } from '../poll-builder3/poll-builder3';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
 import { AlertController } from 'ionic-angular';
@@ -57,6 +58,29 @@ export class PollBuilder2Page {
     this.BuilderService.pollSet.coverImage = this.BuilderService.memes[0].image
     this.navCtrl.push(PollBuilder3Page);
     }
+  }
+
+  goBack() {
+      const confirm = this.alertCtrl.create({
+        title: 'Leave poll service?',
+        message: 'If you leave now, your progress will not be saved!',
+        buttons: [
+          {
+            text: 'Disagree',
+            handler: () => {
+              console.log('Disagree clicked');
+            }
+          },
+          {
+            text: 'Agree',
+            handler: () => {
+              console.log('Agree clicked');
+              this.navCtrl.setRoot(DashboardPage)
+            }
+          }
+        ]
+      });
+      confirm.present();
   }
 
   ionViewDidLoad() {

@@ -131,7 +131,6 @@ export class SearchbarComponent {
                 this.goToLogin()
               });
             }
-            //this.userService.clearUserDetails()
             alert.present();
           }
         }

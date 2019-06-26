@@ -59,22 +59,24 @@ getFBUserDetails() {
 }
 
 findMyFriends() {
-  if(this.platform.is("cordova")) {
+  if(this.platform.is("cordova") && this.fbLoggedIn == true) {
     this.fb.api("/me/friends", []).then((friends) => {
       // Get the connected user friends
       console.log("=== USER FRIENDS USING MEMEPOLL ===", friends);
       this.fbFriends = friends
   });
   }else {
-  FB.api(
-    '/me/friends',
-    'GET',
-    {},
-    (response) => {
-    console.log("My Friends Using MemePoll", response)
-    this.fbFriends = response
-    }
-  );
+    if(this.fbLoggedIn == true) {
+      FB.api(
+        '/me/friends',
+        'GET',
+        {},
+        (friends) => {
+        console.log("My Friends Using MemePoll", friends)
+        this.fbFriends = friends
+        }
+      );
+    } 
   }
 }
 

@@ -53,6 +53,9 @@ export class PollBuilder4Page {
           console.log("filtered keywords", this.BuilderService.keywords)
 
           this.BuilderService.pollSet.pollKeywords = this.BuilderService.keywords
+
+          console.log(this.BuilderService.memes)
+          
           this.BuilderService.createPollSet()
             .subscribe(
               (response: any) => {       
