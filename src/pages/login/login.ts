@@ -48,69 +48,73 @@ export class LoginPage {
           // Get user ID and Token
           this.userService.data = res.authResponse
           this.fbOath.fbLoggedIn = true
+
           console.log("Facebook logged in ==", this.fbOath.fbLoggedIn, res.authResponse)
+
           this.userService.mobileStorageSet()
           // Get user infos from the API
           this.fb.api("/me?fields=name,gender,email,first_name,last_name,picture", []).then((user) => {
-              // Get the connected user details
-              console.log("=== USER INFOS ===",user)
-              this.fbOath.userDetails = user
-              this.navCtrl.setRoot(DashboardPage)
+            
+            // Get the connected user details
+            console.log("=== USER INFOS ===",user)
+
+            this.fbOath.userDetails = user
+            this.navCtrl.setRoot(DashboardPage)
           });
-      } 
-      else {
-        if (res.status === "unknown") {
-          this.fbLogin()
-        } else {
-          console.log("An error occurred...");
-        }
-      }
-  })
+          }else {
+            if (res.status === "unknown") {
+              this.fbLogin()
+            }else {
+
+               console.log("An error occurred...");
+            }
+          }
+        })
       .catch(e => 
+
         console.log("Error Logging into Facebook", e))
-    } else {
-    FB.getLoginStatus((response) => {
-      if (response.status === 'connected') {
-        this.userService.data = response.authResponse
-        this.fbOath.fbLoggedIn = true
-        this.userService.coreStorageSet()
-        this.fbOath.getFBUserDetails()
-        console.log("Logged in with Facebook", response.authResponse)
-        this.navCtrl.setRoot(DashboardPage)
-        // The user is logged in and has authenticated your
-        // app, and response.authResponse supplies
-        // the user's ID, a valid access token, a signed
-        // request, and the time the access token 
-        // and signed request each expire.
-      } else if (response.status === 'not_authorized') {
-        this.fbLogin()
-      } else {
-        if(response.status === "unknown") {
-          this.fbLogin()
-        }
-        // The user isn't logged in to Facebook. You can launch a
-        // login dialog with a user gesture, but the user may have
-        // to log in to Facebook before authorizing your application.
-      }
-     });
-    }
+
+       } else {
+        FB.getLoginStatus((response) => {
+          if (response.status === 'connected') {
+            this.userService.data = response.authResponse
+            this.fbOath.fbLoggedIn = true
+            this.userService.coreStorageSet()
+            this.fbOath.getFBUserDetails()
+
+            console.log("Logged in with Facebook", response.authResponse)
+
+            this.navCtrl.setRoot(DashboardPage)
+          } else if (response.status === 'not_authorized') {
+              this.fbLogin()
+          } else {
+              if(response.status === "unknown") {
+                this.fbLogin()
+              }
+          }
+        });
+        }   
   }
 
   fbLogin(){
     if(this.platform.is("cordova")){
-    // Login with permissions, Logging in if Cordova is available
-    this.fb.login(['public_profile', 'user_photos', 'email', 'user_friends'])
-    .then( (res: FacebookLoginResponse) => {
+      // Login with permissions, Logging in if Cordova is available
+      this.fb.login(['public_profile', 'user_photos', 'email', 'user_friends'])
+      .then( (res: FacebookLoginResponse) => {
         if(res.status == "connected") {
             // Get user ID and Token
             this.userService.data = res.authResponse
             this.fbOath.fbLoggedIn = true
+
             console.log("Facebook logged in ==", this.fbOath.fbLoggedIn, res.authResponse)
+
             this.userService.mobileStorageSet()
             // Get user infos from the API
             this.fb.api("/me?fields=name,gender,email,first_name,last_name,picture", []).then((user) => {
+
                 // Get the connected user details
                 console.log("=== USER INFOS ===",user);
+
                 this.fbOath.userDetails = user
                 this.navCtrl.setRoot(DashboardPage)
             });
@@ -120,18 +124,23 @@ export class LoginPage {
         }
     })
     .catch((e) => {
+
         console.log('Error logging into Facebook', e);
     });
     }else{
       //Login via browser platform if cordova is not available
       FB.login((response)=> {
+
             console.log('submitLogin',response);
+
             if (response.authResponse) {
               this.userService.data = response.authResponse
               this.fbOath.fbLoggedIn = true
               this.userService.coreStorageSet()
               this.fbOath.getFBUserDetails()
+
               console.log("Logged in with Facebook", response.authResponse)
+
               this.navCtrl.setRoot(DashboardPage)
             }
             else{
@@ -146,7 +155,9 @@ export class LoginPage {
       .subscribe(
         (response: any) => {
           this.userService.data = response
+
           console.log("Login response", this.userService.data)
+
           if (this.platform.is("cordova")) {
             this.userService.mobileStorageSet()
           } else {
