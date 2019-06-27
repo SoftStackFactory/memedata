@@ -118,8 +118,8 @@ export class PollBuilderServiceProvider {
   }
   
 
-  getMyMemes() {
-    return this.http.get(this.apiBaseUrlMeme + "?filter=%7B%22where%22%3A%20%7B%22userId%22%3A%20%22" + this.userId + "%22%7D%7D")
+  getMyPolls() {
+    return this.http.get(this.apiBaseUrlPollSet + "?filter=%7B%22where%22%3A%7B%22userId%22%3A%22" + this.userId + "%22%7D%7D&access_token=" + this.token)
   }
 
   stringToArray(str) {

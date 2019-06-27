@@ -90,7 +90,7 @@ export class PollBuilder4Page {
           this.BuilderService.pollSet.pollDescription = ""
           this.BuilderService.pollSet.pollCategory = ""
           this.BuilderService.pollSet.pollKeywords = ["keywords"]
-          this.BuilderService.memes = []
+          //this.BuilderService.memes = [], do not re add this...will error out and wont post
           this.BuilderService.displayMeme = {
             topText: "",
             bottomText: "",

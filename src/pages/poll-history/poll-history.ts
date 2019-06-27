@@ -27,10 +27,10 @@ export class PollHistoryPage {
   }
 
   getAllMyMemes(){
-    this.BuilderService.getMyMemes()
+    this.BuilderService.getMyPolls()
     .subscribe(
       (response: any) => {
-        console.log("all my memes", response)
+        console.log("all my polls", response)
         this.BuilderService.pollMemes = response
         console.log("memes on builder service", this.BuilderService.pollMemes)
       }
