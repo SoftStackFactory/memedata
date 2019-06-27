@@ -10,6 +10,7 @@ import { PollInterfaceProvider } from '../../providers/poll-interface-provider/p
 import { PollInterfacePage } from '../poll-interface/poll-interface';
 import { PollHistoryPage } from '../poll-history/poll-history';
 import { SpinnerServiceProvider } from '../../providers/spinner-service/spinner-service';
+import { ResultsServiceProvider } from '../../providers/results-service/results-service';
 
 @Component({
   selector: 'page-dashboard',
@@ -27,10 +28,11 @@ export class DashboardPage {
               public events: Events, 
               public BuilderService: PollBuilderServiceProvider,
               public pollInterfaceProvider: PollInterfaceProvider,
-              public spinnerService: SpinnerServiceProvider) {
+              public spinnerService: SpinnerServiceProvider,
+              public resultsProvider: ResultsServiceProvider) {
 
     events.subscribe('search success', ()=> {
-      this.content.scrollToTop();    
+      // this.content.scrollToTop();    
     })
 
     events.subscribe('getMemes', ()=> {
@@ -112,6 +114,7 @@ export class DashboardPage {
 
   startPoll(id) {
     console.log(id)
+    this.resultsProvider.userAnswers = []
     this.pollInterfaceProvider.getMemes(id)
   }
   
