@@ -13,11 +13,11 @@
             <ion-list inset>
               <ion-item>
                 <ion-input placeholder="Email" name="email" id="loginField"
-                           type="text" required [(ngModel)]="this.userService.user.email"></ion-input>
+                           type="text" required [(ngModel)]="this.userService.userLogin.email"></ion-input>
               </ion-item>
               <ion-item>
                 <ion-input placeholder="Password" name="password" id="passwordField"
-                           type="password" required [(ngModel)]="this.userService.user.password"></ion-input>
+                           type="password" required [(ngModel)]="this.userService.userLogin.password"></ion-input>
               </ion-item>
             </ion-list>
           </ion-col>
@@ -39,7 +39,7 @@
     <div id='oauthTitle'>Sign in with</div>
     <button ion-button class="btn" (click)="checkFbStatus()">Login with facebook</button>
     <ion-icon id='google' name="logo-google"></ion-icon>
-    <ion-icon id='facebook' (click)="fbLogin()" name="logo-facebook"></ion-icon>
+    <ion-icon id='facebook' (click)="checkFbStatus()" name="logo-facebook"></ion-icon>
     <ion-icon id='twitter' name="logo-twitter"></ion-icon>
     <ion-icon id='github' name="logo-github"></ion-icon>
 </div>

@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { SearchbarServiceProvider } from '../searchbar-service/searchbar-service'
 import { PollBuilderServiceProvider } from '../poll-builder-service/poll-builder-service';
 import { FacebookOathProvider } from '../facebook-oath/facebook-oath';
+import { Platform } from 'ionic-angular';
 
 @Injectable()
 export class UserProvider {
@@ -15,16 +16,31 @@ export class UserProvider {
     public search$: SearchbarServiceProvider,
     public storage: Storage,
     public fbOath: FacebookOathProvider,
+    public platform: Platform
     ) {
     console.log('Hello UserProvider Provider');
   }
 
   data: any;
 
-  user = {
+  userRegister = {
+    firstName: '',
+    lastName: '',
+    username: '',
+    email:'',
+    password:'',
+    dob:'',
+    gender:'',
+    zip:'',
+    id: 'none'
+  }
+
+  userLogin = {
     email:'',
     password:''
   }
+
+  userDetails: any;
 
   loggedIn: boolean = false
 
@@ -41,6 +57,12 @@ export class UserProvider {
       this.storage.set("userId", this.data.userId);
       console.log("your token is", this.data.token)
       console.log("your userId is", this.data.userId)
+      this.getUserDetails(this.data.userId, this.data.token)
+      .subscribe(
+        (response: any) => {
+        this.userDetails = response
+        console.log("User Details", this.userDetails)
+       })
     }
     this.storage.get('token').then((val) => { //getting from ionic storage for android/iphone/mobile platform
       console.log('got your token', val);
@@ -50,7 +72,8 @@ export class UserProvider {
     this.loggedIn = true
     this.BuilderService.userId = val
     this.BuilderService.pollSet.userId = val
-    this.BuilderService.meme.userId = val})
+    this.BuilderService.meme.userId = val
+  })
   }
 
   coreStorageSet(){// setting session storage for all other devices such as desktop, windows, mobileweb, browsers, non Cordova
@@ -64,6 +87,12 @@ export class UserProvider {
       window.sessionStorage.setItem('userId', this.data.userId)
       token = this.data.token//setting token for login to backend DB
       userId = this.data.userId
+      this.getUserDetails(userId,token)
+      .subscribe(
+        (response: any) => {
+        this.userDetails = response
+        console.log("User Details", this.userDetails)
+       })
     };
     console.log("your token is", token)
     console.log("your userId is", userId)
@@ -83,6 +112,8 @@ export class UserProvider {
     this.BuilderService.userId = ""
     this.BuilderService.pollSet.userId = ""
     this.BuilderService.meme.userId = ""
+    this.userDetails = ""
+    this.fbOath.userDetails = ""
   }
 
   register(userData) {
@@ -95,6 +126,10 @@ export class UserProvider {
 
   logout(token) {
     return this.http.post(this.baseUrl + "/logout?access_token=" + token, {});
+  }
+
+  getUserDetails(userId, token) {
+    return this.http.get(this.baseUrl + "/" + userId + "?access_token=" + token)
   }
 
 }

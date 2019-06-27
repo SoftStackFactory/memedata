@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { PollBuilderPage } from '../poll-builder/poll-builder';
+import { PollBuilder2Page } from '../poll-builder2/poll-builder2';
 import { PollBuilder4Page } from '../poll-builder4/poll-builder4';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
 import { AlertController } from 'ionic-angular';
@@ -12,8 +13,6 @@ import { AlertController } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-
-@IonicPage()
 @Component({
   selector: 'page-poll-builder3',
   templateUrl: 'poll-builder3.html',
@@ -62,7 +61,36 @@ export class PollBuilder3Page {
   
 
   addNextMeme() {
-    this.navCtrl.push(PollBuilderPage);
+      const confirm = this.alertCtrl.create({
+        title: 'Add next Meme',
+        message: 'Would you like to use your camera or choose from photo album?',
+        buttons: [
+          {
+            text: 'Cancel',
+            handler: () => {
+              console.log('Cancel clicked');
+            }
+          },
+          {
+            text: 'Camera',
+            handler: () => {
+              console.log('Camera clicked');
+              this.BuilderService.takePicture()
+              this.navCtrl.setRoot(PollBuilder2Page)
+            }
+          },
+          {
+            text: 'Album',
+            handler: () => {
+              console.log('Album clicked');
+              this.BuilderService.getImage()
+              this.navCtrl.setRoot(PollBuilder2Page)
+            }
+          }
+        ]
+      });
+      confirm.present();
+    //this.navCtrl.push(PollBuilderPage);
   }
 
   lastStage() {

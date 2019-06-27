@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { PollHistoryPage } from '../poll-history/poll-history';
+import { NavController, NavParams } from 'ionic-angular';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
 import { AlertController } from 'ionic-angular';
 import { DashboardPage } from '../dashboard/dashboard';
@@ -11,8 +10,6 @@ import { DashboardPage } from '../dashboard/dashboard';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
-@IonicPage()
 @Component({
   selector: 'page-poll-builder4',
   templateUrl: 'poll-builder4.html',
@@ -56,6 +53,9 @@ export class PollBuilder4Page {
           console.log("filtered keywords", this.BuilderService.keywords)
 
           this.BuilderService.pollSet.pollKeywords = this.BuilderService.keywords
+
+          console.log(this.BuilderService.memes)
+          
           this.BuilderService.createPollSet()
             .subscribe(
               (response: any) => {       
@@ -66,16 +66,16 @@ export class PollBuilder4Page {
                 console.log("New User PollSet", response, "PolliD =", response.id)
 
                 for (let i = 0; i <= this.BuilderService.memes.length - 1; i ++) {
-                  this.BuilderService.memes[i].pollId = this.BuilderService.pollId
+                  //this.BuilderService.memes[i].pollId = this.BuilderService.pollId **wont need this with new endpoint post
 
                     console.log("New Meme " + i,this.BuilderService.memes[i])
 
-                  this.BuilderService.saveMeme(this.BuilderService.memes[i])
-                    .subscribe(
-                      (response: any) => {
+                  //this.BuilderService.saveMeme(this.BuilderService.memes[i]) **wont need with new endpoint post
+                    //.subscribe(
+                      //(response: any) => {
 
-                        console.log("Saved Meme to Meme DB" + i, response)
-                      })
+                        //console.log("Saved Meme to Meme DB" + i, response)
+                      //})
 
                       this.BuilderService.savePollMeme(this.BuilderService.memes[i])
                         .subscribe(
@@ -90,6 +90,7 @@ export class PollBuilder4Page {
           this.BuilderService.pollSet.pollDescription = ""
           this.BuilderService.pollSet.pollCategory = ""
           this.BuilderService.pollSet.pollKeywords = ["keywords"]
+          //this.BuilderService.memes = [], do not re add this...will error out and wont post
           this.BuilderService.displayMeme = {
             topText: "",
             bottomText: "",

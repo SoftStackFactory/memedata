@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { DashboardPage } from '../dashboard/dashboard';
+import {  NavController, NavParams } from 'ionic-angular';
 import { PollResultsPage } from '../poll-results/poll-results'
 import { PollInterfaceProvider } from '../../providers/poll-interface-provider/poll-interface-provider';
 import { Slides, Events } from 'ionic-angular';
@@ -8,7 +7,6 @@ import { ViewChild } from '@angular/core';
 import { ResultsServiceProvider } from '../../providers/results-service/results-service';
 
 
-@IonicPage()
 @Component({
   selector: 'page-poll-interface',
   templateUrl: 'poll-interface.html',

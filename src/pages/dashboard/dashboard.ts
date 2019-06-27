@@ -1,15 +1,16 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Content, Events } from 'ionic-angular';
+import { NavController, NavParams, Content, Events } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
+import { AlertController } from 'ionic-angular';
 import { DashboardServiceProvider } from '../../providers/dashboard-service/dashboard-service';
 import { PollBuilderPage } from '../poll-builder/poll-builder';
+import { PollBuilder2Page } from '../poll-builder2/poll-builder2';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
 import { PollInterfaceProvider } from '../../providers/poll-interface-provider/poll-interface-provider';
 import { PollInterfacePage } from '../poll-interface/poll-interface';
 import { PollHistoryPage } from '../poll-history/poll-history';
 import { SpinnerServiceProvider } from '../../providers/spinner-service/spinner-service';
 
-@IonicPage()
 @Component({
   selector: 'page-dashboard',
   templateUrl: 'dashboard.html',
@@ -21,6 +22,7 @@ export class DashboardPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
               public http: HttpClient, 
+              public alertCtrl: AlertController,
               public dash$: DashboardServiceProvider, 
               public events: Events, 
               public BuilderService: PollBuilderServiceProvider,
@@ -69,9 +71,41 @@ export class DashboardPage {
   goToHome() {
     this.navCtrl.setRoot(DashboardPage);
   }
+
   goToCreate() {
-    this.navCtrl.setRoot(PollBuilderPage);
+      const confirm = this.alertCtrl.create({
+        title: 'Create a new poll?',
+        message: 'Would you like to use your camera or choose from photo album?',
+        buttons: [
+          {
+            text: 'Cancel',
+            handler: () => {
+              console.log('Cancel clicked');
+              this.navCtrl.setRoot(DashboardPage)
+            }
+          },
+          {
+            text: 'Camera',
+            handler: () => {
+              console.log('Camera clicked');
+              this.BuilderService.takePicture()
+              this.navCtrl.setRoot(PollBuilder2Page)
+            }
+          },
+          {
+            text: 'Album',
+            handler: () => {
+              console.log('File clicked');
+              this.BuilderService.getImage()
+              this.navCtrl.setRoot(PollBuilder2Page)
+            }
+          }
+        ]
+      });
+      confirm.present();
+    //this.navCtrl.setRoot(PollBuilderPage);
   }
+
   goToMyPolls() {
     this.navCtrl.setRoot(PollHistoryPage);
   }

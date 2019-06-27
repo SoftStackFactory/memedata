@@ -1,11 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
+import { NavController, NavParams, Slides } from 'ionic-angular';
 import { ResultsServiceProvider } from '../../providers/results-service/results-service';
 import { DashboardPage } from '../dashboard/dashboard';
 import { PollInterfaceProvider } from '../../providers/poll-interface-provider/poll-interface-provider';
 import { DashboardServiceProvider } from '../../providers/dashboard-service/dashboard-service';
 
-@IonicPage()
 @Component({
   selector: 'page-poll-results',
   templateUrl: 'poll-results.html',

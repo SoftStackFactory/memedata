@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { AlertController } from 'ionic-angular';
+
 
 class Meme {
   pollId: any;
@@ -20,7 +23,12 @@ class Meme {
 @Injectable()
 export class PollBuilderServiceProvider {
 
-  constructor(public http: HttpClient, public storage: Storage) {
+  constructor(
+    public http: HttpClient, 
+    public storage: Storage,
+    private camera: Camera,
+    public alertCtrl: AlertController,
+    ) {
     console.log('Hello PollBuilderServiceProvider Provider');
   }
 
@@ -63,10 +71,55 @@ export class PollBuilderServiceProvider {
     completed: 0,
   }
 
+  newUserCategory: any
+
   filterWords: any = ["the", "a", "an", "and"]
 
-  getMyMemes() {
-    return this.http.get(this.apiBaseUrlMeme + "?filter=%7B%22where%22%3A%20%7B%22userId%22%3A%20%22" + this.userId + "%22%7D%7D")
+  takePicture() {
+    let options: CameraOptions = {
+      quality: 25,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      correctOrientation: true,
+      //allowEdit: true
+    }
+    
+    this.camera.getPicture(options).then((imageData) => {
+    // imageData is either a base64 encoded string or a file URI
+    // If it's base64 (DATA_URL):
+    this.meme.image = 'data:image/jpeg;base64,' + imageData;
+    }, (err) => {
+    // Handle error
+    console.log("An error occured", err)
+    });
+  }
+
+  getImage() {
+    let options: CameraOptions = {
+      quality: 25,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      mediaType: this.camera.MediaType.PICTURE,
+      saveToPhotoAlbum: false,
+      correctOrientation: true//,
+      //allowEdit: true
+    }
+    
+    this.camera.getPicture(options).then((imageData) => {
+    // imageData is either a base64 encoded string or a file URI
+    // If it's base64 (DATA_URL):
+    this.meme.image = 'data:image/jpeg;base64,' + imageData;
+    }, (err) => {
+    // Handle error
+    console.log("An error occured", err)
+    });
+  }
+  
+
+  getMyPolls() {
+    return this.http.get(this.apiBaseUrlPollSet + "?filter=%7B%22where%22%3A%7B%22userId%22%3A%22" + this.userId + "%22%7D%7D&access_token=" + this.token)
   }
 
   stringToArray(str) {
@@ -87,6 +140,6 @@ export class PollBuilderServiceProvider {
   }
 
   savePollMeme(meme){
-    return this.http.post(this.apiBaseUrlPollSet + "/" + this.userId + "/meme", meme)
+    return this.http.post(this.apiBaseUrlPollSet + "/" + this.pollId + "/meme", meme)
   }
 }

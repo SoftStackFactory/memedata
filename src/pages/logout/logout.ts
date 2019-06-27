@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, FabButton } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
-import { DashboardPage } from '../../pages/dashboard/dashboard';
 import { Storage } from '@ionic/storage';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
 import { FacebookOathProvider } from '../../providers/facebook-oath/facebook-oath';
 
 
-@IonicPage()
 @Component({
   selector: 'page-logout',
   templateUrl: 'logout.html',

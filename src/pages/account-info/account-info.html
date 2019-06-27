@@ -1,0 +1,74 @@
+<!--
+  Generated template for the AccountInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+    <button ion-button icon-only (click)='goBack()'>
+        <ion-icon name="arrow-back"></ion-icon>
+    </button>
+  </ion-buttons>
+    <ion-title>Account-info</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <div id="userDetails" *ngIf="this.userService.userDetails">
+    <h2 id=username>Hello, {{this.userService.userDetails.username}}!</h2>
+  </div>
+
+  <div id="userDetails" *ngIf="this.fbOath.userDetails">
+      <img id="profilePic" *ngIf="this.fbOath.userDetails.picture" src="{{this.fbOath.userDetails.picture.data.url}}">
+      <h2 id=username>Hello, {{this.fbOath.userDetails.name}}</h2>
+  </div>
+
+  <div id=profileHeading>
+    <h3>Your MemePoll Profile</h3>
+  </div>
+
+  <div id="userDetails" *ngIf="this.userService.userDetails">
+    <p id=firstName *ngIf="this.userService.userDetails.firstName">First Name: {{this.userService.userDetails.firstName}}</p>
+    <p id=lastName *ngIf="this.userService.userDetails.lastName">Last Name: {{this.userService.userDetails.lastName}}</p>
+    <p id=email *ngIf="this.userService.userDetails.email">Email: {{this.userService.userDetails.email}}</p>
+    <p id=dob *ngIf="this.userService.userDetails.dob">DOB: {{this.userService.userDetails.dob}}</p>
+    <p id=gender *ngIf="this.userService.userDetails.gender">Gender: {{this.userService.userDetails.gender}}</p>
+    <p id=zipcode *ngIf="this.userService.userDetails.zip">Zip Code: {{this.userService.userDetails.zip}}</p>
+  </div>
+
+    <div id="userDetails" *ngIf="this.fbOath.userDetails">
+      <p id=firstName *ngIf="this.fbOath.userDetails.first_name">First Name: {{this.fbOath.userDetails.first_name}}</p>
+      <p id=lastName *ngIf="this.fbOath.userDetails.last_name">Last Name: {{this.fbOath.userDetails.last_name}}</p>
+      <p id=email *ngIf="this.fbOath.userDetails.email">Email: {{this.fbOath.userDetails.email}}</p>
+      <p id=gender *ngIf="this.fbOath.userDetails.gender">Gender: {{this.fbOath.userDetails.gender}}</p>
+    </div>
+
+  <div *ngIf="this.fbOath.fbLoggedIn == true">
+
+      <p>**Below will only list friends who also use this app</p>
+
+      <div id="friends" *ngIf="this.fbOath.fbFriends">
+
+          <div *ngIf="this.fbOath.fbFriends.data.length > 0;else noFriends">
+            <p *ngFor="let friend of fbOath.fbFriends.data">
+              {{friend}}
+            </p>
+
+          </div>
+
+          <ng-template #noFriends><p>No friends use MemePoll yet!</p></ng-template>
+
+      
+        <div id="friends" *ngIf="this.fbOath.fbFriends.summary">
+          <p>Total friends: {{this.fbOath.fbFriends.summary.total_count}}</p>
+        </div>
+
+      </div>
+
+    </div>
+
+</ion-content>

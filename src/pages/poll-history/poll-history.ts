@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { PollBuilderServiceProvider } from "../../providers/poll-builder-service/poll-builder-service"
 import { DashboardPage } from "../dashboard/dashboard"
 
@@ -10,7 +10,6 @@ import { DashboardPage } from "../dashboard/dashboard"
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-poll-history',
   templateUrl: 'poll-history.html',
@@ -28,10 +27,10 @@ export class PollHistoryPage {
   }
 
   getAllMyMemes(){
-    this.BuilderService.getMyMemes()
+    this.BuilderService.getMyPolls()
     .subscribe(
       (response: any) => {
-        console.log("all my memes", response)
+        console.log("all my polls", response)
         this.BuilderService.pollMemes = response
         console.log("memes on builder service", this.BuilderService.pollMemes)
       }

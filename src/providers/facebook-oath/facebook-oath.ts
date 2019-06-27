@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
+import { Facebook } from '@ionic-native/facebook';
+import { Platform } from 'ionic-angular';
 
 declare var FB: any;
 
@@ -15,7 +16,8 @@ export class FacebookOathProvider {
 
   constructor(
     public http: HttpClient,
-    public fb: Facebook
+    public fb: Facebook,
+    public platform: Platform
     ) {
     console.log('Hello FacebookOathProvider Provider');
       (window as any).fbAsyncInit = function() {//Facebook sdk for browser users
@@ -39,7 +41,44 @@ export class FacebookOathProvider {
        }(document, 'script', 'facebook-jssdk'));
   }
 
-fbLoggedIn: any = false
+fbLoggedIn: any = false;
+
+userDetails: any;
+
+fbFriends: any;
+
+getFBUserDetails() {
+  FB.api(
+    '/me',
+    'GET',
+    {"fields":"id,name,email,first_name,last_name,gender,picture"},
+    (response: any) => {
+      this.userDetails = response
+      console.log("User Details", this.userDetails)
+    });
+}
+
+findMyFriends() {
+  if(this.platform.is("cordova") && this.fbLoggedIn == true) {
+    this.fb.api("/me/friends", []).then((friends) => {
+      // Get the connected user friends
+      console.log("=== USER FRIENDS USING MEMEPOLL ===", friends);
+      this.fbFriends = friends
+  });
+  }else {
+    if(this.fbLoggedIn == true) {
+      FB.api(
+        '/me/friends',
+        'GET',
+        {},
+        (friends) => {
+        console.log("My Friends Using MemePoll", friends)
+        this.fbFriends = friends
+        }
+      );
+    } 
+  }
+}
 
 
 }
