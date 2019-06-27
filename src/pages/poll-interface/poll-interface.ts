@@ -51,9 +51,7 @@ export class PollInterfacePage {
   this.memeCount = this.meme.length
 
   events.subscribe('answerSaved', ()=> {
-    if(this.questionNumber === this.totalQuestions) {
-        this.resultsProvider.getMemeAnswers()
-    }
+    this.navCtrl.setRoot(PollResultsPage)
   })
   }
 
@@ -99,7 +97,6 @@ export class PollInterfacePage {
         choice: direction
       }
 
-      this.pollInterfaceProvider.saveMemeAnswers(this.pollInterfaceProvider.memes[this.index].id, this.userResponse)
       this.resultsProvider.userAnswers.push(this.userResponse)
       this.progress = this.progress + this.percent
       this.progressBar(this.progress)

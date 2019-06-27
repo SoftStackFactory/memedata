@@ -28,12 +28,12 @@ export class PollInterfaceProvider {
       });
   }
 
-  saveMemeAnswers(memeId, answers) {
+  saveMemeAnswers(memeId, answers, index) {
     this.http.post(this.api + 'memes/' + memeId + '/answers', answers)
     .subscribe((response) => {
       console.log(response)
       this.events.publish('answerSaved');
-        if(this.resultsProvider.userAnswers.length == length) {
+        if(this.resultsProvider.userAnswers.length == index) {
           this.events.publish('answerSaved');
         }
       });
