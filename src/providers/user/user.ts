@@ -32,7 +32,6 @@ export class UserProvider {
     dob:'',
     gender:'',
     zip:'',
-    id: 'none'
   }
 
   userLogin = {
