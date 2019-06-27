@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { PollResultsPage } from '../poll-results/poll-results'
 import { PollInterfaceProvider } from '../../providers/poll-interface-provider/poll-interface-provider';
 import { Slides, Events } from 'ionic-angular';
@@ -81,8 +81,10 @@ export class PollInterfacePage {
 
     if(this.questionNumber === this.totalQuestions) {
         console.log(this.resultsProvider.userAnswers)
-        this.pollComplete = true
-        this.navCtrl.setRoot(PollResultsPage) 
+        this.pollComplete = true       
+        for(let i=0; i <= this.resultsProvider.userAnswers.length - 1; i++) {
+          this.pollInterfaceProvider.saveMemeAnswers(this.pollInterfaceProvider.memes[i].id, this.userResponse, i+1)
+        }     
     } else {
         this.questionNumber = this.questionNumber + 1
     }
@@ -104,11 +106,6 @@ export class PollInterfacePage {
       this.slides.slideNext()
       this.index += 1
     }
-  }
-
-  imgCheck() {
-    let img = document.querySelector('#img > img')
-    console.log(img.clientHeight)
   }
 
 // swipeEvent(e) {

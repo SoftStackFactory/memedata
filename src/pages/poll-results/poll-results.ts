@@ -31,7 +31,6 @@ export class PollResultsPage {
 
   ionViewWillLoad() {
     this.resultsProvider.getMemeAnswers()
-
   }
 
   calculateMemePercent(memeId) {
@@ -66,6 +65,7 @@ export class PollResultsPage {
 
   startPoll(id) {
     console.log(id)
+    this.resultsProvider.userAnswers = []
     this.pollInterfaceProvider.getMemes(id)
   }
 

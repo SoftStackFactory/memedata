@@ -3,13 +3,15 @@ import { Injectable } from '@angular/core';
 import { Events } from 'ionic-angular';
 import { SpinnerServiceProvider } from '../spinner-service/spinner-service';
 import { ThrowStmt } from '@angular/compiler';
+import { ResultsServiceProvider } from '../results-service/results-service';
 
 @Injectable()
 export class PollInterfaceProvider {
 
   constructor(public http: HttpClient,
               public events: Events,
-              public spinnerService: SpinnerServiceProvider) {
+              public spinnerService: SpinnerServiceProvider,
+              public resultsProvider: ResultsServiceProvider) {
   }
 
   api:string = 'https://ssf-memedata.herokuapp.com/api/'
@@ -31,6 +33,9 @@ export class PollInterfaceProvider {
     .subscribe((response) => {
       console.log(response)
       this.events.publish('answerSaved');
+        if(this.resultsProvider.userAnswers.length == length) {
+          this.events.publish('answerSaved');
+        }
       });
   }
 }
