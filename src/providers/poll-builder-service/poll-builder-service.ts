@@ -40,7 +40,7 @@ export class PollBuilderServiceProvider {
   userId: any
 
   pollId: string = ""
-  pollMemes: any
+  pollMemes: any = []
   pollSets: any = []
   keywords: any = []
   memes: Meme[] = [];
