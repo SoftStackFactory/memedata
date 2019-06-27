@@ -114,6 +114,7 @@ export class UserProvider {
     this.BuilderService.meme.userId = ""
     this.userDetails = ""
     this.fbOath.userDetails = ""
+    this.BuilderService.pollMemes = []
   }
 
   register(userData) {
