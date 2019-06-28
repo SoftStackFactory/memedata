@@ -1,9 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle='left' icon-only>
-      <ion-icon name="person" color="dark"></ion-icon>
-    </button>
-    <ion-title>PICTURE POLL</ion-title>
+    <ion-title>MemePoll</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -14,30 +11,36 @@
 </div>
 
 <div class="my-overlay" (click)="hideOverlay()" padding [hidden]="overlayInfo">
-    <p class="overlayText">This is the information section!
-      Welcome to the MemePoll. Please swipe right for one option and left for another. You will see your results
-      and have them compared to your friends when your done. You can then share your data in your social media.
+    <p class="overlayText">
+      Meme Information: {{this.pollInterfaceProvider.memes[0].description}} <!--need to change this to correctly display each memees description-->
     </p>
 </div>
+
+<div id="flex-container">
 
 <div id="MemeContainer">
   <h4 id="pollNumber">{{questionNumber}}/{{totalQuestions}}</h4>
     <ion-slides parallax="true" class="picture">
         <ion-slide *ngFor="let x of pollInterfaceProvider.memes; let i = index">
-            <div>
-                <!-- <div id="textWrapper"> -->
+            <ion-card>
+                <div id="poll-card">
+                    <img src={{x.image}} alt="Meme">
                     <div id="topText">
                       {{x.topText}}
                     </div>
                     <div id="bottomText">
                       {{x.bottomText}}
-                    </div>
+                   </div>
                 </div>
-                <img src={{x.image}} alt="Meme">
-            <!-- </div> -->
+              </ion-card>
         </ion-slide>
     </ion-slides>
 </div>
+
+<div id="progressWrapper">
+    <div id="bar">
+    </div>
+  </div>
 
   <div class="buttons">
     <button ion-button large round color="secondary" (click)="button('right')" float-right>Yes</button>
@@ -45,10 +48,6 @@
     <button ion-button large round color="danger" (click)="button('left')"  float-left>No</button>
   </div>
 
-
-      <div id="progressWrapper">
-        <div id="bar">
-        </div>
-      </div>
+  </div>
 
 </ion-content>

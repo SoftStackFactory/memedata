@@ -1,26 +1,29 @@
 .picture {
     position: relative;
     text-align: center;
-    // top: 5%;
     width: 100%;
-    height: 80%;
+    height: 80vh;
     z-index: -1;
+    font-size: 2.5rem;
 }
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 
 .buttons {
 position: relative;
 text-align: center;
-// z-index: 100;
 
 }
 
 #progressWrapper {
     height: 3px;
-    position: fixed;
     width: 100%;
-    top: 99.47%;
     background-color: rgba(56, 128, 255, 0.2);
-    // border: black solid 1px;
 }
 
 #bar {
@@ -32,7 +35,7 @@ text-align: center;
 .my-overlay {
     position: fixed;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background: rgba(17, 17, 17, 0.7);
     z-index: 20;
     top: 0;
@@ -41,70 +44,44 @@ text-align: center;
 
 
   .scroll-content {
-    margin: 0; 
+    margin: 0;
     height: 100%; 
-    overflow: hidden
-}
+    overflow: hidden;
+  }
 
 #textWrapper{
     // position: relative;
     z-index: 2;
 }
 
-#topText {
-    // position: fixed;
-        top: 3%;
-        margin: 5%;
-        text-align: center;
+#topText, #bottomText {
+    position: absolute;
+    width: 100%;
+    font-family: impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif;
+    text-transform: uppercase;
+    transform: scale(1,2.2);
+    color: white;
+    letter-spacing: 1px;
+    text-shadow:2px 2px 0 #000,
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    0px 2px 0 #000,
+    2px 0px 0 #000,
+    0px -2px 0 #000,
+    -2px 0px 0 #000,
+    2px 2px 5px #000;
+    font-weight: 900;
+  }
 
-        position: absolute; 
-        left: 0;
-        right: 0; 
-        margin: 15px 0;
-        padding: 0 5px;
-        font-family: impact;
-        font-size: 2.5em;
-        text-transform: uppercase;
-        color: white;
-        letter-spacing: 1px;
-        text-shadow:2px 2px 0 #000,
-        -2px -2px 0 #000,
-        2px -2px 0 #000,
-        -2px 2px 0 #000,
-        0px 2px 0 #000,
-        2px 0px 0 #000,
-        0px -2px 0 #000,
-        -2px 0px 0 #000,
-        2px 2px 5px #000;
-
+#topText{
+  top:5%;
 }
 
-#bottomText {
-    // position: fixed;
-        top: 78%;
-        margin: 5%;
-        text-align: center;
-
-        position: absolute; 
-        left: 0;
-        right: 0; 
-        margin: 15px 0;
-        padding: 0 5px;
-        font-family: impact;
-        font-size: 2.5em;
-        text-transform: uppercase;
-        color: white;
-        letter-spacing: 1px;
-        text-shadow:2px 2px 0 #000,
-        -2px -2px 0 #000,
-        2px -2px 0 #000,
-        -2px 2px 0 #000,
-        0px 2px 0 #000,
-        2px 0px 0 #000,
-        0px -2px 0 #000,
-        -2px 0px 0 #000,
-        2px 2px 5px #000;
+#bottomText{
+  top: 85%;
 }
+
 
 #pollNumber {
     text-shadow: 1px 1px 4px rgb(255, 255, 255);

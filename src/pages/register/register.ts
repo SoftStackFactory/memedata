@@ -27,7 +27,7 @@ export class RegisterPage {
     this.userService.register(this.userService.userRegister)
       .subscribe(
         (response: any) => {
-          console.log("response", response)
+          console.log("Register response", response)
           this.userService.data = response
           if (this.platform.is("cordova")) { //checking platform, setting storage with ionic
             this.userService.mobileStorageSet()
