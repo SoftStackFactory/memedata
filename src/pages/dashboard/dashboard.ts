@@ -83,7 +83,6 @@ export class DashboardPage {
             text: 'Cancel',
             handler: () => {
               console.log('Cancel clicked');
-              this.navCtrl.setRoot(DashboardPage)
             }
           },
           {
