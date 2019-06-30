@@ -3,17 +3,20 @@ import { Injectable } from '@angular/core';
 import { DashboardServiceProvider } from '../dashboard-service/dashboard-service';
 import { Events, ToastController } from 'ionic-angular';
 import { SpinnerServiceProvider } from '../spinner-service/spinner-service';
+import { Keyboard } from '@ionic-native/keyboard';
 
 @Injectable()
 export class SearchbarServiceProvider {
 
-  searchTerm:string;
+  searchTerm:string = "";
 
   constructor(public http: HttpClient, 
               public dash$: DashboardServiceProvider, 
               public events: Events, 
               public toastCtrl: ToastController,
-              public spinnerService: SpinnerServiceProvider) {
+              public spinnerService: SpinnerServiceProvider,
+              private keyboard: Keyboard,
+              ) {
   }
 
   presentToast() {
@@ -28,6 +31,7 @@ export class SearchbarServiceProvider {
   setFilteredItems(){
     this.spinnerService.spinner = true
     if (this.searchTerm) {
+      this.keyboard.hide()
       this.searchTerm = this.searchTerm.toLowerCase();
       let getKeywordsAPI = "https://ssf-memedata.herokuapp.com/api/pollSets?filter=%7B%22where%22%3A%7B%22pollKeywords%22%3A%22" + this.searchTerm + "%22%7D%2C%22limit%22%3A100%7D"
       this.events.publish('search success');
@@ -50,6 +54,7 @@ export class SearchbarServiceProvider {
           console.log('No Search Results');
         }
       })
+      this.searchTerm = ""
     }else {
       this.presentToast()
       this.spinnerService.spinner = false
