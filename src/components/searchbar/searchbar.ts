@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, Nav } from 'ionic-angular';
+import { NavController, NavParams, Nav, MenuController } from 'ionic-angular';
 import { SearchbarServiceProvider } from '../../providers/searchbar-service/searchbar-service';
 import { FacebookOathProvider } from '../../providers/facebook-oath/facebook-oath';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
@@ -30,9 +30,9 @@ declare var FB: any;
   templateUrl: 'searchbar.html'
 })
 export class SearchbarComponent {
-  @ViewChild(Nav) nav: Nav;
+  @ViewChild("Nav") nav: Nav;
 
-  rootPage: any;
+  rootPage: any = DashboardPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -47,7 +47,8 @@ export class SearchbarComponent {
     public fb: Facebook,
     public fbOath: FacebookOathProvider,
     public alertCtrl: AlertController,
-    public BuilderService: PollBuilderServiceProvider
+    public BuilderService: PollBuilderServiceProvider,
+    public menuCtrl: MenuController
     ) {
     console.log('Hello SearchbarComponent');
     this.text = 'Hello World';
