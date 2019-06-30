@@ -6,13 +6,13 @@
 
 <ion-content (swipe)="swipeEvent($event)">
 
-  <div class="my-overlay" (click)="hideOverlay()" padding [hidden]="overlayHidden">
+  <!--<div class="my-overlay" (click)="hideOverlay()" padding [hidden]="overlayHidden">  **add back in if want to display something every poll start
       <p class="overlayText">Hello Welcome New User!</p>
-</div>
+</div>--> 
 
 <div class="my-overlay" (click)="hideOverlay()" padding [hidden]="overlayInfo">
     <p class="overlayText">
-      Poll Information: {{this.pollInterfaceProvider.pollInfo.pollDescription}} <!--need to change this to correctly display each memees description-->
+      Poll Information: {{this.pollInterfaceProvider.pollInfo.pollDescription}}
     </p>
 </div>
 
