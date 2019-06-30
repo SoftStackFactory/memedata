@@ -112,6 +112,11 @@ export class DashboardPage {
     this.navCtrl.setRoot(PollHistoryPage);
   }
 
+  pollInfo(poll) {
+    this.pollInterfaceProvider.pollInfo = poll
+    console.log("poll info", this.pollInterfaceProvider.pollInfo)
+  }
+
   startPoll(id) {
     console.log(id)
     this.resultsProvider.userAnswers = []

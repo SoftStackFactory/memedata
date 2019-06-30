@@ -12,7 +12,7 @@
 
 <div class="my-overlay" (click)="hideOverlay()" padding [hidden]="overlayInfo">
     <p class="overlayText">
-      Meme Information: {{this.pollInterfaceProvider.memes[0].description}} <!--need to change this to correctly display each memees description-->
+      Poll Information: {{this.pollInterfaceProvider.pollInfo.pollDescription}} <!--need to change this to correctly display each memees description-->
     </p>
 </div>
 
