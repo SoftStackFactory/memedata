@@ -32,7 +32,7 @@ declare var FB: any;
 export class SearchbarComponent {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any;
 
   pages: Array<{title: string, component: any}>;
 
