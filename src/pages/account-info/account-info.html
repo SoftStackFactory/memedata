@@ -27,13 +27,16 @@
       <h2 id=username>Hello, {{this.fbOath.userDetails.name}}</h2>
   </div>
 
-  <div id=profileHeading *ngIf="this.userService.loggedIn == true || this.fbOath.fbLoggedIn == true">
-    <h3>Your MemePoll Profile</h3>
+  <div id=profileHeading *ngIf="this.userService.loggedIn == true || this.fbOath.fbLoggedIn == true;else notSignedIn">
+      <h3>Your MemePoll Profile</h3>
   </div>
 
-  <div id=notSignedInProfileHeading *ngIf="this.userService.loggedIn == false || this.fbOath.fbLoggedIn == false">
-    <h3>Sign up or Log in to view your Account Information</h3>
-  </div>
+  <ng-template #notSignedIn>
+      <div id=notSignedInProfileHeading>
+          <h3>Sign up or Log in to view your Account Information</h3>
+        </div>
+  </ng-template>
+
 
   <div id="userDetails" *ngIf="this.userService.userDetails">
     <p id=firstName *ngIf="this.userService.userDetails.firstName">First Name: {{this.userService.userDetails.firstName}}</p>

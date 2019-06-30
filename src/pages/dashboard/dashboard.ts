@@ -104,7 +104,6 @@ export class DashboardPage {
         ]
       });
       confirm.present();
-    //this.navCtrl.setRoot(PollBuilderPage);
   }
 
   goToMyPolls() {
