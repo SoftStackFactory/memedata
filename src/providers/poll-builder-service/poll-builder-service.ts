@@ -116,6 +116,18 @@ export class PollBuilderServiceProvider {
     console.log("An error occured", err)
     });
   }
+
+  clearUserPolls() {
+    this.meme.topText = ""
+    this.meme.bottomText = ""
+    this.meme.description = ""
+    this.meme.image = ""
+    this.displayMeme.topText = ""
+    this.displayMeme.bottomText = ""
+    this.displayMeme.description = ""
+    this.displayMeme.image = ""
+    this.memes = []
+  }
   
 
   getMyPolls() {

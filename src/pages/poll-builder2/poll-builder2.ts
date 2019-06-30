@@ -55,8 +55,9 @@ export class PollBuilder2Page {
     this.BuilderService.meme.topText = ""
     this.BuilderService.meme.bottomText = ""
     this.BuilderService.meme.description = ""
+    this.BuilderService.meme.image = ""
     this.BuilderService.pollSet.coverImage = this.BuilderService.memes[0].image
-    this.navCtrl.push(PollBuilder3Page);
+    this.navCtrl.setRoot(PollBuilder3Page);
     }
   }
 
@@ -66,15 +67,16 @@ export class PollBuilder2Page {
         message: 'If you leave now, your progress will not be saved!',
         buttons: [
           {
-            text: 'Disagree',
+            text: 'No',
             handler: () => {
-              console.log('Disagree clicked');
+              console.log('No clicked');
             }
           },
           {
-            text: 'Agree',
+            text: 'Yes',
             handler: () => {
-              console.log('Agree clicked');
+              console.log('Yes clicked');
+                this.BuilderService.clearUserPolls()
               this.navCtrl.setRoot(DashboardPage)
             }
           }
