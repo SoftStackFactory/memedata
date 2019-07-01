@@ -21,7 +21,6 @@ export class PollInterfaceProvider {
   getMemes(id){
     this.spinnerService.spinner = true
     this.pollInfo = id
-    console.log("pollInfo",id)
     this.http.get(this.api + 'pollSets/' + id + "/meme")
     .subscribe((response) => {
       this.memes = response
