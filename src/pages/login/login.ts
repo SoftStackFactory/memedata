@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FacebookOathProvider } from '../../providers/facebook-oath/facebook-oath';
 import { UserProvider } from '../../providers/user/user';
@@ -19,6 +19,8 @@ declare var FB: any;
 
 export class LoginPage {
 
+  @ViewChild("emailInput") emailInput;
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
@@ -34,6 +36,9 @@ export class LoginPage {
 
   ionViewDidLoad() {
       console.log('ionViewDidLoad LoginPage');
+      setTimeout(() => {
+        this.emailInput.setFocus();
+    },150);
   }
 
   forgot() {
