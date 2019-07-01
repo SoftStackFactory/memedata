@@ -87,11 +87,6 @@ export class SearchbarComponent {
 
 
   goToLogout() {
-    const alert = this.alertCtrl.create({
-      title: 'Logged Out!',
-      message: 'You are now logged out of MemePoll!',
-      buttons: ['OK']
-    });
     const confirm = this.alertCtrl.create({
       title: 'Logout?',
       message: 'Are you sure you want to Log out of MemePoll?',
@@ -132,7 +127,6 @@ export class SearchbarComponent {
                 this.goToLogin()
               });
             }
-            alert.present();
           }
         }
       ]

@@ -32,11 +32,11 @@
       </ion-item>
       
       <ion-item>
-        <ion-input [(ngModel)]="this.BuilderService.meme.bottomText" type="text" placeholder="Bottom Text" maxlength="40"></ion-input>
+        <ion-input #bottomText [(ngModel)]="this.BuilderService.meme.bottomText" type="text" placeholder="Bottom Text" maxlength="40"></ion-input>
       </ion-item>
 
       <ion-item>
-          <ion-input [(ngModel)]="this.BuilderService.meme.description" type="text" placeholder="Description"></ion-input>
+          <ion-input #description [(ngModel)]="this.BuilderService.meme.description" type="text" placeholder="Description"></ion-input>
         </ion-item>
     
     </ion-list>

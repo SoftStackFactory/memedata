@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { DashboardPage } from '../dashboard/dashboard';
 import { PollBuilder3Page } from '../poll-builder3/poll-builder3';
@@ -26,17 +26,63 @@ export class PollBuilder2Page {
     public alertCtrl: AlertController) {
   }
 
+  @ViewChild("topText") topText;
+  @ViewChild("bottomText") bottomText;
+  @ViewChild("description") description;
+
   nextStage() {
-    if (this.BuilderService.meme.topText == "" || 
-      this.BuilderService.meme.bottomText == "" || 
-      this.BuilderService.meme.description == "") {
+    if (this.BuilderService.meme.topText == "") {
       const alert = this.alertCtrl.create({
-        title: 'Required Field(s)',
-        subTitle: 'All Fields Must Be Completed!',
-        buttons: ['OK']
+        title: 'Required Field',
+        subTitle: 'Top Text is Required',
+        buttons: [
+          {
+            text: 'OK',
+            handler: () => {
+              console.log('Ok clicked');
+              setTimeout(() => {
+                this.topText.setFocus();
+            },500);
+            }
+          }
+        ]
       });
       alert.present();
-    } else{
+    } else if (this.BuilderService.meme.bottomText == ""){
+      const alert = this.alertCtrl.create({
+        title: 'Required Field',
+        subTitle: 'Bottom Text is Required',
+        buttons: [
+          {
+            text: 'OK',
+            handler: () => {
+              console.log('Ok clicked');
+              setTimeout(() => {
+                this.bottomText.setFocus();
+            },500);
+            }
+          }
+        ]
+      });
+      alert.present();
+    } else if (this.BuilderService.meme.description == "") {
+      const alert = this.alertCtrl.create({
+        title: 'Required Field',
+        subTitle: 'Description is Required',
+        buttons: [
+          {
+            text: 'OK',
+            handler: () => {
+              console.log('Ok clicked');
+              setTimeout(() => {
+                this.description.setFocus();
+            },500);
+            }
+          }
+        ]
+      });
+      alert.present();
+    } else {
     this.BuilderService.memes.push({
       pollId: "none",
       topText: this.BuilderService.meme.topText,

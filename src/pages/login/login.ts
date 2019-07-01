@@ -38,7 +38,7 @@ export class LoginPage {
       console.log('ionViewDidLoad LoginPage');
       setTimeout(() => {
         this.emailInput.setFocus();
-    },150);
+    },1000);
   }
 
   forgot() {
