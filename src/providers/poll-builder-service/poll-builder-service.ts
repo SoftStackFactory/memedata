@@ -118,6 +118,7 @@ export class PollBuilderServiceProvider {
   }
 
   clearUserPolls() {
+    console.log("Cleared Poll Data")
     this.meme.topText = ""
     this.meme.bottomText = ""
     this.meme.description = ""
@@ -126,7 +127,10 @@ export class PollBuilderServiceProvider {
     this.displayMeme.bottomText = ""
     this.displayMeme.description = ""
     this.displayMeme.image = ""
-    this.memes = []
+    setTimeout(() => {
+      console.log("Cleared Meme Array on Builder Service")
+      this.memes = [];
+  },10000);
   }
   
 
