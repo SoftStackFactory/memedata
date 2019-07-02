@@ -14,7 +14,7 @@
   </div>
       
   <div class='pollList'>
-      <ion-item text-wrap class='pollPreview' *ngFor='let poll of dash$.displayedPolls' (click)="startPoll(poll.id)">
+      <ion-item text-wrap class='pollPreview' *ngFor='let poll of dash$.displayedPolls' (click)="startPoll(poll.id)" (click)="pollInfo(poll)">
         <div *ngIf='poll;else showNoResults'>
           <img class='pollImg' src='{{poll.coverImage}}'>
           <h2>{{poll.pollTitle}}</h2>
@@ -32,7 +32,7 @@
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar>
+  <ion-toolbar *ngIf="this.BuilderService.userId">
     <ion-segment [(ngModel)]="tab">
       <ion-segment-button value='Home' (click)='goToHome()'>
         Home

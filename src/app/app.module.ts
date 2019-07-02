@@ -30,6 +30,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from '@ionic-native/camera';
 import { IonicStorageModule } from '@ionic/storage';
 import { Facebook } from '@ionic-native/facebook';
+import { Keyboard } from '@ionic-native/keyboard';
 
 //providers
 import { UserProvider } from '../providers/user/user';
@@ -86,6 +87,7 @@ import { FacebookOathProvider } from '../providers/facebook-oath/facebook-oath';
     SearchbarComponent
   ],
   providers: [
+    Keyboard,
     Facebook,
     Camera,
     StatusBar,

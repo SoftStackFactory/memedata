@@ -16,9 +16,11 @@ export class PollInterfaceProvider {
 
   api:string = 'https://ssf-memedata.herokuapp.com/api/'
   memes:any = []
+  pollInfo: any;
 
   getMemes(id){
     this.spinnerService.spinner = true
+    this.pollInfo = id
     this.http.get(this.api + 'pollSets/' + id + "/meme")
     .subscribe((response) => {
       this.memes = response

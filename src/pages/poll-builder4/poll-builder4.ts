@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
 import { AlertController } from 'ionic-angular';
@@ -23,18 +23,53 @@ export class PollBuilder4Page {
     public alertCtrl: AlertController) {
   }
 
+  @ViewChild("pollTitle") pollTitle;
+  @ViewChild("pollDescription") pollDescription;
+  @ViewChild("pollCategory") pollCategory;
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad PollBuilder4Page');
   }
 
   publishPoll() {
-    if (this.BuilderService.pollSet.pollTitle == "" || 
-        this.BuilderService.pollSet.pollDescription == "" || 
-        this.BuilderService.pollSet.pollCategory == ""
-        ) {
+    if (this.BuilderService.pollSet.pollTitle == "") {
+      const alert = this.alertCtrl.create({
+        title: 'Required Field',
+        subTitle: 'Poll Title is Required',
+        buttons: [
+          {
+            text: 'OK',
+            handler: () => {
+              console.log('Ok clicked');
+              setTimeout(() => {
+                this.pollTitle.setFocus();
+            },500);
+            }
+          }
+        ]
+        });
+        alert.present();
+    } else if (this.BuilderService.pollSet.pollDescription == "") {
+      const alert = this.alertCtrl.create({
+        title: 'Required Field',
+        subTitle: 'Poll Description is Required',
+        buttons: [
+          {
+            text: 'OK',
+            handler: () => {
+              console.log('Ok clicked');
+              setTimeout(() => {
+                this.pollDescription.setFocus();
+            },500);
+            }
+          }
+        ]
+        });
+        alert.present();
+    } else if (this.BuilderService.pollSet.pollCategory == "") {
           const alert = this.alertCtrl.create({
-            title: 'Required Field(s)',
-            subTitle: 'All Fields Must Be Completed!',
+            title: 'Required Field',
+            subTitle: 'Poll Category is Required',
             buttons: ['OK']
             });
         alert.present();
@@ -83,21 +118,11 @@ export class PollBuilder4Page {
 
                             console.log("Saved Meme to Pollset DB" + i, response)
                           })
-                  }         
+                  }
+                  this.BuilderService.clearUserPolls()
+                  this.navCtrl.setRoot(DashboardPage);         
                 })
-          }
-          this.BuilderService.pollSet.pollTitle = ""
-          this.BuilderService.pollSet.pollDescription = ""
-          this.BuilderService.pollSet.pollCategory = ""
-          this.BuilderService.pollSet.pollKeywords = ["keywords"]
-          //this.BuilderService.memes = [], do not re add this...will error out and wont post
-          this.BuilderService.displayMeme = {
-            topText: "",
-            bottomText: "",
-            image: "",
-            description: "",
           };
-          this.navCtrl.setRoot(DashboardPage);
       }
 
 }

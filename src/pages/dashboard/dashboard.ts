@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, Content, Events } from 'ionic-angular';
+import { NavController, NavParams, Content, Events, MenuController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { AlertController } from 'ionic-angular';
 import { DashboardServiceProvider } from '../../providers/dashboard-service/dashboard-service';
@@ -29,7 +29,9 @@ export class DashboardPage {
               public BuilderService: PollBuilderServiceProvider,
               public pollInterfaceProvider: PollInterfaceProvider,
               public spinnerService: SpinnerServiceProvider,
-              public resultsProvider: ResultsServiceProvider) {
+              public resultsProvider: ResultsServiceProvider,
+              public menuCtrl: MenuController
+              ) {
 
     events.subscribe('search success', ()=> {
       // this.content.scrollToTop();    
@@ -71,6 +73,7 @@ export class DashboardPage {
   // Navigation Functions
 
   goToHome() {
+    this.menuCtrl.enable(false)
     this.navCtrl.setRoot(DashboardPage);
   }
 
@@ -83,6 +86,7 @@ export class DashboardPage {
             text: 'Cancel',
             handler: () => {
               console.log('Cancel clicked');
+              this.menuCtrl.enable(false)
               this.navCtrl.setRoot(DashboardPage)
             }
           },
@@ -105,11 +109,15 @@ export class DashboardPage {
         ]
       });
       confirm.present();
-    //this.navCtrl.setRoot(PollBuilderPage);
   }
 
   goToMyPolls() {
     this.navCtrl.setRoot(PollHistoryPage);
+  }
+
+  pollInfo(poll) {
+    this.pollInterfaceProvider.pollInfo = poll
+    console.log("poll info", this.pollInterfaceProvider.pollInfo)
   }
 
   startPoll(id) {

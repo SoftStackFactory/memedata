@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { DashboardPage } from '../dashboard/dashboard';
 import { PollBuilderPage } from '../poll-builder/poll-builder';
 import { PollBuilder2Page } from '../poll-builder2/poll-builder2';
 import { PollBuilder4Page } from '../poll-builder4/poll-builder4';
@@ -91,6 +92,30 @@ export class PollBuilder3Page {
       });
       confirm.present();
     //this.navCtrl.push(PollBuilderPage);
+  }
+
+  goBack() {
+    const confirm = this.alertCtrl.create({
+      title: 'Leave poll service?',
+      message: 'If you leave now, your progress will not be saved!',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {
+            console.log('No clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            console.log('Yes clicked');
+              this.BuilderService.clearUserPolls()
+            this.navCtrl.setRoot(DashboardPage)
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
   lastStage() {
