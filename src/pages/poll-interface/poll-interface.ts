@@ -69,6 +69,10 @@ export class PollInterfacePage {
        this.slides.lockSwipeToPrev(true)
   }
 
+  ionViewDidLeave() {
+    this.events.unsubscribe('answerSaved')
+  }
+
   pollSetup(totalQuestions, text) {
     this.totalQuestions = totalQuestions 
     this.percent = 100 / totalQuestions
