@@ -20,6 +20,17 @@ page-poll-results {
         padding: 15px 0px 0px 15px;
     }
 
+    #row {
+        justify-content: center
+    }
+
+    #count {
+        position: absolute;
+        bottom: 10px;
+        padding: 15px 0px 0px 15px;
+        font-size: smaller;
+    }
+
     .items {
         justify-content: center;
         padding: 20%;
@@ -41,9 +52,10 @@ page-poll-results {
 
     .scroll-content {
         margin-top: 55px !important;
-        margin-bottom: 165px !important;
+        margin-bottom: 117px !important;
         height: auto !important;
         overflow: scroll !important;
+        padding: 20px
     }
 
     #share {

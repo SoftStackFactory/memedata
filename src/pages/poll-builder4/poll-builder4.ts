@@ -101,16 +101,16 @@ export class PollBuilder4Page {
                 console.log("New User PollSet", response, "PolliD =", response.id)
 
                 for (let i = 0; i <= this.BuilderService.memes.length - 1; i ++) {
-                  this.BuilderService.memes[i].pollId = this.BuilderService.pollId //**wont need this with new endpoint post
+                  // this.BuilderService.memes[i].pollId = this.BuilderService.pollId //**wont need this with new endpoint post
 
-                    console.log("New Meme " + i,this.BuilderService.memes[i])
+                    // console.log("New Meme " + i,this.BuilderService.memes[i])
 
-                  this.BuilderService.saveMeme(this.BuilderService.memes[i]) //**wont need with new endpoint post
-                    .subscribe(
-                      (response: any) => {
+                  // this.BuilderService.saveMeme(this.BuilderService.memes[i]) //**wont need with new endpoint post
+                    // .subscribe(
+                      // (response: any) => {
 
-                        console.log("Saved Meme to Meme DB" + i, response)
-                      })
+                        // console.log("Saved Meme to Meme DB" + i, response)
+                      // })
 
                       this.BuilderService.savePollMeme(this.BuilderService.memes[i])
                         .subscribe(
