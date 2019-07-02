@@ -11,6 +11,7 @@ import { PollInterfacePage } from '../poll-interface/poll-interface';
 import { PollHistoryPage } from '../poll-history/poll-history';
 import { SpinnerServiceProvider } from '../../providers/spinner-service/spinner-service';
 import { ResultsServiceProvider } from '../../providers/results-service/results-service';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'page-dashboard',
@@ -54,6 +55,7 @@ export class DashboardPage {
 
   ionViewDidLeave() {
     this.spinnerService.spinner = false
+    this.events.unsubscribe('getMemes')
   }
 
   tab = "Home"
