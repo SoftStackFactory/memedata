@@ -17,7 +17,7 @@
       <ion-item text-wrap class='pollPreview' *ngFor='let poll of dash$.displayedPolls' (click)="startPoll(poll.id)" (click)="pollInfo(poll)">
         <div *ngIf='poll;else showNoResults'>
           <img class='pollImg' src='{{poll.coverImage}}'>
-          <h2>{{poll.pollTitle}}</h2>
+          <h2 class='pollTitle'>{{poll.pollTitle}}</h2>
           <p class='pollDescription'>{{poll.pollDescription}}</p>
         </div>
       </ion-item>
@@ -26,7 +26,7 @@
       </ion-infinite-scroll>
   </div>
 
-  <!-- <ng-template #showNoResults><h1>No Memes to show</h1></ng-template> -->
+  <!-- <ng-template #showNoResults><h1>No Memes to show</h1></ng-template> **add this back in for substitute for no memes/image-->
 
   
 </ion-content>

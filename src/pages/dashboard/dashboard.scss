@@ -28,23 +28,23 @@ page-dashboard {
 }
 
 .pollDescription {
-    
+    max-height: 100px;
+    max-width: 100vw;
+    word-wrap: break-word;
+    //overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .pollPreview {
     width: 100vw;
-    max-height: 150px;
+    //max-height: 150px;
     display: inline-block;
 
-    h2 {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    
-    p {
-        max-height: 100px;
-        overflow: hidden;
+    .pollTitle {
+        max-width: 100vw;
+        word-wrap: break-word;
+        //white-space: nowrap;
+        //overflow: nowrap;
         text-overflow: ellipsis;
     }
 }
@@ -52,9 +52,9 @@ page-dashboard {
 .pollImg {
     margin-right: 15px;
     float: left;
-    vertical-align:middle;
-    height: 125px;
-    width: 125px;
+    vertical-align: middle;
+    height: 40%;
+    width: 40%;
     // background: none;
 }
 
