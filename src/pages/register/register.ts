@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { DashboardPage } from '../../pages/dashboard/dashboard';
 import { Storage } from '@ionic/storage';
 import { PollBuilderServiceProvider } from '../../providers/poll-builder-service/poll-builder-service';
-import { Platform } from 'ionic-angular'
+import { Platform } from 'ionic-angular';
 
 
 @Component({
@@ -19,14 +19,18 @@ export class RegisterPage {
     public userService: UserProvider, 
     public storage: Storage, 
     public BuilderService: PollBuilderServiceProvider,
-    public platform: Platform
+    public platform: Platform,
+    public alertCtrl: AlertController
     ) {
   }
+
+  errorMessage: any;
   
   onRegister(){
     this.userService.register(this.userService.userRegister)
       .subscribe(
         (response: any) => {
+          if (response.userId) {
           console.log("Register response", response)
           this.userService.data = response
           if (this.platform.is("cordova")) { //checking platform, setting storage with ionic
@@ -35,7 +39,9 @@ export class RegisterPage {
             this.userService.coreStorageSet()
             }
             this.navCtrl.setRoot(DashboardPage);
-          })
+          }
+          }
+        )
     }
 
   ionViewDidLoad() {

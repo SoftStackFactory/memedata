@@ -16,7 +16,7 @@ export class UserProvider {
     public search$: SearchbarServiceProvider,
     public storage: Storage,
     public fbOath: FacebookOathProvider,
-    public platform: Platform
+    public platform: Platform,
     ) {
     console.log('Hello UserProvider Provider');
   }
@@ -117,7 +117,7 @@ export class UserProvider {
   }
 
   register(userData) {
-    return this.http.post(this.baseUrl, userData );
+    return this.http.post(this.baseUrl, userData);
   }
 
   login(userData) {
