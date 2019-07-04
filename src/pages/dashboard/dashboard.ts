@@ -53,7 +53,7 @@ export class DashboardPage {
     this.pullAllPolls();
   }
 
-  ionViewDidLeave() {
+  ionViewWillLeave() {
     this.spinnerService.spinner = false
     this.events.unsubscribe('getMemes')
   }
