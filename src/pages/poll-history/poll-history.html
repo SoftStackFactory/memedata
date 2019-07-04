@@ -19,7 +19,7 @@
 <ion-content padding>
   <button ion-button full (click)="getAllMyMemes()">Get my meme's images</button>
     <ion-item text-wrap class='pollPreview' *ngFor="let meme of BuilderService.pollMemes">
-      <div *ngIf="meme;else showNoResults">
+      <div *ngIf="meme.coverImage;else showNoResults">
           <img class="pollImg" src="{{meme.coverImage}}">
           <h2 class='pollTitle'>{{meme.pollTitle}}</h2>
           <p class='pollDescription'>{{meme.pollDescription}}</p>
