@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, App } from 'ionic-angular';
 import { PollResultsPage } from '../poll-results/poll-results'
 import { PollInterfaceProvider } from '../../providers/poll-interface-provider/poll-interface-provider';
 import { Slides, Events } from 'ionic-angular';
@@ -45,7 +45,8 @@ export class PollInterfacePage {
               public navParams: NavParams,
               public pollInterfaceProvider: PollInterfaceProvider,
               public resultsProvider: ResultsServiceProvider,
-              public events: Events) {
+              public events: Events,
+              public app: App) {
 
   this.meme = this.pollInterfaceProvider.memes
   this.memeCount = this.meme.length
@@ -67,6 +68,11 @@ export class PollInterfacePage {
   ionViewDidLoad() {
        this.pollSetup(this.memeCount, 0)
        this.slides.lockSwipeToPrev(true)
+      //  this.app._setDisableScroll(true)
+  }
+
+  ionViewDidLeave() {
+    this.events.unsubscribe('answerSaved')
   }
 
   pollSetup(totalQuestions, text) {

@@ -17,7 +17,19 @@ page-poll-results {
     }
 
     #description {
+        padding: 10px 0px 0px 15px;
+        line-height: normal;
+    }
+
+    #row {
+        justify-content: center
+    }
+
+    #count {
+        position: absolute;
+        bottom: 10px;
         padding: 15px 0px 0px 15px;
+        font-size: smaller;
     }
 
     .items {
@@ -41,9 +53,10 @@ page-poll-results {
 
     .scroll-content {
         margin-top: 55px !important;
-        margin-bottom: 165px !important;
+        // margin-bottom: 117px !important;
         height: auto !important;
-        overflow: scroll !important;
+        // overflow: hidden !important;
+        padding: 20px
     }
 
     #share {

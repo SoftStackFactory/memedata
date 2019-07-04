@@ -25,7 +25,7 @@ export class PollResultsPage {
   barPercent1:any = 0
   barPercent2:any = 0
   bar2:any = 0
-
+  totalTaken:any = 0
   meme = this.pollInterfaceProvider.memes
   userResponse:any = this.resultsProvider.userAnswers
 
@@ -47,9 +47,9 @@ export class PollResultsPage {
       }
     }
 
-    let totalTaken = right.length + left.length
-    let yesPercent = (100 * right.length) / totalTaken;
-    let noPercent = (100 * left.length) / totalTaken;
+    this.totalTaken = right.length + left.length
+    let yesPercent = (100 * right.length) / this.totalTaken;
+    let noPercent = (100 * left.length) / this.totalTaken;
 
     this.bar1 = Math.round(yesPercent)
     this.bar2 = 100 - this.bar1
