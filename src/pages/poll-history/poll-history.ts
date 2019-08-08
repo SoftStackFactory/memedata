@@ -21,9 +21,8 @@ export class PollHistoryPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public BuilderService: PollBuilderServiceProvider,
-    public SpinnerService: SpinnerServiceProvider,
+    public spinnerService: SpinnerServiceProvider,
     ) {
-    this.getAllMyMemes()
   }
 
   goBack() {
@@ -31,11 +30,11 @@ export class PollHistoryPage {
   }
 
   getAllMyMemes(){
-    this.SpinnerService.spinner = true
+    this.spinnerService.spinner = true
     this.BuilderService.getMyPolls()
     .subscribe(
       (response: any) => {
-        this.SpinnerService.spinner = false
+        this.spinnerService.spinner = false
         console.log("all my polls", response)
         this.BuilderService.pollMemes = response
         console.log("memes on builder service", this.BuilderService.pollMemes)
@@ -43,7 +42,8 @@ export class PollHistoryPage {
     )
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
+    this.getAllMyMemes()
     console.log('ionViewDidLoad PollHistoryPage');
   }
 

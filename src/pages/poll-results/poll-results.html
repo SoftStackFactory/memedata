@@ -21,7 +21,12 @@
                   <img id="resultThumb" src={{x.image}} float-left>
                 </ion-col>
                 <ion-col col-7>
-                  <p id="description">{{ x.description }}</p>
+                  <ion-row id='row'>
+                    <p id="description">{{ x.description }}</p>
+                  </ion-row>
+                  <ion-row id='row'>
+                    <p id="count">Answered {{ totalTaken }} times.</p>
+                  </ion-row>
                 </ion-col>
                 <ion-col col-2>
                   <ion-row *ngIf="userResponse[i].choice == 'right'" class="items">
